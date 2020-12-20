@@ -1,45 +1,109 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
-
-Welcome USER_NAME,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
 `python3 -m http.server`
 
-A blue button should appear to click: *Make Public*,
+# Crockpot
 
-Another blue button should appear to click: *Open Browser*.
+## Code Institute: Milestone Project 3
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+![Crockpot on multiple devices](#)
 
-A blue button should appear to click: *Make Public*,
+_Crockpot_ is a 
 
-Another blue button should appear to click: *Open Browser*.
+This was the third of four Milestone Projects required to pass the Full Stack Web Development Program at _Code Institute_. The main requirements were to build a full-stack site using HTML, CSS, JavaScript, Python, Flask and MongoDB that allows users to manage a common dataset about a particular domain.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Click [here](https://github.com/zoet24/crockpot) to view the Github repository for the project, and click [here](#) to view the live website.
 
-## Updates Since The Instructional Video
+## Table of Contents
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- [UX Design](#ux-design)
+    - [Design Process](#design-process)
+        - [Strategy Plane](#strategy-plane)
+        - [Scope Plane](#scope-plane)
+        - [Structure Plane](#structure-plane)
+        - [Skeleton Plane](#skeleton-plane)
+        - [Surface Plane](#surface-plane)
+    - [Features](#features)
+        - [Existing features](#existing-features)
+        - [Features left to implement](#features-left-to-implement)
+- [Technologies Used](#technologies-used)
+    - [Languages and frameworks](#languages-and-frameworks)
+    - [Additional tools used](#additional-tools-used)
+- [Git Commit Messages](#git-commit-messages)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Cloning](#cloning)
+- [Credits](#credits)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## UX Design
+### Design Process
+#### Strategy Plane 
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+User stories:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+_**Site owner**_
+1. As the site owner, I want to...
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+_**Site users**_
+1. As a site user, I want to...
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### Scope Plane
+_**"Must-haves"**_
+1. The site must...
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+_**"Nice-to-haves"**_
+1. The site could...
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Structure Plane
 
---------
+#### Skeleton Plane
 
-Happy coding!
+#### Surface Plane
+
+
+### Features
+#### Existing features
+
+#### Features left to implement
+
+## Technologies used
+### Languages and frameworks
+<!-- - __HTML5:__ The language used to create the content and structure of my project.
+- __CSS3:__ The language used to style the HTML5 elements to create the aesthetic of my game.
+- __JavaScript and JQuery:__ The language used to program my game and make aspects of the 'Home' and 'Tutorial' pages dynamic.
+- __Bootstrap framework:__ I used the Bootstrap grid system to make my site responsive on different devices. I also used it for the carousel and modal components on the 'Tutorial' and 'Game' pages.
+- __GitHub:__ I used GitHub to store my source code and repository.
+- __GitHub Pages:__ I used GitHub Pages to deploy my project and make it viewable to others.
+- __Gitpod:__ I used Gitpod's development environment to write the code for my project. -->
+
+### Additional tools used
+<!-- - __101soundboards:__ I used 101soundboards.com to find all of the sound effects used through the site.
+- __Balsamiq:__ I used this to produce wireframe sketches for the site's skeleton plane.
+- __CompressPNG:__ I used this to compress the images on my website to improve its performance.
+- __FontAwesome:__ I used FontAwesome's database for basic icons throughout my site.
+- __FreeFormatter:__ I used Freeformatter.com to format my code properly.
+- __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes, and to produce screenshots of the game for my 'Tutorial' page. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
+- __Google Fonts:__ I used one complementary font from Google Fonts for my project - Bowlby One SC.
+- __Image Online:__ I used this to produce the graphics for my game.
+- __JSHint:__ I used this to test to the validity of my JavaScript and JQuery code.
+- __Paint:__ I used this to produce the graphics for my game.
+- __W3C CSS Validation Service:__ I used this to test to the validity of my CSS code.
+- __W3C Markup Validation Service:__ I used this to test the validity of my HTML5 code.
+- __WAVE - Web Accessibility Evaluation Tool:__ I used this to test the accessibility of my website. -->
+
+## Git Commit Messages
+
+## Testing
+Click [here](testing.md) to view the complete testing process.
+
+## Deployment
+
+## Credits
+__Images:__
+The background image was taken from...
+
+__Audio:__
+All audio files were downloaded from...
+
+__Acknowledgements:__
+I'd like to acknowledge the following tutorials and websites that I studied to complete my project. These sources have been credited in the code comments and were heavily modified for my own website.
+
+I'd also like to thank my tutor Can Sucullu, the Code Institute community and my friends and family for their guidance and input on this project.
