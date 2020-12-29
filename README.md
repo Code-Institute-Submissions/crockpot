@@ -55,6 +55,13 @@ _**"Nice-to-haves"**_
 #### Structure Plane
 
 #### Skeleton Plane
+![Wireframe - Home](static/images/readme-wireframe1-home.png)
+![Wireframe - Log in](static/images/readme-wireframe2-login.png)
+![Wireframe - Profile](static/images/readme-wireframe3-profile.png)
+![Wireframe - Add Recipe](static/images/readme-wireframe4-add-recipe.png)
+![Wireframe - View Recipe](static/images/readme-wireframe5-view-recipe.png)
+![Wireframe - Search Recipe](static/images/readme-wireframe6-search-recipe.png)
+![Wireframe - Shopping List](static/images/readme-wireframe7-shopping-list.png)
 
 #### Surface Plane
 
