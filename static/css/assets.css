@@ -6,6 +6,11 @@ body {
     color: #06474C;
 }
 
+h2 {
+    color: #eeeeee;
+    text-shadow: #06474C 1px 1px;
+}
+
 .row, .col, .container-fluid {
     padding: 0;
     margin: 0;
@@ -20,19 +25,34 @@ section, .container-fluid {
 /* Components */
 .nav-btn {
     font-family: 'Fredoka One', cursive;
-	background-color: #e63b2e;
-	color: #eeeeee;
-    
-    width: 100px;
-	height: 50px;
-	border: #eeeeee 4px solid;
-	text-align: center;
+    font-size: 1.75em;
+
+    text-align: center;
+    align-content: center;
+    width: 150px;
+    height: 65px;
 	margin: 2px 4px;
-	border-radius: 25px;
+	border-radius: 35px;
 }
 
-.nav-btn-lg {
+.nav-btn-red {
+    color: #eeeeee;
+	background-color: #e63b2e;
+    border: #eeeeee 4px solid;
+}
 
+.nav-btn-white {
+    color: #e63b2e;
+	background-color: #eeeeee;
+    border: #e63b2e 4px solid;
+}
+
+.nav-btn-sm {
+    font-size: 1em;
+
+    width: 100px;
+	height: 50px;
+	border-radius: 25px;
 }
 
 .icon {
@@ -144,6 +164,10 @@ footer {
 .hero-image {
     height: 100%;
     width: 100%;
+
+    background: url("https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=637&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero-image-overlay {
