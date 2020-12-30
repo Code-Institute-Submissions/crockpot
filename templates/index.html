@@ -1,4 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Home</h1>
+    <!-- Hero Image -->
+    <header class="container-fluid container-hero">
+        <div class="hero-image">
+            <span class="sr-only">Food image</span>
+        </div>
+        <div class="hero-image-overlay">
+            <div class="row">
+                <div class="col">
+                    <img id="logo-home" src="static/images/logo-red.png"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>Put the lid on boring meal plans and get inspired today!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="nav-item">
+                        <a class="nav-link nav-btn nav-btn-lg" role="button" href="{{ url_for('login') }}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="row">
+        <div class="col">
+            Featured recipes carousel
+        </div>
+    </section>
+    <section class="row">
+        <div class="col">
+            All of your favourite recipes in one convenient place (tick)
+            Filter based on prep time, serving size and ingredients to find your perfect meal (tick)
+            Know exactly what you need with a shopping list generated from your selected recipes (tick)
+        </div>
+    </section>
+    <section class="row">
+        <div class="col">
+            User testimonials carousel
+        </div>
+    </section>
 {% endblock %}
