@@ -1,3 +1,9 @@
+#hero-image-overlay-home {
+    position: absolute;
+
+    top: 5vh;
+}
+
 #logo-home {
     width: 200px;
 }
