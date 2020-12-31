@@ -1,0 +1,9 @@
+#hero-image-overlay-login {
+    position: absolute;
+
+    top: 5vh;
+}
+
+#logo-login {
+    width: 200px;
+}

@@ -1,4 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Log in</h1>
+    <!-- Hero Image -->
+    <section class="container-fluid container-hero">
+        <div class="hero-image">
+            <span class="sr-only">Food image</span>
+        </div>
+        <div class="hero-image-overlay">
+            <div id="hero-image-overlay-login">
+                <div class="row">
+                    <div class="col">
+                        <img id="logo-login" src="static/images/logo-red-no-bg.png"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                        <h2>Name, email address</h2>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="nav-item">
+                            <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('login') }}">Log In</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                        <h2>Sign up link</h2>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
