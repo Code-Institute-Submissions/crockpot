@@ -1,18 +1,151 @@
 {% extends "base.html" %}
 {% block content %}
+    <header class="container-fluid">
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-0">
+            <div class="col">
+                <h1 class="uppercase">Add Recipe</h1>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr>
+            </div>
+            <div class="col"></div>
+        </div>
+    </header>
     <section class="container-fluid">
+        <form>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="text" class="form-control" id="input-addrecipe-name" placeholder="Recipe Name">
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-3">
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="on-off round"></span>
+                    </label>
+                </div>
+                <div class="col-8">
+                    <h4>Favourite Recipe</h4>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-10">
+                    <h4>Serves</h4>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-10">
+                    <div class="slidecontainer">
+						<input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
+      				</div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-10">
+                    <h4>Cooking Time</h4>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-10">
+                    <div class="slidecontainer">
+						<input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-cookingtime">
+      				</div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="text" class="form-control" id="input-addrecipe-image" placeholder="Paste Image URL Here">
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-11 p-1 black-border">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="input-addrecipe-ingredient" placeholder="Add Ingredients">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-5">
+                            <input type="text" class="form-control" id="input-addrecipe-quantity" placeholder="Quantity">
+                        </div>
+                        <div class="col-7">
+                            <input type="text" class="form-control" id="input-addrecipe-unit" placeholder="Unit">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-11 p-1 black-border">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="input-addrecipe-step" placeholder="Add instructions">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="text" class="form-control" id="input-addrecipe-source" placeholder="Where's your recipe from?">
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="textarea" class="form-control" id="input-addrecipe-notes" placeholder="Recipe Notes">
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
         <div class="row">
             <div class="col">
-                <h2>Recipe name</h2><br>
-                <h2>Fav recipe toggle</h2><br>
-                <h2>Slider - serves</h2><br>
-                <h2>Slider - cooking time</h2><br>
-                <h2>URL</h2><br>
-                <h2>Ingredients +</h2><br>
-                <h2>Steps +</h2><br>
-                <h2>Source</h2><br>
-                <h2>Notes</h2><br>
-                <h2>Add recipe</h2><br>
+                <div class="nav-item">
+                    <a class="nav-link nav-btn nav-btn-red nav-btn-long" role="button" href="#">Add Recipe</a>
+                </div>
             </div>
         </div>
     </section>
