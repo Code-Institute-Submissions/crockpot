@@ -6,10 +6,25 @@ body {
     color: #06474C;
 }
 
-h2 {
+h2, h3, h4, h5 {
     color: #eeeeee;
-    font-weight: 600;
     text-shadow: #06474C 1.5px 1.5px;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2em;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.75em;
+}
+
+h5 {
+    font-weight: 400;
+    font-size: 1.5em;
 }
 
 .col, .container-fluid {
@@ -18,7 +33,7 @@ h2 {
     text-align: center;
 }
 
-.row {
+.row, .form-row {
     padding: 0;
     margin: 10px 0px;
     text-align: center;
@@ -26,6 +41,10 @@ h2 {
 
 section, .container-fluid {
     border: black solid 2px;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 
@@ -80,6 +99,12 @@ section, .container-fluid {
 .icon:hover {
 	color: #e63b2e;
 	background-color: #eeeeee;
+}
+
+
+/* Form */
+label {
+    margin: 0;
 }
 
 
