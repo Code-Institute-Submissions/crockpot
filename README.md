@@ -110,6 +110,10 @@ The background image was taken from...
 __Audio:__
 All audio files were downloaded from...
 
+__Code:__
+Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+Sliders https://www.w3schools.com/howto/howto_js_rangeslider.asp
+
 __Acknowledgements:__
 I'd like to acknowledge the following tutorials and websites that I studied to complete my project. These sources have been credited in the code comments and were heavily modified for my own website.
 

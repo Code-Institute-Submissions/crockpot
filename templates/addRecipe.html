@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <header class="container-fluid">
+    <header class="container-fluid p-2">
         <div class="row m-0">
             <div class="col"></div>
             <div class="col-8">
@@ -23,7 +23,7 @@
     </header>
     <section class="container-fluid">
         <form>
-            <div class="form-row">
+            <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
                     <input type="text" class="form-control" id="input-addrecipe-name" placeholder="Recipe Name">
@@ -39,7 +39,7 @@
                     </label>
                 </div>
                 <div class="col-8">
-                    <h4>Favourite Recipe</h4>
+                    <h4 class="mt-2">Favourite Recipe</h4>
                 </div>
                 <div class="col"></div>
             </div>
@@ -84,7 +84,7 @@
             </div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-11 p-1 black-border">
+                <div class="col-11 p-1 border-blue">
                     <div class="form-row">
                         <div class="col">
                             <input type="text" class="form-control" id="input-addrecipe-ingredient" placeholder="Add Ingredients">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <div class="icon">
+                            <div class="icon icon-blue">
                                 <i class="fas fa-plus"></i>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-11 p-1 black-border">
+                <div class="col-11 p-1 border-blue">
                     <div class="form-row">
                         <div class="col">
                             <input type="text" class="form-control" id="input-addrecipe-step" placeholder="Add instructions">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <div class="icon">
+                            <div class="icon icon-blue">
                                 <i class="fas fa-plus"></i>
                             </div>
                         </div>
@@ -136,15 +136,15 @@
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="textarea" class="form-control" id="input-addrecipe-notes" placeholder="Recipe Notes">
+                    <input type="textarea" class="form-control" id="input-addrecipe-notes" placeholder="Any top tips?">
                 </div>
                 <div class="col"></div>
             </div>
         </form>
-        <div class="row">
+        <div class="row mb-0 pb-3">
             <div class="col">
                 <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-red nav-btn-long" role="button" href="#">Add Recipe</a>
+                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="#">Add Recipe</a>
                 </div>
             </div>
         </div>

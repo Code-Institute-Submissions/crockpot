@@ -50,9 +50,9 @@ h5 {
     margin: 10px 0px;
 }
 
-section, .container-fluid, .black-border {
+/* section, .container-fluid, .black-border {
     border: black solid 2px;
-}
+} */
 
 .uppercase {
     text-transform: uppercase;
@@ -62,8 +62,14 @@ section, .container-fluid, .black-border {
     text-decoration: underline;
 }
 
+.border-blue {
+    border: solid 4px #fff;
+    border-radius: 15px;
+}
 
-/* Components */
+
+/* COMPONENTS */
+/* Nav buttons */
 .nav-btn {
     font-family: 'Fredoka One', cursive;
     font-size: 1.75em;
@@ -88,6 +94,12 @@ section, .container-fluid, .black-border {
     border: #e63b2e 4px solid;
 }
 
+.nav-btn-blue {
+    color: #fff;
+	background-color: #95ebe0;
+    border: #fff 4px solid;
+}
+
 .nav-btn-sm {
     font-size: 1em;
 
@@ -100,11 +112,13 @@ section, .container-fluid, .black-border {
     width: 225px;
 }
 
+/* Lines */
 hr {
-    border: solid 2px #06474C;
+    border: solid 4px #fff;
     margin: 0.5em;
 }
 
+/* Icons */
 .icon {
 	width: 50px;
 	height: 50px;
@@ -120,12 +134,18 @@ hr {
 	-o-transition: all 0.5s ease-in-out;
 }
 
+.icon-blue {
+    color: #fff;
+    background-color: #95ebe0;
+    border: solid 4px #fff;
+}
+
 .icon:hover {
 	color: #e63b2e;
 	background-color: #eeeeee;
 }
 
-/* On/off switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
+/* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
 .switch {
   position: relative;
   display: inline-block;
@@ -159,18 +179,18 @@ hr {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
-  border: solid 2px #0CA7B3;
+  background-color: #fff;
+  border: solid 2px #95ebe0;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .on-off {
-  background-color: #0CA7B3;
+  background-color: #95ebe0;
 }
 
 input:focus + .on-off {
-  box-shadow: 0 0 1px #0CA7B3;
+  box-shadow: 0 0 1px #95ebe0;
 }
 
 input:checked + .on-off:before {
@@ -179,7 +199,6 @@ input:checked + .on-off:before {
   transform: translateX(26px);
 }
 
-/* Rounded on/off */
 .on-off.round {
   border-radius: 34px;
 }
@@ -193,25 +212,22 @@ input:checked + .on-off:before {
   width: 100%; /* Width of the outside container */
 }
 
-/* The slider itself */
 .slider {
   -webkit-appearance: none;
   width: 100%;
   height: 15px;
   border-radius: 5px;
-  background: #0CA7B3;
+  background: #95ebe0;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
 
-/* Mouse-over effects */
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -219,7 +235,7 @@ input:checked + .on-off:before {
   height: 25px;
   border-radius: 50%; 
   background: #fff;
-  border: solid 2px #0CA7B3;
+  border: solid 2px #95ebe0;
   cursor: pointer;
 }
 
@@ -313,6 +329,7 @@ footer {
 	height: 84px;
 }
 
+/* Hero Image */
 .container-hero {
     height: 80vh;
     padding: 0;
