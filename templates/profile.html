@@ -3,7 +3,125 @@
     <section class="container-fluid">
         <div class="row">
             <div class="col">
-                <h2>Your recipes carousel</h2>
+                <!-- Look at https://css-tricks.com/css-only-carousel/ -->
+                <div id="carousel" class="carousel slide" data-interval="false">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-times"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-times"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-times"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="prev-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="next-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>               
+
             </div>
         </div>
     </section>
@@ -11,21 +129,21 @@
         <div class="row">
             <div class="col">
                 <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
+                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('searchRecipe') }}">Search Recipes</a>
+                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('searchRecipe') }}">Search Recipes</a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('shoppingList') }}">Shopping List</a>
+                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('shoppingList') }}">Shopping List</a>
                 </div>
             </div>
         </div>
