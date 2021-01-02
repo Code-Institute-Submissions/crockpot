@@ -20,26 +20,99 @@
             </div>
             <div class="col"></div>
         </div>
-    </header>    
+    </header>
     <section class="container-fluid">
-        <div class="row mt-0">
+        <div class="row m-0 pb-2">
             <div class="col"></div>
-            <div class="col-11">
+            <div class="col-11 p-0">
                 <input type="text" class="form-control" id="input-searchrecipe-name" placeholder="Search for a recipe!">
             </div>
             <div class="col"></div>
         </div>
-        <div class="row">
-            <div class="col" id="accordion">
-                <div class="card">
-                    <div class="card-header" id="accordion-searchrecipe-heading">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#accordion-searchrecipe" aria-expanded="true" aria-controls="accordion-searchrecipe">
-                            <h3>Filters</h3>
-                        </button>
+    </section>
+    <section class="container-fluid">
+        <div class="row m-0">
+            <div class="col">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="accordion-searchrecipe-filters">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+                                <h2>Filters <i class="fas fa-angle-down"></i></h2>
+                            </button>
+                        </div>
+                        <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="row m-0">
+                                    <div class="col"></div>
+                                    <div class="col-3 p-0">
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="on-off round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-8 p-0 text-left">
+                                        <h4 class="mt-2">Favourite Recipe</h4>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row mt-0">
+                                    <div class="col"></div>
+                                    <div class="col-3 p-0">
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="on-off round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-8 p-0 text-left">
+                                        <h4 class="mt-2">My Recipe</h4>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-11 text-left">
+                                        <h4>Serves</h4>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="slidecontainer">
+                                            <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-11 text-left">
+                                        <h4>Cooking Time</h4>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row m-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="slidecontainer">
+                                            <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-cookingtime">
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="accordion-searchrecipe" class="collapse show" aria-labelledby="accordion-searchrecipe-heading" data-parent="#accordion">
+                    <div class="card">
+                        <div class="card-header" id="accordion-searchrecipe-ingredients">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                                <h2>Ingredients <i class="fas fa-angle-down"></i></h2>
+                            </button>
+                        </div>
+                        <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                         <div class="card-body">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -47,10 +120,61 @@
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <h2>Selected recipes</h2><br>
+        <div class="row mt-0">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="recipe-card">
+                    <div class="recipe-card-overlay border-white">
+                        <div class="row icon-row">
+                            <div class="col text-left">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row recipe-card-title">
+                            <h3>Recipe Title</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col"></div>
+        </div>
+        <div class="row mb-0">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="recipe-card">
+                    <div class="recipe-card-overlay border-white">
+                        <div class="row icon-row">
+                            <div class="col text-left">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row recipe-card-title">
+                            <h3>Recipe Title</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
         </div>
     </section>
 {% endblock %}
