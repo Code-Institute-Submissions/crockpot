@@ -62,9 +62,9 @@ h5 {
     text-decoration: underline;
 }
 
-.border-blue {
-    border: solid 4px #fff;
-    border-radius: 15px;
+.border-white {
+    border: solid 6px #fff;
+    border-radius: 20px;
 }
 
 
@@ -250,6 +250,18 @@ input:checked + .on-off:before {
 /* Form */
 label {
     margin: 0;
+}
+
+.form-control {
+    border: #ccc solid 1px;
+}
+
+.form-control:focus {
+    color: #06474C;
+    background-color: #fff;
+    border-color: #95ebe0;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(149, 235, 224, 0.75);
 }
 
 /* Navbar and footer */
