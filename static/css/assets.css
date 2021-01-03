@@ -273,7 +273,8 @@ ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     border: 4px solid #fff;
     color: #fff;
     background-color: #95ebe0;
-    font-weight: 700;
+    font-weight: 600;
+    text-shadow: #ccc 1px 1px;
     transition: all .2s;
 }
 
@@ -345,12 +346,15 @@ label {
 /* Carousel */
 ol.carousel-indicators li,
 ol.carousel-indicators li.active {
-	width: 15px;
-    height: 15px;
-	margin-left: 2.5px;
-	margin-right: 2.5px;
-	border-radius: 50%;
-	border: black solid 3px;
+    border: none;
+    background-color: none;
+}
+
+.prev-icon .fas,
+.next-icon .fas {
+	font-size: 40px;
+	color: white;
+	text-shadow: -2px -2px 0 rgba(149, 235, 224, 0.75), 2px -2px 0 rgba(149, 235, 224, 0.75), -2px 2px 0 rgba(149, 235, 224, 0.75), 2px 2px 0 rgba(149, 235, 224, 0.75);
 }
 
 /* Navbar and footer */
