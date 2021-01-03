@@ -1,7 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-    <section class="container-fluid">
-        <div class="row">
+<header class="container-fluid p-2">
+    <div class="row m-0">
+        <div class="col"></div>
+        <div class="col-8">
+            <hr>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row m-0">
+        <div class="col">
+            <h1 class="uppercase">Hi Zoe!</h1>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col"></div>
+        <div class="col-8">
+            <hr>
+        </div>
+        <div class="col"></div>
+    </div>
+</header>    
+<section class="container-fluid">
+        <div class="row mt-0 mb-0">
+            <div class="col">
+                <h3>Your recipes:</h3>
+            </div>
+        </div>
+        <div class="row mt-0 mb-0">  
             <div class="col">
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
                 <div id="carousel" class="carousel slide" data-interval="false">
@@ -109,24 +135,23 @@
                         </div>
                     </div>
                     <a class="carousel-control carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                        <span class="prev-icon" aria-hidden="true">
+                        <span class="prev-icon text-left" aria-hidden="true">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control carousel-control-next" href="#carousel" role="button" data-slide="next">
-                        <span class="next-icon" aria-hidden="true">
+                        <span class="next-icon text-right" aria-hidden="true">
                             <i class="fas fa-chevron-right"></i>
                         </span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>               
-
             </div>
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row">
+        <div class="row mt-0">
             <div class="col">
                 <div class="nav-item">
                     <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
@@ -140,7 +165,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row pb-3 mb-0">
             <div class="col">
                 <div class="nav-item">
                     <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('shoppingList') }}">Shopping List</a>
@@ -149,9 +174,131 @@
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row">
+        <div class="row mt-0 mb-0">
             <div class="col">
-                <h2>Your favourite recipes carousel</h2>
+                <h3>Favourite recipes:</h3>
+            </div>
+        </div>
+        <div class="row mt-0 mb-0">  
+            <div class="col">
+                <!-- Look at https://css-tricks.com/css-only-carousel/ -->
+                <div id="carouselTwo" class="carousel slide" data-interval="false">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselTwo" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselTwo" data-slide-to="1"></li>
+                        <li data-target="#carouselTwo" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-utensils"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-utensils"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="recipe-card-overlay border-white">
+                                                <div class="row icon-row">
+                                                    <div class="col text-left">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-utensils"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                        <div class="icon icon-blue">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row recipe-card-title">
+                                                    <h3>Recipe Title</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control carousel-control-prev" href="#carouselTwo" role="button" data-slide="prev">
+                        <span class="prev-icon text-left" aria-hidden="true">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control carousel-control-next" href="#carouselTwo" role="button" data-slide="next">
+                        <span class="next-icon text-right" aria-hidden="true">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>               
             </div>
         </div>
     </section>
