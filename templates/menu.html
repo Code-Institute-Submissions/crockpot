@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+    <header class="container-fluid p-2">
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-0">
+            <div class="col">
+                <h1 class="uppercase">Menu <i class="fas fa-utensils"></i></h1>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr>
+            </div>
+            <div class="col"></div>
+        </div>
+    </header>
+    <section class="container-fluid">
+        <div class="row m-0">
+            <div class="col">
+                <div id="accordion">    
+                    <div class="card">
+                        <div class="card-header" id="accordion-menu-shoppinglist">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-menu-shoppinglist" aria-expanded="false" aria-controls="collapse-menu-shoppinglist">
+                                <h2>Shopping List <i class="fas fa-angle-down"></i></h2>
+                            </button>
+                        </div>
+                        <div id="collapse-menu-shoppinglist" class="collapse" aria-labelledby="accordion-menu-shoppinglist" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="ks-cboxtags mb-0 pt-2 pb-2">
+                                    <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes x 11</label></li>
+                                    <li><input type="checkbox" id="checkboxTwo" value="Pasta"><label for="checkboxTwo">Pasta x 400g</label></li>
+                                    <li><input type="checkbox" id="checkboxThree" value="Oregano"><label for="checkboxThree">Oregano x 1Tsp</label></li>
+                                    <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese x 200g</label></li>
+                                    <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate x 100g</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row mt-0">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="recipe-card">
+                    <div class="recipe-card-overlay border-white">
+                        <div class="row icon-row">
+                            <div class="col text-left">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row recipe-card-title">
+                            <h3>Recipe Title</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row mb-0 pb-3">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="recipe-card">
+                    <div class="recipe-card-overlay border-white">
+                        <div class="row icon-row">
+                            <div class="col text-left">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row recipe-card-title">
+                            <h3>Recipe Title</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </section>
+{% endblock %}

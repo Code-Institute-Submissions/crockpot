@@ -35,9 +35,9 @@ def searchRecipe():
     return render_template("searchRecipe.html")
 
 
-@app.route("/shoppingList")
-def shoppingList():
-    return render_template("shoppingList.html")
+@app.route("/menu")
+def menu():
+    return render_template("menu.html")
 
 
 if __name__ == "__main__":
