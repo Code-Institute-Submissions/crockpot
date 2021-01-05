@@ -50,14 +50,6 @@ body {
     text-align: right;
 }
 
-.shadow-text {
-    text-shadow: #2C497F 1.5px 1.5px;
-}
-
-.shadow-box {
-    box-shadow: #2C497F 1.5px 1.5px;
-}
-
 
 /* Headings */
 h1, h2, h3, h4, h5 {
@@ -212,16 +204,11 @@ footer {
     border: #eeeeee 4px solid;
 }
 
-.nav-btn-white {
-    color: #e63b2e;
-	background-color: #eeeeee;
-    border: #e63b2e 4px solid;
-}
-
 .nav-btn-blue {
     color: #fff;
 	background-color: #95ebe0;
     border: #fff 4px solid;
+    box-shadow: #2C497F 0px 1px;
 }
 
 .nav-btn-sm {
@@ -240,13 +227,14 @@ footer {
 hr {
     border: solid 4px #fff;
     margin: 0.5em;
+    box-shadow: #2C497F 0px 1px;
 }
 
 /* Icons */
 .icon {
 	width: 50px;
 	height: 50px;
-	padding: 4px 0;
+	padding: 3px 0;
 	border-radius: 50%;
 	border: solid 4px #eeeeee;
 	font-size: 25px;
@@ -331,6 +319,7 @@ input:checked + .on-off:before {
 
 .on-off.round {
   border-radius: 34px;
+  box-shadow: #2C497F 0px 0.5px;
 }
 
 .on-off.round:before {
@@ -393,7 +382,7 @@ ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     color: #fff;
     background-color: #95ebe0;
     font-weight: 600;
-    text-shadow: #ccc 1px 1px;
+    text-shadow: #2C497F 0px 0.125px;
     transition: all .2s;
 }
 
@@ -420,6 +409,7 @@ ul.ks-cboxtags li input[type="checkbox"] {
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  box-shadow: #2C497F 0px 0.5px;
 }
 
 .slider:hover {
@@ -471,10 +461,11 @@ ol.carousel-indicators li.active {
 
 .prev-icon .fas,
 .next-icon .fas {
-    color: #2C497F;   
+    color: #fff;   
     width: 50px;
 	height: 50px;
-	font-size: 35px;
+    font-size: 35px;
+    text-shadow: #2C497F 1.5px 1.5px;
 }
 
 /* Recipe Cards */
