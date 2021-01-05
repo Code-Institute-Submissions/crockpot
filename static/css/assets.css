@@ -42,6 +42,10 @@ body {
     border-radius: 20px;
 }
 
+.shadow-box {
+    box-shadow: #2C497F 0px 1px;
+}
+
 .text-left {
     text-align: left;
 }

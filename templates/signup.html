@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Hero Image -->
+    <section class="container-fluid container-hero">
+        <div class="hero-image">
+            <span class="sr-only">Food image</span>
+        </div>
+        <div class="hero-image-overlay">
+            <div id="hero-image-overlay-signup">
+                <div class="row">
+                    <div class="col">
+                        <img id="logo-signup" src="static/images/logo-red-no-bg.png"/>
+                    </div>
+                </div>
+                <form>
+                    <div class="form-row">
+                        <div class="col-1"></div>
+                        <div class="col">
+                            <label for="input-email-signup"><h3 class="heading-light">Email address</h3></label>
+                            <input type="email" class="form-control" id="input-email-signup" placeholder="email@address.com">
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-1"></div>
+                        <div class="col">
+                            <label for="input-password-login"><h3 class="heading-light">Password</h3></label>
+                            <input type="email" class="form-control" id="input-password-login" placeholder="Password">
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </form>
+                <div class="row mb-0">
+                    <div class="col">
+                        <div class="nav-item">
+                            <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('signup') }}">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-0">
+                    <div class="col">
+                        <h5 class="heading-light">Have an account?</h5>
+                        <h5 class="heading-light">Log in <span class="underline">here</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
