@@ -253,7 +253,7 @@ hr {
 .icon-blue {
     color: #fff;
     background-color: #95ebe0;
-    border: solid 4px #fff;
+    border-color: #fff;
 }
 
 .icon:hover {
@@ -264,7 +264,14 @@ hr {
 .icon-blue:hover {
 	color: #95ebe0;
     background-color: #fff;
-    border: solid 4px #95ebe0;
+    border-color: #95ebe0;
+}
+
+.icon-lg {
+	width: 85px;
+	height: 85px;
+	padding: 7px 0px;
+	font-size: 45px;
 }
 
 /* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
