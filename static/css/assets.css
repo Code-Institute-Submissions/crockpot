@@ -3,11 +3,65 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #06474C;
+    color: #2C497F;
 }
 
+.container-fluid, .card-header, .card-body {
+    background-color: #eeeeee;
+}
+
+.col, .row, .form-row, .container-fluid, .card-header, .card-body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.row, .form-row {
+    margin: 10px 0px;
+}
+
+.icon-row {
+    margin: 5px;
+}
+
+.filler-top {
+	height: 84px;
+}
+
+/* Styles */
+.uppercase {
+    text-transform: uppercase;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.border-white {
+    border: solid 6px #fff;
+    border-radius: 20px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.shadow-text {
+    text-shadow: #2C497F 1.5px 1.5px;
+}
+
+.shadow-box {
+    box-shadow: #2C497F 1.5px 1.5px;
+}
+
+
+/* Headings */
 h1, h2, h3, h4, h5 {
-    color: #06474C;
+    color: #2C497F;
     margin: 0;
 }
 
@@ -33,50 +87,108 @@ h5 {
 
 .heading-light {
     color: #eeeeee;
-    text-shadow: #06474C 1.5px 1.5px;
+    text-shadow: #2C497F 1.5px 1.5px;
 }
 
-.container-fluid, .card-header, .card-body {
-    background-color: #eeeeee;
+/* Navbar and footer */
+nav,
+footer {
+	font-family: 'Fredoka One', cursive;
+	font-size: 1.25em;
+	background-color: #e63b2e;
+	color: #eeeeee;
 }
 
-.col, .row, .form-row, .container-fluid, .card-header, .card-body {
+nav {
+	border-bottom: solid 4px #eeeeee;
+}
+
+footer {
+    border-top: solid 4px #eeeeee;
+}
+
+.navbar,
+.row-footer {
+	padding: 5px 10px;
+}
+
+.navbar {
+	text-align: right;
+}
+
+.row-footer {
+	text-align: center;
+}
+
+#logo-nav {
+	height: 60px;
+}
+
+#logo-footer {
+	width: 200px;
+}
+
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .active>.nav-link {
+	color: #eeeeee!important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .active {
+	text-decoration: underline;
+}
+
+.nav-link {
+	margin-top: 5px;
+	display: inline-block;
+}
+
+.navbar-light .navbar-toggler {
+    border: #eeeeee 4px solid;
+    border-radius: 10px;
+}
+
+.navbar-light .navbar-toggler:focus {
+	outline: none;
+}
+
+#navbar-custom-icon {
+	font-size: 1.5em;
+	color: #eeeeee;
+}
+
+.navbar-collapse {
+	border-top: #eeeeee 4px solid;
+}
+
+/* Hero Image */
+.container-hero {
+    height: 80vh;
     padding: 0;
-    margin: 0;
-    text-align: center;
+    overflow: hidden;
+
+    position: relative;
 }
 
-.row, .form-row {
-    margin: 10px 0px;
+.hero-image {
+    height: 100%;
+    width: 100%;
+
+    background: url("https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=637&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.icon-row {
-    margin: 5px;
-}
+.hero-image-overlay {
+    height: 100%;
+    width: 100%;
 
-/* section, .container-fluid, .black-border {
-    border: black solid 2px;
-} */
+    background-color: rgba(50, 50, 50, 0.25);
 
-.text-left {
-    text-align: left;
-}
+    bottom: 0px;
+    right: 0px;
 
-.text-right {
-    text-align: right;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-.underline {
-    text-decoration: underline;
-}
-
-.border-white {
-    border: solid 6px #fff;
-    border-radius: 20px;
+    position: absolute;
 }
 
 
@@ -157,6 +269,12 @@ hr {
 	background-color: #eeeeee;
 }
 
+.icon-blue:hover {
+	color: #95ebe0;
+    background-color: #fff;
+    border: solid 4px #95ebe0;
+}
+
 /* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
 .switch {
   position: relative;
@@ -219,15 +337,16 @@ input:checked + .on-off:before {
   border-radius: 50%;
 }
 
-
 /* Ingredients checkboxes https://codepen.io/quinlo/pen/ReMRXz */
 ul.ks-cboxtags {
     list-style: none;
     padding: 0px;
 }
+
 ul.ks-cboxtags li{
   display: inline;
 }
+
 ul.ks-cboxtags li label{
     display: inline-block;
     background-color: #fff;
@@ -336,7 +455,7 @@ label {
 }
 
 .form-control:focus {
-    color: #06474C;
+    color: #2C497F;
     background-color: #fff;
     border-color: #95ebe0;
     outline: 0;
@@ -352,117 +471,10 @@ ol.carousel-indicators li.active {
 
 .prev-icon .fas,
 .next-icon .fas {
-    color: #06474C;   
+    color: #2C497F;   
     width: 50px;
 	height: 50px;
 	font-size: 35px;
-}
-
-/* Navbar and footer */
-nav,
-footer {
-	font-family: 'Fredoka One', cursive;
-	font-size: 1.25em;
-	background-color: #e63b2e;
-	color: #eeeeee;
-}
-
-nav {
-	border-bottom: solid 4px #eeeeee;
-}
-
-footer {
-    border-top: solid 4px #eeeeee;
-}
-
-.navbar,
-.row-footer {
-	padding: 5px 10px;
-}
-
-.navbar {
-	text-align: right;
-}
-
-.row-footer {
-	text-align: center;
-}
-
-#logo-nav {
-	height: 60px;
-}
-
-#logo-footer {
-	width: 200px;
-}
-
-.navbar-light .navbar-nav .nav-link,
-.navbar-light .navbar-nav .active>.nav-link {
-	color: #eeeeee!important;
-}
-
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .active {
-	text-decoration: underline;
-}
-
-.nav-link {
-	margin-top: 5px;
-	display: inline-block;
-}
-
-.navbar-light .navbar-toggler {
-    border: #eeeeee 4px solid;
-    border-radius: 10px;
-}
-
-.navbar-light .navbar-toggler:focus {
-	outline: none;
-}
-
-#navbar-custom-icon {
-	font-size: 1.5em;
-	color: #eeeeee;
-}
-
-.navbar-collapse {
-	border-top: #eeeeee 4px solid;
-}
-
-
-/* Body */
-.filler-top {
-	height: 84px;
-}
-
-/* Hero Image */
-.container-hero {
-    height: 80vh;
-    padding: 0;
-    overflow: hidden;
-
-    position: relative;
-}
-
-.hero-image {
-    height: 100%;
-    width: 100%;
-
-    background: url("https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=637&q=80");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.hero-image-overlay {
-    height: 100%;
-    width: 100%;
-
-    background-color: rgba(50, 50, 50, 0.25);
-
-    bottom: 0px;
-    right: 0px;
-
-    position: absolute;
 }
 
 /* Recipe Cards */
