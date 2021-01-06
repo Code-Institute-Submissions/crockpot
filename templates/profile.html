@@ -22,12 +22,26 @@
     </div>
 </header>    
 <section class="container-fluid">
-        <div class="row mt-0 mb-0">
+        <div class="row pt-3">
+            <div class="col"></div>
+            <div class="col-10">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-0">
             <div class="col">
-                <h3>Your recipes:</h3>
+                <h2 class="uppercase">My Recipes</h2>
             </div>
         </div>
-        <div class="row mt-0 mb-0">  
+        <div class="row mb-1">
+            <div class="col"></div>
+            <div class="col-10">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row mt-0 mb-0 pb-2"> 
             <div class="col">
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
                 <div id="carousel" class="carousel slide" data-interval="false">
@@ -151,14 +165,7 @@
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row mt-0">
-            <div class="col"></div>
-            <div class="col-8">
-                <hr>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row mt-0">
+        <div class="row pt-3">
             <div class="col">
                 <div class="nav-item">
                     <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
@@ -172,26 +179,33 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row pb-3">
             <div class="col">
                 <div class="nav-item">
                     <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu</a>
                 </div>
             </div>
         </div>
-        <div class="row pb-3 mb-0">
+    </section>
+    <section class="container-fluid">
+        <div class="row pt-3">
             <div class="col"></div>
-            <div class="col-8">
-                <hr>
+            <div class="col-10">
+                <hr class="hr-skinny">
             </div>
             <div class="col"></div>
         </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row mt-0 mb-0">
+        <div class="row m-0">
             <div class="col">
-                <h3>Favourite recipes:</h3>
+                <h2 class="uppercase">Favourite Recipes</h2>
             </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col"></div>
+            <div class="col-10">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
         </div>
         <div class="row mt-0 mb-0 pb-3">  
             <div class="col">

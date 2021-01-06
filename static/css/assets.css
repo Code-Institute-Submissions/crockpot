@@ -227,6 +227,11 @@ footer {
     width: 250px;
 }
 
+.nav-btn:hover, a:hover {
+    color: #eeeeee;
+    text-decoration: underline;
+}
+
 /* Lines */
 hr {
     border: solid 4px #fff;
@@ -272,11 +277,17 @@ hr {
     border-color: #95ebe0;
 }
 
-.icon-lg {
-	width: 85px;
+.icon-blue-lg {
+    width: 85px;
 	height: 85px;
 	padding: 7px 0px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #95ebe0;
+	border: solid 4px #fff;
 	font-size: 45px;
+	text-align: center;
+	display: inline-block;
 }
 
 /* User testimonials */
