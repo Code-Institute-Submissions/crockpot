@@ -1,4 +1,4 @@
-#hero-image-overlay-login {
+#hero-image-overlay-home, #hero-image-overlay-login, #hero-image-overlay-signup {
     position: absolute;
 
     top: 2.5vh;
@@ -6,6 +6,6 @@
     width: 100%;
 }
 
-#logo-login {
+#logo-home, #logo-login, #logo-signup {
     width: 200px;
 }
