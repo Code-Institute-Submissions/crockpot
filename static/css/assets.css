@@ -234,6 +234,11 @@ hr {
     box-shadow: #2C497F 0px 1px;
 }
 
+.hr-skinny {
+    border-width: 3px;
+    margin: 0;
+}
+
 /* Icons */
 .icon {
 	width: 50px;
@@ -272,6 +277,21 @@ hr {
 	height: 85px;
 	padding: 7px 0px;
 	font-size: 45px;
+}
+
+/* User testimonials */
+.testimonial-bubble {
+    width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	border: solid 8px #fff;
+	text-align: center;
+    display: inline-block;
+    
+    background-image: url("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spaghetti_collection_main_image-be8f283.jpg?webp=true&quality=90&resize=500%2C454");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
