@@ -190,6 +190,14 @@ footer {
 
 /* COMPONENTS */
 /* Nav buttons */
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-link:hover {
+    color: inherit;
+}
+
 .nav-btn {
     font-family: 'Fredoka One', cursive;
     font-size: 1.75em;
@@ -232,6 +240,11 @@ footer {
     text-decoration: underline;
 }
 
+.nav-btn-blue:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* Lines */
 hr {
     border: solid 4px #fff;
@@ -242,6 +255,12 @@ hr {
 .hr-skinny {
     border-width: 3px;
     margin: 0;
+}
+
+/* Accordion */
+.card {
+    background-color: #eeeeee;
+    border: none;
 }
 
 /* Icons */
