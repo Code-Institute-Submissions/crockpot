@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <section class="container-fluid">
+    <!-- <section class="container-fluid">
         <div class="row">
             <div class="col">
                 <h2>Recipe name</h2><br>
@@ -15,5 +15,14 @@
                 <h2>Notes</h2><br>
             </div>
         </div>
+    </section> -->
+    <section>
+        {% for recipe in recipes %}
+            {{ recipe.recipe_name }}<br>
+            {{ recipe.is_favourite }}<br>
+            {{ recipe.serves }}<br>
+            {{ recipe.cooking_time }}<br>
+            {{ recipe.ingredients }}<br>
+        {% endfor %}
     </section>
 {% endblock %}
