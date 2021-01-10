@@ -12,12 +12,13 @@
                         <img id="logo-login" src="static/images/logo-red-no-bg.png"/>
                     </div>
                 </div>
-                <form>
+                <form method="POST" action="{{ url_for('login') }}">
                     <div class="form-row">
                         <div class="col-1"></div>
                         <div class="col">
-                            <label for="input-email-login"><h3 class="heading-light">Email address</h3></label>
-                            <input type="email" class="form-control" id="input-email-login" placeholder="email@address.com">
+                            <label for="input-username-login"><h3 class="heading-light">Username</h3></label>
+                            <input name="input-username-login" type="text" class="form-control" id="input-username-login" placeholder="username" minlength="5"
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -25,18 +26,19 @@
                         <div class="col-1"></div>
                         <div class="col">
                             <label for="input-password-login"><h3 class="heading-light">Password</h3></label>
-                            <input type="email" class="form-control" id="input-password-login" placeholder="Password">
+                            <input name="input-password-login" type="password" class="form-control" id="input-password-login" placeholder="password" minlength="5"
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
                         <div class="col-1"></div>
                     </div>
-                </form>
-                <div class="row mb-0">
-                    <div class="col">
-                        <div class="nav-item">
-                            <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('login') }}">Log In</a>
+                    <div class="row mb-0">
+                        <div class="col">
+                            <button class="nav-item nav-btn nav-btn-red" type="submit">
+                                Log In
+                            </button>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="row mt-0">
                     <div class="col">
                         <h5 class="heading-light">Don't have an account?</h5>
