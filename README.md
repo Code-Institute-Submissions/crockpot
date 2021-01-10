@@ -10,7 +10,7 @@ _Crockpot_ is a
 
 This was the third of four Milestone Projects required to pass the Full Stack Web Development Program at _Code Institute_. The main requirements were to build a full-stack site using HTML, CSS, JavaScript, Python, Flask and MongoDB that allows users to manage a common dataset about a particular domain.
 
-Click [here](https://github.com/zoet24/crockpot) to view the Github repository for the project, and click [here](#) to view the live website.
+Click [here](https://github.com/zoet24/crockpot) to view the Github repository for the project, and click [here](https://crockpot.herokuapp.com/) to view the live website.
 
 ## Table of Contents
 
@@ -70,6 +70,7 @@ _**"Nice-to-haves"**_
 #### Existing features
 
 #### Features left to implement
+- Add categories to recipes for extra search functionality (eg. vegetarian, spicy, meaty etc)
 
 ## Technologies used
 ### Languages and frameworks
