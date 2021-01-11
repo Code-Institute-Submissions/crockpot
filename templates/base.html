@@ -8,8 +8,8 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/assets.css') }}" />
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}" />
    </head>
-   <body>
-      <!-- Navbar -->
+   <body>  
+    <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light fixed-top">
          <a class="navbar-brand" href="{{ url_for('index') }}">
             <img id="logo-nav" src="static/images/logo-red.png"/>
@@ -19,7 +19,7 @@
          </button>
          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
-               <li class="nav-item active">
+               <li class="nav-item {{'active' if active_page == 'index' }}">
                   <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                </li>
                <!-- Delete after development -->
@@ -28,29 +28,29 @@
                </li>
                <!--  -->
                {% if session.user %}
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'profile' }}">
                     <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'addRecipe' }}">
                     <a class="nav-link" href="{{ url_for('addRecipe') }}">Add</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'searchRecipe' }}">
                     <a class="nav-link" href="{{ url_for('searchRecipe') }}">Search</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'menu' }}">
                     <a class="nav-link" href="{{ url_for('menu') }}">Menu <i class="fas fa-utensils"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'logout' }}">
                     <a class="nav-link nav-btn nav-btn-sm nav-btn-red" role="button" href="{{ url_for('logout') }}">Log Out</a>
                 </li>
                {% else %}
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'searchRecipe' }}">
                     <a class="nav-link" href="{{ url_for('searchRecipe') }}">Search</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'login' }}">
                     <a class="nav-link nav-btn nav-btn-sm nav-btn-red" role="button" href="{{ url_for('login') }}">Log In</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{'active' if active_page == 'signup' }}">
                     <a class="nav-link nav-btn nav-btn-sm nav-btn-red" role="button" href="{{ url_for('signup') }}">Sign Up</a>
                 </li>
                {% endif %}
