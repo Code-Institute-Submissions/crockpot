@@ -20,6 +20,11 @@ body {
     margin: 10px 0px;
 }
 
+.row>.col, .row>[class*=col-] {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .icon-row {
     margin: 5px;
 }
@@ -79,6 +84,11 @@ h3 {
 h5 {
     font-weight: 400;
     font-size: 1.5em;
+}
+
+h6 {
+    font-weight: 400;
+    font-size: 1.25em;
 }
 
 .heading-light {

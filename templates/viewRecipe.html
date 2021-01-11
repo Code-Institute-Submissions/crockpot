@@ -1,5 +1,97 @@
 {% extends "base.html" %}
 {% block content %}
+{% for recipe in recipes %}
+    <header class="container-fluid pt-2">
+        <div class="row m-1">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-1">
+            <div class="col">
+                <h2 class="uppercase">{{ recipe.recipe_name }}</h2>
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col"></div>
+            <div class="col-8">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-0">
+            <div class="col">
+                <h6><em>{{ recipe.created_by }}</em></h6>
+            </div>
+        </div>
+    </header>
+    <section class="container-fluid">
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-3">
+                <label class="switch" for="is_favourite">
+                    {% if recipe.is_favourite == "on" %}
+                        <input type="checkbox" checked>
+                    {% else %}
+                        <input type="checkbox">
+                    {% endif %}
+                    <span class="on-off round"></span>
+                </label>
+            </div>
+            <div class="col-8 text-left">
+                <h4 class="mt-2">Favourite Recipe</h4>
+            </div>
+            <div class="col"></div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row m-0 pb-2">
+            <div class="col-12">
+                <div class="recipe-card">
+                    <div class="recipe-card-overlay border-white">
+                        <div class="row icon-row">
+                            <div class="col text-left">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="icon icon-blue">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-11 text-left">
+                <h4>Serves</h4>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="form-row">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </section>
+    
+
+{% endfor %}
     <!-- <section class="container-fluid">
         <div class="row">
             <div class="col">
@@ -16,12 +108,12 @@
             </div>
         </div>
     </section> -->
-    <section>
+    <!-- <section>
         {% for recipe in recipes %}
             {{ recipe.recipe_name }}<br>
             {{ recipe.is_favourite }}<br>
             {{ recipe.tips }}<br>
             <em>{{ recipe.created_by }}</em><br><br>
         {% endfor %}
-    </section>
+    </section> -->
 {% endblock %}
