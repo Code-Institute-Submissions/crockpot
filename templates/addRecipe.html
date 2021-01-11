@@ -23,19 +23,20 @@
         </div>
     </header>
     <section class="container-fluid">
-        <form>
+        <form method="POST" action="">
             <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="text" class="form-control" id="input-addrecipe-name" placeholder="Recipe Name">
+                    <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="50">
+                    <label for="recipe_name" class="sr-only">Recipe name</label>
                 </div>
                 <div class="col"></div>
             </div>
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col-3">
-                    <label class="switch">
-                        <input type="checkbox" checked>
+                    <label class="switch" for="is_favourite">
+                        <input type="checkbox" name="is_favourite" id="is_favourite" checked>
                         <span class="on-off round"></span>
                     </label>
                 </div>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <div class="col"></div>
                 <div class="col-11 text-left">
                     <h4>Serves</h4>
@@ -133,21 +134,22 @@
                     <input type="text" class="form-control" id="input-addrecipe-source" placeholder="Where's your recipe from?">
                 </div>
                 <div class="col"></div>
-            </div>
+            </div> -->
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="textarea" class="form-control" id="input-addrecipe-notes" placeholder="Any top tips?">
+                    <input type="textarea" class="form-control" name="tips" id="tips" placeholder="Any top tips?" minlength="5" maxlength="200">
+                    <label for="tips" class="sr-only">Top tips</label>
                 </div>
                 <div class="col"></div>
             </div>
-        </form>
-        <div class="row mb-0 pb-3">
-            <div class="col">
-                <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="#">Add Recipe</a>
+            <div class="form-row mb-0 pb-3">
+                <div class="col">
+                    <button class="nav-item nav-btn nav-btn-blue nav-btn-long" type="submit" href="#">
+                        Add Recipe
+                    </button>
                 </div>
             </div>
-        </div>
+        </form>
     </section>
 {% endblock %}

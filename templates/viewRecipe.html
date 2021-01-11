@@ -20,9 +20,8 @@
         {% for recipe in recipes %}
             {{ recipe.recipe_name }}<br>
             {{ recipe.is_favourite }}<br>
-            {{ recipe.serves }}<br>
-            {{ recipe.cooking_time }}<br>
-            {{ recipe.ingredients }}<br>
+            {{ recipe.tips }}<br>
+            <em>{{ recipe.created_by }}</em><br><br>
         {% endfor %}
     </section>
 {% endblock %}

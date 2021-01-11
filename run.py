@@ -100,8 +100,20 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-@app.route("/addRecipe")
+@app.route("/addRecipe", methods=["GET", "POST"])
 def addRecipe():
+    if request.method == "POST":
+        is_favourite = "on" if request.form.get("is_favourite") else "off"
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "is_favourite": is_favourite,
+            "tips": request.form.get("tips"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Recipe Successfully Added")
+        return render_template("profile.html")
+
     return render_template("addRecipe.html")
 
 
