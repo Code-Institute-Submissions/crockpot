@@ -27,7 +27,7 @@
             <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="50">
+                    <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="50" required>
                     <label for="recipe_name" class="sr-only">Recipe name</label>
                 </div>
                 <div class="col"></div>
@@ -45,10 +45,10 @@
                 </div>
                 <div class="col"></div>
             </div>
-            <!-- <div class="form-row">
+            <div class="form-row m-0">
                 <div class="col"></div>
                 <div class="col-11 text-left">
-                    <h4>Serves</h4>
+                    <h4>Serves: <span id="serves-value"></span></h4>
                 </div>
                 <div class="col"></div>
             </div>
@@ -56,15 +56,16 @@
                 <div class="col"></div>
                 <div class="col-11">
                     <div class="slidecontainer">
-						<input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
-      				</div>
+                        <input type="range" min="1" max="8" value="4" class="slider" name="serves" id="serves">
+                        <label for="serves" class="sr-only">Serves</label>
+                    </div>
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="form-row">
+            <div class="form-row m-0">
                 <div class="col"></div>
                 <div class="col-11 text-left">
-                    <h4>Cooking Time</h4>
+                    <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
                 </div>
                 <div class="col"></div>
             </div>
@@ -72,69 +73,44 @@
                 <div class="col"></div>
                 <div class="col-11">
                     <div class="slidecontainer">
-						<input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-cookingtime">
-      				</div>
+                        <input type="range" min="5" max="120" value="30" step="5" class="slider" name="cooktime" id="cooktime">
+                        <label for="cooktime" class="sr-only">Cook Time</label>
+                    </div>
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="form-row">
+            <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="text" class="form-control" id="input-addrecipe-image" placeholder="Paste Image URL Here">
+                    <input type="text" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="50">
+                    <label for="image_url" class="sr-only">Image URL</label>
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-11 p-1 border-white">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="input-addrecipe-ingredient" placeholder="Add Ingredients">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-5">
-                            <input type="text" class="form-control" id="input-addrecipe-quantity" placeholder="Quantity">
-                        </div>
-                        <div class="col-7">
-                            <input type="text" class="form-control" id="input-addrecipe-unit" placeholder="Unit">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="icon icon-blue shadow-box">
-                                <i class="fas fa-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col"></div>
-            </div>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-11 p-1 border-white">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="input-addrecipe-step" placeholder="Add instructions">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="icon icon-blue shadow-box">
-                                <i class="fas fa-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col"></div>
-            </div>
-            <div class="form-row">
+            <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
-                    <input type="text" class="form-control" id="input-addrecipe-source" placeholder="Where's your recipe from?">
+                    <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="5" maxlength="50">
+                    <label for="ingredients" class="sr-only">Ingredients</label>
                 </div>
                 <div class="col"></div>
-            </div> -->
+            </div>
+            <div class="form-row mt-0">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="text" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
+                    <label for="instructions" class="sr-only">Instructions</label>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="form-row mt-0">
+                <div class="col"></div>
+                <div class="col-11">
+                    <input type="text" class="form-control" name="source" id="source" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
+                    <label for="source" class="sr-only">Source</label>
+                </div>
+                <div class="col"></div>
+            </div>
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col-11">

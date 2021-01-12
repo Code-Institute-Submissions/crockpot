@@ -109,6 +109,12 @@ def addRecipe():
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "is_favourite": is_favourite,
+            "serves": request.form.get("serves"),
+            "cooking_time": request.form.get("cooktime"),
+            "image_url": request.form.get("image_url"),
+            "ingredients": request.form.get("ingredients"),
+            "instructions": request.form.get("instructions"),
+            "source": request.form.get("source"),
             "tips": request.form.get("tips"),
             "created_by": session["user"],
             "date_added": date_string
