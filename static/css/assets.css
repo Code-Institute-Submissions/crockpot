@@ -561,14 +561,16 @@ ol.carousel-indicators li.active {
     background-repeat: no-repeat;
     background-size: cover;
 
-    transition: transform 0.25s;
-
     position: absolute;
     top: 0px;
     left: 0px;
 }
 
-.recipe-card-overlay:hover {
+.recipe-card-overlay-hover {
+    transition: transform 0.25s;
+}
+
+.recipe-card-overlay-hover:hover {
     transform: scale(1.05);
 }
 

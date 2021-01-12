@@ -75,7 +75,7 @@
         <div class="row m-0">
             <div class="col"></div>
             <div class="col-11 text-left">
-                <h4>Serves</h4>
+                <h4>Serves: <span id="serves-value"></span></h4>
             </div>
             <div class="col"></div>
         </div>
@@ -83,7 +83,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
+                    <input type="range" min="1" max="8" value="4" class="slider" id="serves">
                 </div>
             </div>
             <div class="col"></div>
@@ -91,7 +91,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-11 text-left">
-                <h4>Cooking Time</h4>
+                <h4>Cook Time: <span id="cooking_time-value"></span> mins</h4>
             </div>
             <div class="col"></div>
         </div>
@@ -99,7 +99,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-cookingtime">
+                    <input type="range" min="5" max="120" value="30" step="5" class="slider" id="cooking_time">
                 </div>
             </div>
             <div class="col"></div>
