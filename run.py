@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -16,6 +17,9 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+now = datetime.now()
+date_string = now.strftime("%d/%m/%Y")
 
 
 @app.route("/")
@@ -108,7 +112,8 @@ def addRecipe():
             "recipe_name": request.form.get("recipe_name"),
             "is_favourite": is_favourite,
             "tips": request.form.get("tips"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "date_added": date_string
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
