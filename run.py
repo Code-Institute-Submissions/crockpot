@@ -41,8 +41,6 @@ def login():
                     "input-password-login")):
                     session["user"] = request.form.get(
                         "input-username-login").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("input-username-login")))
                     return redirect(url_for(
                         "profile", username=session["user"]))
             else:
