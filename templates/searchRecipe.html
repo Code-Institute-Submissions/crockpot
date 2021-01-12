@@ -1,7 +1,7 @@
 {% set active_page = 'searchRecipe' %}
 {% extends "base.html" %}
 {% block content %}
-    <header class="container-fluid p-2">
+    <header class="container-fluid py-2">
         <div class="row m-0">
             <div class="col"></div>
             <div class="col-8">
@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="card-header" id="accordion-searchrecipe-filters">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
-                                <h2>Filters <i class="fas fa-angle-down"></i></h2>
+                                <h3>Filters <i class="fas fa-angle-down"></i></h3>
                             </button>
                         </div>
                         <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
@@ -69,10 +69,10 @@
                                     </div>
                                     <div class="col"></div>
                                 </div>
-                                <div class="row">
+                                <div class="row m-0">
                                     <div class="col"></div>
                                     <div class="col-11 text-left">
-                                        <h4>Serves</h4>
+                                        <h4>Serves: <span id="serves-value"></span></h4>
                                     </div>
                                     <div class="col"></div>
                                 </div>
@@ -80,23 +80,23 @@
                                     <div class="col"></div>
                                     <div class="col-11">
                                         <div class="slidecontainer">
-                                            <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-serves">
+                                            <input type="range" min="1" max="8" value="4" class="slider" id="serves">
                                         </div>
                                     </div>
                                     <div class="col"></div>
                                 </div>
-                                <div class="row">
+                                <div class="row m-0">
                                     <div class="col"></div>
                                     <div class="col-11 text-left">
-                                        <h4>Cooking Time</h4>
+                                        <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
                                     </div>
                                     <div class="col"></div>
                                 </div>
-                                <div class="row m-0 pb-2">
+                                <div class="row">
                                     <div class="col"></div>
                                     <div class="col-11">
                                         <div class="slidecontainer">
-                                            <input type="range" min="1" max="100" value="50" class="slider" id="range-addrecipe-cookingtime">
+                                            <input type="range" min="5" max="120" value="30" step="5" class="slider" id="cooktime">
                                         </div>
                                     </div>
                                     <div class="col"></div>
@@ -107,7 +107,7 @@
                     <div class="card pb-2">
                         <div class="card-header" id="accordion-searchrecipe-ingredients">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
-                                <h2>Ingredients <i class="fas fa-angle-down"></i></h2>
+                                <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
                             </button>
                         </div>
                         <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
@@ -115,7 +115,7 @@
                                 <div class="row m-0 pt-2">
                                     <div class="col"></div>
                                     <div class="col-11 p-0">
-                                        <input type="text" class="form-control" id="input-searchrecipe-ingredient" placeholder="Search for a recipe!">
+                                        <input type="text" class="form-control" id="input-searchrecipe-ingredient" placeholder="Search for an ingredient!">
                                     </div>
                                     <div class="col"></div>
                                 </div>
@@ -138,7 +138,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="recipe-card">
-                    <div class="recipe-card-overlay border-white">
+                    <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
                         <div class="row icon-row">
                             <div class="col text-left">
                                 <div class="icon icon-blue">
@@ -166,7 +166,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="recipe-card">
-                    <div class="recipe-card-overlay border-white">
+                    <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
                         <div class="row icon-row">
                             <div class="col text-left">
                                 <div class="icon icon-blue">

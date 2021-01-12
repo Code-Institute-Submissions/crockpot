@@ -1,7 +1,7 @@
 {% set active_page = 'menu' %}
 {% extends "base.html" %}
 {% block content %}
-    <header class="container-fluid p-2">
+    <header class="container-fluid pt-2">
         <div class="row m-0">
             <div class="col"></div>
             <div class="col-8">
@@ -29,7 +29,7 @@
                     <div class="card pb-2">
                         <div class="card-header" id="accordion-menu-shoppinglist">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-menu-shoppinglist" aria-expanded="false" aria-controls="collapse-menu-shoppinglist">
-                                <h2>Shopping List <i class="fas fa-angle-down"></i></h2>
+                                <h3>Shopping List <i class="fas fa-angle-down"></i></h3>
                             </button>
                         </div>
                         <div id="collapse-menu-shoppinglist" class="collapse" aria-labelledby="accordion-menu-shoppinglist" data-parent="#accordion">
@@ -53,7 +53,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="recipe-card">
-                    <div class="recipe-card-overlay border-white">
+                    <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
                         <div class="row icon-row">
                             <div class="col text-left">
                                 <div class="icon icon-blue">
@@ -81,7 +81,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="recipe-card">
-                    <div class="recipe-card-overlay border-white">
+                    <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
                         <div class="row icon-row">
                             <div class="col text-left">
                                 <div class="icon icon-blue">

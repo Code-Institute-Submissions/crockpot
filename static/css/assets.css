@@ -88,7 +88,12 @@ h5 {
 
 h6, ul, ol {
     font-weight: 400;
-    font-size: 1.25em;
+    font-size: 1.2em;
+}
+
+input[type=text], input[type=password] {
+    font-weight: 400;
+    font-size: 1em;
 }
 
 ol {
@@ -104,7 +109,6 @@ ol {
 nav,
 footer {
 	font-family: 'Fredoka One', cursive;
-	font-size: 1.25em;
 	background-color: #e63b2e;
 	color: #eeeeee;
 }
@@ -140,7 +144,8 @@ footer {
 
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .active>.nav-link {
-	color: #eeeeee!important;
+    color: #eeeeee!important;
+    font-size: 1em;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -272,7 +277,7 @@ hr {
 }
 
 /* Accordion */
-.card {
+.card, .card-header {
     background-color: #eeeeee;
     border: none;
 }
@@ -456,7 +461,6 @@ ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     color: #fff;
     background-color: #95ebe0;
     font-weight: 600;
-    text-shadow: #2C497F 0px 0.125px;
     transition: all .2s;
 }
 
