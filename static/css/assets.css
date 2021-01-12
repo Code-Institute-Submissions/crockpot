@@ -86,9 +86,13 @@ h5 {
     font-size: 1.5em;
 }
 
-h6 {
+h6, ul, ol {
     font-weight: 400;
     font-size: 1.25em;
+}
+
+ol {
+    padding-left: 30px;
 }
 
 .heading-light {
@@ -476,14 +480,7 @@ ul.ks-cboxtags li input[type="checkbox"] {
   border-radius: 5px;
   background: #95ebe0;
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
   box-shadow: #2C497F 0px 0.5px;
-}
-
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
 }
 
 .slider::-webkit-slider-thumb {

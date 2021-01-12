@@ -72,14 +72,14 @@
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row m-0">
+        <!-- <div class="row m-0">
             <div class="col"></div>
             <div class="col-11 text-left">
                 <h4>Serves: <span id="serves-value"></span></h4>
             </div>
             <div class="col"></div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col"></div>
             <div class="col-11">
                 <div class="slidecontainer">
@@ -87,11 +87,27 @@
                 </div>
             </div>
             <div class="col"></div>
+        </div> -->
+        <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-11 text-left">
+                <h4>Serves: {{ recipe.serves }}</h4>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-11">
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
+                </div>
+            </div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-11 text-left">
-                <h4>Cook Time: <span id="cooking_time-value"></span> mins</h4>
+                <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
             </div>
             <div class="col"></div>
         </div>
@@ -99,7 +115,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="slidecontainer">
-                    <input type="range" min="5" max="120" value="30" step="5" class="slider" id="cooking_time">
+                    <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" step="5" class="slider" id="cooking_time" disabled>
                 </div>
             </div>
             <div class="col"></div>
@@ -117,12 +133,8 @@
                         </div>
                         <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                             <div class="card-body">
-                                <ul class="ks-cboxtags mb-0 pt-2 pb-2">
-                                    <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes</label></li>
-                                    <li><input type="checkbox" id="checkboxTwo" value="Pasta" checked><label for="checkboxTwo">Pasta</label></li>
-                                    <li><input type="checkbox" id="checkboxThree" value="Oregano" checked><label for="checkboxThree">Oregano</label></li>
-                                    <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese</label></li>
-                                    <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate</label></li>
+                                <ul class="text-left mb-0">
+                                    <li>{{ recipe.ingredients }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -137,7 +149,9 @@
                             <div class="card-body">
                                 <div class="row m-0">
                                     <div class="col">
-                                        <h6>Ingredients!!</h6>
+                                        <ol class="text-left mb-0">
+                                            <li>{{ recipe.instructions }}</li>
+                                        </ol>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +166,7 @@
             <div class="col"></div>
             <div class="col-11 text-left">
                 <h3>Top tips</h3>
-                <h6>Tips tips tips</h6>
+                <h6>{{ recipe.tips }}</h6>
             </div>
             <div class="col"></div>
         </div>
@@ -160,36 +174,10 @@
             <div class="col"></div>
             <div class="col-11 text-left">
                 <h3>Source</h3>
-                <h6>Hello Fresh!</h6>
+                <h6>{{ recipe.source }}</h6>
             </div>
             <div class="col"></div>
         </div>
     </section>
-    
-
-{% endfor %}
-    <!-- <section class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <h2>Recipe name</h2><br>
-                <h2>My recipe toggle</h2><br>
-                <h2>Fav recipe toggle</h2><br>
-                <h2>Food image with icons</h2><br>
-                <h2>Slider - serves</h2><br>
-                <h2>Slider - cooking time</h2><br>
-                <h2>Ingredients +</h2><br>
-                <h2>Steps +</h2><br>
-                <h2>Source</h2><br>
-                <h2>Notes</h2><br>
-            </div>
-        </div>
-    </section> -->
-    <!-- <section>
-        {% for recipe in recipes %}
-            {{ recipe.recipe_name }}<br>
-            {{ recipe.is_favourite }}<br>
-            {{ recipe.tips }}<br>
-            <em>{{ recipe.created_by }}</em><br><br>
-        {% endfor %}
-    </section> -->
+    {% endfor %}
 {% endblock %}
