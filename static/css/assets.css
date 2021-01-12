@@ -47,6 +47,10 @@ body {
     border-radius: 20px;
 }
 
+.background-white {
+    background-color: #fff;
+}
+
 .shadow-box {
     box-shadow: #2C497F 0px 1px;
 }
@@ -145,7 +149,7 @@ footer {
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .active>.nav-link {
     color: #eeeeee!important;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -243,9 +247,7 @@ footer {
 }
 
 .nav-btn-sm {
-    font-size: 1em;
-
-    width: 100px;
+    width: 110px;
 	height: 50px;
 	border-radius: 25px;
 }
