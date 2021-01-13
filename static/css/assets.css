@@ -101,7 +101,15 @@ input[type=text], input[type=password] {
 }
 
 ol {
+    padding-left: 15px;
+}
+
+.background-white ol {
     padding-left: 30px;
+}
+
+input[type=text] ol {
+    font-size: 1em;
 }
 
 .heading-light {

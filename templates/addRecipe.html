@@ -87,22 +87,64 @@
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="form-row mt-0">
-                <div class="col"></div>
-                <div class="col-11">
-                    <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="5" maxlength="50">
-                    <label for="ingredients" class="sr-only">Ingredients</label>
+            <div id="accordion">
+                    <div class="card pb-2">
+                        <div class="card-header" id="accordion-searchrecipe-ingredients">
+                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                                <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
+                            </button>
+                        </div>
+                        <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="form-row mt-0">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="3" maxlength="50">
+                                        <label for="ingredients" class="sr-only">Ingredients</label>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                                <div class="form-row mt-0">
+                                    <div class="col"></div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" name="ingredients-quantity" id="ingredients-quantity" placeholder="Quantity">
+                                        <label for="ingredients-quantity" class="sr-only">Quantity</label>
+                                    </div>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" name="ingredients-unit" id="ingredients-unit" placeholder="Unit">
+                                        <label for="ingredients-unit" class="sr-only">Unit</label>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card pb-2">
+                        <div class="card-header" id="accordion-searchrecipe-filters">
+                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+                                <h3>Instructions <i class="fas fa-angle-down"></i></h3>
+                            </button>
+                        </div>
+                        <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="row m-0">
+                                    <div class="col">
+                                        <div class="form-row mt-0">
+                                            <div class="col">
+                                                <ol>
+                                                    <li>
+                                                        <input type="text" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
+                                                        <label for="instructions" class="sr-only">Instructions</label>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col"></div>
-            </div>
-            <div class="form-row mt-0">
-                <div class="col"></div>
-                <div class="col-11">
-                    <input type="text" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
-                    <label for="instructions" class="sr-only">Instructions</label>
-                </div>
-                <div class="col"></div>
-            </div>
             <div class="form-row mt-0">
                 <div class="col"></div>
                 <div class="col-11">
