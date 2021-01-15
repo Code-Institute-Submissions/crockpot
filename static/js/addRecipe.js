@@ -10,7 +10,7 @@ $("document").ready(function(){
             $("#delete-ingredient").removeClass("hidden");
         }
 
-        ingredientInputCopy = $("#ingredients-input").clone().contents();
+        ingredientInputCopy = $("#ingredients-input-template").clone().contents();
         ingredientInputCopy.addClass("ingredients-input" + ingredientNum);
         $("#icon-row-add-ingredients").before(ingredientInputCopy);
     })
@@ -38,7 +38,7 @@ $("document").ready(function(){
             $("#delete-instruction").removeClass("hidden");
         }
 
-        instructionInputCopy = $("#instructions-input").clone();
+        instructionInputCopy = $("#instructions-input-template").clone().contents();
         instructionInputCopy.addClass("instructions-input" + instructionNum);
         $("#add-instructions-hr-skinny").before(instructionInputCopy);
     })

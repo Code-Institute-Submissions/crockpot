@@ -100,19 +100,19 @@
                                     <div class="form-row mt-0">
                                         <div class="col"></div>
                                         <div class="col-11">
-                                            <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="3" maxlength="50">
-                                            <label for="ingredients" class="sr-only">Ingredients</label>
+                                            <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="50">
+                                            <label for="ingredient_name" class="sr-only">Ingredients</label>
                                         </div>
                                         <div class="col"></div>
                                     </div>
                                     <div class="form-row mt-0">
                                         <div class="col"></div>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" name="ingredients-quantity" id="ingredients-quantity" placeholder="Quantity">
-                                            <label for="ingredients-quantity" class="sr-only">Quantity</label>
+                                            <input type="text" class="form-control" name="ingredients-quantity" placeholder="Quantity" required>
+                                            <label for="ingredient-quantity" class="sr-only">Quantity</label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" class="form-control" name="ingredients-unit" id="ingredients-unit" placeholder="Unit">
+                                            <input type="text" class="form-control" name="ingredient-unit" placeholder="Unit" required>
                                             <label for="ingredients-unit" class="sr-only">Unit</label>
                                         </div>
                                         <div class="col"></div>
@@ -148,11 +148,11 @@
                             <div class="card-body">
                                 <div class="form-row m-0">
                                     <div class="col">
-                                        <ol class="mb-1 small-text">
-                                            <div id="instructions-input">
+                                        <ol class="mb-1 small-text" id="instructions-input">
+                                            <div>
                                                 <li class="mb-1">
-                                                    <input type="textarea" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
-                                                    <label for="instructions" class="sr-only">Instructions</label>
+                                                    <input type="textarea" class="form-control" name="instruction" placeholder="Instructions" minlength="5" maxlength="50" required>
+                                                    <label for="instruction" class="sr-only">Instructions</label>
                                                 </li>
                                             </div>
                                             <div class="form-row" id="add-instructions-hr-skinny">
@@ -204,4 +204,41 @@
             </div>
         </form>
     </section>
+    <template id="ingredients-input-template">
+        <div class="form-row mt-0">
+            <div class="col"></div>
+            <div class="col-11">
+                <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="50">
+                <label for="ingredient_name" class="sr-only">Ingredients</label>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="form-row mt-0">
+            <div class="col"></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="ingredients-quantity" placeholder="Quantity" required>
+                <label for="ingredient-quantity" class="sr-only">Quantity</label>
+            </div>
+            <div class="col-7">
+                <input type="text" class="form-control" name="ingredient-unit" placeholder="Unit" required>
+                <label for="ingredients-unit" class="sr-only">Unit</label>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="form-row">
+            <div class="col"></div>
+            <div class="col-10">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+    </template>
+    <template id="instructions-input-template">
+        <div>
+            <li class="mb-1">
+                <input type="textarea" class="form-control" name="instruction" placeholder="Instructions" minlength="5" maxlength="50" required>
+                <label for="instruction" class="sr-only">Instructions</label>
+            </li>
+        </div>
+    </template>
 {% endblock %}
