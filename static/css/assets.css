@@ -63,6 +63,10 @@ body {
     text-align: right;
 }
 
+.small-text {
+    font-size: 1em;
+}
+
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
@@ -106,10 +110,6 @@ ol {
 
 .background-white ol {
     padding-left: 30px;
-}
-
-input[type=text] ol {
-    font-size: 1em;
 }
 
 .heading-light {
