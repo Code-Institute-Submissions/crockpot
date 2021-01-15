@@ -107,15 +107,17 @@ def addRecipe():
     if request.method == "POST":
         is_favourite = "on" if request.form.get("is_favourite") else "off"
         recipe = {
-            "recipe_name": request.form.get("recipe_name"),
+            "recipe_name": request.form.get("recipe_name").lower(),
             "is_favourite": is_favourite,
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
-            "ingredients": request.form.get("ingredients"),
-            "instructions": request.form.get("instructions"),
-            "source": request.form.get("source"),
-            "tips": request.form.get("tips"),
+            "ingredient_name": request.form.getlist("ingredient_name"),
+            "ingredient_quantity": request.form.getlist("ingredient_quantity"),
+            "ingredient_unit": request.form.getlist("ingredient_unit"),
+            "instructions": request.form.getlist("instructions"),
+            "source": request.form.get("source").lower(),
+            "tips": request.form.get("tips").lower(),
             "created_by": session["user"],
             "date_added": date_string
         }
@@ -129,6 +131,7 @@ def addRecipe():
 @app.route("/viewRecipe")
 def viewRecipe():
     recipes = mongo.db.recipes.find()
+
     return render_template("viewRecipe.html", recipes=recipes)
 
 

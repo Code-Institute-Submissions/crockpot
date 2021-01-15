@@ -117,9 +117,11 @@
                         </div>
                         <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                             <div class="card-body">
+                                {% for ingredient in recipe.ingredient_name %}
                                 <ul class="text-left mb-0 border-white background-white">
-                                    <li>{{ recipe.ingredients }}</li>
+                                    <li>Food:{{ ingredient_name }}</li>
                                 </ul>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -134,7 +136,9 @@
                                 <div class="row m-0">
                                     <div class="col">
                                         <ol class="text-left mb-0 border-white background-white">
-                                            <li>{{ recipe.instructions }}</li>
+                                            {% for instruction in recipe.instructions %}
+                                                <li>{{ instructions }}</li>
+                                            {% endfor %}
                                         </ol>
                                     </div>
                                 </div>
