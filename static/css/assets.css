@@ -338,6 +338,10 @@ hr {
 	display: inline-block;
 }
 
+.hidden {
+    display: none;
+}
+
 /* User testimonials */
 .testimonial-bubble {
     width: 250px;

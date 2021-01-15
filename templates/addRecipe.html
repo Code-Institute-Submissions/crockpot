@@ -118,10 +118,10 @@
                                 </div>
                                 <div class="form-row icon-row">
                                     <div class="col">
-                                        <div class="icon icon-blue">
+                                        <div class="icon icon-blue" id="add-ingredient">
                                             <i class="fas fa-plus"></i>
                                         </div>
-                                        <div class="icon icon-blue">
+                                        <div class="icon icon-blue hidden" id="delete-ingredient">
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
                                     <div class="col">
                                         <ol class="mb-1 small-text">
                                             <li>
-                                                <input type="text" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
+                                                <input type="textarea" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
                                                 <label for="instructions" class="sr-only">Instructions</label>
                                             </li>
                                         </ol>
@@ -149,10 +149,10 @@
                                 </div>
                                 <div class="form-row icon-row">
                                     <div class="col">
-                                        <div class="icon icon-blue">
+                                        <div class="icon icon-blue" id="add-instruction">
                                             <i class="fas fa-plus"></i>
                                         </div>
-                                        <div class="icon icon-blue">
+                                        <div class="icon icon-blue hidden" id="delete-instruction">
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
                                     </div>
