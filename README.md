@@ -115,6 +115,7 @@ __Code:__
 Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 Sliders https://www.w3schools.com/howto/howto_js_rangeslider.asp
 User authentication https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DCP101+2017_T3/courseware/9e2f12f5584e48acb3c29e9b0d7cc4fe/96d22c817aff4ce39e336fcb96c30e16/?child=first
+Adding/deleting instructions and ingredients from addRecipe.html https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
 
 __Acknowledgements:__
 I'd like to acknowledge the following tutorials and websites that I studied to complete my project. These sources have been credited in the code comments and were heavily modified for my own website.

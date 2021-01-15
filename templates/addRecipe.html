@@ -96,27 +96,36 @@
                         </div>
                         <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                             <div class="card-body">
-                                <div class="form-row mt-0">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="3" maxlength="50">
-                                        <label for="ingredients" class="sr-only">Ingredients</label>
+                                <div id="ingredients-input">
+                                    <div class="form-row mt-0">
+                                        <div class="col"></div>
+                                        <div class="col-11">
+                                            <input type="text" class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" minlength="3" maxlength="50">
+                                            <label for="ingredients" class="sr-only">Ingredients</label>
+                                        </div>
+                                        <div class="col"></div>
                                     </div>
-                                    <div class="col"></div>
+                                    <div class="form-row mt-0">
+                                        <div class="col"></div>
+                                        <div class="col-4">
+                                            <input type="text" class="form-control" name="ingredients-quantity" id="ingredients-quantity" placeholder="Quantity">
+                                            <label for="ingredients-quantity" class="sr-only">Quantity</label>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" name="ingredients-unit" id="ingredients-unit" placeholder="Unit">
+                                            <label for="ingredients-unit" class="sr-only">Unit</label>
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col"></div>
+                                        <div class="col-10">
+                                            <hr class="hr-skinny">
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
                                 </div>
-                                <div class="form-row mt-0">
-                                    <div class="col"></div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="ingredients-quantity" id="ingredients-quantity" placeholder="Quantity">
-                                        <label for="ingredients-quantity" class="sr-only">Quantity</label>
-                                    </div>
-                                    <div class="col-7">
-                                        <input type="text" class="form-control" name="ingredients-unit" id="ingredients-unit" placeholder="Unit">
-                                        <label for="ingredients-unit" class="sr-only">Unit</label>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="form-row icon-row">
+                                <div class="form-row icon-row" id="icon-row-add-ingredients">
                                     <div class="col">
                                         <div class="icon icon-blue" id="add-ingredient">
                                             <i class="fas fa-plus"></i>
@@ -140,10 +149,19 @@
                                 <div class="form-row m-0">
                                     <div class="col">
                                         <ol class="mb-1 small-text">
-                                            <li>
-                                                <input type="textarea" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
-                                                <label for="instructions" class="sr-only">Instructions</label>
-                                            </li>
+                                            <div id="instructions-input">
+                                                <li class="mb-1">
+                                                    <input type="textarea" class="form-control" name="instructions" id="instructions" placeholder="Instructions" minlength="5" maxlength="50">
+                                                    <label for="instructions" class="sr-only">Instructions</label>
+                                                </li>
+                                            </div>
+                                            <div class="form-row" id="add-instructions-hr-skinny">
+                                                <div class="col"></div>
+                                                <div class="col-10">
+                                                    <hr class="hr-skinny">
+                                                </div>
+                                                <div class="col"></div>
+                                            </div>
                                         </ol>
                                     </div>
                                 </div>
