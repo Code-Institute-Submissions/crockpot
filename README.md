@@ -99,6 +99,9 @@ _**"Nice-to-haves"**_
 
 ## Git Commit Messages
 
+## Bugs
+- Bug #1: getting ingredients to display correctly on viewRecipe.html
+
 ## Testing
 Click [here](testing.md) to view the complete testing process.
 
