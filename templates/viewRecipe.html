@@ -1,177 +1,181 @@
 {% extends "base.html" %}
 {% block content %}
-    <header class="container-fluid pt-2">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-8">
-                <hr class="hr-skinny">
+<!-- Header - Recipe title -->
+<header class="container-fluid pt-2">
+   <div class="row">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- Insert recipe name from database -->
+   <div class="row">
+      <div class="col">
+         <h2 class="uppercase">{{ recipe.recipe_name }}</h2>
+      </div>
+   </div>
+   <!-- Insert recipe created information from database -->
+   <div class="row">
+      <div class="col">
+         <h6><em>{{ recipe.created_by }} on {{ recipe.date_added }}</em></h6>
+      </div>
+   </div>
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+</header>
+<section class="container-fluid">
+    <!-- Check/uncheck favourite recipe on/off switch -->
+   <div class="row m-0 pt-2 pb-1">
+      <div class="col"></div>
+      <div class="col-3">
+         <label class="switch" for="is_favourite">
+         {% if recipe.is_favourite == "on" %}
+         <input type="checkbox" checked>
+         {% else %}
+         <input type="checkbox">
+         {% endif %}
+         <span class="on-off round"></span>
+         </label>
+      </div>
+      <div class="col-8 text-left">
+         <h4 class="mt-2">Favourite Recipe</h4>
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- Recipe image with icons -->
+   <div class="row m-0 pb-2">
+      <div class="col-12">
+         <div class="recipe-card">
+            <div class="recipe-card-overlay border-white">
+               <div class="row icon-row">
+                  <div class="col text-left">
+                     <div class="icon icon-blue">
+                        <i class="fas fa-utensils"></i>
+                     </div>
+                  </div>
+                  <div class="col text-right">
+                     <div class="icon icon-blue">
+                        <i class="fas fa-edit"></i>
+                     </div>
+                     <div class="icon icon-blue">
+                        <i class="fas fa-trash-alt"></i>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="col"></div>
+         </div>
+      </div>
+   </div>
+   <!-- Serving portions slider -->
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-11 text-left">
+         <h4>Serves: {{ recipe.serves }}</h4>
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row">
+      <div class="col"></div>
+      <div class="col-11">
+         <div class="slidecontainer">
+            <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
+         </div>
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- Cooking time slider -->
+   <div class="row">
+      <div class="col"></div>
+      <div class="col-11 text-left">
+         <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0 pb-2">
+      <div class="col"></div>
+      <div class="col-11">
+         <div class="slidecontainer">
+            <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider" disabled>
+         </div>
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- Ingredients/instructions accordion -->
+    <div id="accordion">
+        <!-- Ingredients dropdown -->
+        <div class="card pb-2">
+            <div class="card-header" id="accordion-searchrecipe-ingredients">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                    <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
+                </button>
+            </div>
+            <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
+                <div class="card-body">
+                    <!-- Insert ingredient name, ingredient quantity and ingredient unit -->
+                    <ul class="text-left mb-0 border-white background-white">
+                        {% for ingredient in ingredients %}
+                            <li>{{ingredient[0]}} x {{ingredient[1]}}{{ingredient[2]}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <h2 class="uppercase">{{ recipe.recipe_name }}</h2>
+        <!-- Instructions dropdown -->
+        <div class="card pb-2">
+            <div class="card-header" id="accordion-searchrecipe-filters">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+                    <h3>Instructions <i class="fas fa-angle-down"></i></h3>
+                </button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h6><em>{{ recipe.created_by }} on {{ recipe.date_added }}</em></h6>
-            </div>
-        </div>
-        <div class="row m-0">
-            <div class="col"></div>
-            <div class="col-8">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-    </header>
-    <section class="container-fluid">
-        <div class="row m-0 pt-2 pb-2">
-            <div class="col"></div>
-            <div class="col-3">
-                <label class="switch" for="is_favourite">
-                    {% if recipe.is_favourite == "on" %}
-                        <input type="checkbox" checked>
-                    {% else %}
-                        <input type="checkbox">
-                    {% endif %}
-                    <span class="on-off round"></span>
-                </label>
-            </div>
-            <div class="col-8 text-left">
-                <h4 class="mt-2">Favourite Recipe</h4>
-            </div>
-            <div class="col"></div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row m-0 pb-2">
-            <div class="col-12">
-                <div class="recipe-card">
-                    <div class="recipe-card-overlay border-white">
-                        <div class="row icon-row">
-                            <div class="col text-left">
-                                <div class="icon icon-blue">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                            </div>
-                            <div class="col text-right">
-                                <div class="icon icon-blue">
-                                    <i class="fas fa-edit"></i>
-                                </div>
-                                <div class="icon icon-blue">
-                                    <i class="fas fa-trash-alt"></i>
-                                </div>
-                            </div>
+            <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row m-0">
+                        <div class="col">
+                            <!-- Insert instructions -->
+                            <ol class="text-left mb-0 border-white background-white">
+                                {% for instruction in recipe.instructions %}
+                                    <li>{{instruction}}</li>
+                                {% endfor %}
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row m-0">
-            <div class="col"></div>
-            <div class="col-11 text-left">
-                <h4>Serves: {{ recipe.serves }}</h4>
-            </div>
-            <div class="col"></div>
+    </div>
+    <!-- If recipe tips are blank, remove tips heading -->
+   {% if recipe.tips == "" %}
+    <div class="row hidden"></div>
+   <!-- Else, show tips -->
+   {% else %}
+    <div class="row mt-0 pt-2">
+        <div class="col"></div>
+        <div class="col-11 text-left">
+            <h3 class="pl-1">Top tips</h3>
+            <h6 class="border-white background-white">{{ recipe.tips }}</h6>
         </div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-11">
-                <div class="slidecontainer">
-                    <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
-                </div>
-            </div>
-            <div class="col"></div>
+        <div class="col"></div>
+    </div>
+   {% endif %}
+   <!-- If recipe source is blank, remove source heading -->
+   {% if recipe.source == "" %}
+    <div class="row hidden"></div>
+   <!-- Else, show source -->
+   {% else %}
+    <div class="row mb-0 pb-2">
+        <div class="col"></div>
+        <div class="col-11 text-left">
+            <h3 class="pl-1">Source</h3>
+            <h6 class="border-white background-white">{{ recipe.source }}</h6>
         </div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-11 text-left">
-                <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row m-0 pb-2">
-            <div class="col"></div>
-            <div class="col-11">
-                <div class="slidecontainer">
-                    <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider" disabled>
-                </div>
-            </div>
-            <div class="col"></div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row m-0">
-            <div class="col">
-                <div id="accordion">
-                    <div class="card pb-2">
-                        <div class="card-header" id="accordion-searchrecipe-ingredients">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
-                                <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
-                            </button>
-                        </div>
-                        <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
-                            <div class="card-body">
-                                <ul class="text-left mb-0 border-white background-white">
-                                    {% for ingredient in ingredients %}
-                                        <li>{{ingredient[0]}} x {{ingredient[1]}}{{ingredient[2]}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pb-2">
-                        <div class="card-header" id="accordion-searchrecipe-filters">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
-                                <h3>Instructions <i class="fas fa-angle-down"></i></h3>
-                            </button>
-                        </div>
-                        <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="row m-0">
-                                    <div class="col">
-                                        <ol class="text-left mb-0 border-white background-white">
-                                            {% for instruction in recipe.instructions %}
-                                                <li>{{instruction}}</li>
-                                            {% endfor %}
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        {% if recipe.tips == "" %}
-            <div class="row hidden"></div>
-        {% else %}
-        <div class="row mt-0 pt-2">
-            <div class="col"></div>
-            <div class="col-11 text-left">
-                <h3 class="pl-1">Top tips</h3>
-                <h6 class="border-white background-white">{{ recipe.tips }}</h6>
-            </div>
-            <div class="col"></div>
-        </div>
-        {% endif %}
-        {% if recipe.source == "" %}
-            <div class="row hidden"></div>
-        {% else %}
-            <div class="row mb-0 pb-2">
-                <div class="col"></div>
-                <div class="col-11 text-left">
-                    <h3 class="pl-1">Source</h3>
-                    <h6 class="border-white background-white">{{ recipe.source }}</h6>
-                </div>
-                <div class="col"></div>
-            </div>
-        {% endif %}
-    </section>
+        <div class="col"></div>
+    </div>
+   {% endif %}
+</section>
 {% endblock %}
