@@ -17,6 +17,8 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+users = mongo.db.user_login_system
+recipes = mongo.db.recipes
 
 now = datetime.now()
 date_string = now.strftime("%d/%m/%Y")
@@ -118,10 +120,6 @@ def addRecipe():
             "ingredient_name": request.form.getlist("ingredient_name"),
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
-            "ingredients": (
-                request.form.getlist("ingredient_name"),
-                request.form.getlist("ingredient_quantity"),
-                request.form.getlist("ingredient_unit")),
             "instructions": request.form.getlist("instructions"),
             "source": request.form.get("source").lower(),
             "tips": request.form.get("tips").lower(),
@@ -130,17 +128,20 @@ def addRecipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return render_template("profile.html", username=username)
+        return render_template("viewRecipe.html")
 
     return render_template("addRecipe.html")
 
 
 @app.route("/viewRecipe")
 def viewRecipe():
-    recipes = mongo.db.recipes.find()
+    recipe = recipes.find_one({"_id": ObjectId("60046576e6e3d333acee4a2d")})
+    ingredients = zip(recipe["ingredient_name"],
+                      recipe["ingredient_quantity"],
+                      recipe["ingredient_unit"])
 
     return render_template(
-        "viewRecipe.html", recipes=recipes)
+        "viewRecipe.html", recipe=recipe, ingredients=ingredients)
 
 
 @app.route("/searchRecipe")

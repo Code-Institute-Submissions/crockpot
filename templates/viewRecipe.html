@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% for recipe in recipes %}
+{% for rec in recipe %}
     <header class="container-fluid pt-2">
         <div class="row">
             <div class="col"></div>
@@ -118,8 +118,8 @@
                         <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                             <div class="card-body">
                                 <ul class="text-left mb-0 border-white background-white">
-                                    {% for ingredient in recipe.ingredients %}
-                                        <li>{{ingredient}}</li>
+                                    {% for ingredient in ingredients %}
+                                        <li>{{ingredient[0]}} x {{ingredient[1]}}{{ingredient[2]}}</li>
                                     {% endfor %}
                                 </ul>
                             </div>
