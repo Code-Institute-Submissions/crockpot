@@ -112,8 +112,15 @@
                                             <label for="ingredient_quantity" class="sr-only">Quantity</label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" class="form-control" name="ingredient_unit" placeholder="Unit" required>
                                             <label for="ingredient_unit" class="sr-only">Unit</label>
+                                            <select class="form-control" name="ingredient_unit" required>
+                                                <option value=""></option>
+                                                <option value="gram">g</option>
+                                                <option value="ml">ml</option>
+                                                <option value="tsp"> tsp</option>
+                                                <option value="tbsp"> Tbsp</option>
+                                                <option value="can"> cans</option>
+                                            </select>
                                         </div>
                                         <div class="col"></div>
                                     </div>
