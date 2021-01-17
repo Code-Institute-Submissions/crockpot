@@ -104,6 +104,9 @@ def profile(username):
 
 @app.route("/addRecipe", methods=["GET", "POST"])
 def addRecipe():
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
     if request.method == "POST":
         is_favourite = "on" if request.form.get("is_favourite") else "off"
         recipe = {
@@ -115,6 +118,10 @@ def addRecipe():
             "ingredient_name": request.form.getlist("ingredient_name"),
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
+            "ingredients": (
+                request.form.getlist("ingredient_name"),
+                request.form.getlist("ingredient_quantity"),
+                request.form.getlist("ingredient_unit")),
             "instructions": request.form.getlist("instructions"),
             "source": request.form.get("source").lower(),
             "tips": request.form.get("tips").lower(),
@@ -123,7 +130,7 @@ def addRecipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return render_template("profile.html")
+        return render_template("profile.html", username=username)
 
     return render_template("addRecipe.html")
 
@@ -132,7 +139,8 @@ def addRecipe():
 def viewRecipe():
     recipes = mongo.db.recipes.find()
 
-    return render_template("viewRecipe.html", recipes=recipes)
+    return render_template(
+        "viewRecipe.html", recipes=recipes)
 
 
 @app.route("/searchRecipe")
