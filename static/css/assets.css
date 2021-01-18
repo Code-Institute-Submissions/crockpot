@@ -38,6 +38,10 @@ body {
     text-transform: uppercase;
 }
 
+.capital {
+    text-transform: capitalize;
+}
+
 .underline {
     text-decoration: underline;
 }

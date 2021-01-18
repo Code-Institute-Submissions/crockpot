@@ -118,13 +118,9 @@
             <div class="col">
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
                 <div id="carousel" class="carousel slide" data-interval="false">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel" data-slide-to="1"></li>
-                        <li data-target="#carousel" data-slide-to="2"></li>
-                    </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        {% for recipe in all_recipes %}
+                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
                             <div class="carousel-content">
                                 <div class="row mb-0 pb-2">
                                     <div class="col"></div>
@@ -132,7 +128,7 @@
                                         <div class="recipe-card">
                                             <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
                                                 <div class="row recipe-card-title">
-                                                    <h3>Recipe Title</h3>
+                                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,40 +137,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="carousel-content">
-                                <div class="row mb-0 pb-2">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="recipe-card">
-                                            <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
-                                                <div class="row recipe-card-title">
-                                                    <h3>Recipe Title</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-content">
-                                <div class="row mb-0 pb-2">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="recipe-card">
-                                            <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
-                                                <div class="row recipe-card-title">
-                                                    <h3>Recipe Title</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <a class="carousel-control carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="prev-icon text-left" aria-hidden="true">

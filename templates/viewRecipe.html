@@ -118,7 +118,7 @@
             <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                 <div class="card-body">
                     <!-- Insert ingredient name, ingredient quantity and ingredient unit -->
-                    <ul class="text-left mb-0 border-white background-white">
+                    <ul class="text-left mb-0 border-white background-white capital">
                         {% for ingredient in ingredients %}
                             <li>{{ingredient[0]}} x {{ingredient[1]}}{{ingredient[2]}}</li>
                         {% endfor %}
@@ -172,7 +172,7 @@
         <div class="col"></div>
         <div class="col-11 text-left">
             <h3 class="pl-1">Source</h3>
-            <h6 class="border-white background-white">{{ recipe.source }}</h6>
+            <h6 class="border-white background-white capital">{{ recipe.source }}</h6>
         </div>
         <div class="col"></div>
     </div>

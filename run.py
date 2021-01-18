@@ -26,7 +26,7 @@ date_string = now.strftime("%d/%m/%Y")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", all_recipes=recipes.find())
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -121,21 +121,21 @@ def addRecipe():
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
             "instructions": request.form.getlist("instructions"),
-            "source": request.form.get("source").lower(),
-            "tips": request.form.get("tips").lower(),
+            "source": request.form.get("source"),
+            "tips": request.form.get("tips"),
             "created_by": session["user"],
             "date_added": date_string
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return render_template("viewRecipe.html")
+        return render_template("profile.html")
 
     return render_template("addRecipe.html")
 
 
 @app.route("/viewRecipe")
 def viewRecipe():
-    recipe = recipes.find_one({"_id": ObjectId("60046576e6e3d333acee4a2d")})
+    recipe = recipes.find_one({"_id": ObjectId("6004b13344c5d5de67b9036f")})
     ingredients = zip(recipe["ingredient_name"],
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
