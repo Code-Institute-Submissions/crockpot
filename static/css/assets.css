@@ -575,10 +575,7 @@ ol.carousel-indicators li.active {
     width: 100%;
     height: 100%;
 
-    background-image: url("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spaghetti_collection_main_image-be8f283.jpg?webp=true&quality=90&resize=500%2C454");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    overflow: hidden;
 
     position: absolute;
     top: 0px;
@@ -591,6 +588,10 @@ ol.carousel-indicators li.active {
 
 .recipe-card-overlay-hover:hover {
     transform: scale(1.05);
+}
+
+.recipe-card-image {
+    height: 100%;
 }
 
 .recipe-card-title {
