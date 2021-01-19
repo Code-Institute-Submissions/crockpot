@@ -97,11 +97,13 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    my_recipes = mongo.db.recipes.find({"created_by": username})
+    fav_recipes = mongo.db.recipes.find({"is_favourite": "on"})
 
     if session["user"]:
         return render_template("profile.html",
-                               username=username, my_recipes=recipes.find(),
-                               fav_recipes=recipes.find())
+                               username=username, my_recipes=my_recipes,
+                               fav_recipes=fav_recipes)
 
     return redirect(url_for("login"))
 
