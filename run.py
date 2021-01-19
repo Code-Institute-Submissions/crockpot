@@ -99,7 +99,9 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html",
+                               username=username, my_recipes=recipes.find(),
+                               fav_recipes=recipes.find())
 
     return redirect(url_for("login"))
 
