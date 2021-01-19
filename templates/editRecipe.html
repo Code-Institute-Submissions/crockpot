@@ -1,4 +1,3 @@
-{% set active_page = 'addRecipe' %}
 {% extends "base.html" %}
 {% block content %}
 <!-- Header - Add recipes title -->
@@ -25,12 +24,12 @@
 </header>
 <!-- Add recipe form -->
 <section class="container-fluid">
-   <form method="POST" action="{{ url_for('editRecipe', recide_id=recipe._id) }}">
+   <form method="POST" action="{{ url_for('editRecipe', recipe_id=recipe._id) }}">
        <!-- Recipe name -->
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="75" required>
+            <input value="{{ recipe.recipe_name }}" type="text" class="form-control capital" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="75" required>
             <label for="recipe_name" class="sr-only">Recipe name</label>
          </div>
          <div class="col"></div>
@@ -40,7 +39,11 @@
          <div class="col"></div>
          <div class="col-3">
             <label class="switch" for="is_favourite">
-            <input type="checkbox" name="is_favourite" id="is_favourite" checked>
+            {% if recipe.is_favourite == "on" %}
+                <input type="checkbox" name="is_favourite" id="is_favourite" checked>
+            {% else %}
+                <input type="checkbox" name="is_favourite" id="is_favourite">
+            {% endif %}
             <span class="on-off round"></span>
             </label>
          </div>
@@ -61,7 +64,7 @@
          <div class="col"></div>
          <div class="col-11">
             <div class="slidecontainer">
-               <input type="range" min="1" max="8" value="4" class="slider" name="serves" id="serves">
+               <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" name="serves" id="serves">
                <label for="serves" class="sr-only">Serves</label>
             </div>
          </div>
@@ -79,7 +82,7 @@
          <div class="col"></div>
          <div class="col-11">
             <div class="slidecontainer">
-               <input type="range" min="5" max="120" value="30" step="5" class="slider" name="cooktime" id="cooktime">
+               <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" step="5" class="slider" name="cooktime" id="cooktime">
                <label for="cooktime" class="sr-only">Cook Time</label>
             </div>
          </div>
@@ -89,12 +92,13 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="150">
+            <input type="text" class="form-control" name="image_url" id="image_url" value="{{ recipe.image_url }}" placeholder="Image URL" minlength="5" maxlength="150">
             <label for="image_url" class="sr-only">Image URL</label>
          </div>
          <div class="col"></div>
       </div>
       <!-- Ingredients/instructions accordion -->
+      <!-- FIX INGREDIENTS AND INSTRUCTIONS -->
       <div id="accordion">
           <!-- Ingredients dropdown -->
          <div class="card pb-2">
@@ -215,7 +219,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="source" id="source" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
+            <input type="text" class="form-control" name="source" id="source" value="{{ recipe.source }}" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
             <label for="source" class="sr-only">Source</label>
          </div>
          <div class="col"></div>
