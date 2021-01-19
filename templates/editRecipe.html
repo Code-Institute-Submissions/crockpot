@@ -12,7 +12,7 @@
    </div>
    <div class="row m-0">
       <div class="col">
-         <h1 class="uppercase">Add Recipes</h1>
+         <h1 class="uppercase">Edit Recipe</h1>
       </div>
    </div>
    <div class="row m-0">
@@ -25,7 +25,7 @@
 </header>
 <!-- Add recipe form -->
 <section class="container-fluid">
-   <form method="POST" action="{{ url_for('addRecipe') }}">
+   <form method="POST" action="{{ url_for('editRecipe', recide_id=recipe._id) }}">
        <!-- Recipe name -->
       <div class="form-row mt-0">
          <div class="col"></div>
@@ -224,7 +224,7 @@
       <div class="form-row mb-0 pb-3">
          <div class="col">
             <button class="nav-item nav-btn nav-btn-blue nav-btn-long" type="submit">
-            Add Recipe
+            Edit Recipe
             </button>
          </div>
       </div>

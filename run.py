@@ -26,7 +26,7 @@ date_string = now.strftime("%d/%m/%Y")
 
 @app.route("/")
 def index():
-    return render_template("index.html", all_recipes=recipes.find())
+    return render_template("index.html", featured_recipes=recipes.find())
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -80,7 +80,8 @@ def signup():
         signup = {
             "username": request.form.get("input-username-signup").lower(),
             "password": generate_password_hash(
-                request.form.get("input-password-signup"))
+                request.form.get("input-password-signup")),
+            "is_favourite": ""
         }
         mongo.db.users.insert_one(signup)
 
@@ -110,9 +111,6 @@ def profile(username):
 
 @app.route("/addRecipe", methods=["GET", "POST"])
 def addRecipe():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
     if request.method == "POST":
         is_favourite = "on" if request.form.get("is_favourite") else "off"
         recipe = {
@@ -137,6 +135,14 @@ def addRecipe():
     return render_template("addRecipe.html")
 
 
+@app.route("/editRecipe/<recipe_id>", methods=["GET", "POST"])
+def editRecipe(recipe_id):
+    recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    return render_template(
+        "editRecipe.html", recipe=recipe)
+
+
 @app.route("/viewRecipe/<recipe_id>")
 def viewRecipe(recipe_id):
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -150,7 +156,7 @@ def viewRecipe(recipe_id):
 
 @app.route("/searchRecipe")
 def searchRecipe():
-    return render_template("searchRecipe.html")
+    return render_template("searchRecipe.html", all_recipes=recipes.find())
 
 
 @app.route("/menu")

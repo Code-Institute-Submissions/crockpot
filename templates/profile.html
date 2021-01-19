@@ -42,6 +42,7 @@
             </div>
             <div class="col"></div>
         </div>
+        {% if my_recipes.count() %}
         <div class="row mt-0 mb-0 pb-2"> 
             <div class="col">
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
@@ -54,6 +55,21 @@
                                     <div class="col"></div>
                                     <div class="col-11">
                                         <div class="recipe-card">
+                                            <div class="row icon-row">
+                                                <div class="col text-left">
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-utensils"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-edit"></i>
+                                                    </div>
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
                                                 <div class="row recipe-card-title">
@@ -83,6 +99,13 @@
                 </div>               
             </div>
         </div>
+        {% else %}
+        <div class="row mt-0 mb-0 pb-2"> 
+            <div class="col">
+                No recipes yet?
+            </div>
+        </div>
+        {% endif %}
     </section>
     <section class="container-fluid">
         <div class="row pt-3">
@@ -127,6 +150,7 @@
             </div>
             <div class="col"></div>
         </div>
+        {% if fav_recipes.count() %}
         <div class="row mt-0 mb-0 pb-3">  
             <div class="col">
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
@@ -139,6 +163,21 @@
                                     <div class="col"></div>
                                     <div class="col-11">
                                         <div class="recipe-card">
+                                            <div class="row icon-row">
+                                                <div class="col text-left">
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-utensils"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-edit"></i>
+                                                    </div>
+                                                    <div class="icon icon-blue">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
                                                 <div class="row recipe-card-title">
@@ -168,5 +207,12 @@
                 </div>               
             </div>
         </div>
+        {% else %}
+        <div class="row mt-0 mb-0 pb-2"> 
+            <div class="col">
+                No favourite recipes yet?
+            </div>
+        </div>
+        {% endif %}
     </section>
 {% endblock %}

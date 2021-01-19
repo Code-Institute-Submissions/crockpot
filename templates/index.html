@@ -10,7 +10,7 @@
             <div id="hero-image-overlay-home">
                 <div class="row">
                     <div class="col">
-                        <img id="logo-home" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
+                        <img id="logo-home" src="{{ url_for('static', filename='images/logo-red-no-bg.png') }}"/>
                     </div>
                 </div>
                 <div class="row">
@@ -119,7 +119,7 @@
                 <!-- Look at https://css-tricks.com/css-only-carousel/ -->
                 <div id="carousel" class="carousel slide" data-interval="false">
                     <div class="carousel-inner">
-                        {% for recipe in all_recipes %}
+                        {% for recipe in featured_recipes %}
                         <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
                             <div class="carousel-content">
                                 <div class="row mb-0 pb-2">
