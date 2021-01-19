@@ -133,9 +133,9 @@ def addRecipe():
     return render_template("addRecipe.html")
 
 
-@app.route("/viewRecipe")
-def viewRecipe():
-    recipe = recipes.find_one({"_id": ObjectId("6004b13344c5d5de67b9036f")})
+@app.route("/viewRecipe/<recipe_id>")
+def viewRecipe(recipe_id):
+    recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = zip(recipe["ingredient_name"],
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])

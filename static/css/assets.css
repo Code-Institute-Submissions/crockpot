@@ -542,15 +542,6 @@ label {
 }
 
 /* Carousel */
-ol.carousel-indicators {
-    margin: none;
-}
-
-ol.carousel-indicators li,
-ol.carousel-indicators li.active {
-    border: none;
-    background-color: none;
-}
 
 .prev-icon .fas,
 .next-icon .fas {
