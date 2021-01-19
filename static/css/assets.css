@@ -355,10 +355,11 @@ hr {
 	text-align: center;
     display: inline-block;
     
-    background-image: url("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spaghetti_collection_main_image-be8f283.jpg?webp=true&quality=90&resize=500%2C454");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    overflow: hidden;
+}
+
+.testimonial-image {
+    height: 100%;
 }
 
 /* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 

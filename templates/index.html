@@ -10,7 +10,7 @@
             <div id="hero-image-overlay-home">
                 <div class="row">
                     <div class="col">
-                        <img id="logo-home" src="static/images/logo-red-no-bg.png"/>
+                        <img id="logo-home" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
                     </div>
                 </div>
                 <div class="row">
@@ -161,6 +161,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="testimonial-bubble">
+                    <img class="testimonial-image" src="{{ url_for('static', filename='images/index-testimonial-francis.jpg') }}" alt="">
                 </div>
             </div>
             <div class="col"></div>
@@ -191,6 +192,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="testimonial-bubble">
+                    <img class="testimonial-image" src="{{ url_for('static', filename='images/index-testimonial-sarah.jpg') }}" alt="">
                 </div>
             </div>
             <div class="col"></div>
@@ -205,7 +207,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-10">
-                <h4 class="uppercase">Hannah B:</h4>
+                <h4 class="uppercase">Sarah G:</h4>
                 <h5>"I can't remember how to cook without it!"</h5>
             </div>
             <div class="col"></div>
@@ -221,6 +223,7 @@
             <div class="col"></div>
             <div class="col-11">
                 <div class="testimonial-bubble">
+                    <img class="testimonial-image" src="{{ url_for('static', filename='images/index-testimonial-oisin.jpg') }}" alt="">
                 </div>
             </div>
             <div class="col"></div>
