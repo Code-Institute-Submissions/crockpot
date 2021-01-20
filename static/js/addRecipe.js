@@ -12,7 +12,7 @@ $("document").ready(function(){
 
         ingredientInputCopy = $("#ingredients-input-template").clone().contents();
         ingredientInputCopy.addClass("ingredients-input" + ingredientNum);
-        $("#icon-row-add-ingredients").before(ingredientInputCopy);
+        $("#add-ingredients-hr-skinny").before(ingredientInputCopy);
     })
 
     $("#delete-ingredient").click(function(){
