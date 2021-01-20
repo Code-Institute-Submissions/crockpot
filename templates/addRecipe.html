@@ -145,7 +145,7 @@
                      </div>
                   </div>
                   <!-- Add/remove ingredient buttons -->
-                  <div class="form-row icon-row" id="icon-row-add-ingredients">
+                  <div class="form-row icon-row-input" id="icon-row-add-ingredients">
                      <div class="col">
                         <div class="icon icon-blue" id="add-ingredient">
                            <i class="fas fa-plus"></i>
@@ -171,7 +171,7 @@
                   <div class="form-row m-0">
                      <div class="col">
                         <ol class="mb-1 small-text" id="instructions-input">
-                           <div>
+                           <div class="instructions-input">
                               <li class="mb-1">
                                  <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
                                  <label for="instructions" class="sr-only">Instructions</label>
@@ -188,7 +188,7 @@
                      </div>
                   </div>
                   <!-- Add/remove instructions buttons -->
-                  <div class="form-row icon-row">
+                  <div class="form-row icon-row-input m-0">
                      <div class="col">
                         <div class="icon icon-blue" id="add-instruction">
                            <i class="fas fa-plus"></i>
@@ -269,7 +269,7 @@
 </template>
 <!-- Instructions input template -->
 <template id="instructions-input-template">
-   <div>
+   <div class="instructions-input">
       <li class="mb-1">
          <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
          <label for="instructions" class="sr-only">Instructions</label>

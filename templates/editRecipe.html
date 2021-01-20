@@ -149,7 +149,7 @@
                      </div>
                   </div>
                   <!-- Add/remove ingredient buttons -->
-                  <div class="form-row icon-row" id="icon-row-add-ingredients">
+                  <div class="form-row icon-row-input" id="icon-row-add-ingredients">
                      <div class="col">
                         <div class="icon icon-blue" id="add-ingredient">
                            <i class="fas fa-plus"></i>
@@ -175,12 +175,14 @@
                   <div class="form-row m-0">
                      <div class="col">
                         <ol class="mb-1 small-text" id="instructions-input">
-                           <div>
+                           {% for instruction in recipe.instructions %}
+                            <div class="instructions-input instructions-input{{loop.index}}">
                               <li class="mb-1">
-                                 <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
+                                 <input type="textarea" class="form-control" name="instructions" value="{{instruction}}" placeholder="Instructions" minlength="5" maxlength="150" required>
                                  <label for="instructions" class="sr-only">Instructions</label>
                               </li>
                            </div>
+                            {% endfor %}
                            <div class="form-row" id="add-instructions-hr-skinny">
                               <div class="col"></div>
                               <div class="col-10">
@@ -192,12 +194,12 @@
                      </div>
                   </div>
                   <!-- Add/remove instructions buttons -->
-                  <div class="form-row icon-row">
+                  <div class="form-row icon-row-input m-0">
                      <div class="col">
                         <div class="icon icon-blue" id="add-instruction">
                            <i class="fas fa-plus"></i>
                         </div>
-                        <div class="icon icon-blue hidden" id="delete-instruction">
+                        <div class="icon icon-blue" id="delete-instruction">
                            <i class="fas fa-trash-alt"></i>
                         </div>
                      </div>
@@ -210,7 +212,7 @@
       <div class="form-row">
          <div class="col"></div>
          <div class="col-11">
-            <input type="textarea" class="form-control" name="tips" id="tips" placeholder="Any top tips?" minlength="5" maxlength="200">
+            <input type="textarea" class="form-control" name="tips" id="tips" value="{{ recipe.tips }}" placeholder="Any top tips?" minlength="5" maxlength="200">
             <label for="tips" class="sr-only">Top tips</label>
          </div>
          <div class="col"></div>
@@ -219,7 +221,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="source" id="source" value="{{ recipe.source }}" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
+            <input type="text" class="form-control capital" name="source" id="source" value="{{ recipe.source }}" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
             <label for="source" class="sr-only">Source</label>
          </div>
          <div class="col"></div>
@@ -273,7 +275,7 @@
 </template>
 <!-- Instructions input template -->
 <template id="instructions-input-template">
-   <div>
+   <div class="instructions-input">
       <li class="mb-1">
          <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
          <label for="instructions" class="sr-only">Instructions</label>

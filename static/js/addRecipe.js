@@ -1,7 +1,7 @@
 // Credit to https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
 // Add additional ingredients add recipe form
 $("document").ready(function(){
-    ingredientNum = 1;
+    ingredientNum = $('.ingredients-input').length;
 
     $("#add-ingredient").click(function(){
         ingredientNum++;
@@ -29,7 +29,7 @@ $("document").ready(function(){
 
 // Add additional instructions add recipe form
 $("document").ready(function(){
-    instructionNum = 1;
+    instructionNum = $('.instructions-input').length;
 
     $("#add-instruction").click(function(){
         instructionNum++;
