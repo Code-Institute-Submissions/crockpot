@@ -150,8 +150,23 @@
                             <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <div class="icon icon-blue">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="icon icon-blue" data-bs-toggle="modal" data-bs-target="#delete-recipe-modal">
                                 <i class="fas fa-trash-alt"></i>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal" id="delete-recipe-modal" tabindex="-1" aria-labelledby="delete-recipe-modal-label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content text-center">
+                                    <div class="modal-body">
+                                        <h5>Are you sure you want to delete your recipe?</h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm">Yes</button>
+                                        <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" data-bs-dismiss="modal">No</button>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {% endif %}

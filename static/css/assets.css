@@ -271,6 +271,18 @@ footer {
     box-shadow: #2C497F 0px 1px;
 }
 
+.nav-btn-blue-nb {
+    color: #fff;
+	background-color: #95ebe0;
+    border: none;
+}
+
+.nav-btn-blue-dark-nb {
+    color: #fff;
+	background-color: #2C497F;
+    border: none;
+}
+
 .nav-btn-sm {
     width: 110px;
 	height: 50px;
@@ -611,6 +623,27 @@ label {
     position: absolute;
     bottom: 0px;
     left: 0px;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 35vh;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+
+.modal-content {
+    border: solid 2px #2C497F;
+}
+
+.modal-footer {
+    justify-content: center;
 }
 
 /* Media queries */
