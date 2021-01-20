@@ -145,6 +145,7 @@
                                 <i class="fas fa-utensils"></i>
                             </div>
                         </div>
+                        {% if session.user|lower == recipe.created_by|lower %}
                         <div class="col text-right">
                             <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                                 <i class="fas fa-edit"></i>
@@ -153,6 +154,7 @@
                                 <i class="fas fa-trash-alt"></i>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                     <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                         <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
