@@ -1,3 +1,22 @@
+// Modal controls
+function openModal() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete" + idNum);
+
+    $(idNumModal).removeClass("hidden");
+}
+
+function closeModal() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete" + idNum);
+
+    $(idNumModal).addClass("hidden");
+}
+
 // Show serving slider value
 var sliderServes = document.getElementById("serves");
 var outputServes = document.getElementById("serves-value");

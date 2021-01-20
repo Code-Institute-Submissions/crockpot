@@ -151,11 +151,11 @@
                                 <i class="fas fa-edit"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="icon icon-blue" data-bs-toggle="modal" data-bs-target="#delete-recipe-modal">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
+                            <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
+                                <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
+                            </div>
                             <!-- Modal -->
-                            <div class="modal" id="delete-recipe-modal" tabindex="-1" aria-labelledby="delete-recipe-modal-label" aria-hidden="true">
+                            <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content text-center">
                                     <div class="modal-body">
@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm">Yes</button>
-                                        <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" data-bs-dismiss="modal">No</button>
+                                        <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
                                     </div>
                                     </div>
                                 </div>
