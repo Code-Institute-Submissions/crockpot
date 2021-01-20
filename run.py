@@ -158,8 +158,11 @@ def editRecipe(recipe_id):
         flash("Recipe Successfully Updated")
 
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+    ingredients = zip(recipe["ingredient_name"],
+                      recipe["ingredient_quantity"],
+                      recipe["ingredient_unit"])
     return render_template(
-        "editRecipe.html", recipe=recipe)
+        "editRecipe.html", recipe=recipe, ingredients=ingredients)
 
 
 @app.route("/viewRecipe/<recipe_id>")
