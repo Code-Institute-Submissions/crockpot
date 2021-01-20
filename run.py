@@ -130,7 +130,8 @@ def addRecipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return render_template("profile.html")
+        return redirect(url_for(
+                        "profile", username=session["user"]))
 
     return render_template("addRecipe.html")
 
@@ -163,6 +164,15 @@ def editRecipe(recipe_id):
                       recipe["ingredient_unit"])
     return render_template(
         "editRecipe.html", recipe=recipe, ingredients=ingredients)
+
+
+@app.route("/deleteRecipe/<recipe_id>")
+def deleteRecipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+
+    return redirect(url_for(
+                        "profile", username=session["user"]))
 
 
 @app.route("/viewRecipe/<recipe_id>")

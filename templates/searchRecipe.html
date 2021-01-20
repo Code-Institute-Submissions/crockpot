@@ -162,7 +162,7 @@
                                         <h5>Are you sure you want to delete your recipe?</h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm">Yes</button>
+                                        <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
                                         <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
                                     </div>
                                     </div>
