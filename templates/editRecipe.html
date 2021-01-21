@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Header - Add recipes title -->
+<!-- Edit Recipes title -->
 <header class="container-fluid p-2">
    <div class="row m-0">
       <div class="col"></div>
@@ -22,10 +22,10 @@
       <div class="col"></div>
    </div>
 </header>
-<!-- Add recipe form -->
+<!-- Edit Recipe form -->
 <section class="container-fluid">
    <form method="POST" action="{{ url_for('editRecipe', recipe_id=recipe._id) }}">
-       <!-- Recipe name -->
+      <!-- Recipe name -->
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
@@ -34,15 +34,15 @@
          </div>
          <div class="col"></div>
       </div>
-      <!-- Is/isn't favourite recipe on/off switch -->
+      <!-- Is/isn't favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
       <div class="form-row">
          <div class="col"></div>
          <div class="col-3">
             <label class="switch" for="is_favourite">
             {% if recipe.is_favourite == "on" %}
-                <input type="checkbox" name="is_favourite" id="is_favourite" checked>
+            <input type="checkbox" name="is_favourite" id="is_favourite" checked>
             {% else %}
-                <input type="checkbox" name="is_favourite" id="is_favourite">
+            <input type="checkbox" name="is_favourite" id="is_favourite">
             {% endif %}
             <span class="on-off round"></span>
             </label>
@@ -52,9 +52,10 @@
          </div>
          <div class="col"></div>
       </div>
-      <!-- Serving portions slider -->
+      <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
          <div class="col"></div>
+        <!-- Slider value from app.js -->
          <div class="col-11 text-left">
             <h4>Serves: <span id="serves-value"></span></h4>
          </div>
@@ -70,9 +71,10 @@
          </div>
          <div class="col"></div>
       </div>
-      <!-- Cooking time slider -->
+      <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
-         <div class="col"></div>
+         <div class="col"></div>         
+         <!-- Slider value from app.js -->
          <div class="col-11 text-left">
             <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
          </div>
@@ -97,10 +99,9 @@
          </div>
          <div class="col"></div>
       </div>
-      <!-- Ingredients/instructions accordion -->
-      <!-- FIX INGREDIENTS AND INSTRUCTIONS -->
+      <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
       <div id="accordion">
-          <!-- Ingredients dropdown -->
+         <!-- Ingredients dropdown -->
          <div class="card pb-2">
             <div class="card-header" id="accordion-searchrecipe-ingredients">
                <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
@@ -108,61 +109,62 @@
                </button>
             </div>
             <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
-                <div class="card-body">
+               <div class="card-body">
                   <div id="ingredients-input">
-                      {% for ingredient in ingredients %}
-                      <div class="ingredients-input ingredients-input{{loop.index}}">
+                      <!-- Populate ingredients boxes with correct number of names, quantities and units from recipe -->
+                     {% for ingredient in ingredients %}
+                     <div class="ingredients-input ingredients-input{{loop.index}}">
                         {% if loop.index == 1 %}
                         {% else %}
                         <div class="form-row">
-                            <div class="col"></div>
-                            <div class="col-10">
-                                <hr class="hr-skinny">
-                            </div>
-                            <div class="col"></div>
+                           <div class="col"></div>
+                           <div class="col-10">
+                              <hr class="hr-skinny">
+                           </div>
+                           <div class="col"></div>
                         </div>
                         <div></div>
                         {% endif %}
-                      <!-- Ingredients name -->
-                     <div class="form-row mt-0">
+                        <!-- Ingredients name -->
+                        <div class="form-row mt-0">
+                           <div class="col"></div>
+                           <div class="col-11">
+                              <input type="text" class="form-control" name="ingredient_name" value="{{ingredient[0]}}" placeholder="Ingredients" minlength="3" maxlength="30" required>
+                              <label for="ingredient_name" class="sr-only">Ingredients</label>
+                           </div>
+                           <div class="col"></div>
+                        </div>
+                        <div class="form-row mt-0">
+                           <div class="col"></div>
+                           <!-- Ingredients quantity -->
+                           <div class="col-4">
+                              <input type="number" class="form-control" name="ingredient_quantity" value="{{ingredient[1]}}" placeholder="Quantity" required>
+                              <label for="ingredient_quantity" class="sr-only">Quantity</label>
+                           </div>
+                           <!-- Ingredients unit -->
+                           <div class="col-7">
+                              <label for="ingredient_unit" class="sr-only">Unit</label>
+                              <select class="form-control" name="ingredient_unit">
+                                 <option value="{{ingredient[2]}}">{{ingredient[2]}}</option>
+                                 <option value=""></option>
+                                 <option value="g">g</option>
+                                 <option value="ml">ml</option>
+                                 <option value="tsp"> tsp</option>
+                                 <option value="tbsp"> Tbsp</option>
+                                 <option value="can"> cans</option>
+                              </select>
+                           </div>
+                           <div class="col"></div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                     <div class="form-row" id="add-ingredients-hr-skinny">
                         <div class="col"></div>
-                        <div class="col-11">
-                           <input type="text" class="form-control" name="ingredient_name" value="{{ingredient[0]}}" placeholder="Ingredients" minlength="3" maxlength="30" required>
-                           <label for="ingredient_name" class="sr-only">Ingredients</label>
+                        <div class="col-10">
+                           <hr class="hr-skinny">
                         </div>
                         <div class="col"></div>
                      </div>
-                     <div class="form-row mt-0">
-                        <div class="col"></div>
-                        <!-- Ingredients quantity -->
-                        <div class="col-4">
-                           <input type="number" class="form-control" name="ingredient_quantity" value="{{ingredient[1]}}" placeholder="Quantity" required>
-                           <label for="ingredient_quantity" class="sr-only">Quantity</label>
-                        </div>
-                        <!-- Ingredients unit -->
-                        <div class="col-7">
-                           <label for="ingredient_unit" class="sr-only">Unit</label>
-                           <select class="form-control" name="ingredient_unit">
-                              <option value="{{ingredient[2]}}">{{ingredient[2]}}</option>
-                              <option value=""></option>
-                              <option value="g">g</option>
-                              <option value="ml">ml</option>
-                              <option value="tsp"> tsp</option>
-                              <option value="tbsp"> Tbsp</option>
-                              <option value="can"> cans</option>
-                           </select>
-                        </div>
-                        <div class="col"></div>
-                     </div>
-                  </div>
-                  {% endfor %}
-                  <div class="form-row" id="add-ingredients-hr-skinny">
-                    <div class="col"></div>
-                    <div class="col-10">
-                    <hr class="hr-skinny">
-                    </div>
-                    <div class="col"></div>
-                </div>
                   </div>
                   <!-- Add/remove ingredient buttons -->
                   <div class="form-row icon-row-input" id="icon-row-add-ingredients">
@@ -187,18 +189,19 @@
             </div>
             <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
                <div class="card-body">
-                   <!-- Instructions input -->
+                  <!-- Instructions input -->
                   <div class="form-row m-0">
                      <div class="col">
                         <ol class="mb-1 small-text" id="instructions-input">
+                            <!-- Populate instruction boxes with correct number of instructions from recipe -->
                            {% for instruction in recipe.instructions %}
-                            <div class="instructions-input instructions-input{{loop.index}}">
+                           <div class="instructions-input instructions-input{{loop.index}}">
                               <li class="mb-1">
                                  <input type="textarea" class="form-control" name="instructions" value="{{instruction}}" placeholder="Instructions" minlength="5" maxlength="150" required>
                                  <label for="instructions" class="sr-only">Instructions</label>
                               </li>
                            </div>
-                            {% endfor %}
+                           {% endfor %}
                            <div class="form-row" id="add-instructions-hr-skinny">
                               <div class="col"></div>
                               <div class="col-10">
@@ -252,46 +255,46 @@
       </div>
    </form>
 </section>
-<!-- Ingredients input template -->
+<!-- Ingredients input template for addRecipe.js -->
 <template id="ingredients-input-template">
-    <div class="ingredients-input">
-        <div class="form-row">
-            <div class="col"></div>
-            <div class="col-10">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-   <div class="form-row mt-0">
-      <div class="col"></div>
-      <div class="col-11">
-         <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="50" required>
-         <label for="ingredient_name" class="sr-only">Ingredients</label>
+   <div class="ingredients-input">
+      <div class="form-row">
+         <div class="col"></div>
+         <div class="col-10">
+            <hr class="hr-skinny">
+         </div>
+         <div class="col"></div>
       </div>
-      <div class="col"></div>
-   </div>
-   <div class="form-row mt-0">
-      <div class="col"></div>
-      <div class="col-4">
-         <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required>
-         <label for="ingredient_quantity" class="sr-only">Quantity</label>
+      <div class="form-row mt-0">
+         <div class="col"></div>
+         <div class="col-11">
+            <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="50" required>
+            <label for="ingredient_name" class="sr-only">Ingredients</label>
+         </div>
+         <div class="col"></div>
       </div>
-      <div class="col-7">
-         <label for="ingredient_unit" class="sr-only">Unit</label>
-         <select class="form-control" name="ingredient_unit">
-            <option value=""></option>
-            <option value="g">g</option>
-            <option value="ml">ml</option>
-            <option value="tsp"> tsp</option>
-            <option value="tbsp"> Tbsp</option>
-            <option value="can"> cans</option>
-         </select>
+      <div class="form-row mt-0">
+         <div class="col"></div>
+         <div class="col-4">
+            <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required>
+            <label for="ingredient_quantity" class="sr-only">Quantity</label>
+         </div>
+         <div class="col-7">
+            <label for="ingredient_unit" class="sr-only">Unit</label>
+            <select class="form-control" name="ingredient_unit">
+               <option value=""></option>
+               <option value="g">g</option>
+               <option value="ml">ml</option>
+               <option value="tsp"> tsp</option>
+               <option value="tbsp"> Tbsp</option>
+               <option value="can"> cans</option>
+            </select>
+         </div>
+         <div class="col"></div>
       </div>
-      <div class="col"></div>
-   </div>
    </div>
 </template>
-<!-- Instructions input template -->
+<!-- Instructions input template for addRecipe.js -->
 <template id="instructions-input-template">
    <div class="instructions-input">
       <li class="mb-1">

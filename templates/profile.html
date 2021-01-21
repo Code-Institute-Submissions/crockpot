@@ -1,218 +1,226 @@
 {% set active_page = 'profile' %}
 {% extends "base.html" %}
 {% block content %}
+<!-- Profile title with username -->
 <header class="container-fluid p-2">
-    <div class="row m-0">
-        <div class="col"></div>
-        <div class="col-8">
-            <hr>
-        </div>
-        <div class="col"></div>
-    </div>
-    <div class="row m-0">
-        <div class="col">
-            <h1 class="uppercase">Hi {{ username }}!</h1>
-        </div>
-    </div>
-    <div class="row m-0">
-        <div class="col"></div>
-        <div class="col-8">
-            <hr>
-        </div>
-        <div class="col"></div>
-    </div>
-</header>    
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr>
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0">
+      <div class="col">
+         <h1 class="uppercase">Hi {{ username }}!</h1>
+      </div>
+   </div>
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr>
+      </div>
+      <div class="col"></div>
+   </div>
+</header>
+<!-- Recipes made by the user -->
 <section class="container-fluid">
-        <div class="row pt-3">
-            <div class="col"></div>
-            <div class="col-10">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row m-0">
-            <div class="col">
-                <h2 class="uppercase">My Recipes</h2>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col"></div>
-            <div class="col-10">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-        {% if my_recipes.count() %}
-        <div class="row mt-0 mb-0 pb-2"> 
-            <div class="col">
-                <!-- Look at https://css-tricks.com/css-only-carousel/ -->
-                <div id="carousel-my" class="carousel slide" data-interval="false">
-                    <div class="carousel-inner">
-                        {% for recipe in my_recipes %}
-                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                            <div class="carousel-content">
-                                <div class="row mb-0 pb-2">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="recipe-card">
-                                            <div class="row icon-row">
-                                                <div class="col text-left">
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-utensils"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-edit"></i>
-                                                    </div>
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
-                                                <div class="row recipe-card-title">
-                                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                                                </div>
-                                            </a>
-                                        </div>
+   <div class="row pt-3">
+      <div class="col"></div>
+      <div class="col-10">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0">
+      <div class="col">
+         <h2 class="uppercase">My Recipes</h2>
+      </div>
+   </div>
+   <div class="row mb-1">
+      <div class="col"></div>
+      <div class="col-10">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- If user has made recipes, display them in carousel -->
+   {% if my_recipes.count() %}
+   <div class="row mt-0 mb-0 pb-2">
+      <div class="col">
+         <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
+         <div id="carousel-my" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+               {% for recipe in my_recipes %}
+               <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                  <div class="carousel-content">
+                     <div class="row mb-0 pb-2">
+                        <div class="col"></div>
+                        <div class="col-11">
+                           <div class="recipe-card">
+                              <div class="row icon-row">
+                                 <div class="col text-left">
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-utensils"></i>
                                     </div>
-                                    <div class="col"></div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <a class="carousel-control carousel-control-prev" href="#carousel-my" role="button" data-slide="prev">
-                        <span class="prev-icon" aria-hidden="true">
-                            <i class="fas fa-chevron-left text-left"></i>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control carousel-control-next" href="#carousel-my" role="button" data-slide="next">
-                        <span class="next-icon" aria-hidden="true">
-                            <i class="fas fa-chevron-right text-right"></i>
-                        </span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>               
-            </div>
-        </div>
-        {% else %}
-        <div class="row mt-0 mb-0 pb-2"> 
-            <div class="col">
-                No recipes yet?
-            </div>
-        </div>
-        {% endif %}
-    </section>
-    <section class="container-fluid">
-        <div class="row pt-3">
-            <div class="col">
-                <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('searchRecipe') }}">Search Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="row pb-3">
-            <div class="col">
-                <div class="nav-item">
-                    <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu <i class="fas fa-utensils"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row pt-3">
-            <div class="col"></div>
-            <div class="col-10">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row m-0">
-            <div class="col">
-                <h2 class="uppercase">Favourite Recipes</h2>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col"></div>
-            <div class="col-10">
-                <hr class="hr-skinny">
-            </div>
-            <div class="col"></div>
-        </div>
-        {% if fav_recipes.count() %}
-        <div class="row mt-0 mb-0 pb-3">  
-            <div class="col">
-                <!-- Look at https://css-tricks.com/css-only-carousel/ -->
-                <div id="carousel-fav" class="carousel slide" data-interval="false">
-                    <div class="carousel-inner">
-                        {% for recipe in fav_recipes %}
-                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                            <div class="carousel-content">
-                                <div class="row mb-0 pb-2">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="recipe-card">
-                                            <div class="row icon-row">
-                                                <div class="col text-left">
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-utensils"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-edit"></i>
-                                                    </div>
-                                                    <div class="icon icon-blue">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
-                                                <div class="row recipe-card-title">
-                                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                                                </div>
-                                            </a>
-                                        </div>
+                                 </div>
+                                 <div class="col text-right">
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-edit"></i>
                                     </div>
-                                    <div class="col"></div>
-                                </div>
-                            </div>
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+                                 <div class="row recipe-card-title">
+                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                                 </div>
+                              </a>
+                           </div>
                         </div>
-                        {% endfor %}
-                    </div>
-                    <a class="carousel-control carousel-control-prev" href="#carousel-fav" role="button" data-slide="prev">
-                        <span class="prev-icon" aria-hidden="true">
-                            <i class="fas fa-chevron-left text-left"></i>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control carousel-control-next" href="#carousel-fav" role="button" data-slide="next">
-                        <span class="next-icon" aria-hidden="true">
-                            <i class="fas fa-chevron-right text-right"></i>
-                        </span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>               
+                        <div class="col"></div>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
             </div>
-        </div>
-        {% else %}
-        <div class="row mt-0 mb-0 pb-2"> 
-            <div class="col">
-                No favourite recipes yet?
+            <a class="carousel-control carousel-control-prev" href="#carousel-my" role="button" data-slide="prev">
+            <span class="prev-icon" aria-hidden="true">
+            <i class="fas fa-chevron-left text-left"></i>
+            </span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control carousel-control-next" href="#carousel-my" role="button" data-slide="next">
+            <span class="next-icon" aria-hidden="true">
+            <i class="fas fa-chevron-right text-right"></i>
+            </span>
+            <span class="sr-only">Next</span>
+            </a>
+         </div>
+      </div>
+   </div>
+   <!-- If user has no recipes, display instructions on how to add recipes (add instructions in!) -->
+   {% else %}
+   <div class="row mt-0 mb-0 pb-2">
+      <div class="col">
+         No recipes yet?
+      </div>
+   </div>
+   {% endif %}
+</section>
+<!-- Links to Add Recipes, Search Recipes and Menu pages -->
+<section class="container-fluid">
+   <div class="row pt-3">
+      <div class="col">
+         <div class="nav-item">
+            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col">
+         <div class="nav-item">
+            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('searchRecipe') }}">Search Recipes</a>
+         </div>
+      </div>
+   </div>
+   <div class="row pb-3">
+      <div class="col">
+         <div class="nav-item">
+            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu <i class="fas fa-utensils"></i></a>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Favourite recipes of the user -->
+<section class="container-fluid">
+   <div class="row pt-3">
+      <div class="col"></div>
+      <div class="col-10">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0">
+      <div class="col">
+         <h2 class="uppercase">Favourite Recipes</h2>
+      </div>
+   </div>
+   <div class="row mb-1">
+      <div class="col"></div>
+      <div class="col-10">
+         <hr class="hr-skinny">
+      </div>
+      <div class="col"></div>
+   </div>
+   <!-- If user has favourite recipes, display them in carousel -->
+   {% if fav_recipes.count() %}
+   <div class="row mt-0 mb-0 pb-3">
+      <div class="col">
+         <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
+         <div id="carousel-fav" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+               {% for recipe in fav_recipes %}
+               <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                  <div class="carousel-content">
+                     <div class="row mb-0 pb-2">
+                        <div class="col"></div>
+                        <div class="col-11">
+                           <div class="recipe-card">
+                              <div class="row icon-row">
+                                 <div class="col text-left">
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-utensils"></i>
+                                    </div>
+                                 </div>
+                                 <div class="col text-right">
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="icon icon-blue">
+                                       <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+                                 <div class="row recipe-card-title">
+                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
             </div>
-        </div>
-        {% endif %}
-    </section>
+            <a class="carousel-control carousel-control-prev" href="#carousel-fav" role="button" data-slide="prev">
+            <span class="prev-icon" aria-hidden="true">
+            <i class="fas fa-chevron-left text-left"></i>
+            </span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control carousel-control-next" href="#carousel-fav" role="button" data-slide="next">
+            <span class="next-icon" aria-hidden="true">
+            <i class="fas fa-chevron-right text-right"></i>
+            </span>
+            <span class="sr-only">Next</span>
+            </a>
+         </div>
+      </div>
+   </div>
+    <!-- If user has no favourite recipes, display instructions on how to add favourite recipes (add instructions in!) -->
+   {% else %}
+   <div class="row mt-0 mb-0 pb-2">
+      <div class="col">
+         No favourite recipes yet?
+      </div>
+   </div>
+   {% endif %}
+</section>
 {% endblock %}

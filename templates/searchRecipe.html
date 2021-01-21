@@ -1,186 +1,200 @@
 {% set active_page = 'searchRecipe' %}
 {% extends "base.html" %}
 {% block content %}
-    <header class="container-fluid py-2">
-        <div class="row m-0">
-            <div class="col"></div>
-            <div class="col-8">
-                <hr>
+<!-- Search Recipe title -->
+<header class="container-fluid py-2">
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr>
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0">
+      <div class="col">
+         <h1 class="uppercase">Search Recipes</h1>
+      </div>
+   </div>
+   <div class="row m-0">
+      <div class="col"></div>
+      <div class="col-8">
+         <hr>
+      </div>
+      <div class="col"></div>
+   </div>
+</header>
+<section class="container-fluid">
+    <!-- Recipe search bar -->
+   <div class="row m-0 pb-2">
+      <div class="col"></div>
+      <div class="col-11 p-0">
+         <input type="text" class="form-control" id="input-searchrecipe-recipe" placeholder="Search for a recipe!">
+      </div>
+      <div class="col"></div>
+   </div>
+   <div class="row m-0">
+      <div class="col">
+        <!-- Filters/ingredients accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
+         <div id="accordion">
+             <!-- Filters dropdown -->
+            <div class="card">
+               <div class="card-header" id="accordion-searchrecipe-filters">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+                     <h3>Filters <i class="fas fa-angle-down"></i></h3>
+                  </button>
+               </div>
+               <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
+                  <div class="card-body">
+                    <!-- Favourite recipe, my recipe on/off switch filters - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
+                     <div class="row m-0">
+                        <div class="col"></div>
+                        <div class="col-3 p-0">
+                           <label class="switch">
+                           <input type="checkbox" checked>
+                           <span class="on-off round"></span>
+                           </label>
+                        </div>
+                        <div class="col-8 p-0 text-left">
+                           <h4 class="mt-2">Favourite Recipe</h4>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                     <div class="row mt-0">
+                        <div class="col"></div>
+                        <div class="col-3 p-0">
+                           <label class="switch">
+                           <input type="checkbox" checked>
+                           <span class="on-off round"></span>
+                           </label>
+                        </div>
+                        <div class="col-8 p-0 text-left">
+                           <h4 class="mt-2">My Recipe</h4>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                    <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                     <div class="row m-0">
+                        <div class="col"></div>
+                        <!-- Slider value from app.js -->
+                        <div class="col-11 text-left">
+                           <h4>Serves: <span id="serves-value"></span></h4>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                     <div class="row">
+                        <div class="col"></div>
+                        <div class="col-11">
+                           <div class="slidecontainer">
+                              <input type="range" min="1" max="8" value="4" class="slider" id="serves">
+                           </div>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                    <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                     <div class="row m-0">
+                        <div class="col"></div>
+                        <!-- Slider value from app.js -->
+                        <div class="col-11 text-left">
+                           <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                     <div class="row">
+                        <div class="col"></div>
+                        <div class="col-11">
+                           <div class="slidecontainer">
+                              <input type="range" min="5" max="120" value="30" step="5" class="slider" id="cooktime">
+                           </div>
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="col"></div>
-        </div>
-        <div class="row m-0">
-            <div class="col">
-                <h1 class="uppercase">Search Recipes</h1>
+            <!-- Ingredients dropdown -->
+            <div class="card pb-2">
+               <div class="card-header" id="accordion-searchrecipe-ingredients">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                     <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
+                  </button>
+               </div>
+               <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
+                  <div class="card-body">
+                    <!-- Ingredients search bar -->
+                     <div class="row m-0 pt-2">
+                        <div class="col"></div>
+                        <div class="col-11 p-0">
+                           <input type="text" class="form-control" id="input-searchrecipe-ingredient" placeholder="Search for an ingredient!">
+                        </div>
+                        <div class="col"></div>
+                     </div>
+                     <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
+                     <ul class="ks-cboxtags mb-0 pt-2 pb-2">
+                        <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes</label></li>
+                        <li><input type="checkbox" id="checkboxTwo" value="Pasta" checked><label for="checkboxTwo">Pasta</label></li>
+                        <li><input type="checkbox" id="checkboxThree" value="Oregano" checked><label for="checkboxThree">Oregano</label></li>
+                        <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese</label></li>
+                        <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate</label></li>
+                     </ul>
+                  </div>
+               </div>
             </div>
-        </div>
-        <div class="row m-0">
-            <div class="col"></div>
-            <div class="col-8">
-                <hr>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Display all recipes in database and filter depending on user input -->
+<section class="container-fluid">
+   {% for recipe in all_recipes %}
+   <div class="row pt-2">
+      <div class="col"></div>
+      <div class="col-11">
+         <div class="recipe-card">
+            <div class="row icon-row">
+               <div class="col text-left">
+                  <div class="icon icon-blue">
+                     <i class="fas fa-utensils"></i>
+                  </div>
+               </div>
+               <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+               {% if session.user|lower == recipe.created_by|lower %}
+               <div class="col text-right">
+                   <!-- Edit page -->
+                  <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
+                  <i class="fas fa-edit"></i>
+                  </a>
+                  <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+                  <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
+                     <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
+                     <div class="modal-dialog">
+                        <div class="modal-content text-center">
+                           <div class="modal-body">
+                              <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
+                           </div>
+                           <div class="modal-footer">
+                               <!-- Delete recipe -->
+                              <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                              <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
             </div>
-            <div class="col"></div>
-        </div>
-    </header>
-    <section class="container-fluid">
-        <div class="row m-0 pb-2">
-            <div class="col"></div>
-            <div class="col-11 p-0">
-                <input type="text" class="form-control" id="input-searchrecipe-recipe" placeholder="Search for a recipe!">
-            </div>
-            <div class="col"></div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        <div class="row m-0">
-            <div class="col">
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="accordion-searchrecipe-filters">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
-                                <h3>Filters <i class="fas fa-angle-down"></i></h3>
-                            </button>
-                        </div>
-                        <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="row m-0">
-                                    <div class="col"></div>
-                                    <div class="col-3 p-0">
-                                        <label class="switch">
-                                            <input type="checkbox" checked>
-                                            <span class="on-off round"></span>
-                                        </label>
-                                    </div>
-                                    <div class="col-8 p-0 text-left">
-                                        <h4 class="mt-2">Favourite Recipe</h4>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row mt-0">
-                                    <div class="col"></div>
-                                    <div class="col-3 p-0">
-                                        <label class="switch">
-                                            <input type="checkbox" checked>
-                                            <span class="on-off round"></span>
-                                        </label>
-                                    </div>
-                                    <div class="col-8 p-0 text-left">
-                                        <h4 class="mt-2">My Recipe</h4>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row m-0">
-                                    <div class="col"></div>
-                                    <div class="col-11 text-left">
-                                        <h4>Serves: <span id="serves-value"></span></h4>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="slidecontainer">
-                                            <input type="range" min="1" max="8" value="4" class="slider" id="serves">
-                                        </div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row m-0">
-                                    <div class="col"></div>
-                                    <div class="col-11 text-left">
-                                        <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col-11">
-                                        <div class="slidecontainer">
-                                            <input type="range" min="5" max="120" value="30" step="5" class="slider" id="cooktime">
-                                        </div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pb-2">
-                        <div class="card-header" id="accordion-searchrecipe-ingredients">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
-                                <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
-                            </button>
-                        </div>
-                        <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="row m-0 pt-2">
-                                    <div class="col"></div>
-                                    <div class="col-11 p-0">
-                                        <input type="text" class="form-control" id="input-searchrecipe-ingredient" placeholder="Search for an ingredient!">
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
-                                <ul class="ks-cboxtags mb-0 pt-2 pb-2">
-                                    <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes</label></li>
-                                    <li><input type="checkbox" id="checkboxTwo" value="Pasta" checked><label for="checkboxTwo">Pasta</label></li>
-                                    <li><input type="checkbox" id="checkboxThree" value="Oregano" checked><label for="checkboxThree">Oregano</label></li>
-                                    <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese</label></li>
-                                    <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate</label></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container-fluid">
-        {% for recipe in all_recipes %}
-        <div class="row pt-2">
-            <div class="col"></div>
-            <div class="col-11">
-                <div class="recipe-card">
-                    <div class="row icon-row">
-                        <div class="col text-left">
-                            <div class="icon icon-blue">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                        </div>
-                        {% if session.user|lower == recipe.created_by|lower %}
-                        <div class="col text-right">
-                            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <!-- Button trigger modal -->
-                            <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
-                                <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
-                                <div class="modal-dialog">
-                                    <div class="modal-content text-center">
-                                    <div class="modal-body">
-                                        <h5>Are you sure you want to delete your recipe?</h5>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                        <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    </div>
-                    <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                        <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
-                        <div class="row recipe-card-title">
-                            <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col"></div>
-        </div>
-        {% endfor %}
-    </section>
+            <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+               <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+               <div class="row recipe-card-title">
+                  <h3 class="capital">{{ recipe.recipe_name }}</h3>
+               </div>
+            </a>
+         </div>
+      </div>
+      <div class="col"></div>
+   </div>
+   {% endfor %}
+</section>
 {% endblock %}
