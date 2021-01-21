@@ -354,6 +354,19 @@ hr {
     border-color: #95ebe0;
 }
 
+.icon-blue-md {
+    width: 60px;
+	height: 60px;
+	padding: 5px 0px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #95ebe0;
+	border: solid 4px #fff;
+	font-size: 30px;
+	text-align: center;
+	display: inline-block;
+}
+
 .icon-blue-lg {
     width: 85px;
 	height: 85px;
@@ -623,6 +636,8 @@ label {
     position: absolute;
     bottom: 0px;
     left: 0px;
+
+    text-align: left;
 }
 
 /* Modals */

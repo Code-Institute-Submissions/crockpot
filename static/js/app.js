@@ -1,4 +1,14 @@
 // Modal controls
+function openModalView() {
+    idNumModal = document.getElementById("modal-delete");
+    $(idNumModal).removeClass("hidden");
+}
+
+function closeModalView() {
+    idNumModal = document.getElementById("modal-delete");
+    $(idNumModal).addClass("hidden");
+}
+
 function openModal() {
     var target = event.target || event.srcElement;
     var id = target.id;

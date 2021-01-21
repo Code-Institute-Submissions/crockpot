@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- View Recipe title with username -->
-<header class="container-fluid pt-2">
+<header class="container-fluid pt-2 pb-2">
    <div class="row">
       <div class="col"></div>
       <div class="col-8">
@@ -30,8 +30,42 @@
    </div>
 </header>
 <section class="container-fluid">
+    <!-- If user is logged in show menu, edit and delete buttons and favourite toggle -->
+    {% if session.user %}
+    <div class="row m-0 pb-1">
+        <div class="col">
+            <div class="icon icon-blue icon-blue-md shadow-box">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+            {% if session.user|lower == recipe.created_by|lower %}
+            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue icon-blue-md shadow-box">
+                <i class="fas fa-edit"></i>
+            </a>
+            <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+            <div class="icon icon-blue icon-blue-md shadow-box" id="delete-recipe-open" onclick="openModalView()">
+                <i class="fas fa-trash-alt" id="delete-recipe-open-icon" onclick="openModalView()"></i>
+            </div>
+            <!-- Modal -->
+            <div class="modal-delete hidden" id="modal-delete">
+                <div class="modal-dialog">
+                    <div class="modal-content text-center">
+                        <div class="modal-body">
+                            <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Delete recipe -->
+                            <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                            <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close" onclick="closeModalView()">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
    <!-- Check/uncheck favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
-   <div class="row m-0 pt-2 pb-1">
+   <div class="row mt-1 mb-1">
       <div class="col"></div>
       <div class="col-3">
          <label class="switch" for="is_favourite">
@@ -48,6 +82,7 @@
       </div>
       <div class="col"></div>
    </div>
+   {% endif %}
    <!-- Recipe image -->
    <div class="row m-0 pb-2">
       <div class="col-12">
