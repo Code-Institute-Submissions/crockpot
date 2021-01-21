@@ -60,18 +60,41 @@
                            <div class="recipe-card">
                               <div class="row icon-row">
                                  <div class="col text-left">
-                                    <div class="icon icon-blue">
-                                       <i class="fas fa-utensils"></i>
-                                    </div>
+                                    <label class="icon-menu-switch" for="is_menu{{loop.index}}">
+                                        <input type="checkbox" name="is_menu{{loop.index}}" id="is_menu{{loop.index}}">
+                                        <span class="icon-menu">
+                                            <i class="fas fa-utensils"></i>
+                                        </span>
+                                    </label>
                                  </div>
-                                 <div class="col text-right">
-                                    <div class="icon icon-blue">
-                                       <i class="fas fa-edit"></i>
+                                 <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+                                {% if session.user|lower == recipe.created_by|lower %}
+                                <div class="col text-right">
+                                    <!-- Edit page -->
+                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
+                                    <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+                                    <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
+                                        <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
                                     </div>
-                                    <div class="icon icon-blue">
-                                       <i class="fas fa-trash-alt"></i>
+                                    <!-- Modal -->
+                                    <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content text-center">
+                                            <div class="modal-body">
+                                                <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!-- Delete recipe -->
+                                                <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
+                                </div>
+                                {% endif %}
                               </div>
                               <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                                  <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
@@ -172,9 +195,12 @@
                            <div class="recipe-card">
                               <div class="row icon-row">
                                  <div class="col text-left">
-                                    <div class="icon icon-blue">
-                                       <i class="fas fa-utensils"></i>
-                                    </div>
+                                    <label class="icon-menu-switch" for="fav_is_menu{{loop.index}}">
+                                        <input type="checkbox" name="fav_is_menu{{loop.index}}" id="fav_is_menu{{loop.index}}">
+                                        <span class="icon-menu">
+                                            <i class="fas fa-utensils"></i>
+                                        </span>
+                                    </label>
                                  </div>
                                  <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
                                 {% if session.user|lower == recipe.created_by|lower %}

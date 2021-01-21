@@ -193,7 +193,10 @@ def searchRecipe():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    fav_recipes = mongo.db.recipes.find({"is_favourite": "on"})
+
+    return render_template(
+        "menu.html", fav_recipes=fav_recipes)
 
 
 if __name__ == "__main__":

@@ -39,11 +39,10 @@
                   <div class="card-body">
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2">
-                        <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes x 11</label></li>
-                        <li><input type="checkbox" id="checkboxTwo" value="Pasta"><label for="checkboxTwo">Pasta x 400g</label></li>
-                        <li><input type="checkbox" id="checkboxThree" value="Oregano"><label for="checkboxThree">Oregano x 1Tsp</label></li>
-                        <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese x 200g</label></li>
-                        <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate x 100g</label></li>
+                        <!-- Jinja code to show ingredients of menu items -->
+                        <!-- for recipe in fav_recipes 
+                            <li><input type="checkbox" id="checkbox loop.index " value="Tomatoes"><label for="checkbox loop.index "> recipe.ingredient_name </label></li>
+                         endfor   -->
                      </ul>
                   </div>
                </div>
@@ -52,63 +51,60 @@
       </div>
    </div>
 </section>
-<!-- Display all recipes in user's menu -->
+<!-- Display all recipes in database and filter depending on user input -->
 <section class="container-fluid">
-   <div class="row pt-3">
+   {% for recipe in fav_recipes %}
+   <div class="row pt-2">
       <div class="col"></div>
       <div class="col-11">
          <div class="recipe-card">
-            <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
-               <div class="row icon-row">
-                  <div class="col text-left">
-                     <div class="icon icon-blue">
-                        <i class="fas fa-utensils"></i>
-                     </div>
+            {% if session.user %}
+            <div class="row icon-row">
+               <div class="col text-left">
+                  <div class="icon icon-blue">
+                     <i class="fas fa-utensils"></i>
                   </div>
-                  <div class="col text-right">
-                     <div class="icon icon-blue">
-                        <i class="fas fa-edit"></i>
-                     </div>
-                     <div class="icon icon-blue">
-                        <i class="fas fa-trash-alt"></i>
+               </div>
+               <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+               {% if session.user|lower == recipe.created_by|lower %}
+               <div class="col text-right">
+                   <!-- Edit page -->
+                  <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
+                  <i class="fas fa-edit"></i>
+                  </a>
+                  <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+                  <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
+                     <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
+                     <div class="modal-dialog">
+                        <div class="modal-content text-center">
+                           <div class="modal-body">
+                              <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
+                           </div>
+                           <div class="modal-footer">
+                               <!-- Delete recipe -->
+                              <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                              <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
-               <div class="row recipe-card-title">
-                  <h3>Recipe Title</h3>
-               </div>
+               {% endif %}
             </div>
+            {% endif %}
+            <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+               <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+               <div class="row recipe-card-title">
+                  <h3 class="capital">{{ recipe.recipe_name }}</h3>
+               </div>
+            </a>
          </div>
       </div>
       <div class="col"></div>
    </div>
-   <div class="row mb-0 pb-3">
-      <div class="col"></div>
-      <div class="col-11">
-         <div class="recipe-card">
-            <div class="recipe-card-overlay recipe-card-overlay-hover border-white">
-               <div class="row icon-row">
-                  <div class="col text-left">
-                     <div class="icon icon-blue">
-                        <i class="fas fa-utensils"></i>
-                     </div>
-                  </div>
-                  <div class="col text-right">
-                     <div class="icon icon-blue">
-                        <i class="fas fa-edit"></i>
-                     </div>
-                     <div class="icon icon-blue">
-                        <i class="fas fa-trash-alt"></i>
-                     </div>
-                  </div>
-               </div>
-               <div class="row recipe-card-title">
-                  <h3>Recipe Title</h3>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="col"></div>
-   </div>
+   {% endfor %}
 </section>
 {% endblock %}
