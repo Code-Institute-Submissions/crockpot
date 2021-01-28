@@ -34,9 +34,15 @@
     {% if session.user %}
     <div class="row m-0 pb-1">
         <div class="col">
-            <div class="icon icon-blue icon-blue-md shadow-box">
+            <!-- <label class="icon-menu-switch" for="is_menu">
+                <input type="checkbox" name="is_menu" id="is_menu">
+                <span class="icon icon-blue icon-blue-md shadow-box">
+                    <i class="fas fa-utensils"></i>
+                </span>
+            </label> -->
+            <a href="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="icon icon-blue icon-blue-md shadow-box">
                 <i class="fas fa-utensils"></i>
-            </div>
+            </a>
             <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
             {% if session.user|lower == recipe.created_by|lower %}
             <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue icon-blue-md shadow-box">

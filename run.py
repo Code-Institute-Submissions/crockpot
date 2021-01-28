@@ -17,7 +17,6 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-users = mongo.db.user_login_system
 recipes = mongo.db.recipes
 
 now = datetime.now()
@@ -170,6 +169,16 @@ def editRecipe(recipe_id):
 def deleteRecipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
+
+    return redirect(url_for(
+                        "profile", username=session["user"]))
+
+
+@app.route("/isMenu/<recipe_id>")
+def isMenu(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe["is_menu"].append(session["user"])
+    flash("Recipe Added To Menu")
 
     return redirect(url_for(
                         "profile", username=session["user"]))
