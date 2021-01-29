@@ -242,6 +242,10 @@ footer {
 
 /* COMPONENTS */
 /* Nav buttons */
+button:focus {
+    outline: none;
+}
+
 .btn:focus {
     box-shadow: none;
 }

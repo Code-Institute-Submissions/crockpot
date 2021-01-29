@@ -31,15 +31,16 @@
 </header>
 <section class="container-fluid">
     <!-- If user is logged in show menu, edit and delete buttons and favourite toggle -->
+    {% if session.user %}
     <div class="row m-0 pb-1">
         <div class="col">
             <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="d-inline-block">
                 {% if session.user in recipe.is_menu %}
-                    <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box btn">
+                    <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box">
                         <i class="fas fa-utensils"></i>
                     </button>
                 {% else %}
-                    <button type="submit" class="icon icon-blue icon-blue-md shadow-box btn">
+                    <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
                         <i class="fas fa-utensils"></i>
                     </button>
                 {% endif %}
@@ -89,6 +90,7 @@
       </div>
       <div class="col"></div>
    </div>
+   {% endif %}
    <!-- Recipe image -->
    <div class="row m-0 pb-2">
       <div class="col-12">
