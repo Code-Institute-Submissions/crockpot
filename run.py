@@ -165,20 +165,30 @@ def editRecipe(recipe_id):
         "editRecipe.html", recipe=recipe, ingredients=ingredients)
 
 
+@app.route("/isMenu/<recipe_id>", methods=["GET", "POST"])
+def isMenu(recipe_id):
+    if request.method == "POST":
+        recipes.update_one({"_id": ObjectId(recipe_id)},
+                           {'$push': {"is_menu": session["user"]}})
+        flash("Recipe Added To Menu")
+
+    return redirect(url_for("menu"))
+
+
+# WORKING MENU FUNCTION: @app.route("/isMenu/<recipe_id>", methods=["GET", "POST"])
+# def isMenu(recipe_id):
+#     if request.method == "POST":
+#         recipes.update_one({"_id": ObjectId(recipe_id)},
+#                            {'$push': {"is_menu": session["user"]}})
+#         flash("Recipe Added To Menu")
+
+#     return redirect(url_for("menu"))
+
+
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
-
-    return redirect(url_for(
-                        "profile", username=session["user"]))
-
-
-@app.route("/isMenu/<recipe_id>")
-def isMenu(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    recipe["is_menu"].append(session["user"])
-    flash("Recipe Added To Menu")
 
     return redirect(url_for(
                         "profile", username=session["user"]))
@@ -202,10 +212,10 @@ def searchRecipe():
 
 @app.route("/menu")
 def menu():
-    fav_recipes = mongo.db.recipes.find({"is_favourite": "on"})
+    menu_recipes = mongo.db.recipes.find({"is_menu": session["user"]})
 
     return render_template(
-        "menu.html", fav_recipes=fav_recipes)
+        "menu.html", menu_recipes=menu_recipes)
 
 
 if __name__ == "__main__":
