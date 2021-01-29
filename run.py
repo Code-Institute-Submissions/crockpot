@@ -174,11 +174,11 @@ def isMenu(recipe_id):
         if username in recipe_is_menu:
             recipes.update_one({"_id": ObjectId(recipe_id)},
                                {'$pull': {"is_menu": username}})
-            flash("Recipe removed from menu")
+            flash(recipe.get("recipe_name") + " removed from menu")
         else:
             recipes.update_one({"_id": ObjectId(recipe_id)},
                                {'$push': {"is_menu": username}})
-            flash("Recipe added to menu")
+            flash(recipe.get("recipe_name") + " added to menu")
 
     return redirect(url_for("menu"))
 

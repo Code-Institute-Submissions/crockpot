@@ -46,6 +46,10 @@ body {
 	height: 84px;
 }
 
+.flashed-messages {
+    text-transform: capitalize;
+}
+
 /* Styles */
 .uppercase {
     text-transform: uppercase;

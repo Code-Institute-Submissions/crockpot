@@ -59,14 +59,17 @@
                         <div class="col-11">
                            <div class="recipe-card">
                               <div class="row icon-row">
-                                 <div class="col text-left">
-                                    <label class="icon-menu-switch" for="is_menu{{loop.index}}">
-                                        <input type="checkbox" name="is_menu{{loop.index}}" id="is_menu{{loop.index}}">
-                                        <span class="icon-menu">
+                                 <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
+                                    {% if session.user in recipe.is_menu %}
+                                        <button type="submit" class="icon icon-blue-selected shadow-box">
                                             <i class="fas fa-utensils"></i>
-                                        </span>
-                                    </label>
-                                 </div>
+                                        </button>
+                                    {% else %}
+                                        <button type="submit" class="icon icon-blue shadow-box">
+                                            <i class="fas fa-utensils"></i>
+                                        </button>
+                                    {% endif %}
+                                </form>
                                  <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
                                 {% if session.user|lower == recipe.created_by|lower %}
                                 <div class="col text-right">
@@ -194,14 +197,17 @@
                         <div class="col-11">
                            <div class="recipe-card">
                               <div class="row icon-row">
-                                 <div class="col text-left">
-                                    <label class="icon-menu-switch" for="fav_is_menu{{loop.index}}">
-                                        <input type="checkbox" name="fav_is_menu{{loop.index}}" id="fav_is_menu{{loop.index}}">
-                                        <span class="icon-menu">
+                                 <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
+                                    {% if session.user in recipe.is_menu %}
+                                        <button type="submit" class="icon icon-blue-selected shadow-box">
                                             <i class="fas fa-utensils"></i>
-                                        </span>
-                                    </label>
-                                 </div>
+                                        </button>
+                                    {% else %}
+                                        <button type="submit" class="icon icon-blue shadow-box">
+                                            <i class="fas fa-utensils"></i>
+                                        </button>
+                                    {% endif %}
+                                </form>
                                  <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
                                 {% if session.user|lower == recipe.created_by|lower %}
                                 <div class="col text-right">
