@@ -61,11 +61,11 @@
                               <div class="row icon-row">
                                  <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
                                     {% if session.user in recipe.is_menu %}
-                                        <button type="submit" class="icon icon-blue-selected shadow-box">
+                                        <button type="submit" class="icon icon-blue-selected shadow-box btn">
                                             <i class="fas fa-utensils"></i>
                                         </button>
                                     {% else %}
-                                        <button type="submit" class="icon icon-blue shadow-box">
+                                        <button type="submit" class="icon icon-blue shadow-box btn">
                                             <i class="fas fa-utensils"></i>
                                         </button>
                                     {% endif %}
@@ -128,11 +128,41 @@
          </div>
       </div>
    </div>
-   <!-- If user has no recipes, display instructions on how to add recipes (add instructions in!) -->
+   <!-- If user has no recipes, display instructions on how to add recipes -->
    {% else %}
-   <div class="row mt-0 mb-0 pb-2">
+   <div class="row pb-2">
       <div class="col">
-         No recipes yet?
+         <h3 class="mb-1 underline">No recipes yet?</h3>
+         <div class="row">
+             <div class="col-3">
+                <div class="icon icon-blue">
+                    <i class="fas fa-plus"></i>
+                </div>
+             </div>
+             <div class="col-9">
+                <h4 class="mb-1 text-left">Upload recipes on the Add page</h4>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-3">
+                <div class="icon icon-blue">
+                    <i class="fas fa-edit"></i>
+                </div>
+             </div>
+             <div class="col-9">
+                <h4 class="mb-1 text-left">Edit them if they need updating</h4>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-3">
+                <div class="icon icon-blue">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+             </div>
+             <div class="col-9">
+                <h4 class="mb-1 text-left">Delete it once you know it by heart!</h4>
+             </div>
+         </div>
       </div>
    </div>
    {% endif %}
@@ -199,11 +229,11 @@
                               <div class="row icon-row">
                                  <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
                                     {% if session.user in recipe.is_menu %}
-                                        <button type="submit" class="icon icon-blue-selected shadow-box">
+                                        <button type="submit" class="icon icon-blue-selected shadow-box btn">
                                             <i class="fas fa-utensils"></i>
                                         </button>
                                     {% else %}
-                                        <button type="submit" class="icon icon-blue shadow-box">
+                                        <button type="submit" class="icon icon-blue shadow-box btn">
                                             <i class="fas fa-utensils"></i>
                                         </button>
                                     {% endif %}
@@ -268,9 +298,29 @@
    </div>
     <!-- If user has no favourite recipes, display instructions on how to add favourite recipes (add instructions in!) -->
    {% else %}
-   <div class="row mt-0 mb-0 pb-2">
+   <div class="row mb-0 pb-2">
       <div class="col">
-         No favourite recipes yet?
+         <h3 class="mb-1 underline">No favourites yet?</h3>
+         <div class="row">
+             <div class="col-3">
+                <div class="icon icon-blue">
+                    <i class="fas fa-mouse-pointer"></i>
+                </div>
+             </div>
+             <div class="col-9">
+                <h4 class="mb-1 text-left">Click on a recipe to view</h4>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-3">
+                <div class="icon icon-blue">
+                    <i class="fas fa-toggle-on"></i>
+                </div>
+             </div>
+             <div class="col-9">
+                <h4 class="mb-1 text-left">Use the favourite toggle</h4>
+             </div>
+         </div>
       </div>
    </div>
    {% endif %}

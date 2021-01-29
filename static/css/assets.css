@@ -183,7 +183,7 @@ footer {
 
 .navbar-light .navbar-nav .nav-link:hover,
 .nav-item.active>.nav-link {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .nav-link {
@@ -341,15 +341,15 @@ hr {
 	-o-transition: all 0.5s ease-in-out;
 }
 
-.icon-blue {
-    color: #fff;
-    background-color: #95ebe0;
-    border-color: #fff;
-}
-
 .icon:hover {
 	color: #e63b2e;
 	background-color: #eeeeee;
+}
+
+.icon-blue, .icon-blue:hover, .icon-blue-selected:hover {
+    color: #fff;
+    background-color: #95ebe0;
+    border-color: #fff;
 }
 
 .icon-blue-md {
@@ -378,7 +378,7 @@ hr {
 	display: inline-block;
 }
 
-.icon-blue:hover, .icon-blue-selected {
+.icon-blue-selected {
 	color: #95ebe0;
     background-color: #fff;
     border-color: #95ebe0;

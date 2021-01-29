@@ -35,11 +35,11 @@
         <div class="col">
             <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="d-inline-block">
                 {% if session.user in recipe.is_menu %}
-                    <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box">
+                    <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box btn">
                         <i class="fas fa-utensils"></i>
                     </button>
                 {% else %}
-                    <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
+                    <button type="submit" class="icon icon-blue icon-blue-md shadow-box btn">
                         <i class="fas fa-utensils"></i>
                     </button>
                 {% endif %}
