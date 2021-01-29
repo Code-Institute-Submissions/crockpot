@@ -167,22 +167,20 @@ def editRecipe(recipe_id):
 
 @app.route("/isMenu/<recipe_id>", methods=["GET", "POST"])
 def isMenu(recipe_id):
+    username = session["user"]
+    recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe_is_menu = recipe.get("is_menu")
     if request.method == "POST":
-        recipes.update_one({"_id": ObjectId(recipe_id)},
-                           {'$push': {"is_menu": session["user"]}})
-        flash("Recipe Added To Menu")
+        if username in recipe_is_menu:
+            recipes.update_one({"_id": ObjectId(recipe_id)},
+                               {'$pull': {"is_menu": session["user"]}})
+            flash("Recipe removed from menu")
+        else:
+            recipes.update_one({"_id": ObjectId(recipe_id)},
+                               {'$push': {"is_menu": session["user"]}})
+            flash("Recipe added to menu")
 
     return redirect(url_for("menu"))
-
-
-# WORKING MENU FUNCTION: @app.route("/isMenu/<recipe_id>", methods=["GET", "POST"])
-# def isMenu(recipe_id):
-#     if request.method == "POST":
-#         recipes.update_one({"_id": ObjectId(recipe_id)},
-#                            {'$push': {"is_menu": session["user"]}})
-#         flash("Recipe Added To Menu")
-
-#     return redirect(url_for("menu"))
 
 
 @app.route("/deleteRecipe/<recipe_id>")
