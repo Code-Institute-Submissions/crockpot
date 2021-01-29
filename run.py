@@ -173,11 +173,11 @@ def isMenu(recipe_id):
     if request.method == "POST":
         if username in recipe_is_menu:
             recipes.update_one({"_id": ObjectId(recipe_id)},
-                               {'$pull': {"is_menu": session["user"]}})
+                               {'$pull': {"is_menu": username}})
             flash("Recipe removed from menu")
         else:
             recipes.update_one({"_id": ObjectId(recipe_id)},
-                               {'$push': {"is_menu": session["user"]}})
+                               {'$push': {"is_menu": username}})
             flash("Recipe added to menu")
 
     return redirect(url_for("menu"))
@@ -185,7 +185,7 @@ def isMenu(recipe_id):
 
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
 
     return redirect(url_for(

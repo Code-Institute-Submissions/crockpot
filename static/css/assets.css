@@ -348,12 +348,6 @@ hr {
 	background-color: #eeeeee;
 }
 
-.icon-blue:hover {
-	color: #95ebe0;
-    background-color: #fff;
-    border-color: #95ebe0;
-}
-
 .icon-blue-md {
     width: 60px;
 	height: 60px;
@@ -378,6 +372,12 @@ hr {
 	font-size: 45px;
 	text-align: center;
 	display: inline-block;
+}
+
+.icon-blue:hover, .icon-blue-selected {
+	color: #95ebe0;
+    background-color: #fff;
+    border-color: #95ebe0;
 }
 
 .hidden {
