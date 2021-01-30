@@ -125,10 +125,11 @@ def addRecipe():
             "source": request.form.get("source"),
             "tips": request.form.get("tips"),
             "created_by": session["user"],
-            "date_added": date_string
+            "date_added": date_string,
+            "is_menu": []
         }
         mongo.db.recipes.insert_one(recipe)
-        flash("Recipe Successfully Added")
+        flash(recipe.get("recipe_name") + " Successfully Added")
         return redirect(url_for(
                         "profile", username=session["user"]))
 
@@ -139,7 +140,7 @@ def addRecipe():
 def editRecipe(recipe_id):
     if request.method == "POST":
         is_favourite = "on" if request.form.get("is_favourite") else "off"
-        edit = {
+        edit = {'$set': {
             "recipe_name": request.form.get("recipe_name").lower(),
             "is_favourite": is_favourite,
             "serves": request.form.get("serves"),
@@ -150,12 +151,13 @@ def editRecipe(recipe_id):
             "ingredient_unit": request.form.getlist("ingredient_unit"),
             "instructions": request.form.getlist("instructions"),
             "source": request.form.get("source"),
-            "tips": request.form.get("tips"),
-            "created_by": session["user"],
-            "date_added": date_string
-        }
+            "tips": request.form.get("tips")
+        }}
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
-        flash("Recipe Successfully Updated")
+        recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+        flash(recipe.get("recipe_name") + " successfully updated")
+        return redirect(url_for(
+                        "profile", username=session["user"]))
 
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = zip(recipe["ingredient_name"],
@@ -185,8 +187,10 @@ def isMenu(recipe_id):
 
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
+    recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe_name = recipe.get("recipe_name")
     recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
+    flash(recipe_name + " successfully deleted")
 
     return redirect(url_for(
                         "profile", username=session["user"]))
