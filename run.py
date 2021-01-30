@@ -98,7 +98,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     my_recipes = mongo.db.recipes.find({"created_by": username})
-    fav_recipes = mongo.db.recipes.find({"is_favourite": "on"})
+    fav_recipes = mongo.db.recipes.find({"is_fav": username})
 
     if session["user"]:
         return render_template("profile.html",
@@ -112,6 +112,7 @@ def profile(username):
 def addRecipe():
     if request.method == "POST":
         is_favourite = "on" if request.form.get("is_favourite") else "off"
+        is_fav = [session["user"]] if request.form.get("is_favourite") else []
         recipe = {
             "recipe_name": request.form.get("recipe_name").lower(),
             "is_favourite": is_favourite,
@@ -126,7 +127,8 @@ def addRecipe():
             "tips": request.form.get("tips"),
             "created_by": session["user"],
             "date_added": date_string,
-            "is_menu": []
+            "is_menu": [],
+            "is_fav": is_fav
         }
         mongo.db.recipes.insert_one(recipe)
         flash(recipe.get("recipe_name") + " Successfully Added")
@@ -154,7 +156,26 @@ def editRecipe(recipe_id):
             "tips": request.form.get("tips")
         }}
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        username = session["user"]
         recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+        recipe_is_fav = recipe.get("is_fav")
+        if request.form.get("is_favourite"):
+            # If fav toggle is on and username in fav array do nothing
+            if username in recipe_is_fav:
+                pass
+            # If fav toggle is on and username is not in fav array add username
+            else:
+                recipes.update_one({"_id": ObjectId(recipe_id)},
+                                   {'$push': {"is_fav": username}})
+        else:
+            # If fav toggle is off and username in fav array remove username
+            if username in recipe_is_fav:
+                recipes.update_one({"_id": ObjectId(recipe_id)},
+                                   {'$pull': {"is_fav": username}})
+            # If fav toggle is off and username is not in fav array do nothing
+            else:
+                pass
+
         flash(recipe.get("recipe_name") + " successfully updated")
         return redirect(url_for(
                         "profile", username=session["user"]))
