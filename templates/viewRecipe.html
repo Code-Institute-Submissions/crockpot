@@ -76,14 +76,16 @@
    <div class="row mt-1 mb-1">
       <div class="col"></div>
       <div class="col-3">
-         <label class="switch" for="is_favourite">
-         {% if session.user in recipe.is_fav %}
-            <input type="checkbox" checked>
-         {% else %}
-            <input type="checkbox">
-         {% endif %}
-         <span class="on-off round"></span>
-         </label>
+        <form method="POST" action="{{ url_for('isFav', recipe_id=recipe._id) }}" class="d-inline-block">
+            <label class="switch" for="is_favourite">
+            {% if session.user in recipe.is_fav %}
+                <input onchange="this.form.submit()" type="checkbox" name="is_favourite" id="is_favourite" checked>
+            {% else %}
+                <input onchange="this.form.submit()" type="checkbox" name="is_favourite" id="is_favourite">
+            {% endif %}
+            <span class="on-off round"></span>
+            </label>
+         </form>
       </div>
       <div class="col-8 text-left">
          <h4 class="mt-2">Favourite Recipe</h4>

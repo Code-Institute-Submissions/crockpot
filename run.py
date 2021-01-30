@@ -206,6 +206,35 @@ def isMenu(recipe_id):
     return redirect(url_for("menu"))
 
 
+@app.route("/isFav/<recipe_id>", methods=["GET", "POST"])
+def isFav(recipe_id):
+    username = session["user"]
+    recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe_is_fav = recipe.get("is_fav")
+    if request.method == "POST":
+        if request.form.get("is_favourite"):
+            # If fav toggle is on and username in fav array do nothing
+            if username in recipe_is_fav:
+                pass
+            # If fav toggle is on and username is not in fav array add username
+            else:
+                recipes.update_one({"_id": ObjectId(recipe_id)},
+                                   {'$push': {"is_fav": username}})
+            flash(recipe.get("recipe_name") + " added to favourites")
+        else:
+            # If fav toggle is off and username in fav array remove username
+            if username in recipe_is_fav:
+                recipes.update_one({"_id": ObjectId(recipe_id)},
+                                   {'$pull': {"is_fav": username}})
+            # If fav toggle is off and username is not in fav array do nothing
+            else:
+                pass
+            flash(recipe.get("recipe_name") + " removed from favourites")
+
+        return redirect(url_for(
+                        "profile", username=session["user"]))
+
+
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
