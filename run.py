@@ -111,11 +111,9 @@ def profile(username):
 @app.route("/addRecipe", methods=["GET", "POST"])
 def addRecipe():
     if request.method == "POST":
-        is_favourite = "on" if request.form.get("is_favourite") else "off"
-        is_fav = [session["user"]] if request.form.get("is_favourite") else []
+        is_fav = [session["user"]] if request.form.get("is_fav") else []
         recipe = {
             "recipe_name": request.form.get("recipe_name").lower(),
-            "is_favourite": is_favourite,
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
@@ -141,10 +139,8 @@ def addRecipe():
 @app.route("/editRecipe/<recipe_id>", methods=["GET", "POST"])
 def editRecipe(recipe_id):
     if request.method == "POST":
-        is_favourite = "on" if request.form.get("is_favourite") else "off"
         edit = {'$set': {
             "recipe_name": request.form.get("recipe_name").lower(),
-            "is_favourite": is_favourite,
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
@@ -159,7 +155,7 @@ def editRecipe(recipe_id):
         username = session["user"]
         recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
         recipe_is_fav = recipe.get("is_fav")
-        if request.form.get("is_favourite"):
+        if request.form.get("is_fav"):
             # If fav toggle is on and username in fav array do nothing
             if username in recipe_is_fav:
                 pass

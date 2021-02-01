@@ -38,11 +38,11 @@
       <div class="form-row">
          <div class="col"></div>
          <div class="col-3">
-            <label class="switch" for="is_favourite">
-            {% if recipe.is_favourite == "on" %}
-            <input type="checkbox" name="is_favourite" id="is_favourite" checked>
+            <label class="switch" for="is_fav">
+            {% if session.user in recipe.is_fav %}
+                <input type="checkbox" name="is_fav" id="is_fav" checked>
             {% else %}
-            <input type="checkbox" name="is_favourite" id="is_favourite">
+                <input type="checkbox" name="is_fav" id="is_fav">
             {% endif %}
             <span class="on-off round"></span>
             </label>
@@ -55,7 +55,7 @@
       <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
          <div class="col"></div>
-        <!-- Slider value from app.js -->
+         <!-- Slider value from app.js -->
          <div class="col-11 text-left">
             <h4>Serves: <span id="serves-value"></span></h4>
          </div>
@@ -73,7 +73,7 @@
       </div>
       <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
-         <div class="col"></div>         
+         <div class="col"></div>
          <!-- Slider value from app.js -->
          <div class="col-11 text-left">
             <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
@@ -111,7 +111,7 @@
             <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                <div class="card-body">
                   <div id="ingredients-input">
-                      <!-- Populate ingredients boxes with correct number of names, quantities and units from recipe -->
+                     <!-- Populate ingredients boxes with correct number of names, quantities and units from recipe -->
                      {% for ingredient in ingredients %}
                      <div class="ingredients-input ingredients-input{{loop.index}}">
                         {% if loop.index == 1 %}
@@ -123,7 +123,6 @@
                            </div>
                            <div class="col"></div>
                         </div>
-                        <div></div>
                         {% endif %}
                         <!-- Ingredients name -->
                         <div class="form-row mt-0">
@@ -149,9 +148,9 @@
                                  <option value=""></option>
                                  <option value="g">g</option>
                                  <option value="ml">ml</option>
-                                 <option value="tsp"> tsp</option>
-                                 <option value="tbsp"> Tbsp</option>
-                                 <option value="can"> cans</option>
+                                 <option value=" tsp"> tsp</option>
+                                 <option value=" tbsp"> Tbsp</option>
+                                 <option value=" can"> cans</option>
                               </select>
                            </div>
                            <div class="col"></div>
@@ -193,7 +192,7 @@
                   <div class="form-row m-0">
                      <div class="col">
                         <ol class="mb-1 small-text" id="instructions-input">
-                            <!-- Populate instruction boxes with correct number of instructions from recipe -->
+                           <!-- Populate instruction boxes with correct number of instructions from recipe -->
                            {% for instruction in recipe.instructions %}
                            <div class="instructions-input instructions-input{{loop.index}}">
                               <li class="mb-1">
@@ -285,9 +284,9 @@
                <option value=""></option>
                <option value="g">g</option>
                <option value="ml">ml</option>
-               <option value="tsp"> tsp</option>
-               <option value="tbsp"> Tbsp</option>
-               <option value="can"> cans</option>
+               <option value=" tsp"> tsp</option>
+               <option value=" tbsp"> Tbsp</option>
+               <option value=" can"> cans</option>
             </select>
          </div>
          <div class="col"></div>

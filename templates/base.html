@@ -11,9 +11,9 @@
    <body>
       <!-- Navbar -->
       <nav class="navbar navbar-expand-md navbar-light fixed-top">
-        <!-- If user is logged in, Crockpot logo takes you to Profile -->
-        {% if session.user %} 
-        <a class="navbar-brand" href="{{ url_for('profile', username=session['user']) }}">
+         <!-- If user is logged in, Crockpot logo takes you to Profile -->
+         {% if session.user %} 
+         <a class="navbar-brand" href="{{ url_for('profile', username=session['user']) }}">
             <img id="logo-nav" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
          </a>
          <!-- If user is not logged in, Crockpot logo takes you to Home -->
@@ -65,18 +65,19 @@
       <!-- Push content beneath navbar -->
       <div class="filler-top"></div>
       <main>
+         <!-- Flash messages -->
          <header>
-            <!-- Flash messages -->
             {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="row flashed-messages">
-               <h4>{{ message }}</h4>
-            </div>
-            {% endfor %}
-            {% endif %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row flashed-messages">
+                            <h4>{{ message }}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             {% endwith %}
          </header>
+         <!-- Main content from templates -->
          {% block content %}
          {% endblock %}
       </main>

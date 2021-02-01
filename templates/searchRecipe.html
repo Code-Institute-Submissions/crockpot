@@ -24,7 +24,7 @@
    </div>
 </header>
 <section class="container-fluid">
-    <!-- Recipe search bar -->
+   <!-- Recipe search bar -->
    <div class="row m-0 pb-2">
       <div class="col"></div>
       <div class="col-11 p-0">
@@ -34,9 +34,9 @@
    </div>
    <div class="row m-0">
       <div class="col">
-        <!-- Filters/ingredients accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
+         <!-- Filters/ingredients accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
          <div id="accordion">
-             <!-- Filters dropdown -->
+            <!-- Filters dropdown -->
             <div class="card">
                <div class="card-header" id="accordion-searchrecipe-filters">
                   <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
@@ -45,7 +45,7 @@
                </div>
                <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
                   <div class="card-body">
-                    <!-- Favourite recipe, my recipe on/off switch filters - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
+                     <!-- Favourite recipe, my recipe on/off switch filters - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
                      <div class="row m-0">
                         <div class="col"></div>
                         <div class="col-3 p-0">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col"></div>
                      </div>
-                    <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                     <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
                      <div class="row m-0">
                         <div class="col"></div>
                         <!-- Slider value from app.js -->
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col"></div>
                      </div>
-                    <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                     <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
                      <div class="row m-0">
                         <div class="col"></div>
                         <!-- Slider value from app.js -->
@@ -120,7 +120,7 @@
                </div>
                <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                   <div class="card-body">
-                    <!-- Ingredients search bar -->
+                     <!-- Ingredients search bar -->
                      <div class="row m-0 pt-2">
                         <div class="col"></div>
                         <div class="col-11 p-0">
@@ -153,20 +153,20 @@
             {% if session.user %}
             <div class="row icon-row">
                <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
-                    {% if session.user in recipe.is_menu %}
-                        <button type="submit" class="icon icon-blue-selected shadow-box">
-                            <i class="fas fa-utensils"></i>
-                        </button>
-                    {% else %}
-                        <button type="submit" class="icon icon-blue shadow-box">
-                            <i class="fas fa-utensils"></i>
-                        </button>
-                    {% endif %}
-                </form>
+                  {% if session.user in recipe.is_menu %}
+                  <button type="submit" class="icon icon-blue-selected shadow-box">
+                  <i class="fas fa-utensils"></i>
+                  </button>
+                  {% else %}
+                  <button type="submit" class="icon icon-blue shadow-box">
+                  <i class="fas fa-utensils"></i>
+                  </button>
+                  {% endif %}
+               </form>
                <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
                {% if session.user|lower == recipe.created_by|lower %}
                <div class="col text-right">
-                   <!-- Edit page -->
+                  <!-- Edit page -->
                   <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                   <i class="fas fa-edit"></i>
                   </a>
@@ -182,7 +182,7 @@
                               <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
                            </div>
                            <div class="modal-footer">
-                               <!-- Delete recipe -->
+                              <!-- Delete recipe -->
                               <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
                               <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
                            </div>
