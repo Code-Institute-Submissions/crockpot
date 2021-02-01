@@ -40,9 +40,9 @@
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2">
                         <!-- Jinja code to show ingredients of menu items -->
-                        <!-- for recipe in fav_recipes 
-                           <li><input type="checkbox" id="checkbox loop.index " value="Tomatoes"><label for="checkbox loop.index "> recipe.ingredient_name </label></li>
-                           endfor   -->
+                        {% for ingredients in menu_ingredients %}
+                           <li><input type="checkbox" id="checkbox{{loop.index}}"><label for="checkbox{{loop.index}}">{{ingredients[0]}} x {{ingredients[1]}}{{ingredients[2]}}</label></li>
+                        {% endfor %}
                      </ul>
                   </div>
                </div>

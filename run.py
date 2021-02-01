@@ -260,10 +260,26 @@ def searchRecipe():
 
 @app.route("/menu")
 def menu():
-    menu_recipes = mongo.db.recipes.find({"is_menu": session["user"]})
+    menu_recipes = recipes.find({"is_menu": session["user"]})
+    ingredient_names = []
+    ingredient_quantities = []
+    ingredient_units = []
+
+    for recipe in menu_recipes:
+        ingredient_names += recipe["ingredient_name"]
+        ingredient_quantities += recipe["ingredient_quantity"]
+        ingredient_units += recipe["ingredient_unit"]
+        print(ingredient_names)
+        print(ingredient_quantities)
+        print(ingredient_units)
+
+    menu_ingredients = zip(ingredient_names,
+                           ingredient_quantities,
+                           ingredient_units)
 
     return render_template(
-        "menu.html", menu_recipes=menu_recipes)
+        "menu.html", menu_recipes=menu_recipes,
+        menu_ingredients=menu_ingredients)
 
 
 if __name__ == "__main__":
