@@ -275,99 +275,51 @@ def menu():
         i = 0
         imax = len(recipe_ingredient_ns) - 1
 
+        # Iterate through all ingredients names and corresponding quantities
+        # and units for each recipe
         while i <= imax:
             recipe_ingredient_n = recipe_ingredient_ns[i]
             recipe_ingredient_q = recipe_ingredient_qs[i]
             recipe_ingredient_u = recipe_ingredient_us[i]
 
+            # If ingredient name has already been added to list of menu
+            # ingredients names...
             if recipe_ingredient_n in menu_ingredient_ns:
-                # Find index of matching ingredient name
+                # ...find index of matching ingredient name
                 index = menu_ingredient_ns.index(recipe_ingredient_n)
+                # ...find quantities and units of matching ingredients
                 quantityOne = int(menu_ingredient_qs[index])
-                quantityTwo = int(recipe_ingredient_qs[i])
+                quantityTwo = int(recipe_ingredient_q)
                 unitOne = menu_ingredient_us[index]
-                unitTwo = recipe_ingredient_us[i]
-                # Add the quantity of ingredient i to ingredient index
+                unitTwo = recipe_ingredient_u
+                # If the units of the two matching ingredients are the same,
+                # sum the quantities and don't add ingredients name to list
                 if unitOne == unitTwo:
                     menu_ingredient_qs[index] = quantityOne + quantityTwo
+                # If the units of the two matching ingredients are not the
+                # same, do not sum the quantities and add ingredients name
+                # to list
                 else:
                     menu_ingredient_ns.append(recipe_ingredient_n)
                     menu_ingredient_qs.append(recipe_ingredient_q)
                     menu_ingredient_us.append(recipe_ingredient_u)
                 i += 1
+            # If ingredient name is not on list of menu ingredients names add
+            # ingredients name to list
             else:
                 menu_ingredient_ns.append(recipe_ingredient_n)
                 menu_ingredient_qs.append(recipe_ingredient_q)
                 menu_ingredient_us.append(recipe_ingredient_u)
                 i += 1
 
-            # if recipe_ingredient_name in menu_ingredient_ns:
-            #     index = menu_ingredient_ns.index(recipe_ingredient_name)
-            #     print(recipe_ingredient_qs)
-            #     print(recipe_ingredient_qs[i])
-            #     i += 1
-            # else:
-            #     menu_ingredient_ns.append(recipe_ingredient_name)
-            #     menu_ingredient_qs.append(recipe_ingredient_quantity)
-            #     menu_ingredient_us.append(recipe_ingredient_unit)
-            #     i += 1
-
-        print(menu_ingredient_ns)
-        print(menu_ingredient_qs)
-        print(menu_ingredient_us)
-
-    # for recipe in menu_recipes:
-    #     menu_ingredient_names.extend(recipe["ingredient_name"])
-    #     menu_ing_quantities.extend(recipe["ingredient_quantity"])
-    #     menu_ingredient_units.extend(recipe["ingredient_unit"])
-
-    # menu_ingredients = [menu_ingredient_names,
-    #                     menu_ingredient_quantities,
-    #                     menu_ingredient_units]
-    # print(menu_ingredient_names)
-    # print(menu_ingredient_quantities)
-    # print(menu_ingredient_units)
-    # print(menu_ingredients)
-
-    # # row[0] is ingredient name
-    # print(menu_ingredients[0][0])
-    # # row[1] is ingredient quantity
-    # print(menu_ingredients[1][0])
-    # # row[2] is ingredient unit
-    # print(menu_ingredients[2][0])
-    # print(len(menu_ingredients[0]))
-
-    # if ingredients name
-
-        # if ingredient is already in 
-
-        # ingredient_quantity = recipe["ingredient_quantity"]
-        # ingredient_unit = recipe["ingredient_unit"]
-        # for ingredients in ingredient_name:
-        #     if ingredients in ingredient_names:
-        #         pass
-        #     else:
-        #         ingredient_names.append(ingredients)
-        # print(ingredient_names)
-        # print(len(ingredient_name))
-
-    # for recipe in menu_recipes:
-    #     ingredient_names += recipe["ingredient_name"]
-    #     ingredient_quantities += recipe["ingredient_quantity"]
-    #     ingredient_units += recipe["ingredient_unit"]
-
-    # menu_ingredients = zip(ingredient_names,
-    #                        ingredient_quantities,
-    #                        ingredient_units)
-
-    # menu_recipes = recipes.find({"is_menu": session["user"]})
-    # return render_template(
-    #     "menu.html", menu_recipes=menu_recipes,
-    #     menu_ingredients=menu_ingredients)
+    menu_ingredients = zip(menu_ingredient_ns,
+                           menu_ingredient_qs,
+                           menu_ingredient_us)
 
     menu_recipes = recipes.find({"is_menu": session["user"]})
     return render_template(
-        "menu.html", menu_recipes=menu_recipes)
+        "menu.html", menu_recipes=menu_recipes,
+        menu_ingredients=menu_ingredients)
 
 
 if __name__ == "__main__":
