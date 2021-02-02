@@ -24,14 +24,27 @@
    </div>
 </header>
 <section class="container-fluid">
-   <!-- Recipe search bar -->
-   <div class="row m-0 pb-2">
-      <div class="col"></div>
-      <div class="col-11 p-0">
-         <input type="text" class="form-control" id="input-searchrecipe-recipe" placeholder="Search for a recipe!">
-      </div>
-      <div class="col"></div>
-   </div>
+<!-- Recipe search bar -->
+<form action="{{ url_for('search') }}" method="POST">
+    <div class="row m-0 pb-2">
+        <div class="col"></div>
+        <div class="col-11 p-0">
+            <input type="text" class="form-control" name="query" id="query" placeholder="Search for a recipe!" minlength="3" required>
+            <label for="query" class="sr-only">Search tasks</label>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="icon icon-blue-selected shadow-box">
+                <i class="fas fa-search"></i>
+            </button>
+            <a href="{{ url_for('searchReset') }}" class="icon icon-blue-selected shadow-box">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+</form>
    <div class="row m-0">
       <div class="col">
          <!-- Filters/ingredients accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
@@ -140,7 +153,7 @@
 </section>
 <!-- Display all recipes in database and filter depending on user input -->
 <section class="container-fluid">
-   {% for recipe in all_recipes %}
+   {% for recipe in recipes %}
    <div class="row pt-2">
       <div class="col"></div>
       <div class="col-11">

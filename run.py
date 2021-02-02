@@ -254,8 +254,15 @@ def viewRecipe(recipe_id):
 
 
 @app.route("/searchRecipe")
-def searchRecipe():
-    return render_template("searchRecipe.html", all_recipes=recipes.find())
+def searchReset():
+    return render_template("searchRecipe.html", recipes=recipes.find())
+
+
+@app.route("/searchRecipe", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("searchRecipe.html", recipes=recipes)
 
 
 @app.route("/menu")
