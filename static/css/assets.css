@@ -59,6 +59,10 @@ body {
     text-transform: capitalize;
 }
 
+.sentence::first-letter {
+    text-transform: capitalize;
+}
+
 .underline {
     text-decoration: underline;
 }

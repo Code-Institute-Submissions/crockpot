@@ -38,10 +38,10 @@
                <div id="collapse-menu-shoppinglist" class="collapse" aria-labelledby="accordion-menu-shoppinglist" data-parent="#accordion">
                   <div class="card-body">
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
-                     <ul class="ks-cboxtags mb-0 pt-2 pb-2">
+                     <ul class="ks-cboxtags mb-0 pt-2 pb-2" id="shopping-list">
                         <!-- Jinja code to show ingredients of menu items -->
                         {% for ingredients in menu_ingredients %}
-                           <li><input type="checkbox" id="checkbox{{loop.index}}"><label for="checkbox{{loop.index}}">{{ingredients[0]}} x {{ingredients[1]}}{{ingredients[2]}}</label></li>
+                           <li><input type="checkbox" id="checkbox{{loop.index}}"><label for="checkbox{{loop.index}}"><span class="capital">{{ingredients[0]}}</span> x {{ingredients[1]}}{{ingredients[2]}}</label></li>
                         {% endfor %}
                      </ul>
                   </div>

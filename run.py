@@ -117,7 +117,7 @@ def addRecipe():
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
-            "ingredient_name": request.form.getlist("ingredient_name"),
+            "ingredient_name": request.form.getlist("ingredient_name").lower(),
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
             "instructions": request.form.getlist("instructions"),
@@ -129,7 +129,7 @@ def addRecipe():
             "is_fav": is_fav
         }
         mongo.db.recipes.insert_one(recipe)
-        flash(recipe.get("recipe_name") + " Successfully Added")
+        flash(recipe.get("recipe_name") + " successfully added")
         return redirect(url_for(
                         "profile", username=session["user"]))
 
@@ -144,7 +144,7 @@ def editRecipe(recipe_id):
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
-            "ingredient_name": request.form.getlist("ingredient_name"),
+            "ingredient_name": request.form.getlist("ingredient_name").lower(),
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
             "instructions": request.form.getlist("instructions"),
@@ -264,6 +264,7 @@ def menu():
     # quantity = q
     # unit = u
     menu_recipes = recipes.find({"is_menu": session["user"]})
+    menu_ingredients = []
     menu_ingredient_ns = []
     menu_ingredient_qs = []
     menu_ingredient_us = []
@@ -312,9 +313,18 @@ def menu():
                 menu_ingredient_us.append(recipe_ingredient_u)
                 i += 1
 
-    menu_ingredients = zip(menu_ingredient_ns,
-                           menu_ingredient_qs,
-                           menu_ingredient_us)
+    # Put menu ingredient names, quantities and
+    # units into new list and sort alphabetically
+    j = 0
+    jmax = len(menu_ingredient_ns) - 1
+
+    while j <= jmax:
+        menu_ingredients.append([menu_ingredient_ns[j],
+                                 menu_ingredient_qs[j],
+                                 menu_ingredient_us[j]])
+        j += 1
+
+    menu_ingredients = (sorted(menu_ingredients, key=lambda x: x[0]))
 
     menu_recipes = recipes.find({"is_menu": session["user"]})
     return render_template(
