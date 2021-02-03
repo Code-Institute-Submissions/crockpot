@@ -270,9 +270,19 @@ def searchReset():
 
 @app.route("/searchRecipe", methods=["GET", "POST"])
 def search():
+    search_recipes = recipes.find()
+    search_ingredients = []
+
+    for recipe in search_recipes:
+        search_ingredients.extend(recipe["ingredient_name"])
+
+    search_ingredients = list(dict.fromkeys(search_ingredients))
+
     query = request.form.get("query")
-    search_recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("searchRecipe.html", search_recipes=search_recipes)
+    search_recipes = recipes.find({"$text": {"$search": query}})
+    print(({"$text": {"$search": query}}))
+    return render_template("searchRecipe.html", search_recipes=search_recipes,
+                           search_ingredients=(sorted(search_ingredients)))
 
 
 @app.route("/menu")
