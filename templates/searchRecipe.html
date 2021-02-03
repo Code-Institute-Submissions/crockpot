@@ -121,7 +121,7 @@
                   </button>
                </div>
                <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
-                  <div class="card-body">
+                  <div class="card-body" id="ingredients-list">
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2">
                          {% for ingredient in search_ingredients %}
@@ -136,7 +136,7 @@
    </div>
    <div class="row m-0 pb-3">
         <div class="col">
-            <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
+            <button type="submit" class="icon icon-blue icon-blue-md shadow-box" onclick="searchIngredients()">
                 <i class="fas fa-search"></i>
             </button>
             <a href="{{ url_for('searchReset') }}" class="icon icon-blue icon-blue-md shadow-box">
