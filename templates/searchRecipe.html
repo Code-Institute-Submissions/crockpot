@@ -34,32 +34,21 @@
         </div>
         <div class="col"></div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button type="submit" class="icon icon-blue-selected shadow-box">
-                <i class="fas fa-search"></i>
-            </button>
-            <a href="{{ url_for('searchReset') }}" class="icon icon-blue-selected shadow-box">
-                <i class="fas fa-times"></i>
-            </a>
-        </div>
-    </div>
-</form>
    <div class="row m-0">
       <div class="col">
          <!-- Filters/ingredients accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
          <div id="accordion">
             <!-- Filters dropdown -->
-            <div class="card">
+            <!-- <div class="card">
                <div class="card-header" id="accordion-searchrecipe-filters">
                   <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
                      <h3>Filters <i class="fas fa-angle-down"></i></h3>
                   </button>
                </div>
                <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
-                  <div class="card-body">
+                  <div class="card-body"> -->
                      <!-- Favourite recipe, my recipe on/off switch filters - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
-                     <div class="row m-0">
+                     <!-- <div class="row m-0">
                         <div class="col"></div>
                         <div class="col-3 p-0">
                            <label class="switch">
@@ -84,12 +73,12 @@
                            <h4 class="mt-2">My Recipe</h4>
                         </div>
                         <div class="col"></div>
-                     </div>
+                     </div> -->
                      <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                     <div class="row m-0">
-                        <div class="col"></div>
+                     <!-- <div class="row m-0">
+                        <div class="col"></div> -->
                         <!-- Slider value from app.js -->
-                        <div class="col-11 text-left">
+                        <!-- <div class="col-11 text-left">
                            <h4>Serves: <span id="serves-value"></span></h4>
                         </div>
                         <div class="col"></div>
@@ -102,15 +91,12 @@
                            </div>
                         </div>
                         <div class="col"></div>
-                     </div>
-                     <!-- Slider experiment -->
-                     
-                     
+                     </div> -->
                      <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                     <div class="row m-0">
-                        <div class="col"></div>
+                     <!-- <div class="row m-0">
+                        <div class="col"></div> -->
                         <!-- Slider value from app.js -->
-                        <div class="col-11 text-left">
+                        <!-- <div class="col-11 text-left">
                            <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
                         </div>
                         <div class="col"></div>
@@ -126,11 +112,11 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <!-- Ingredients dropdown -->
-            <div class="card pb-2">
+            <div class="card pb-1">
                <div class="card-header" id="accordion-searchrecipe-ingredients">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                  <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
                      <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
                   </button>
                </div>
@@ -138,22 +124,31 @@
                   <div class="card-body">
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2">
-                        <li><input type="checkbox" id="checkboxOne" value="Tomatoes"><label for="checkboxOne">Tomatoes</label></li>
-                        <li><input type="checkbox" id="checkboxTwo" value="Pasta" checked><label for="checkboxTwo">Pasta</label></li>
-                        <li><input type="checkbox" id="checkboxThree" value="Oregano" checked><label for="checkboxThree">Oregano</label></li>
-                        <li><input type="checkbox" id="checkboxFour" value="Cheese"><label for="checkboxFour">Cheese</label></li>
-                        <li><input type="checkbox" id="checkboxFive" value="Dark Chocolate"><label for="checkboxFive">Dark Chocolate</label></li>
-                     </ul>
+                         {% for ingredient in search_ingredients %}
+                        <li><input type="checkbox" id="{{ingredient}}" value="{{ingredient}}"><label class="capital" for="{{ingredient}}">{{ingredient}}</label></li>
+                        {% endfor %}
+                    </ul>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </div>
+   <div class="row m-0 pb-3">
+        <div class="col">
+            <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
+                <i class="fas fa-search"></i>
+            </button>
+            <a href="{{ url_for('searchReset') }}" class="icon icon-blue icon-blue-md shadow-box">
+                <i class="fas fa-redo-alt"></i>
+            </a>
+        </div>
+    </div>
+</form>
 </section>
 <!-- Display all recipes in database and filter depending on user input -->
 <section class="container-fluid">
-   {% for recipe in recipes %}
+   {% for recipe in search_recipes %}
    <div class="row pt-2">
       <div class="col"></div>
       <div class="col-11">

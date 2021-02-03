@@ -255,14 +255,24 @@ def viewRecipe(recipe_id):
 
 @app.route("/searchRecipe")
 def searchReset():
-    return render_template("searchRecipe.html", recipes=recipes.find())
+    search_recipes = recipes.find()
+    search_ingredients = []
+
+    for recipe in search_recipes:
+        search_ingredients.extend(recipe["ingredient_name"])
+
+    search_ingredients = list(dict.fromkeys(search_ingredients))
+
+    search_recipes = recipes.find()
+    return render_template("searchRecipe.html", search_recipes=search_recipes,
+                           search_ingredients=(sorted(search_ingredients)))
 
 
 @app.route("/searchRecipe", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("searchRecipe.html", recipes=recipes)
+    search_recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("searchRecipe.html", search_recipes=search_recipes)
 
 
 @app.route("/menu")
