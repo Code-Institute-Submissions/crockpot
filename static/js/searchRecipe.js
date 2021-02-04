@@ -1,3 +1,4 @@
+// Adds values of checked ingredients checkboxes to query string for search function
 function searchIngredients() {
     var ingredientsList = document.getElementById("ingredients-list");
     var ingredientsCheckbox = ingredientsList.getElementsByTagName("input");
@@ -15,6 +16,6 @@ function searchIngredients() {
         }
     }
 
-    console.log("Non checked boxes: " + ingredientsString);
-    console.log("Checked boxes: " + ingredientsStringChecked);
+    var query = document.getElementById('query');
+    query.value += ingredientsStringChecked;
 }
