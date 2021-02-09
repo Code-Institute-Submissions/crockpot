@@ -14,14 +14,14 @@
       <nav class="navbar navbar-expand-md navbar-light fixed-top">
          <!-- If user is logged in, Crockpot logo takes you to Profile -->
          {% if session.user %} 
-         <a class="navbar-brand" href="{{ url_for('profile', username=session['user']) }}">
-            <img id="logo-nav" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
-         </a>
+            <a class="navbar-brand" href="{{ url_for('profile', username=session['user']) }}">
+                <img id="logo-nav" src="{{ url_for('static', filename='images/logo-red.png') }}" alt="Red and white Crockpot logo"/>
+            </a>
          <!-- If user is not logged in, Crockpot logo takes you to Home -->
          {% else %}
-         <a class="navbar-brand" href="{{ url_for('index') }}">
-            <img id="logo-nav" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
-         </a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img id="logo-nav" src="{{ url_for('static', filename='images/logo-red.png') }}" alt="Red and white Crockpot logo"/>
+            </a>
          {% endif %}
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="fas fa-bars" id="navbar-custom-icon"></i></span>
@@ -86,23 +86,27 @@
       <footer>
          <div class="row row-footer">
             <div class="col">
-               <img id="logo-footer" src="{{ url_for('static', filename='images/logo-red.png') }}"/>
+               <img id="logo-footer" src="{{ url_for('static', filename='images/logo-red.png') }}" alt="Red and white Crockpot logo"/>
             </div>
          </div>
          <div class="row row-footer">
             <div class="col">
-               <div class="icon">
-                  <i class="fab fa-facebook-f"></i>
-               </div>
-               <div class="icon">
-                  <i class="fab fa-google"></i>
-               </div>
-               <div class="icon">
-                  <i class="fab fa-instagram"></i>
-               </div>
-               <div class="icon">
-                  <i class="fab fa-twitter"></i>
-               </div>
+               <a target="_blank" href="https://www.facebook.com" class="icon">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                <span class="sr-only">Facebook</span>
+               </a>
+               <a target="_blank" href="https://www.google.com" class="icon">
+                <i class="fab fa-google" aria-hidden="true"></i>
+                <span class="sr-only">Google</span>
+               </a>
+               <a target="_blank" href="https://www.instagram.com" class="icon">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+                <span class="sr-only">Instagram</span>
+               </a>
+               <a target="_blank" href="https://www.twitter.com" class="icon">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+                <span class="sr-only">Twitter</span>
+               </a>
             </div>
          </div>
          <div class="row row-footer mb-0">

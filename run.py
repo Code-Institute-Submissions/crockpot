@@ -101,7 +101,7 @@ def profile(username):
     my_recipes = mongo.db.recipes.find({"created_by": username})
     fav_recipes = mongo.db.recipes.find({"is_fav": username})
 
-    if session["user"]:)
+    if session["user"]:
         return render_template("profile.html",
                                username=username, my_recipes=my_recipes,
                                fav_recipes=fav_recipes)

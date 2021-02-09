@@ -94,7 +94,7 @@ body {
 
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, .h3, h4, h5, h6 {
     color: #2C497F;
     margin: 0;
 }
@@ -109,7 +109,7 @@ h2 {
     font-size: 2em;
 }
 
-h3 {
+h3, .h3 {
     font-weight: 500;
     font-size: 1.75em;
 }
@@ -338,7 +338,8 @@ hr {
 	width: 50px;
 	height: 50px;
 	padding: 3px 0;
-	border-radius: 50%;
+    border-radius: 50%;
+    color: #eeeeee;
 	border: solid 4px #eeeeee;
 	font-size: 25px;
 	text-align: center;
