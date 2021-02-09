@@ -30,7 +30,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="75" required>
+            <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength="5" maxlength="75" pattern="[a-zA-Z ]{5,75}" required oninvalid="this.setCustomValidity('Recipe Name should be between 5 and 75 characters long with no special characters.')" oninput="this.setCustomValidity('')">
             <label for="recipe_name" class="sr-only">Recipe name</label>
          </div>
          <div class="col"></div>
@@ -91,7 +91,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="150">
+            <input type="text" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5">
             <label for="image_url" class="sr-only">Image URL</label>
          </div>
          <div class="col"></div>
@@ -113,7 +113,7 @@
                         <div class="form-row mt-0">
                            <div class="col"></div>
                            <div class="col-11">
-                              <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="30" required>
+                              <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="30" pattern="[a-zA-Z ]{3,30}" required oninvalid="this.setCustomValidity('Ingredient Name should be between 3 and 30 characters long with no special characters.')" oninput="this.setCustomValidity('')">
                               <label for="ingredient_name" class="sr-only">Ingredients</label>
                            </div>
                            <div class="col"></div>
@@ -122,7 +122,7 @@
                            <div class="col"></div>
                            <!-- Ingredients quantity -->
                            <div class="col-4">
-                              <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required>
+                              <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required pattern="[0-9]" oninvalid="this.setCustomValidity('Ingredient Quantity should be a number.')" oninput="this.setCustomValidity('')">
                               <label for="ingredient_quantity" class="sr-only">Quantity</label>
                            </div>
                            <!-- Ingredients unit -->
@@ -177,7 +177,7 @@
                         <ol class="mb-1 small-text" id="instructions-input">
                            <div class="instructions-input">
                               <li class="mb-1">
-                                 <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
+                                 <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')" oninput="this.setCustomValidity('')">
                                  <label for="instructions" class="sr-only">Instructions</label>
                               </li>
                            </div>
@@ -210,7 +210,7 @@
       <div class="form-row">
          <div class="col"></div>
          <div class="col-11">
-            <input type="textarea" class="form-control" name="tips" id="tips" placeholder="Any top tips?" minlength="5" maxlength="200">
+            <input type="textarea" class="form-control" name="tips" id="tips" placeholder="Any top tips?" minlength="5" maxlength="200" oninvalid="this.setCustomValidity('Top tips should be between 5 and 200 characters long.')" oninput="this.setCustomValidity('')">
             <label for="tips" class="sr-only">Top tips</label>
          </div>
          <div class="col"></div>
@@ -219,7 +219,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="source" id="source" placeholder="Where's your recipe from?" minlength="5" maxlength="50">
+            <input type="text" class="form-control" name="source" id="source" placeholder="Where's your recipe from?" minlength="5" maxlength="50" oninvalid="this.setCustomValidity('Source should be between 5 and 50 characters long.')" oninput="this.setCustomValidity('')">
             <label for="source" class="sr-only">Source</label>
          </div>
          <div class="col"></div>
@@ -247,7 +247,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-11">
-            <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="50" required>
+            <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredients" minlength="3" maxlength="30" pattern="[a-zA-Z ]{3,30}" required oninvalid="this.setCustomValidity('Ingredient Name should be between 3 and 30 characters long with no special characters.')" oninput="this.setCustomValidity('')">
             <label for="ingredient_name" class="sr-only">Ingredients</label>
          </div>
          <div class="col"></div>
@@ -255,7 +255,7 @@
       <div class="form-row mt-0">
          <div class="col"></div>
          <div class="col-4">
-            <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required>
+            <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required pattern="[0-9]" oninvalid="this.setCustomValidity('Ingredient Quantity should be a number.')" oninput="this.setCustomValidity('')">
             <label for="ingredient_quantity" class="sr-only">Quantity</label>
          </div>
          <div class="col-7">
@@ -277,7 +277,7 @@
 <template id="instructions-input-template">
    <div class="instructions-input">
       <li class="mb-1">
-         <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required>
+         <input type="textarea" class="form-control" name="instructions" placeholder="Instructions" minlength="5" maxlength="150" required oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')" oninput="this.setCustomValidity('')">
          <label for="instructions" class="sr-only">Instructions</label>
       </li>
    </div>
