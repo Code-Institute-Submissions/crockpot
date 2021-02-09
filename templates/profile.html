@@ -113,6 +113,8 @@
                </div>
                {% endfor %}
             </div>
+            {% if my_recipes.count() == 1 %}
+            {% else %}
             <a class="carousel-control carousel-control-prev" href="#carousel-my" role="button" data-slide="prev">
             <span class="prev-icon" aria-hidden="true">
             <i class="fas fa-chevron-left text-left"></i>
@@ -125,6 +127,7 @@
             </span>
             <span class="sr-only">Next</span>
             </a>
+            {% endif %}
          </div>
       </div>
    </div>
@@ -281,6 +284,8 @@
                </div>
                {% endfor %}
             </div>
+            {% if fav_recipes.count() == 1 %}
+            {% else %}
             <a class="carousel-control carousel-control-prev" href="#carousel-fav" role="button" data-slide="prev">
             <span class="prev-icon" aria-hidden="true">
             <i class="fas fa-chevron-left text-left"></i>
@@ -293,6 +298,7 @@
             </span>
             <span class="sr-only">Next</span>
             </a>
+            {% endif %}
          </div>
       </div>
    </div>
