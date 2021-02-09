@@ -98,7 +98,7 @@
       <div class="col-12">
          <div class="recipe-card">
             <div class="recipe-card-overlay border-white">
-               <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+               <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
             </div>
          </div>
       </div>
@@ -144,8 +144,8 @@
       <!-- Ingredients dropdown -->
       <div class="card pb-2">
          <div class="card-header" id="accordion-searchrecipe-ingredients">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
-               <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
+            <button class="btn btn-link collapsed h3" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+               Ingredients <i class="fas fa-angle-down"></i>
             </button>
          </div>
          <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
@@ -162,8 +162,8 @@
       <!-- Instructions dropdown -->
       <div class="card pb-2">
          <div class="card-header" id="accordion-searchrecipe-filters">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
-               <h3>Instructions <i class="fas fa-angle-down"></i></h3>
+            <button class="btn btn-link h3" data-toggle="collapse" data-target="#collapse-searchrecipe-filters" aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+               Instructions <i class="fas fa-angle-down"></i>
             </button>
          </div>
          <div id="collapse-searchrecipe-filters" class="collapse" aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
