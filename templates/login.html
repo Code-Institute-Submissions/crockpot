@@ -4,13 +4,13 @@
 <!-- Hero Image -->
 <section class="container-fluid container-hero">
    <div class="hero-image">
-      <span class="sr-only">Food image</span>
+      <span class="sr-only">A large spread of food on a table</span>
    </div>
    <div class="hero-image-overlay">
       <div id="hero-image-overlay-login">
          <div class="row">
             <div class="col">
-               <img id="logo-login" src="static/images/logo-red-no-bg.png"/>
+               <img id="logo-login" src="static/images/logo-red-no-bg.png" alt="Red and white Crockpot logo"/>
             </div>
          </div>
          <form method="POST" action="{{ url_for('login') }}">
@@ -18,8 +18,8 @@
             <div class="form-row">
                <div class="col-1"></div>
                <div class="col">
-                  <label for="input-username-login">
-                     <h3 class="heading-light">Username</h3>
+                  <label for="input-username-login" class="h3 heading-light">
+                     Username
                   </label>
                   <input name="input-username-login" type="text" class="form-control" id="input-username-login" placeholder="username" minlength="5"
                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
@@ -30,8 +30,8 @@
             <div class="form-row">
                <div class="col-1"></div>
                <div class="col">
-                  <label for="input-password-login">
-                     <h3 class="heading-light">Password</h3>
+                  <label for="input-password-login" class="h3 heading-light">
+                     Password
                   </label>
                   <input name="input-password-login" type="password" class="form-control" id="input-password-login" placeholder="password" minlength="5"
                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>

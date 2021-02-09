@@ -1,14 +1,15 @@
 // Modal controls
-function openModalView() {
-    idNumModal = document.getElementById("modal-delete");
-    $(idNumModal).removeClass("hidden");
-}
+    // function openModalView() {
+    //     idNumModal = document.getElementById("modal-delete");
+    //     $(idNumModal).removeClass("hidden");
+    // }
 
-function closeModalView() {
-    idNumModal = document.getElementById("modal-delete");
-    $(idNumModal).addClass("hidden");
-}
+    // function closeModalView() {
+    //     idNumModal = document.getElementById("modal-delete");
+    //     $(idNumModal).addClass("hidden");
+    // }
 
+// Non-profile
 function openModal() {
     var target = event.target || event.srcElement;
     var id = target.id;
@@ -23,6 +24,43 @@ function closeModal() {
     var id = target.id;
     var idNum = id.slice(-1);
     var idNumModal = document.getElementById("modal-delete" + idNum);
+
+    $(idNumModal).addClass("hidden");
+}
+
+// Profile
+function openModalMy() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete-my-recipe" + idNum);
+
+    $(idNumModal).removeClass("hidden");
+}
+
+function closeModalMy() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete-my-recipe" + idNum);
+
+    $(idNumModal).addClass("hidden");
+}
+
+function openModalFav() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete-fav-recipe" + idNum);
+
+    $(idNumModal).removeClass("hidden");
+}
+
+function closeModalFav() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.slice(-1);
+    var idNumModal = document.getElementById("modal-delete-fav-recipe" + idNum);
 
     $(idNumModal).addClass("hidden");
 }

@@ -31,8 +31,8 @@
             <!-- Shopping list dropdown -->
             <div class="card pb-2">
                <div class="card-header" id="accordion-menu-shoppinglist">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-menu-shoppinglist" aria-expanded="false" aria-controls="collapse-menu-shoppinglist">
-                     <h3>Shopping List <i class="fas fa-angle-down"></i></h3>
+                  <button class="btn btn-link collapsed h3" data-toggle="collapse" data-target="#collapse-menu-shoppinglist" aria-expanded="false" aria-controls="collapse-menu-shoppinglist">
+                     Shopping List <i class="fas fa-angle-down"></i>
                   </button>
                </div>
                <div id="collapse-menu-shoppinglist" class="collapse" aria-labelledby="accordion-menu-shoppinglist" data-parent="#accordion">
@@ -41,7 +41,12 @@
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2" id="shopping-list">
                         <!-- Jinja code to show ingredients of menu items -->
                         {% for ingredients in menu_ingredients %}
-                           <li><input type="checkbox" id="checkbox{{loop.index}}"><label for="checkbox{{loop.index}}"><span class="capital">{{ingredients[0]}}</span> x {{ingredients[1]}}{{ingredients[2]}}</label></li>
+                           <li>
+                               <input type="checkbox" id="checkbox{{loop.index}}">
+                               <label for="checkbox{{loop.index}}">
+                                   <span class="capital">{{ingredients[0]}}</span> x {{ingredients[1]}}{{ingredients[2]}}
+                                </label>
+                            </li>
                         {% endfor %}
                      </ul>
                   </div>

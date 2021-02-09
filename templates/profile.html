@@ -78,11 +78,11 @@
                                     <i class="fas fa-edit"></i>
                                     </a>
                                     <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
-                                    <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
-                                       <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
+                                    <div class="icon icon-blue" id="delete-my-recipe-open{{loop.index}}" onclick="openModalMy()">
+                                       <i class="fas fa-trash-alt" id="delete-my-recipe-open-icon{{loop.index}}" onclick="openModalMy()"></i>
                                     </div>
                                     <!-- Modal -->
-                                    <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
+                                    <div class="modal-delete hidden" id="modal-delete-my-recipe{{loop.index}}">
                                        <div class="modal-dialog">
                                           <div class="modal-content text-center">
                                              <div class="modal-body">
@@ -91,7 +91,7 @@
                                              <div class="modal-footer">
                                                 <!-- Delete recipe -->
                                                 <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
+                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-my-recipe-close{{loop.index}}" onclick="closeModalMy()">No</button>
                                              </div>
                                           </div>
                                        </div>
@@ -249,11 +249,11 @@
                                     <i class="fas fa-edit"></i>
                                     </a>
                                     <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
-                                    <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
-                                       <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}" onclick="openModal()"></i>
+                                    <div class="icon icon-blue" id="delete-fav-recipe-open{{loop.index}}" onclick="openModalFav()">
+                                       <i class="fas fa-trash-alt" id="delete-fav-recipe-open-icon{{loop.index}}" onclick="openModalFav()"></i>
                                     </div>
                                     <!-- Modal -->
-                                    <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
+                                    <div class="modal-delete hidden" id="modal-delete-fav-recipe{{loop.index}}">
                                        <div class="modal-dialog">
                                           <div class="modal-content text-center">
                                              <div class="modal-body">
@@ -262,7 +262,7 @@
                                              <div class="modal-footer">
                                                 <!-- Delete recipe -->
                                                 <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-recipe-close{{loop.index}}" onclick="closeModal()">No</button>
+                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-fav-recipe-close{{loop.index}}" onclick="closeModalFav()">No</button>
                                              </div>
                                           </div>
                                        </div>

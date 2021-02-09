@@ -10,7 +10,7 @@
       <div id="hero-image-overlay-signup">
          <div class="row">
             <div class="col">
-               <img id="logo-signup" src="static/images/logo-red-no-bg.png"/>
+               <img id="logo-signup" src="static/images/logo-red-no-bg.png" alt="Red and white Crockpot logo"/>
             </div>
          </div>
          <form method="POST" action="{{ url_for('signup') }}">
@@ -18,8 +18,8 @@
             <div class="form-row">
                <div class="col-1"></div>
                <div class="col">
-                  <label for="input-username-signup">
-                     <h3 class="heading-light">Username</h3>
+                  <label for="input-username-signup" class="h3 heading-light">
+                     Username
                   </label>
                   <input name="input-username-signup" type="text" class="form-control" id="input-username-signup" placeholder="username" minlength="5"
                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required oninvalid="this.setCustomValidity('Instructions should be between 5 and 15 characters long with no special characters.')" oninput="this.setCustomValidity('')">
@@ -30,8 +30,8 @@
             <div class="form-row">
                <div class="col-1"></div>
                <div class="col">
-                  <label for="input-password-signup">
-                     <h3 class="heading-light">Password</h3>
+                  <label for="input-password-signup" class="h3 heading-light">
+                     Password
                   </label>
                   <input name="input-password-signup" type="password" class="form-control" id="input-password-signup" placeholder="password" minlength="5"
                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required oninvalid="this.setCustomValidity('Password should be between 5 and 15 characters long with no special characters.')" oninput="this.setCustomValidity('')">
