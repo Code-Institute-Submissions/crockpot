@@ -25,7 +25,8 @@ date_string = now.strftime("%d/%m/%Y")
 
 @app.route("/")
 def index():
-    return render_template("index.html", featured_recipes=recipes.find())
+    featured_recipes = recipes.find().skip(recipes.count() - 3)
+    return render_template("index.html", featured_recipes=featured_recipes)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -40,10 +41,10 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get(
                     "input-password-login")):
-                    session["user"] = request.form.get(
-                        "input-username-login").lower()
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                session["user"] = request.form.get(
+                    "input-username-login").lower()
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")

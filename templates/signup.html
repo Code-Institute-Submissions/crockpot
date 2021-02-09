@@ -22,7 +22,7 @@
                      <h3 class="heading-light">Username</h3>
                   </label>
                   <input name="input-username-signup" type="text" class="form-control" id="input-username-signup" placeholder="username" minlength="5"
-                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required oninvalid="this.setCustomValidity('Instructions should be between 5 and 15 characters long with no special characters.')" oninput="this.setCustomValidity('')">
                </div>
                <div class="col-1"></div>
             </div>
@@ -34,7 +34,7 @@
                      <h3 class="heading-light">Password</h3>
                   </label>
                   <input name="input-password-signup" type="password" class="form-control" id="input-password-signup" placeholder="password" minlength="5"
-                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required oninvalid="this.setCustomValidity('Password should be between 5 and 15 characters long with no special characters.')" oninput="this.setCustomValidity('')">
                </div>
                <div class="col-1"></div>
             </div>
