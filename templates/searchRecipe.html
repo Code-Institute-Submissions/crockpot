@@ -41,8 +41,8 @@
             <!-- Ingredients dropdown -->
             <div class="card pb-1">
                <div class="card-header" id="accordion-searchrecipe-ingredients">
-                  <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
-                     <h3>Ingredients <i class="fas fa-angle-down"></i></h3>
+                  <button type="button" class="btn btn-link collapsed h3" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients" aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                     Ingredients <i class="fas fa-angle-down"></i>
                   </button>
                </div>
                <div id="collapse-searchrecipe-ingredients" class="collapse" aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
@@ -50,7 +50,10 @@
                      <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
                      <ul class="ks-cboxtags mb-0 pt-2 pb-2">
                          {% for ingredient in search_ingredients %}
-                        <li><input type="checkbox" id="{{ingredient}}" value="{{ingredient}}"><label class="capital" for="{{ingredient}}">{{ingredient}}</label></li>
+                        <li>
+                            <input type="checkbox" id="{{ingredient}}" value="{{ingredient}}">
+                            <label class="capital" for="{{ingredient}}">{{ingredient}}</label>
+                        </li>
                         {% endfor %}
                     </ul>
                   </div>
