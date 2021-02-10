@@ -9,96 +9,113 @@
    <div class="hero-image-overlay">
       <div id="hero-image-overlay-home">
          <div class="row">
+            <div class="col-1 col-lg-2"></div>
             <div class="col">
                <img id="logo-home" src="{{ url_for('static', filename='images/logo-red-no-bg.png') }}" alt="Red and white Crockpot logo"/>
             </div>
+            <div class="col-1 col-lg-6"></div>
          </div>
          <div class="row">
-            <div class="col-1"></div>
+            <div class="col-1 col-lg-2"></div>
             <div class="col">
                <h2 class="heading-light">Put the lid on boring meal plans and get inspired today!</h2>
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 col-lg-6"></div>
          </div>
          <!-- Links to Sign Up and Log In pages -->
          <div class="row mb-0">
+             <div class="col-1 col-lg-2"></div>
             <div class="col">
                <div class="nav-item">
                   <a class="nav-link nav-btn nav-btn-red" role="button" href="{{ url_for('signup') }}">Sign Up</a>
                </div>
             </div>
+            <div class="col-1 col-lg-6"></div>
          </div>
          <div class="row mt-0">
+             <div class="col-1 col-lg-2"></div>
             <div class="col">
                <h5 class="heading-light">Have an account?</h5>
                <h5 class="heading-light">Log in <a class="heading-light underline" href="{{ url_for('login') }}">here</a></h5>
             </div>
+            <div class="col-1 col-lg-6"></div>
          </div>
       </div>
    </div>
 </section>
 <!-- Description of site functionality -->
 <section class="container-fluid">
-   <div class="row pt-3">
-      <div class="col">
-         <div class="icon-blue-lg shadow-box">
-            <i class="fas fa-check"></i>
-            <span class="sr-only">Tick</span>
-         </div>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col"></div>
-      <div class="col-11">
-         <h5>All of your recipes in one convenient place</h5>
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row">
-      <div class="col">
-         <div class="icon-blue-lg shadow-box">
-            <i class="fas fa-plus"></i>
-            <span class="sr-only">Plus</span>
-         </div>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col"></div>
-      <div class="col-11">
-         <h5>Upload your old favourites to our community database</h5>
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row">
-      <div class="col">
-         <div class="icon-blue-lg shadow-box">
-            <i class="fas fa-search"></i>
-            <span class="sr-only">Search</span>
-         </div>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col"></div>
-      <div class="col-11">
-         <h5>Search for new inspiration based on what ingredients you have in the cupboard</h5>
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row">
-      <div class="col">
-         <div class="icon-blue-lg shadow-box">
-            <i class="fas fa-utensils"></i>
-            <span class="sr-only">Cutlery</span>
-         </div>
-      </div>
-   </div>
-   <div class="row pb-3">
-      <div class="col"></div>
-      <div class="col-11">
-         <h5>Add meals to your menu and head to the grocery store with your personalised shopping list</h5>
-      </div>
-      <div class="col"></div>
-   </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-1 col-lg-2"></div>
+        <div class="col">
+            <div class="row pt-3">
+                <div class="d-none d-md-flex col-md-1 col-lg-2"></div>
+                <div class="col col-md-2">
+                    <div class="icon-blue-lg shadow-box">
+                        <i class="fas fa-check"></i>
+                        <span class="sr-only">Tick</span>
+                    </div>
+                </div>
+                <div class="d-none d-md-flex align-items-center justify-content-center col-md-8 col-lg-6">
+                    <h5>All of your recipes in one convenient place</h5>
+                </div>
+                <div class="d-none d-md-flex col-md-1 col-lg-2"></div>
+            </div>
+            <div class="row d-md-none">
+                <div class="col"></div>
+                <div class="col-11">
+                    <h5>All of your recipes in one convenient place</h5>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="icon-blue-lg shadow-box">
+                        <i class="fas fa-plus"></i>
+                        <span class="sr-only">Plus</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <h5>Upload your old favourites to our community database</h5>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="icon-blue-lg shadow-box">
+                        <i class="fas fa-search"></i>
+                        <span class="sr-only">Search</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-11">
+                    <h5>Search for new inspiration based on what ingredients you have in the cupboard</h5>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="icon-blue-lg shadow-box">
+                        <i class="fas fa-utensils"></i>
+                        <span class="sr-only">Cutlery</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col"></div>
+                <div class="col-11">
+                    <h5>Add meals to your menu and head to the grocery store with your personalised shopping list</h5>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-1 col-lg-2"></div>
+    </div>
 </section>
 <!-- Featured recipes from site - 3 most recent additions -->
 <section class="container-fluid">
