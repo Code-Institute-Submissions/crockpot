@@ -113,12 +113,19 @@ def profile(username):
 def addRecipe():
     if request.method == "POST":
         is_fav = [session["user"]] if request.form.get("is_fav") else []
+
+        ingredient_names = request.form.getlist("ingredient_name")
+        ingredient_names_reformat = []
+        for ingredient in ingredient_names:
+            ingredient_new = ingredient.replace(' ', '-').lower()
+            ingredient_names_reformat.append(ingredient_new)
+
         recipe = {
             "recipe_name": request.form.get("recipe_name").lower(),
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
             "image_url": request.form.get("image_url"),
-            "ingredient_name": request.form.getlist("ingredient_name"),
+            "ingredient_name": ingredient_names_reformat,
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
             "instructions": request.form.getlist("instructions"),
@@ -131,6 +138,7 @@ def addRecipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash(recipe.get("recipe_name") + " successfully added")
+
         return redirect(url_for(
                         "profile", username=session["user"]))
 
