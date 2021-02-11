@@ -1,4 +1,5 @@
 import os
+import re
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -119,7 +120,6 @@ def addRecipe():
         for ingredient in ingredient_names:
             ingredient_new = ingredient.lower().title().replace(' ', '')
             ingredient_names_reformat.append(ingredient_new)
-        print(ingredient_names_reformat)
 
         recipe = {
             "recipe_name": request.form.get("recipe_name").lower(),
@@ -152,7 +152,7 @@ def editRecipe(recipe_id):
         ingredient_names = request.form.getlist("ingredient_name")
         ingredient_names_reformat = []
         for ingredient in ingredient_names:
-            ingredient_new = ingredient.replace(' ', '-').lower()
+            ingredient_new = ingredient.lower().title().replace(' ', '')
             ingredient_names_reformat.append(ingredient_new)
 
         edit = {'$set': {
@@ -261,15 +261,23 @@ def deleteRecipe(recipe_id):
 @app.route("/viewRecipe/<recipe_id>")
 def viewRecipe(recipe_id):
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
-    ingredients = zip(recipe["ingredient_name"],
+
+    ingredient_names = recipe["ingredient_name"]
+    ingredient_names_reformat = []
+    for ingredient in ingredient_names:
+        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+        ingredient_names_reformat.append(ingredient_new)
+
+    ingredients = zip(ingredient_names_reformat,
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
-    print(recipe["image_url"])
-    print(len(recipe["image_url"]))
+
     return render_template(
         "viewRecipe.html", recipe=recipe, ingredients=ingredients)
 
 
+# Resets search results
 @app.route("/searchRecipe")
 def searchReset():
     search_recipes = recipes.find()
@@ -280,11 +288,20 @@ def searchReset():
 
     search_ingredients = list(dict.fromkeys(search_ingredients))
 
+    search_ingredients_reformat = []
+    for ingredient in search_ingredients:
+        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+        search_ingredients_reformat.append(ingredient_new)
+
+    search_ingredients = search_ingredients_reformat
+
     search_recipes = recipes.find()
     return render_template("searchRecipe.html", search_recipes=search_recipes,
                            search_ingredients=(sorted(search_ingredients)))
 
 
+# New search
 @app.route("/searchRecipe", methods=["GET", "POST"])
 def search():
     search_recipes = recipes.find()
@@ -294,6 +311,14 @@ def search():
         search_ingredients.extend(recipe["ingredient_name"])
 
     search_ingredients = list(dict.fromkeys(search_ingredients))
+
+    search_ingredients_reformat = []
+    for ingredient in search_ingredients:
+        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+        search_ingredients_reformat.append(ingredient_new)
+
+    search_ingredients = search_ingredients_reformat
 
     query = request.form.get("query")
     search_recipes = recipes.find({"$text": {"$search": query}})
