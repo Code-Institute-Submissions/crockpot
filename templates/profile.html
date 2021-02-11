@@ -100,7 +100,11 @@
                                  {% endif %}
                               </div>
                               <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+                                {% if recipe.image_url|length == 0 %}
+                                    <img id="logo-view-thumbnail-my" src="{{ url_for('static', filename='images/logo-darkblue.png') }}" alt="Dark blue Crockpot logo"/>
+                                {% else %} 
+                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                {% endif %}
                                  <div class="row recipe-card-title">
                                     <h3 class="capital">{{ recipe.recipe_name }}</h3>
                                  </div>
@@ -271,7 +275,11 @@
                                  {% endif %}
                               </div>
                               <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                 <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="">
+                                 {% if recipe.image_url|length == 0 %}
+                                    <img id="logo-view-thumbnail-fav" src="{{ url_for('static', filename='images/logo-darkblue.png') }}" alt="Dark blue Crockpot logo"/>
+                                {% else %} 
+                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                {% endif %}
                                  <div class="row recipe-card-title">
                                     <h3 class="capital">{{ recipe.recipe_name }}</h3>
                                  </div>

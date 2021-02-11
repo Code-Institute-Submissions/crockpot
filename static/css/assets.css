@@ -175,6 +175,16 @@ footer {
 	height: 60px;
 }
 
+#logo-view-page {
+    width: 90%;
+    padding-top: 20%;
+}
+
+#logo-view-thumbnail, #logo-view-thumbnail-my, #logo-view-thumbnail-fav {
+    width: 90%;
+    padding-top: 6%;
+}
+
 #logo-footer {
 	width: 200px;
 }

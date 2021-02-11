@@ -249,7 +249,8 @@ def viewRecipe(recipe_id):
     ingredients = zip(recipe["ingredient_name"],
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
-
+    print(recipe["image_url"])
+    print(len(recipe["image_url"]))
     return render_template(
         "viewRecipe.html", recipe=recipe, ingredients=ingredients)
 
