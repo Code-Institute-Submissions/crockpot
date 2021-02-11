@@ -193,7 +193,15 @@ def editRecipe(recipe_id):
                         "profile", username=session["user"]))
 
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
-    ingredients = zip(recipe["ingredient_name"],
+    
+    ingredient_names = recipe["ingredient_name"]
+    ingredient_names_reformat = []
+    for ingredient in ingredient_names:
+        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+        ingredient_names_reformat.append(ingredient_new)
+
+    ingredients = zip(ingredient_names_reformat,
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
     return render_template(
