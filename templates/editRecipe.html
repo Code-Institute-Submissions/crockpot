@@ -24,7 +24,7 @@
 </header>
 <!-- Edit Recipe form -->
 <section class="container-fluid">
-   <form method="POST" action="{{ url_for('editRecipe', recipe_id=recipe._id) }}">
+   <form method="POST" action="{{ url_for('editRecipeSave', recipe_id=recipe._id) }}">
       <!-- Recipe name -->
       <div class="form-row mt-0">
          <div class="col"></div>
@@ -128,7 +128,7 @@
                         <div class="form-row mt-0">
                            <div class="col"></div>
                            <div class="col-11">
-                              <input type="text" class="form-control" name="ingredient_name{{loop.index}}" value="{{ingredient[0]}}" placeholder="Ingredients" minlength="3" maxlength="30" required>
+                              <input type="text" class="form-control" name="ingredient_name" id="ingredient_name{{loop.index}}" value="{{ingredient[0]}}" placeholder="Ingredients" minlength="3" maxlength="30" required>
                               <label for="ingredient_name{{loop.index}}" class="sr-only">Ingredients</label>
                            </div>
                            <div class="col"></div>
@@ -137,13 +137,13 @@
                            <div class="col"></div>
                            <!-- Ingredients quantity -->
                            <div class="col-4">
-                              <input type="number" class="form-control" name="ingredient_quantity{{loop.index}}" value="{{ingredient[1]}}" placeholder="Quantity" required>
+                              <input type="number" class="form-control" name="ingredient_quantity" id="ingredient_quantity{{loop.index}}" value="{{ingredient[1]}}" placeholder="Quantity" required>
                               <label for="ingredient_quantity{{loop.index}}" class="sr-only">Quantity</label>
                            </div>
                            <!-- Ingredients unit -->
                            <div class="col-7">
                               <label for="ingredient_unit{{loop.index}}" class="sr-only">Unit</label>
-                              <select class="form-control" name="ingredient_unit{{loop.index}}">
+                              <select class="form-control" name="ingredient_unit" id="ingredient_unit{{loop.index}}">
                                  <option label="{{ingredient[2]}}" value="{{ingredient[2]}}"></option>
                                  <option label="" value=""></option>
                                  <option label="g" value="g"></option>
@@ -196,7 +196,7 @@
                            {% for instruction in recipe.instructions %}
                            <div class="instructions-input instructions-input{{loop.index}}">
                               <li class="mb-1">
-                                 <input type="text" class="form-control" name="instructions{{loop.index}}" value="{{instruction}}" placeholder="Instructions" minlength="5" maxlength="150" required>
+                                 <input type="text" class="form-control" name="instructions" id="instructions{{loop.index}}" value="{{instruction}}" placeholder="Instructions" minlength="5" maxlength="150" required>
                                  <label for="instructions{{loop.index}}" class="sr-only">Instructions</label>
                               </li>
                            </div>
@@ -250,6 +250,9 @@
             <button class="nav-item nav-btn nav-btn-blue nav-btn-long" type="submit">
                 Save Changes
             </button>
+            <!-- <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" type="submit" role="button" href=" url_for('editRecipeSave', recipe_id=recipe._id) }}">Save Changes</a>
+            </div> -->
          </div>
       </div>
    </form>

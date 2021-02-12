@@ -151,6 +151,7 @@ The images on the website at the point of submission are from unsplash.com and h
 ## Bugs
 - Bug #1: getting ingredients to display correctly on viewRecipe.html
 - Bug #2: Slicing error on search page for recipes > 9
+- Bug #3: Search specificity, incorrect ingredients/instructions on editRecipe
 
 ## Testing
 Click [here](testing.md) to view the complete testing process.
