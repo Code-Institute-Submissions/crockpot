@@ -394,6 +394,14 @@ def menu():
                 menu_ingredient_us.append(recipe_ingredient_u)
                 i += 1
 
+    menu_ingredient_ns_reformat = []
+    for ingredient in menu_ingredient_ns:
+        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+        menu_ingredient_ns_reformat.append(ingredient_new)
+
+    menu_ingredient_ns = menu_ingredient_ns_reformat
+
     # Put menu ingredient names, quantities and
     # units into new list and sort alphabetically
     j = 0
