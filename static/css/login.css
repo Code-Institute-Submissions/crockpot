@@ -1,11 +1,50 @@
 #hero-image-overlay-home, #hero-image-overlay-login, #hero-image-overlay-signup {
     position: absolute;
 
-    top: 2.5vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     width: 100%;
 }
 
 #logo-home, #logo-login, #logo-signup {
     width: 200px;
+}
+
+@media (min-width: 600px) {
+    #hero-image-overlay-home, #hero-image-overlay-login, #hero-image-overlay-signup {
+        width: 60%;
+    }
+
+    #logo-home, #logo-login, #logo-signup {
+        width: 250px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    #logo-home, #logo-login, #logo-signup {
+        width: 300px;
+    }
+}
+
+@media (min-width: 992px) {
+    #hero-image-overlay-home, #hero-image-overlay-login, #hero-image-overlay-signup {
+        width: 50%;
+
+        top: 50%;
+        left: 12.5%;
+        transform: translate(-12.5%, -50%);
+    }
+    
+    #logo-home, #logo-login, #logo-signup {
+        width: 325px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #hero-image-overlay-home, #hero-image-overlay-login, #hero-image-overlay-signup {
+        width: 40%;
+    }
 }

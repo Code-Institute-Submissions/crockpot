@@ -120,6 +120,7 @@ The images on the website at the point of submission are from unsplash.com and h
 
 #### Features left to implement
 - Add categories to recipes for extra search functionality (eg. vegetarian, spicy, meaty etc)
+- Quantities as a function of serving portion
 
 ## Technologies used
 ### Languages and frameworks
