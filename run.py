@@ -26,8 +26,12 @@ date_string = now.strftime("%d/%m/%Y")
 
 @app.route("/")
 def index():
-    featured_recipes = recipes.find().skip(recipes.count() - 3)
-    return render_template("index.html", featured_recipes=featured_recipes)
+    featured_recipes_sm = recipes.find().skip(recipes.count() - 3)
+    featured_recipes_md = recipes.find().skip(recipes.count() - 6)
+    return render_template(
+                            "index.html",
+                            featured_recipes_sm=featured_recipes_sm,
+                            featured_recipes_md=featured_recipes_md)
 
 
 @app.route("/login", methods=["GET", "POST"])

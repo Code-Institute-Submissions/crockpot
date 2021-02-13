@@ -13,6 +13,7 @@ body {
 .container-compress {
     width: 100%;
     margin: 0 auto;
+    /* border: 4px solid black; */
 }
 
 .col, .row, .form-row, .container-fluid, .card-header, .card-body {
@@ -91,6 +92,15 @@ body {
     box-shadow: #2C497F 0px 1px;
 }
 
+.v-align {
+    top: 50%;
+    transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -webkit-transform: translateY(50%);
+    -o-transform: translateY(50%);
+}
+
 .text-left {
     text-align: left;
 }
@@ -127,7 +137,7 @@ h3, .h3 {
 
 h4 {
     font-weight: 500;
-    font-size: 1.65em;
+    font-size: 1.55em;
 }
 
 h5 {
@@ -196,7 +206,7 @@ footer {
     padding-top: 20%;
 }
 
-#logo-view-thumbnail, #logo-view-thumbnail-my, #logo-view-thumbnail-fav {
+.logo-view-thumbnail, #logo-view-thumbnail-my, #logo-view-thumbnail-fav {
     width: 90%;
     padding-top: 15%;
 }
@@ -731,18 +741,32 @@ label {
     justify-content: center;
 }
 
+/* .black-border {
+    border: black 2px solid;
+} */
+
 /* Media queries */
+@media (min-width: 600px) {
+    .container-compress {
+        width: 90%;
+    }
+}
+
 @media (min-width: 768px) {    
     body {
         font-size: 18px;
     }
 
     .container-compress {
-        width: 90%;
+        width: 80%;
     }
 
     .navbar-collapse {
 		border-top: none;
+    }
+
+    .text-right-md {
+        text-align: right;
     }
 
     /* .navbar {
@@ -768,6 +792,11 @@ label {
         border-radius: 30px;
     }
 
+    .testimonial-bubble {
+        width: 300px;
+        height: 300px;
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -777,6 +806,10 @@ label {
 
     .container-compress {
         width: 80%;
+    }
+
+    .container-expand-lg {
+        width: 90%;
     }
 
     #logo-nav {
@@ -797,6 +830,14 @@ label {
         width: 135px;
         height: 60px;
     }
+
+    .icon-blue-lg {
+        width: 100px;
+        height: 100px;
+        padding: 10px 0px;
+        border: solid 6px #fff;
+        font-size: 50px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -806,6 +847,10 @@ label {
 
     .container-compress {
         width: 70%;
+    }
+
+    .container-expand-xl {
+        width: 90%;
     }
 
     #logo-nav {
@@ -823,5 +868,10 @@ label {
     .nav-btn-sm {
         width: 145px;
         height: 65px;
+    }
+
+    .testimonial-bubble {
+        width: 350px;
+        height: 350px;
     }
 }
