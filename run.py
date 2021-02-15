@@ -429,9 +429,12 @@ def menu():
 
     menu_recipes = recipes.find({"is_menu": session["user"]})
     menu_recipes_md = recipes.find({"is_menu": session["user"]})
+    featured_recipes = recipes.find().skip(recipes.count() - 6)
+
     return render_template(
         "menu.html", menu_recipes=menu_recipes,
         menu_recipes_md=menu_recipes_md,
+        featured_recipes=featured_recipes,
         menu_ingredients=menu_ingredients)
 
 

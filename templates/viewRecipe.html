@@ -111,12 +111,14 @@
                             <div class="recipe-card">
                                 {% if recipe.image_url|length == 0 %}
                                 <div class="recipe-card-overlay border-white">
-                                    <img id="logo-view-page" src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                    <img id="logo-view-page"
+                                        src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
                                         alt="Dark blue Crockpot logo" />
                                 </div>
                                 {% else %}
                                 <div class="recipe-card-overlay border-white">
-                                    <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                    <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                        alt="{{ recipe.recipe_name }}">
                                 </div>
                                 {% endif %}
                             </div>
@@ -153,7 +155,8 @@
                         <div class="col"></div>
                         <div class="col-11 col-sm-9">
                             <div class="slidecontainer">
-                                <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider" disabled>
+                                <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider"
+                                    disabled>
                             </div>
                         </div>
                         <div class="col"></div>
@@ -169,7 +172,7 @@
                                     Ingredients <i class="fas fa-angle-down"></i>
                                 </button>
                             </div>
-                            <div id="collapse-searchrecipe-ingredients" class="collapse show"
+                            <div id="collapse-searchrecipe-ingredients" class="collapse"
                                 aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                                 <div class="card-body">
                                     <!-- Insert ingredient name, ingredient quantity and ingredient unit from recipe -->
@@ -178,7 +181,8 @@
                                             <!-- Insert instructions from recipe -->
                                             <ul class="text-left mb-0">
                                                 {% for ingredient in ingredients %}
-                                                <li><span class="capital">{{ingredient[0]}}</span> x {{ingredient[1]}}{{ingredient[2]}}
+                                                <li><span class="capital">{{ingredient[0]}}</span> x
+                                                    {{ingredient[1]}}{{ingredient[2]}}
                                                 </li>
                                                 {% endfor %}
                                             </ul>
@@ -254,12 +258,14 @@
                             <div class="recipe-card">
                                 {% if recipe.image_url|length == 0 %}
                                 <div class="recipe-card-overlay border-white">
-                                    <img id="logo-view-page" src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                    <img id="logo-view-page"
+                                        src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
                                         alt="Dark blue Crockpot logo" />
                                 </div>
                                 {% else %}
                                 <div class="recipe-card-overlay border-white">
-                                    <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                    <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                        alt="{{ recipe.recipe_name }}">
                                 </div>
                                 {% endif %}
                             </div>

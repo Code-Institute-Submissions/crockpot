@@ -346,7 +346,7 @@ button:focus {
     text-decoration: underline;
 }
 
-.nav-btn-blue:hover {
+.nav-btn-blue:hover, .nav-btn-blue-nb:hover {
     color: #fff;
     text-decoration: underline;
 }
@@ -397,10 +397,16 @@ hr {
 	background-color: #eeeeee;
 }
 
-.icon-blue, .icon-blue:hover, .icon-blue-selected:hover {
+.icon-blue, .icon-blue:hover {
     color: #fff;
     background-color: #95ebe0;
     border-color: #fff;
+}
+
+.icon-blue-selected:hover {
+    color: #95ebe0;
+    background-color: #fff;
+    border-color: #95ebe0;
 }
 
 .icon-blue-md {
@@ -678,6 +684,12 @@ label {
     text-shadow: #2C497F 1.5px 1.5px;
 }
 
+.carousel-control {
+    height: 25%;
+
+    top: 40%;
+}
+
 /* Recipe Cards */
 .recipe-card {
     width: 100%;
@@ -759,12 +771,6 @@ label {
 
     .nav-btn-long {
         width: 400px;
-    }
-
-    .carousel-control {
-        height: 25%;
-
-        top: 40%;
     }
 
     .carousel-control-prev {
