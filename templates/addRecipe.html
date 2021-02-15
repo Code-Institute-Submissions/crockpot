@@ -39,13 +39,13 @@
       <!-- Is/isn't favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-3 col-sm-2 text-right-md">
+         <div class="col-3 col-sm-1 col-md-2">
             <label class="switch" for="is_fav">
                 <input type="checkbox" name="is_fav" id="is_fav">
                 <span class="on-off round"></span>
             </label>
          </div>
-         <div class="col-8 col-sm-5 col-md-7 col-lg-6 col-xl-5 p-0 text-left">
+         <div class="col-8 col-sm-6 col-xl-5 p-0">
             <h4 class="mt-2 mt-md-1">Favourite Recipe</h4>
          </div>
          <div class="col"></div>
@@ -54,14 +54,14 @@
       <div class="form-row m-0">
          <div class="col"></div>
          <!-- Slider value from app.js -->
-         <div class="col-11 col-md-8 text-left">
+         <div class="col-11 col-md-9 col-xl-8 text-left">
             <h4>Serves: <span id="serves-value"></span></h4>
          </div>
          <div class="col"></div>
       </div>
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-11 col-md-8">
+         <div class="col-11 col-md-9 col-xl-8">
             <div class="slidecontainer">
                <input type="range" min="1" max="8" value="4" class="slider" name="serves" id="serves">
                <label for="serves" class="sr-only">Serves</label>
@@ -73,14 +73,14 @@
       <div class="form-row m-0">
          <div class="col"></div>
          <!-- Slider value from app.js -->
-         <div class="col-11 text-left">
+         <div class="col-11 col-md-9 col-xl-8 text-left">
             <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
          </div>
          <div class="col"></div>
       </div>
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-11">
+         <div class="col-11 col-md-9 col-xl-8">
             <div class="slidecontainer">
                <input type="range" min="5" max="120" value="30" step="5" class="slider" name="cooktime" id="cooktime">
                <label for="cooktime" class="sr-only">Cooking Time</label>
