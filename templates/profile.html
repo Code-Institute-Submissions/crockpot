@@ -242,7 +242,8 @@
         <!-- If user has no recipes, display instructions on how to add recipes -->
         {% else %}
         <div class="row pb-2">
-            <div class="col">
+            <div class="d-none d-sm-block col-sm"></div>
+                <div class="col col-sm-8 col-lg-6 col-xl-5">
                 <h3 class="mb-1 underline">No recipes yet?</h3>
                 <div class="row">
                     <div class="col-3">
@@ -275,6 +276,7 @@
                     </div>
                 </div>
             </div>
+            <div class="d-none d-sm-block col-sm"></div>
         </div>
         {% endif %}
     </div>
@@ -533,11 +535,12 @@
     <!-- If user has no favourite recipes, display instructions on how to add favourite recipes (add instructions in!) -->
     {% else %}
     <div class="row mb-0 pb-2">
-        <div class="col">
+        <div class="d-none d-sm-block col-sm"></div>
+        <div class="col col-sm-8 col-lg-6">
             <h3 class="mb-1 underline">No favourites yet?</h3>
             <div class="row">
                 <div class="col-3">
-                    <div class="icon icon-blue icon-blue-md mt-3">
+                    <div class="icon icon-blue icon-blue-md mt-3 mt-sm-0">
                         <i class="fas fa-mouse-pointer"></i>
                     </div>
                 </div>
@@ -547,7 +550,7 @@
             </div>
             <div class="row">
                 <div class="col-3">
-                    <div class="icon icon-blue icon-blue-md mt-3">
+                    <div class="icon icon-blue icon-blue-md mt-3 mt-sm-0">
                         <i class="fas fa-toggle-on"></i>
                     </div>
                 </div>
@@ -556,6 +559,7 @@
                 </div>
             </div>
         </div>
+        <div class="d-none d-sm-block col-sm"></div>
     </div>
     {% endif %}
     </div>
