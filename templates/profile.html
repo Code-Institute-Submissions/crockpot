@@ -3,340 +3,561 @@
 {% block content %}
 <!-- Profile title with username -->
 <header class="container-fluid p-2">
-   <div class="row m-0">
-      <div class="col"></div>
-      <div class="col-8">
-         <hr>
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row m-0">
-      <div class="col">
-         <h1 class="uppercase">Hi {{ username }}!</h1>
-      </div>
-   </div>
-   <div class="row m-0">
-      <div class="col"></div>
-      <div class="col-8">
-         <hr>
-      </div>
-      <div class="col"></div>
-   </div>
+    <div class="row m-0">
+        <div class="col"></div>
+        <div class="col-8 col-md-6 col-lg-4">
+            <hr>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row m-0">
+        <div class="col">
+            <h1 class="uppercase">Hi {{ username }}!</h1>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col"></div>
+        <div class="col-8 col-md-6 col-lg-4">
+            <hr>
+        </div>
+        <div class="col"></div>
+    </div>
 </header>
 <!-- Recipes made by the user -->
 <section class="container-fluid">
-   <div class="row pt-3">
-      <div class="col"></div>
-      <div class="col-10">
-         <hr class="hr-skinny">
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row m-0">
-      <div class="col">
-         <h2 class="uppercase">My Recipes</h2>
-      </div>
-   </div>
-   <div class="row mb-1">
-      <div class="col"></div>
-      <div class="col-10">
-         <hr class="hr-skinny">
-      </div>
-      <div class="col"></div>
-   </div>
-   <!-- If user has made recipes, display them in carousel -->
-   {% if my_recipes.count() %}
-   <div class="row mt-0 mb-0 pb-2">
-      <div class="col">
-         <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
-         <div id="carousel-my" class="carousel slide" data-interval="false">
-            <div class="carousel-inner">
-               {% for recipe in my_recipes %}
-               <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                  <div class="carousel-content">
-                     <div class="row mb-0 pb-2">
-                        <div class="col"></div>
-                        <div class="col-11">
-                           <div class="recipe-card">
-                              <div class="row icon-row">
-                                 <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
+    <div class="container-compress container-expand-xl">
+        <div class="row pt-3">
+            <div class="col"></div>
+            <div class="col-10 col-md-8 col-lg-6">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row m-0">
+            <div class="col">
+                <h2 class="uppercase">My Recipes</h2>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col"></div>
+            <div class="col-10 col-md-8 col-lg-6">
+                <hr class="hr-skinny">
+            </div>
+            <div class="col"></div>
+        </div>
+        <!-- If user has made recipes, display them in carousel, small view -->
+        {% if my_recipes.count() %}
+        <div class="row mt-0 mb-0 pb-2 d-md-none">
+            <div class="col">
+                <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
+                <div id="carousel-my" class="carousel slide" data-interval="false">
+                    <div class="carousel-inner">
+                        {% for recipe in my_recipes %}
+                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                            <div class="carousel-content">
+                                <div class="row mb-0 pb-2">
+                                    <div class="col"></div>
+                                    <div class="col-11">
+                                        <div class="recipe-card">
+                                            <div class="row icon-row">
+                                                <form method="POST"
+                                                    action="{{ url_for('isMenu', recipe_id=recipe._id) }}"
+                                                    class="col text-left">
+                                                    {% if session.user in recipe.is_menu %}
+                                                    <button type="submit"
+                                                        class="icon icon-blue-selected shadow-box btn">
+                                                        <i class="fas fa-utensils"></i>
+                                                    </button>
+                                                    {% else %}
+                                                    <button type="submit" class="icon icon-blue shadow-box btn">
+                                                        <i class="fas fa-utensils"></i>
+                                                    </button>
+                                                    {% endif %}
+                                                </form>
+                                                <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+                                                {% if session.user|lower == recipe.created_by|lower %}
+                                                <div class="col text-right">
+                                                    <!-- Edit page -->
+                                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
+                                                        class="icon icon-blue">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+                                                    <div class="icon icon-blue" id="delete-my-recipe-open{{loop.index}}"
+                                                        onclick="openModalMy()">
+                                                        <i class="fas fa-trash-alt"
+                                                            id="delete-my-recipe-open-icon{{loop.index}}"
+                                                            onclick="openModalMy()"></i>
+                                                    </div>
+                                                    <!-- Modal -->
+                                                    <div class="modal-delete hidden"
+                                                        id="modal-delete-my-recipe{{loop.index}}">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content text-center">
+                                                                <div class="modal-body">
+                                                                    <h5>Are you sure you want to delete <span
+                                                                            class="capital">{{ recipe.recipe_name }}</span>?
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <!-- Delete recipe -->
+                                                                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
+                                                                        class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                                                                    <button type="button"
+                                                                        class="nav-btn nav-btn-blue-nb nav-btn-sm"
+                                                                        id="delete-my-recipe-close{{loop.index}}"
+                                                                        onclick="closeModalMy()">No</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
+                                                href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                                {% if recipe.image_url|length == 0 %}
+                                                <img id="logo-view-thumbnail-my"
+                                                    src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                                    alt="Dark blue Crockpot logo" />
+                                                {% else %}
+                                                <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                                    alt="{{ recipe.recipe_name }}">
+                                                {% endif %}
+                                                <div class="row recipe-card-title">
+                                                    <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if my_recipes.count() == 1 %}
+                    {% else %}
+                    <a class="carousel-control carousel-control-prev" href="#carousel-my" role="button"
+                        data-slide="prev">
+                        <span class="prev-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-left text-left"></i>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control carousel-control-next" href="#carousel-my" role="button"
+                        data-slide="next">
+                        <span class="next-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-right text-right"></i>
+                        </span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- For larger devices - recipes show as 6 tiles -->
+        <div class="row d-none d-md-block m-0">
+            <div class="col">
+                <div class="row pb-2 m-0">
+                    {% for recipe in my_recipes_md %}
+                    <div class="col-md-6 col-xl-4">
+                        <div class="recipe-card">
+                            <div class="row icon-row">
+                                <form method="POST"
+                                    action="{{ url_for('isMenu', recipe_id=recipe._id) }}"
+                                    class="col text-left">
                                     {% if session.user in recipe.is_menu %}
-                                    <button type="submit" class="icon icon-blue-selected shadow-box btn">
-                                    <i class="fas fa-utensils"></i>
+                                    <button type="submit"
+                                        class="icon icon-blue-selected shadow-box btn">
+                                        <i class="fas fa-utensils"></i>
                                     </button>
                                     {% else %}
                                     <button type="submit" class="icon icon-blue shadow-box btn">
-                                    <i class="fas fa-utensils"></i>
+                                        <i class="fas fa-utensils"></i>
                                     </button>
                                     {% endif %}
-                                 </form>
-                                 <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
-                                 {% if session.user|lower == recipe.created_by|lower %}
-                                 <div class="col text-right">
+                                </form>
+                                <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+                                {% if session.user|lower == recipe.created_by|lower %}
+                                <div class="col text-right">
                                     <!-- Edit page -->
-                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
-                                    <i class="fas fa-edit"></i>
+                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
+                                        class="icon icon-blue">
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                     <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
-                                    <div class="icon icon-blue" id="delete-my-recipe-open{{loop.index}}" onclick="openModalMy()">
-                                       <i class="fas fa-trash-alt" id="delete-my-recipe-open-icon{{loop.index}}" onclick="openModalMy()"></i>
+                                    <div class="icon icon-blue" id="delete-my-recipe-md-open{{loop.index}}"
+                                        onclick="openModalMyMd()">
+                                        <i class="fas fa-trash-alt"
+                                            id="delete-my-recipe-md-open-icon{{loop.index}}"
+                                            onclick="openModalMyMd()"></i>
                                     </div>
                                     <!-- Modal -->
-                                    <div class="modal-delete hidden" id="modal-delete-my-recipe{{loop.index}}">
-                                       <div class="modal-dialog">
-                                          <div class="modal-content text-center">
-                                             <div class="modal-body">
-                                                <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
-                                             </div>
-                                             <div class="modal-footer">
-                                                <!-- Delete recipe -->
-                                                <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-my-recipe-close{{loop.index}}" onclick="closeModalMy()">No</button>
-                                             </div>
-                                          </div>
-                                       </div>
+                                    <div class="modal-delete hidden"
+                                        id="modal-delete-my-recipe-md{{loop.index}}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content text-center">
+                                                <div class="modal-body">
+                                                    <h5>Are you sure you want to delete <span
+                                                            class="capital">{{ recipe.recipe_name }}</span>?
+                                                    </h5>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!-- Delete recipe -->
+                                                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
+                                                        class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                                                    <button type="button"
+                                                        class="nav-btn nav-btn-blue-nb nav-btn-sm"
+                                                        id="delete-my-recipe-md-close{{loop.index}}"
+                                                        onclick="closeModalMyMd()">No</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                                 {% endif %}
-                              </div>
-                              <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                {% if recipe.image_url|length == 0 %}
-                                    <img id="logo-view-thumbnail-my" src="{{ url_for('static', filename='images/logo-darkblue.png') }}" alt="Dark blue Crockpot logo"/>
-                                {% else %} 
-                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                </div>
                                 {% endif %}
-                                 <div class="row recipe-card-title">
+                            </div>
+                            <!-- If recipe is clicked on, show recipe page -->
+                            <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
+                                href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                {% if recipe.image_url|length == 0 %}
+                                <img class="logo-view-thumbnail"
+                                    src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                    alt="Dark blue Crockpot logo" />
+                                {% else %}
+                                <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                    alt="{{ recipe.recipe_name }}">
+                                {% endif %}
+                                <div class="row recipe-card-title">
                                     <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                                 </div>
-                              </a>
-                           </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="col"></div>
-                     </div>
-                  </div>
-               </div>
-               {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            {% if my_recipes.count() == 1 %}
-            {% else %}
-            <a class="carousel-control carousel-control-prev" href="#carousel-my" role="button" data-slide="prev">
-            <span class="prev-icon" aria-hidden="true">
-            <i class="fas fa-chevron-left text-left"></i>
-            </span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control carousel-control-next" href="#carousel-my" role="button" data-slide="next">
-            <span class="next-icon" aria-hidden="true">
-            <i class="fas fa-chevron-right text-right"></i>
-            </span>
-            <span class="sr-only">Next</span>
-            </a>
-            {% endif %}
-         </div>
-      </div>
-   </div>
-   <!-- If user has no recipes, display instructions on how to add recipes -->
-   {% else %}
-   <div class="row pb-2">
-      <div class="col">
-         <h3 class="mb-1 underline">No recipes yet?</h3>
-         <div class="row">
-            <div class="col-3">
-               <div class="icon icon-blue icon-blue-md">
-                  <i class="fas fa-plus"></i>
-               </div>
+        </div>
+        <!-- If user has no recipes, display instructions on how to add recipes -->
+        {% else %}
+        <div class="row pb-2">
+            <div class="col">
+                <h3 class="mb-1 underline">No recipes yet?</h3>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon icon-blue icon-blue-md">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <h4 class="text-left pt-1">Upload recipes on the Add page</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon icon-blue icon-blue-md">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <h4 class="text-left pt-1">Edit them if they need updating</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon icon-blue icon-blue-md">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <h4 class="text-left pt-1">Delete it once you know it by heart!</h4>
+                    </div>
+                </div>
             </div>
-            <div class="col-9">
-               <h4 class="text-left pt-1">Upload recipes on the Add page</h4>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-3">
-               <div class="icon icon-blue icon-blue-md">
-                  <i class="fas fa-edit"></i>
-               </div>
-            </div>
-            <div class="col-9">
-               <h4 class="text-left pt-1">Edit them if they need updating</h4>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-3">
-               <div class="icon icon-blue icon-blue-md">
-                  <i class="fas fa-trash-alt"></i>
-               </div>
-            </div>
-            <div class="col-9">
-               <h4 class="text-left pt-1">Delete it once you know it by heart!</h4>
-            </div>
-         </div>
-      </div>
-   </div>
-   {% endif %}
+        </div>
+        {% endif %}
+    </div>
 </section>
 <!-- Links to Add Recipes, Search Recipes and Menu pages -->
 <section class="container-fluid">
-   <div class="row pt-3">
-      <div class="col">
-         <div class="nav-item">
-            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('addRecipe') }}">Add Recipes</a>
-         </div>
-      </div>
-   </div>
-   <div class="row">
-      <div class="col">
-         <div class="nav-item">
-            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('searchReset') }}">Search Recipes</a>
-         </div>
-      </div>
-   </div>
-   <div class="row pb-3">
-      <div class="col">
-         <div class="nav-item">
-            <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu <i class="fas fa-utensils"></i></a>
-         </div>
-      </div>
-   </div>
+    <div class="row pt-3 pb-lg-3">
+        <div class="col col-lg-4">
+            <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button"
+                    href="{{ url_for('addRecipe') }}">Add Recipes</a>
+            </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-4">
+            <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button"
+                    href="{{ url_for('searchReset') }}">Search Recipes</a>
+            </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-4">
+            <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu <i
+                        class="fas fa-utensils"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row d-lg-none">
+        <div class="col">
+            <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button"
+                    href="{{ url_for('searchReset') }}">Search Recipes</a>
+            </div>
+        </div>
+    </div>
+    <div class="row pb-3 d-lg-none">
+        <div class="col">
+            <div class="nav-item">
+                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" role="button" href="{{ url_for('menu') }}">Menu <i
+                        class="fas fa-utensils"></i></a>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- Favourite recipes of the user -->
 <section class="container-fluid">
-   <div class="row pt-3">
-      <div class="col"></div>
-      <div class="col-10">
-         <hr class="hr-skinny">
-      </div>
-      <div class="col"></div>
-   </div>
-   <div class="row m-0">
-      <div class="col">
-         <h2 class="uppercase">Favourite Recipes</h2>
-      </div>
-   </div>
-   <div class="row mb-1">
-      <div class="col"></div>
-      <div class="col-10">
-         <hr class="hr-skinny">
-      </div>
-      <div class="col"></div>
-   </div>
-   <!-- If user has favourite recipes, display them in carousel -->
-   {% if fav_recipes.count() %}
-   <div class="row mt-0 mb-0 pb-3">
-      <div class="col">
-         <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
-         <div id="carousel-fav" class="carousel slide" data-interval="false">
-            <div class="carousel-inner">
-               {% for recipe in fav_recipes %}
-               <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                  <div class="carousel-content">
-                     <div class="row mb-0 pb-2">
-                        <div class="col"></div>
-                        <div class="col-11">
-                           <div class="recipe-card">
-                              <div class="row icon-row">
-                                 <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="col text-left">
+    <div class="container-compress container-expand-xl">
+    <div class="row pt-3">
+        <div class="col"></div>
+        <div class="col-10 col-md-8 col-lg-6">
+            <hr class="hr-skinny">
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row m-0">
+        <div class="col">
+            <h2 class="uppercase">Favourite Recipes</h2>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col"></div>
+        <div class="col-10 col-md-8 col-lg-6">
+            <hr class="hr-skinny">
+        </div>
+        <div class="col"></div>
+    </div>
+    <!-- If user has favourite recipes, display them in carousel -->
+    {% if fav_recipes.count() %}
+    <div class="row mt-0 mb-0 pb-3 d-md-none">
+        <div class="col">
+            <!-- Component based on https://css-tricks.com/css-only-carousel/ -->
+            <div id="carousel-fav" class="carousel slide" data-interval="false">
+                <div class="carousel-inner">
+                    {% for recipe in fav_recipes %}
+                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                        <div class="carousel-content">
+                            <div class="row mb-0 pb-2">
+                                <div class="col"></div>
+                                <div class="col-11">
+                                    <div class="recipe-card">
+                                        <div class="row icon-row">
+                                            <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}"
+                                                class="col text-left">
+                                                {% if session.user in recipe.is_menu %}
+                                                <button type="submit" class="icon icon-blue-selected shadow-box btn">
+                                                    <i class="fas fa-utensils"></i>
+                                                </button>
+                                                {% else %}
+                                                <button type="submit" class="icon icon-blue shadow-box btn">
+                                                    <i class="fas fa-utensils"></i>
+                                                </button>
+                                                {% endif %}
+                                            </form>
+                                            <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+                                            {% if session.user|lower == recipe.created_by|lower %}
+                                            <div class="col text-right">
+                                                <!-- Edit page -->
+                                                <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
+                                                    class="icon icon-blue">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+                                                <div class="icon icon-blue" id="delete-fav-recipe-open{{loop.index}}"
+                                                    onclick="openModalFav()">
+                                                    <i class="fas fa-trash-alt"
+                                                        id="delete-fav-recipe-open-icon{{loop.index}}"
+                                                        onclick="openModalFav()"></i>
+                                                </div>
+                                                <!-- Modal -->
+                                                <div class="modal-delete hidden"
+                                                    id="modal-delete-fav-recipe{{loop.index}}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content text-center">
+                                                            <div class="modal-body">
+                                                                <h5>Are you sure you want to delete <span
+                                                                        class="capital">{{ recipe.recipe_name }}</span>?
+                                                                </h5>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <!-- Delete recipe -->
+                                                                <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
+                                                                    class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                                                                <button type="button"
+                                                                    class="nav-btn nav-btn-blue-nb nav-btn-sm"
+                                                                    id="delete-fav-recipe-close{{loop.index}}"
+                                                                    onclick="closeModalFav()">No</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
+                                            href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                            {% if recipe.image_url|length == 0 %}
+                                            <img id="logo-view-thumbnail-fav"
+                                                src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                                alt="Dark blue Crockpot logo" />
+                                            {% else %}
+                                            <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                                alt="{{ recipe.recipe_name }}">
+                                            {% endif %}
+                                            <div class="row recipe-card-title">
+                                                <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if fav_recipes.count() == 1 %}
+                {% else %}
+                <a class="carousel-control carousel-control-prev" href="#carousel-fav" role="button" data-slide="prev">
+                    <span class="prev-icon" aria-hidden="true">
+                        <i class="fas fa-chevron-left text-left"></i>
+                    </span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control carousel-control-next" href="#carousel-fav" role="button" data-slide="next">
+                    <span class="next-icon" aria-hidden="true">
+                        <i class="fas fa-chevron-right text-right"></i>
+                    </span>
+                    <span class="sr-only">Next</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- For larger devices - recipes show as 6 tiles -->
+        <div class="row d-none d-md-block m-0">
+            <div class="col">
+                <div class="row pb-2 m-0">
+                    {% for recipe in fav_recipes_md %}
+                    <div class="col-md-6 col-xl-4">
+                        <div class="recipe-card">
+                            <div class="row icon-row">
+                                <form method="POST"
+                                    action="{{ url_for('isMenu', recipe_id=recipe._id) }}"
+                                    class="col text-left">
                                     {% if session.user in recipe.is_menu %}
-                                    <button type="submit" class="icon icon-blue-selected shadow-box btn">
-                                    <i class="fas fa-utensils"></i>
+                                    <button type="submit"
+                                        class="icon icon-blue-selected shadow-box btn">
+                                        <i class="fas fa-utensils"></i>
                                     </button>
                                     {% else %}
                                     <button type="submit" class="icon icon-blue shadow-box btn">
-                                    <i class="fas fa-utensils"></i>
+                                        <i class="fas fa-utensils"></i>
                                     </button>
                                     {% endif %}
-                                 </form>
-                                 <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
-                                 {% if session.user|lower == recipe.created_by|lower %}
-                                 <div class="col text-right">
+                                </form>
+                                <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+                                {% if session.user|lower == recipe.created_by|lower %}
+                                <div class="col text-right">
                                     <!-- Edit page -->
-                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
-                                    <i class="fas fa-edit"></i>
+                                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
+                                        class="icon icon-blue">
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                     <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
-                                    <div class="icon icon-blue" id="delete-fav-recipe-open{{loop.index}}" onclick="openModalFav()">
-                                       <i class="fas fa-trash-alt" id="delete-fav-recipe-open-icon{{loop.index}}" onclick="openModalFav()"></i>
+                                    <div class="icon icon-blue" id="delete-fav-recipe-md-open{{loop.index}}"
+                                        onclick="openModalFavMd()">
+                                        <i class="fas fa-trash-alt"
+                                            id="delete-fav-recipe-md-open-icon{{loop.index}}"
+                                            onclick="openModalFavMd()"></i>
                                     </div>
                                     <!-- Modal -->
-                                    <div class="modal-delete hidden" id="modal-delete-fav-recipe{{loop.index}}">
-                                       <div class="modal-dialog">
-                                          <div class="modal-content text-center">
-                                             <div class="modal-body">
-                                                <h5>Are you sure you want to delete <span class="capital">{{ recipe.recipe_name }}</span>?</h5>
-                                             </div>
-                                             <div class="modal-footer">
-                                                <!-- Delete recipe -->
-                                                <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                                <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm" id="delete-fav-recipe-close{{loop.index}}" onclick="closeModalFav()">No</button>
-                                             </div>
-                                          </div>
-                                       </div>
+                                    <div class="modal-delete hidden"
+                                        id="modal-delete-fav-recipe-md{{loop.index}}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content text-center">
+                                                <div class="modal-body">
+                                                    <h5>Are you sure you want to delete <span
+                                                            class="capital">{{ recipe.recipe_name }}</span>?
+                                                    </h5>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!-- Delete recipe -->
+                                                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
+                                                        class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                                                    <button type="button"
+                                                        class="nav-btn nav-btn-blue-nb nav-btn-sm"
+                                                        id="delete-my-recipe-md-close{{loop.index}}"
+                                                        onclick="closeModalFavMd()">No</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                                 {% endif %}
-                              </div>
-                              <a class="recipe-card-overlay recipe-card-overlay-hover border-white" href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                                 {% if recipe.image_url|length == 0 %}
-                                    <img id="logo-view-thumbnail-fav" src="{{ url_for('static', filename='images/logo-darkblue.png') }}" alt="Dark blue Crockpot logo"/>
-                                {% else %} 
-                                <img class="recipe-card-image" src="{{ recipe.image_url }}" alt="{{ recipe.recipe_name }}">
+                                </div>
                                 {% endif %}
-                                 <div class="row recipe-card-title">
+                            </div>
+                            <!-- If recipe is clicked on, show recipe page -->
+                            <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
+                                href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                                {% if recipe.image_url|length == 0 %}
+                                <img class="logo-view-thumbnail"
+                                    src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                                    alt="Dark blue Crockpot logo" />
+                                {% else %}
+                                <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                                    alt="{{ recipe.recipe_name }}">
+                                {% endif %}
+                                <div class="row recipe-card-title">
                                     <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                                 </div>
-                              </a>
-                           </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="col"></div>
-                     </div>
-                  </div>
-               </div>
-               {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            {% if fav_recipes.count() == 1 %}
-            {% else %}
-            <a class="carousel-control carousel-control-prev" href="#carousel-fav" role="button" data-slide="prev">
-            <span class="prev-icon" aria-hidden="true">
-            <i class="fas fa-chevron-left text-left"></i>
-            </span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control carousel-control-next" href="#carousel-fav" role="button" data-slide="next">
-            <span class="next-icon" aria-hidden="true">
-            <i class="fas fa-chevron-right text-right"></i>
-            </span>
-            <span class="sr-only">Next</span>
-            </a>
-            {% endif %}
-         </div>
-      </div>
-   </div>
-   <!-- If user has no favourite recipes, display instructions on how to add favourite recipes (add instructions in!) -->
-   {% else %}
-   <div class="row mb-0 pb-2">
-      <div class="col">
-         <h3 class="mb-1 underline">No favourites yet?</h3>
-         <div class="row">
-            <div class="col-3">
-               <div class="icon icon-blue icon-blue-md mt-3">
-                  <i class="fas fa-mouse-pointer"></i>
-               </div>
+        </div>
+    <!-- If user has no favourite recipes, display instructions on how to add favourite recipes (add instructions in!) -->
+    {% else %}
+    <div class="row mb-0 pb-2">
+        <div class="col">
+            <h3 class="mb-1 underline">No favourites yet?</h3>
+            <div class="row">
+                <div class="col-3">
+                    <div class="icon icon-blue icon-blue-md mt-3">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h4 class="text-left pt-1">Click on a recipe to view the instructions</h4>
+                </div>
             </div>
-            <div class="col-9">
-               <h4 class="text-left pt-1">Click on a recipe to view the instructions</h4>
+            <div class="row">
+                <div class="col-3">
+                    <div class="icon icon-blue icon-blue-md mt-3">
+                        <i class="fas fa-toggle-on"></i>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h4 class="text-left pt-1">Add it to your favourites with the toggle</h4>
+                </div>
             </div>
-         </div>
-         <div class="row">
-            <div class="col-3">
-               <div class="icon icon-blue icon-blue-md mt-3">
-                  <i class="fas fa-toggle-on"></i>
-               </div>
-            </div>
-            <div class="col-9">
-               <h4 class="text-left pt-1">Add it to your favourites with the toggle</h4>
-            </div>
-         </div>
-      </div>
-   </div>
-   {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    </div>
 </section>
 {% endblock %}

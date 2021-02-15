@@ -50,6 +50,26 @@ function closeModalMy() {
     $(idNumModal).addClass("hidden");
 }
 
+function openModalMyMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-my-recipe-md" + idNum);
+
+    $(idNumModal).removeClass("hidden");
+    $(".icon").addClass("hidden");
+}
+
+function closeModalMyMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-my-recipe-md" + idNum);
+
+    $(idNumModal).addClass("hidden");
+    $(".icon").removeClass("hidden");
+}
+
 function openModalFav() {
     var target = event.target || event.srcElement;
     var id = target.id;
@@ -66,6 +86,26 @@ function closeModalFav() {
     var idNumModal = document.getElementById("modal-delete-fav-recipe" + idNum);
 
     $(idNumModal).addClass("hidden");
+}
+
+function openModalFavMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-fav-recipe-md" + idNum);
+
+    $(idNumModal).removeClass("hidden");
+    $(".icon").addClass("hidden");
+}
+
+function closeModalFavMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-fav-recipe-md" + idNum);
+
+    $(idNumModal).addClass("hidden");
+    $(".icon").removeClass("hidden");
 }
 
 // Show serving slider value
