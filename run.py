@@ -317,7 +317,9 @@ def searchReset():
     search_ingredients = search_ingredients_reformat
 
     search_recipes = recipes.find()
+    search_recipes_md = recipes.find()
     return render_template("searchRecipe.html", search_recipes=search_recipes,
+                           search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
 
 
@@ -342,8 +344,10 @@ def search():
 
     query = request.form.get("query")
     search_recipes = recipes.find({"$text": {"$search": query}})
+    search_recipes_md = recipes.find({"$text": {"$search": query}})
     print(({"$text": {"$search": query}}))
     return render_template("searchRecipe.html", search_recipes=search_recipes,
+                           search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
 
 

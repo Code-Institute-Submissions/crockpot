@@ -15,10 +15,7 @@ function openModal() {
     var id = target.id;
     var idNum = id.match(/\d+/)[0];
     var idNumModal = document.getElementById("modal-delete" + idNum);
-
-    // console.log(id);
-    // console.log(idNum);
-    // console.log(id.match(/\d+/)[0]);
+    
     $(idNumModal).removeClass("hidden");
 }
 
@@ -27,6 +24,24 @@ function closeModal() {
     var id = target.id;
     var idNum = id.match(/\d+/)[0];
     var idNumModal = document.getElementById("modal-delete" + idNum);
+
+    $(idNumModal).addClass("hidden");
+}
+
+function openModalMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-md" + idNum);
+    
+    $(idNumModal).removeClass("hidden");
+}
+
+function closeModalMd() {
+    var target = event.target || event.srcElement;
+    var id = target.id;
+    var idNum = id.match(/\d+/)[0];
+    var idNumModal = document.getElementById("modal-delete-md" + idNum);
 
     $(idNumModal).addClass("hidden");
 }

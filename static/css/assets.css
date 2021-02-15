@@ -756,6 +756,24 @@ label {
     .container-compress {
         width: 90%;
     }
+
+    .nav-btn-long {
+        width: 400px;
+    }
+
+    .carousel-control {
+        height: 25%;
+
+        top: 40%;
+    }
+
+    .carousel-control-prev {
+        left: -3%;
+    }
+
+    .carousel-control-next {
+        right: -3%;
+    }
 }
 
 @media (min-width: 768px) {    
@@ -917,7 +935,7 @@ label {
     }
 
     .nav-btn-long {
-        width: 380px;
+        width: 85%;
     }
 
     .testimonial-bubble {
