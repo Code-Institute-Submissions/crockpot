@@ -5,7 +5,7 @@
 <header class="container-fluid py-2">
     <div class="row m-0">
         <div class="col"></div>
-        <div class="col-8">
+        <div class="col-6 col-md-4 col-lg-2">
             <hr>
         </div>
         <div class="col"></div>
@@ -17,7 +17,7 @@
     </div>
     <div class="row m-0">
         <div class="col"></div>
-        <div class="col-8">
+        <div class="col-6 col-md-4 col-lg-2">
             <hr>
         </div>
         <div class="col"></div>
@@ -62,7 +62,7 @@
                                             Ingredients <i class="fas fa-angle-down"></i>
                                         </button>
                                     </div>
-                                    <div id="collapse-searchrecipe-ingredients" class="collapse show"
+                                    <div id="collapse-searchrecipe-ingredients" class="accordion collapse"
                                         aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
                                         <div class="card-body" id="ingredients-list">
                                             <!-- Ingredients checkboxes - component taken from https://codepen.io/quinlo/pen/ReMRXz -->
@@ -86,7 +86,7 @@
             <section class="container-fluid d-md-none">
                 {% if search_recipes.count() %}
                 {% for recipe in search_recipes %}
-                <div class="row pt-2">
+                <div class="row">
                     <div class="col"></div>
                     <div class="col-11">
                         <div class="recipe-card">
@@ -160,8 +160,9 @@
                 </div>
                 {% endfor %}
                 {% else %}
-                <div class="row pt-2 mb-0 pb-2">
-                    <div class="col">
+                <div class="row mb-0 pb-2">
+                    <div class="d-none d-sm-block col-sm"></div>
+                    <div class="col col-sm-8 col-lg-6 col-xl-5">
                         <h3 class="mb-1 underline">Sorry, no results!</h3>
                         <div class="row">
                             <div class="col-3">
@@ -175,7 +176,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <div class="icon icon-blue icon-blue-md mt-3">
+                                <div class="icon icon-blue icon-blue-md">
                                     <i class="fab fa-readme"></i>
                                 </div>
                             </div>
@@ -185,7 +186,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <div class="icon icon-blue icon-blue-md mt-3">
+                                <div class="icon icon-blue icon-blue-md">
                                     <i class="fas fa-search"></i>
                                 </div>
                             </div>
@@ -194,19 +195,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-none d-sm-block col-sm"></div>
                 </div>
                 {% endif %}
             </section>
         </div>
-
-
-
-
+        <!-- Two column view on larger devices -->
         <div class="d-none d-md-inline-block col-md-7">
-            <!-- Display all recipes in database and filter depending on user input -->
             <section class="container-fluid">
                 {% if search_recipes.count() %}
-                <div class="row pt-2">
+                <div class="row m-0">
                     {% for recipe in search_recipes_md %}
                     <div class="col-lg-6">
                         <div class="recipe-card">
@@ -279,8 +277,9 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                <div class="row pt-2 mb-0 pb-2">
-                    <div class="col">
+                <div class="row mb-0 pb-2">
+                    <div class="d-none d-sm-block col-sm"></div>
+                    <div class="col col-sm-8 col-md-10 col-lg-8 col-xl-7">
                         <h3 class="mb-1 underline">Sorry, no results!</h3>
                         <div class="row">
                             <div class="col-3">
@@ -294,7 +293,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <div class="icon icon-blue icon-blue-md mt-3">
+                                <div class="icon icon-blue icon-blue-md">
                                     <i class="fab fa-readme"></i>
                                 </div>
                             </div>
@@ -304,7 +303,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <div class="icon icon-blue icon-blue-md mt-3">
+                                <div class="icon icon-blue icon-blue-md">
                                     <i class="fas fa-search"></i>
                                 </div>
                             </div>
@@ -313,6 +312,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-none d-sm-block col-sm"></div>
                 </div>
                 {% endif %}
             </section>

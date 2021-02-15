@@ -1,3 +1,10 @@
+// Open accordions on larger devices
+onload = function () {
+    if (window.innerWidth >= 768) {
+        $(".collapse").addClass("show");
+    }
+}
+
 // Modal controls
 function openModalView() {
     idNumModal = document.getElementById("modal-delete");
