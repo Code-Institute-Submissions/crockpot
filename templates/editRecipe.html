@@ -24,6 +24,7 @@
 </header>
 <!-- Edit Recipe form -->
 <section class="container-fluid">
+    <div class="container-compress-extra">
    <form method="POST" action="{{ url_for('editRecipeSave', recipe_id=recipe._id) }}">
       <!-- Recipe name -->
       <div class="form-row mt-0">
@@ -37,7 +38,7 @@
       <!-- Is/isn't favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-3">
+         <div class="col-3 col-sm-2 text-right-md">
             <label class="switch" for="is_fav">
                 {% if session.user in recipe.is_fav %}
                     <input type="checkbox" name="is_fav" id="is_fav" checked>
@@ -47,8 +48,8 @@
                 <span class="on-off round"></span>
             </label>
          </div>
-         <div class="col-8 p-0 text-left">
-            <h4 class="mt-2 p-0">Favourite Recipe</h4>
+         <div class="col-8 col-sm-5 col-md-7 col-lg-6 col-xl-5 p-0 text-left">
+            <h4 class="mt-2 mt-md-1">Favourite Recipe</h4>
          </div>
          <div class="col"></div>
       </div>
@@ -256,6 +257,7 @@
          </div>
       </div>
    </form>
+   </div>
 </section>
 <!-- Ingredients input template for addRecipe.js -->
 <template id="ingredients-input-template">
