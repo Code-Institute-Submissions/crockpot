@@ -26,23 +26,24 @@ date_string = now.strftime("%d/%m/%Y")
 
 @app.route("/")
 def index():
+    # Find most recent recipes to feature on index.html
     featured_recipes_sm = recipes.find().skip(recipes.count() - 3)
     featured_recipes_md = recipes.find().skip(recipes.count() - 6)
-    return render_template(
-                            "index.html",
-                            featured_recipes_sm=featured_recipes_sm,
-                            featured_recipes_md=featured_recipes_md)
+
+    return render_template("index.html",
+                           featured_recipes_sm=featured_recipes_sm,
+                           featured_recipes_md=featured_recipes_md)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if username exists in db
+        # Check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("input-username-login").lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
+            # Ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get(
                     "input-password-login")):
@@ -51,12 +52,12 @@ def login():
                 return redirect(url_for(
                     "profile", username=session["user"]))
             else:
-                # invalid password match
+                # Invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't exist
+            # Username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
@@ -65,16 +66,17 @@ def login():
 
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
+    # Remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
+
     return redirect(url_for("login"))
 
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        # check if username already exists in db
+        # Check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("input-username-signup").lower()})
 
@@ -89,7 +91,7 @@ def signup():
         }
         mongo.db.users.insert_one(signup)
 
-        # put the new user into 'session' cookie
+        # Put the new user into 'session' cookie
         session["user"] = request.form.get("input-username-signup").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
@@ -99,9 +101,10 @@ def signup():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
+    # Grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    # Get "my" and "fav" recipes for user
     my_recipes = recipes.find({"created_by": username})
     fav_recipes = recipes.find({"is_fav": username})
     my_recipes_md = recipes.find({"created_by": username})
@@ -109,7 +112,8 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html",
-                               username=username, my_recipes=my_recipes,
+                               username=username,
+                               my_recipes=my_recipes,
                                fav_recipes=fav_recipes,
                                my_recipes_md=my_recipes_md,
                                fav_recipes_md=fav_recipes_md)
@@ -120,14 +124,17 @@ def profile(username):
 @app.route("/addRecipe", methods=["GET", "POST"])
 def addRecipe():
     if request.method == "POST":
+        # Add username to "is_fav" if toggle is on
         is_fav = [session["user"]] if request.form.get("is_fav") else []
 
+        # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")
         ingredient_names_reformat = []
         for ingredient in ingredient_names:
             ingredient_new = ingredient.lower().title().replace(' ', '')
             ingredient_names_reformat.append(ingredient_new)
 
+        # Define "recipe" information and add to db
         recipe = {
             "recipe_name": request.form.get("recipe_name").lower(),
             "serves": request.form.get("serves"),
@@ -144,7 +151,7 @@ def addRecipe():
             "is_menu": [],
             "is_fav": is_fav
         }
-        mongo.db.recipes.insert_one(recipe)
+        recipes.insert_one(recipe)
         flash(recipe.get("recipe_name") + " successfully added")
 
         return redirect(url_for(
@@ -155,7 +162,10 @@ def addRecipe():
 
 @app.route("/editRecipe/<recipe_id>")
 def editRecipe(recipe_id):
+    # Find specific recipe
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    # Get ingredient names and add spaces after capital letters
     ingredient_names = recipe["ingredient_name"]
     ingredient_names_reformat = []
     for ingredient in ingredient_names:
@@ -163,23 +173,27 @@ def editRecipe(recipe_id):
         ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
         ingredient_names_reformat.append(ingredient_new)
 
+    # Zip ingredient names, quantities and units into matrix
     ingredients = zip(ingredient_names_reformat,
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
-    return render_template(
-        "editRecipe.html", recipe=recipe, ingredients=ingredients)
+
+    return render_template("editRecipe.html",
+                           recipe=recipe,
+                           ingredients=ingredients)
 
 
 @app.route("/editRecipe/<recipe_id>", methods=["GET", "POST"])
 def editRecipeSave(recipe_id):
     if request.method == "POST":
+        # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")
         ingredient_names_reformat = []
         for ingredient in ingredient_names:
             ingredient_new = ingredient.lower().title().replace(' ', '')
             ingredient_names_reformat.append(ingredient_new)
-        print(ingredient_names_reformat)
 
+        # Update recipe with new input
         edit = {'$set': {
             "recipe_name": request.form.get("recipe_name").lower(),
             "serves": request.form.get("serves"),
@@ -192,8 +206,9 @@ def editRecipeSave(recipe_id):
             "source": request.form.get("source"),
             "tips": request.form.get("tips")
         }}
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        recipes.update({"_id": ObjectId(recipe_id)}, edit)
 
+        # Add/remove username from "is_fav" depending on input
         username = session["user"]
         recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
         recipe_is_fav = recipe.get("is_fav")
@@ -215,12 +230,13 @@ def editRecipeSave(recipe_id):
                 pass
 
         flash(recipe.get("recipe_name") + " successfully updated")
-        return redirect(url_for(
-                        "profile", username=session["user"]))
+        return redirect(url_for("profile",
+                                username=session["user"]))
 
 
 @app.route("/isMenu/<recipe_id>", methods=["GET", "POST"])
 def isMenu(recipe_id):
+    # Add/remove username from "is_menu" if user clicks on menu icon
     username = session["user"]
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     recipe_is_menu = recipe.get("is_menu")
@@ -239,6 +255,7 @@ def isMenu(recipe_id):
 
 @app.route("/isFav/<recipe_id>", methods=["GET", "POST"])
 def isFav(recipe_id):
+    # Add username from "is_fav" if user clicks on fav toggle
     username = session["user"]
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     recipe_is_fav = recipe.get("is_fav")
@@ -262,25 +279,27 @@ def isFav(recipe_id):
                 pass
             flash(recipe.get("recipe_name") + " removed from favourites")
 
-        return redirect(url_for(
-                        "profile", username=session["user"]))
+        return redirect(url_for("profile",
+                                username=session["user"]))
 
 
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
+    # Remove recipe from db if user deletes it
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     recipe_name = recipe.get("recipe_name")
     recipes.remove({"_id": ObjectId(recipe_id)})
     flash(recipe_name + " successfully deleted")
 
-    return redirect(url_for(
-                        "profile", username=session["user"]))
+    return redirect(url_for("profile",
+                            username=session["user"]))
 
 
 @app.route("/viewRecipe/<recipe_id>")
 def viewRecipe(recipe_id):
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
 
+    # Get ingredient names and add spaces after capital letters
     ingredient_names = recipe["ingredient_name"]
     ingredient_names_reformat = []
     for ingredient in ingredient_names:
@@ -292,21 +311,25 @@ def viewRecipe(recipe_id):
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
 
-    return render_template(
-        "viewRecipe.html", recipe=recipe, ingredients=ingredients)
+    return render_template("viewRecipe.html",
+                           recipe=recipe,
+                           ingredients=ingredients)
 
 
 # Resets search results
 @app.route("/searchRecipe")
 def searchReset():
+    # All recipes initially display on searchRecipe.html
     search_recipes = recipes.find()
     search_ingredients = []
 
+    # Add all ingredient names from all recipes to array
     for recipe in search_recipes:
         search_ingredients.extend(recipe["ingredient_name"])
 
     search_ingredients = list(dict.fromkeys(search_ingredients))
 
+    # Get ingredient names and add spaces after capital letters
     search_ingredients_reformat = []
     for ingredient in search_ingredients:
         # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
@@ -317,7 +340,8 @@ def searchReset():
 
     search_recipes = recipes.find()
     search_recipes_md = recipes.find()
-    return render_template("searchRecipe.html", search_recipes=search_recipes,
+    return render_template("searchRecipe.html",
+                           search_recipes=search_recipes,
                            search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
 
@@ -328,11 +352,13 @@ def search():
     search_recipes = recipes.find()
     search_ingredients = []
 
+    # Add all ingredient names from all recipes to array
     for recipe in search_recipes:
         search_ingredients.extend(recipe["ingredient_name"])
 
     search_ingredients = list(dict.fromkeys(search_ingredients))
 
+    # Get ingredient names and add spaces after capital letters
     search_ingredients_reformat = []
     for ingredient in search_ingredients:
         # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
@@ -341,21 +367,26 @@ def search():
 
     search_ingredients = search_ingredients_reformat
 
+    # Get query text from user search
     query = request.form.get("query")
+    # Find recipes that match text
     search_recipes = recipes.find({"$text": {"$search": query}})
+    # Find recipes with ingredients that match text
     search_recipes_md = recipes.find({"$text": {"$search": query}})
-    print(({"$text": {"$search": query}}))
-    return render_template("searchRecipe.html", search_recipes=search_recipes,
+    return render_template("searchRecipe.html",
+                           search_recipes=search_recipes,
                            search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
 
 
 @app.route("/menu")
 def menu():
+    # Find all recipes that user has on their menu
+    menu_recipes = recipes.find({"is_menu": session["user"]})
+
     # name = n
     # quantity = q
     # unit = u
-    menu_recipes = recipes.find({"is_menu": session["user"]})
     menu_ingredients = []
     menu_ingredient_ns = []
     menu_ingredient_qs = []
@@ -405,6 +436,7 @@ def menu():
                 menu_ingredient_us.append(recipe_ingredient_u)
                 i += 1
 
+    # Get ingredient names and add spaces after capital letters
     menu_ingredient_ns_reformat = []
     for ingredient in menu_ingredient_ns:
         # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
@@ -430,11 +462,11 @@ def menu():
     menu_recipes_md = recipes.find({"is_menu": session["user"]})
     featured_recipes = recipes.find().skip(recipes.count() - 6)
 
-    return render_template(
-        "menu.html", menu_recipes=menu_recipes,
-        menu_recipes_md=menu_recipes_md,
-        featured_recipes=featured_recipes,
-        menu_ingredients=menu_ingredients)
+    return render_template("menu.html",
+                           menu_recipes=menu_recipes,
+                           menu_recipes_md=menu_recipes_md,
+                           featured_recipes=featured_recipes,
+                           menu_ingredients=menu_ingredients)
 
 
 if __name__ == "__main__":
