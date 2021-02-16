@@ -86,7 +86,6 @@ def signup():
             "username": request.form.get("input-username-signup").lower(),
             "password": generate_password_hash(
                 request.form.get("input-password-signup")),
-            "is_favourite": ""
         }
         mongo.db.users.insert_one(signup)
 
@@ -244,7 +243,7 @@ def isFav(recipe_id):
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     recipe_is_fav = recipe.get("is_fav")
     if request.method == "POST":
-        if request.form.get("is_favourite"):
+        if request.form.get("is_fav"):
             # If fav toggle is on and username in fav array do nothing
             if username in recipe_is_fav:
                 pass

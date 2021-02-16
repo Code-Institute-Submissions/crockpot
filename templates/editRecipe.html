@@ -4,7 +4,7 @@
 <header class="container-fluid p-2">
    <div class="row m-0">
       <div class="col"></div>
-      <div class="col-8">
+      <div class="col-6 col-md-4 col-lg-2">
          <hr>
       </div>
       <div class="col"></div>
@@ -16,7 +16,7 @@
    </div>
    <div class="row m-0">
       <div class="col"></div>
-      <div class="col-8">
+      <div class="col-6 col-md-4 col-lg-2">
          <hr>
       </div>
       <div class="col"></div>
@@ -37,34 +37,32 @@
       </div>
       <!-- Is/isn't favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
       <div class="form-row">
-         <div class="col"></div>
-         <div class="col-3 col-sm-2 text-right-md">
-            <label class="switch" for="is_fav">
-                {% if session.user in recipe.is_fav %}
-                    <input type="checkbox" name="is_fav" id="is_fav" checked>
-                {% else %}
-                    <input type="checkbox" name="is_fav" id="is_fav">
-                {% endif %}
-                <span class="on-off round"></span>
-            </label>
+         <div class="col">
+            <div class="d-inline middle">
+                <label class="switch" for="is_fav">
+                    {% if session.user in recipe.is_fav %}
+                        <input type="checkbox" name="is_fav" id="is_fav" checked>
+                    {% else %}
+                        <input type="checkbox" name="is_fav" id="is_fav">
+                    {% endif %}
+                    <span class="on-off round"></span>
+                </label>
+            </div>
+            <h4 class="d-inline px-2 middle">Favourite Recipe</h4>
          </div>
-         <div class="col-8 col-sm-5 col-md-7 col-lg-6 col-xl-5 p-0 text-left">
-            <h4 class="mt-2 mt-md-1">Favourite Recipe</h4>
-         </div>
-         <div class="col"></div>
       </div>
       <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
          <div class="col"></div>
          <!-- Slider value from app.js -->
-         <div class="col-11 text-left">
+         <div class="col-11 col-md-9 col-xl-8 text-left">
             <h4>Serves: <span id="serves-value"></span></h4>
          </div>
          <div class="col"></div>
       </div>
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-11">
+         <div class="col-11 col-md-9 col-xl-8">
             <div class="slidecontainer">
                <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" name="serves" id="serves">
                <label for="serves" class="sr-only">Serves</label>
@@ -76,14 +74,14 @@
       <div class="form-row m-0">
          <div class="col"></div>
          <!-- Slider value from app.js -->
-         <div class="col-11 text-left">
+         <div class="col-11 col-md-9 col-xl-8 text-left">
             <h4>Cook Time: <span id="cooktime-value"></span> mins</h4>
          </div>
          <div class="col"></div>
       </div>
       <div class="form-row">
          <div class="col"></div>
-         <div class="col-11">
+         <div class="col-11 col-md-9 col-xl-8">
             <div class="slidecontainer">
                <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" step="5" class="slider" name="cooktime" id="cooktime">
                <label for="cooktime" class="sr-only">Cook Time</label>
@@ -137,12 +135,12 @@
                         <div class="form-row mt-0">
                            <div class="col"></div>
                            <!-- Ingredients quantity -->
-                           <div class="col-4">
+                           <div class="col-5">
                               <input type="number" class="form-control" name="ingredient_quantity" id="ingredient_quantity{{loop.index}}" value="{{ingredient[1]}}" placeholder="Quantity" required>
                               <label for="ingredient_quantity{{loop.index}}" class="sr-only">Quantity</label>
                            </div>
                            <!-- Ingredients unit -->
-                           <div class="col-7">
+                           <div class="col-6">
                               <label for="ingredient_unit{{loop.index}}" class="sr-only">Unit</label>
                               <select class="form-control" name="ingredient_unit" id="ingredient_unit{{loop.index}}">
                                  <option label="{{ingredient[2]}}" value="{{ingredient[2]}}"></option>
@@ -247,13 +245,10 @@
       </div>
       <!-- Add recipe button -->
       <div class="form-row mb-0 pb-3">
-         <div class="col">
+         <div class="col col-lg-6 mx-auto">
             <button class="nav-item nav-btn nav-btn-blue nav-btn-long" type="submit">
                 Save Changes
             </button>
-            <!-- <div class="nav-item">
-                <a class="nav-link nav-btn nav-btn-blue nav-btn-long" type="submit" role="button" href=" url_for('editRecipeSave', recipe_id=recipe._id) }}">Save Changes</a>
-            </div> -->
          </div>
       </div>
    </form>
@@ -279,11 +274,11 @@
       </div>
       <div class="form-row mt-0">
          <div class="col"></div>
-         <div class="col-4">
+         <div class="col-5">
             <input type="number" class="form-control" name="ingredient_quantity" id="ingredient_quantity_template" placeholder="Quantity" required>
             <label for="ingredient_quantity" id="ingredient_quantity_template_label" class="sr-only">Quantity</label>
          </div>
-         <div class="col-7">
+         <div class="col-6">
             <label for="ingredient_unit" class="sr-only" id="ingredient_unit_template_label">Unit</label>
             <select class="form-control" name="ingredient_unit" id="ingredient_unit_template">
                <option label="" value=""></option>

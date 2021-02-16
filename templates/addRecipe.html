@@ -38,17 +38,15 @@
       </div>
       <!-- Is/isn't favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
       <div class="form-row">
-         <div class="col"></div>
-         <div class="col-3 col-sm-1 col-md-2">
-            <label class="switch" for="is_fav">
-                <input type="checkbox" name="is_fav" id="is_fav">
-                <span class="on-off round"></span>
-            </label>
+         <div class="col">
+            <div class="d-inline middle">
+                <label class="switch" for="is_fav">
+                    <input type="checkbox" name="is_fav" id="is_fav">
+                    <span class="on-off round"></span>
+                </label>
+            </div>
+            <h4 class="d-inline px-2 middle">Favourite Recipe</h4>
          </div>
-         <div class="col-8 col-sm-6 col-xl-5 p-0">
-            <h4 class="mt-2 mt-md-1">Favourite Recipe</h4>
-         </div>
-         <div class="col"></div>
       </div>
       <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
       <div class="form-row m-0">
@@ -122,12 +120,12 @@
                         <div class="form-row mt-0">
                            <div class="col"></div>
                            <!-- Ingredients quantity -->
-                           <div class="col-4">
+                           <div class="col-5">
                               <input type="number" class="form-control" name="ingredient_quantity" placeholder="Quantity" required>
                               <label for="ingredient_quantity" class="sr-only">Quantity input</label>
                            </div>
                            <!-- Ingredients unit -->
-                           <div class="col-7">
+                           <div class="col-6">
                               <label for="ingredient_unit" class="sr-only">Unit</label>
                               <select class="form-control" name="ingredient_unit">
                                  <option label="" value=""></option>
@@ -227,7 +225,7 @@
       </div>
       <!-- Add recipe button -->
       <div class="form-row mb-0 pb-3">
-         <div class="col">
+         <div class="col col-lg-6 mx-auto">
             <button class="nav-item nav-btn nav-btn-blue nav-btn-long" type="submit">
                 Add Recipe
             </button>
@@ -256,11 +254,11 @@
       </div>
       <div class="form-row mt-0">
          <div class="col"></div>
-         <div class="col-4">
+         <div class="col-5">
             <input type="number" class="form-control" name="ingredient_quantity" id="ingredient_quantity_template" placeholder="Quantity" required>
             <label for="ingredient_quantity" id="ingredient_quantity_template_label" class="sr-only">Quantity</label>
          </div>
-         <div class="col-7">
+         <div class="col-6">
             <label for="ingredient_unit" class="sr-only" id="ingredient_unit_template_label">Unit</label>
             <select class="form-control" name="ingredient_unit" id="ingredient_unit_template">
                <option label="" value=""></option>

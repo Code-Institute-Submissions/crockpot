@@ -81,24 +81,20 @@
             </div>
             <!-- Check/uncheck favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
             <div class="row mt-1 mb-1 mt-lg-2 mb-lg-2">
-                <div class="col"></div>
-                <div class="col-3 col-sm-2 text-right-md">
-                    <form method="POST" action="{{ url_for('isFav', recipe_id=recipe._id) }}" class="d-inline-block">
-                        <label class="switch" for="is_favourite">
+                <div class="col">
+                    <form class="d-inline middle" method="POST" action="{{ url_for('isFav', recipe_id=recipe._id) }}">
+                        <label class="switch" for="is_fav">
                             {% if session.user in recipe.is_fav %}
-                            <input onchange="this.form.submit()" type="checkbox" name="is_favourite" id="is_favourite"
+                            <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav"
                                 checked>
                             {% else %}
-                            <input onchange="this.form.submit()" type="checkbox" name="is_favourite" id="is_favourite">
+                            <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav">
                             {% endif %}
                             <span class="on-off round"></span>
                         </label>
                     </form>
+                    <h4 class="d-inline px-2 middle">Favourite Recipe</h4>
                 </div>
-                <div class="col-8 col-sm-5 col-lg-4 p-0 text-left">
-                    <h4 class="mt-2 mt-lg-1 p-0">Favourite Recipe</h4>
-                </div>
-                <div class="col"></div>
             </div>
             {% endif %}
         </section>
@@ -126,40 +122,40 @@
                     </div>
                     <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
                     <div class="row m-0">
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                         <!-- Slider value from app.js -->
-                        <div class="col-11 text-left col-sm-9">
+                        <div class="col-11 col-sm-12 text-left">
                             <h4>Serves: {{ recipe.serves }}</h4>
                         </div>
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                     </div>
                     <div class="row">
-                        <div class="col"></div>
-                        <div class="col-11 col-sm-9">
+                        <div class="col d-sm-none"></div>
+                        <div class="col-11 col-sm-12 text-left">
                             <div class="slidecontainer">
                                 <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
                             </div>
                         </div>
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                     </div>
                     <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
                     <div class="row">
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                         <!-- Slider value from recipe -->
-                        <div class="col-11 text-left col-sm-9">
+                        <div class="col-11 col-sm-12 text-left">
                             <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
                         </div>
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                     </div>
                     <div class="row m-0 pb-2">
-                        <div class="col"></div>
-                        <div class="col-11 col-sm-9">
+                        <div class="col d-sm-none"></div>
+                        <div class="col-11 col-sm-12 text-left">
                             <div class="slidecontainer">
                                 <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider"
                                     disabled>
                             </div>
                         </div>
-                        <div class="col"></div>
+                        <div class="col d-sm-none"></div>
                     </div>
                     <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
                     <div id="accordion">

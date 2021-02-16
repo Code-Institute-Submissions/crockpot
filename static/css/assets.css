@@ -109,6 +109,10 @@ body {
     text-align: right;
 }
 
+.middle {
+    vertical-align: middle;
+}
+
 .small-text {
     font-size: 1em;
 }
