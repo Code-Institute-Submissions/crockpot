@@ -2,334 +2,334 @@
 {% block content %}
 <!-- View Recipe title with username -->
 <div class="container-fluid">
-    <div class="container-compress">
-        <header class="container-fluid pt-2 pb-2">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-8 col-md-6 col-lg-4">
-                    <hr class="hr-skinny">
-                </div>
-                <div class="col"></div>
+   <div class="container-compress">
+      <header class="container-fluid pt-2 pb-2">
+         <div class="row">
+            <div class="col"></div>
+            <div class="col-8 col-md-6 col-lg-4">
+               <hr class="hr-skinny">
             </div>
-            <!-- Insert recipe name from recipe -->
-            <div class="row">
-                <div class="col">
-                    <h2 class="uppercase">{{ recipe.recipe_name }}</h2>
-                </div>
+            <div class="col"></div>
+         </div>
+         <!-- Insert recipe name from recipe -->
+         <div class="row">
+            <div class="col">
+               <h2 class="uppercase">{{ recipe.recipe_name }}</h2>
             </div>
-            <!-- Insert recipe created information from recipe -->
-            <div class="row">
-                <div class="col">
-                    <h6><em>{{ recipe.created_by }} on {{ recipe.date_added }}</em></h6>
-                </div>
+         </div>
+         <!-- Insert recipe created information from recipe -->
+         <div class="row">
+            <div class="col">
+               <h6><em>{{ recipe.created_by }} on {{ recipe.date_added }}</em></h6>
             </div>
-            <div class="row m-0">
-                <div class="col"></div>
-                <div class="col-8 col-md-6 col-lg-4">
-                    <hr class="hr-skinny">
-                </div>
-                <div class="col"></div>
+         </div>
+         <div class="row m-0">
+            <div class="col"></div>
+            <div class="col-8 col-md-6 col-lg-4">
+               <hr class="hr-skinny">
             </div>
-        </header>
-        <section class="container-fluid">
-            <!-- If user is logged in show menu, edit and delete buttons and favourite toggle -->
-            {% if session.user %}
-            <div class="row m-0 pb-1">
-                <div class="col">
-                    <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="d-inline-block">
-                        {% if session.user in recipe.is_menu %}
-                        <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box">
-                            <i class="fas fa-utensils"></i>
-                        </button>
+            <div class="col"></div>
+         </div>
+      </header>
+      <section class="container-fluid">
+         <!-- If user is logged in show menu, edit and delete buttons and favourite toggle -->
+         {% if session.user %}
+         <div class="row m-0 pb-1">
+            <div class="col">
+               <form method="POST" action="{{ url_for('isMenu', recipe_id=recipe._id) }}" class="d-inline-block">
+                  {% if session.user in recipe.is_menu %}
+                  <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box">
+                  <i class="fas fa-utensils"></i>
+                  </button>
+                  {% else %}
+                  <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
+                  <i class="fas fa-utensils"></i>
+                  </button>
+                  {% endif %}
+               </form>
+               <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
+               {% if session.user|lower == recipe.created_by|lower %}
+               <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
+                  class="icon icon-blue icon-blue-md shadow-box">
+               <i class="fas fa-edit"></i>
+               </a>
+               <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
+               <div class="icon icon-blue icon-blue-md shadow-box" id="delete-recipe-open"
+                  onclick="openModalView()">
+                  <i class="fas fa-trash-alt" id="delete-recipe-open-icon" onclick="openModalView()"></i>
+               </div>
+               <!-- Modal -->
+               <div class="modal-delete hidden" id="modal-delete">
+                  <div class="modal-dialog">
+                     <div class="modal-content text-center">
+                        <div class="modal-body">
+                           <h5>Are you sure you want to delete <span
+                              class="capital">{{ recipe.recipe_name }}</span>?</h5>
+                        </div>
+                        <div class="modal-footer">
+                           <!-- Delete recipe -->
+                           <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
+                              class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
+                           <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm"
+                              id="delete-recipe-close" onclick="closeModalView()">No</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+            </div>
+         </div>
+         <!-- Check/uncheck favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
+         <div class="row mt-1 mb-1 mt-lg-2 mb-lg-2">
+            <div class="col">
+               <form class="d-inline middle" method="POST" action="{{ url_for('isFav', recipe_id=recipe._id) }}">
+                  <label class="switch" for="is_fav">
+                  {% if session.user in recipe.is_fav %}
+                  <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav"
+                     checked>
+                  {% else %}
+                  <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav">
+                  {% endif %}
+                  <span class="on-off round"></span>
+                  </label>
+               </form>
+               <h4 class="d-inline px-2 middle">Favourite Recipe</h4>
+            </div>
+         </div>
+         {% endif %}
+      </section>
+      <section class="container-fluid">
+         <div class="row mb-0">
+            <div class="col col-md-5">
+               <!-- Recipe image -->
+               <div class="row m-0 pb-2 d-md-none">
+                  <div class="col">
+                     <div class="recipe-card">
+                        {% if recipe.image_url|length == 0 %}
+                        <div class="recipe-card-overlay border-white">
+                           <img id="logo-view-page"
+                              src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                              alt="Dark blue Crockpot logo" />
+                        </div>
                         {% else %}
-                        <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
-                            <i class="fas fa-utensils"></i>
-                        </button>
+                        <div class="recipe-card-overlay border-white">
+                           <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                              alt="{{ recipe.recipe_name }}">
+                        </div>
                         {% endif %}
-                    </form>
-                    <!-- If recipe was created by user, showing menu, edit and delete buttons; if it was not, only show menu button -->
-                    {% if session.user|lower == recipe.created_by|lower %}
-                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
-                        class="icon icon-blue icon-blue-md shadow-box">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
-                    <div class="icon icon-blue icon-blue-md shadow-box" id="delete-recipe-open"
-                        onclick="openModalView()">
-                        <i class="fas fa-trash-alt" id="delete-recipe-open-icon" onclick="openModalView()"></i>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal-delete hidden" id="modal-delete">
-                        <div class="modal-dialog">
-                            <div class="modal-content text-center">
-                                <div class="modal-body">
-                                    <h5>Are you sure you want to delete <span
-                                            class="capital">{{ recipe.recipe_name }}</span>?</h5>
-                                </div>
-                                <div class="modal-footer">
-                                    <!-- Delete recipe -->
-                                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}"
-                                        class="nav-btn nav-btn-blue-dark-nb nav-btn-sm p-1">Yes</a>
-                                    <button type="button" class="nav-btn nav-btn-blue-nb nav-btn-sm"
-                                        id="delete-recipe-close" onclick="closeModalView()">No</button>
-                                </div>
-                            </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+               <div class="row m-0">
+                  <div class="col d-sm-none"></div>
+                  <!-- Slider value from app.js -->
+                  <div class="col-11 col-sm-12 text-left">
+                     <h4>Serves: {{ recipe.serves }}</h4>
+                  </div>
+                  <div class="col d-sm-none"></div>
+               </div>
+               <div class="row">
+                  <div class="col d-sm-none"></div>
+                  <div class="col-11 col-sm-12 text-left">
+                     <div class="slidecontainer">
+                        <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
+                     </div>
+                  </div>
+                  <div class="col d-sm-none"></div>
+               </div>
+               <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+               <div class="row">
+                  <div class="col d-sm-none"></div>
+                  <!-- Slider value from recipe -->
+                  <div class="col-11 col-sm-12 text-left">
+                     <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
+                  </div>
+                  <div class="col d-sm-none"></div>
+               </div>
+               <div class="row m-0 pb-2">
+                  <div class="col d-sm-none"></div>
+                  <div class="col-11 col-sm-12 text-left">
+                     <div class="slidecontainer">
+                        <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider"
+                           disabled>
+                     </div>
+                  </div>
+                  <div class="col d-sm-none"></div>
+               </div>
+               <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
+               <div id="accordion">
+                  <!-- Ingredients dropdown -->
+                  <div class="card">
+                     <div class="card-header" id="accordion-searchrecipe-ingredients">
+                        <button class="btn btn-link collapsed h3" data-toggle="collapse"
+                           data-target="#collapse-searchrecipe-ingredients" aria-expanded="false"
+                           aria-controls="collapse-searchrecipe-ingredients">
+                        Ingredients <i class="fas fa-angle-down"></i>
+                        </button>
+                     </div>
+                     <div id="collapse-searchrecipe-ingredients" class="collapse"
+                        aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
+                        <div class="card-body">
+                           <!-- Insert ingredient name, ingredient quantity and ingredient unit from recipe -->
+                           <div class="row m-0">
+                              <div class="col border-white background-white p-0 m-2">
+                                 <!-- Insert instructions from recipe -->
+                                 <ul class="text-left mb-0">
+                                    {% for ingredient in ingredients %}
+                                    <li><span class="capital">{{ingredient[0]}}</span> x
+                                       {{ingredient[1]}}{{ingredient[2]}}
+                                    </li>
+                                    {% endfor %}
+                                 </ul>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                    {% endif %}
-                </div>
+                     </div>
+                  </div>
+                  <!-- Instructions dropdown -->
+                  <div class="card d-md-none">
+                     <div class="card-header" id="accordion-searchrecipe-filters">
+                        <button class="btn btn-link h3" data-toggle="collapse"
+                           data-target="#collapse-searchrecipe-filters" aria-expanded="true"
+                           aria-controls="collapse-searchrecipe-filters">
+                        Instructions <i class="fas fa-angle-down"></i>
+                        </button>
+                     </div>
+                     <div id="collapse-searchrecipe-filters" class="collapse"
+                        aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
+                        <div class="card-body">
+                           <div class="row m-0">
+                              <div class="col border-white background-white m-2">
+                                 <!-- Insert instructions from recipe -->
+                                 <ol class="text-left mb-0">
+                                    {% for instruction in recipe.instructions %}
+                                    <li>{{instruction}}</li>
+                                    {% endfor %}
+                                 </ol>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- If recipe tips are blank, remove tips div -->
+               {% if recipe.tips == "" %}
+               <div class="row hidden"></div>
+               <!-- Else, show tips -->
+               {% else %}
+               <div class="row mt-0 pt-2 d-md-none">
+                  <div class="col"></div>
+                  <div class="col-11 p-0 text-left">
+                     <h3 class="pl-1">Top tips</h3>
+                     <div class="border-white background-white p-2">
+                        <h6>{{ recipe.tips }}</h6>
+                     </div>
+                  </div>
+                  <div class="col"></div>
+               </div>
+               {% endif %}
+               <!-- If recipe source is blank, remove source div -->
+               {% if recipe.source == "" %}
+               <div class="row hidden"></div>
+               <!-- Else, show source -->
+               {% else %}
+               <div class="row mb-0 pb-2 d-md-none">
+                  <div class="col"></div>
+                  <div class="col-11 text-left">
+                     <h3 class="pl-1">Source</h3>
+                     <div class="border-white background-white p-2">
+                        <h6 class="capital">{{ recipe.source }}</h6>
+                     </div>
+                  </div>
+                  <div class="col"></div>
+               </div>
+               {% endif %}
             </div>
-            <!-- Check/uncheck favourite recipe on/off switch - component taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
-            <div class="row mt-1 mb-1 mt-lg-2 mb-lg-2">
-                <div class="col">
-                    <form class="d-inline middle" method="POST" action="{{ url_for('isFav', recipe_id=recipe._id) }}">
-                        <label class="switch" for="is_fav">
-                            {% if session.user in recipe.is_fav %}
-                            <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav"
-                                checked>
-                            {% else %}
-                            <input onchange="this.form.submit()" type="checkbox" name="is_fav" id="is_fav">
-                            {% endif %}
-                            <span class="on-off round"></span>
-                        </label>
-                    </form>
-                    <h4 class="d-inline px-2 middle">Favourite Recipe</h4>
-                </div>
+            <!-- LARGE VIEW -->
+            <div class="d-none d-md-block col-md-7">
+               <!-- Recipe image -->
+               <div class="row m-0">
+                  <div class="col-12">
+                     <div class="recipe-card">
+                        {% if recipe.image_url|length == 0 %}
+                        <div class="recipe-card-overlay border-white">
+                           <img id="logo-view-page"
+                              src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
+                              alt="Dark blue Crockpot logo" />
+                        </div>
+                        {% else %}
+                        <div class="recipe-card-overlay border-white">
+                           <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                              alt="{{ recipe.recipe_name }}">
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+               <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
+               <div id="accordion-large">
+                  <!-- Instructions dropdown -->
+                  <div class="card">
+                     <div class="card-header" id="accordion-searchrecipe-filters-large">
+                        <button class="btn btn-link h3" data-toggle="collapse"
+                           data-target="#collapse-searchrecipe-filters-large" aria-expanded="true"
+                           aria-controls="collapse-searchrecipe-filters-large">
+                        Instructions <i class="fas fa-angle-down"></i>
+                        </button>
+                     </div>
+                     <div id="collapse-searchrecipe-filters-large" class="collapse"
+                        aria-labelledby="accordion-searchrecipe-filters-large" data-parent="#accordion-large">
+                        <div class="card-body">
+                           <div class="row m-0">
+                              <div class="col border-white background-white">
+                                 <!-- Insert instructions from recipe -->
+                                 <ol class="text-left mb-0">
+                                    {% for instruction in recipe.instructions %}
+                                    <li>{{instruction}}</li>
+                                    {% endfor %}
+                                 </ol>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- If recipe tips are blank, remove tips div -->
+               {% if recipe.tips == "" %}
+               <div class="row hidden"></div>
+               <!-- Else, show tips -->
+               {% else %}
+               <div class="row mt-0 pt-2">
+                  <div class="col"></div>
+                  <div class="col-11 text-left">
+                     <h3 class="pl-1">Top tips</h3>
+                     <div class="border-white background-white p-2">
+                        <h6>{{ recipe.tips }}</h6>
+                     </div>
+                  </div>
+                  <div class="col"></div>
+               </div>
+               {% endif %}
+               <!-- If recipe source is blank, remove source div -->
+               {% if recipe.source == "" %}
+               <div class="row hidden"></div>
+               <!-- Else, show source -->
+               {% else %}
+               <div class="row mb-0 pb-2">
+                  <div class="col"></div>
+                  <div class="col-11 text-left">
+                     <h3 class="pl-1">Source</h3>
+                     <div class="border-white background-white p-2">
+                        <h6 class="capital">{{ recipe.source }}</h6>
+                     </div>
+                  </div>
+                  <div class="col"></div>
+               </div>
+               {% endif %}
             </div>
-            {% endif %}
-        </section>
-        <section class="container-fluid">
-            <div class="row mb-0">
-                <div class="col col-md-5">
-                    <!-- Recipe image -->
-                    <div class="row m-0 pb-2 d-md-none">
-                        <div class="col">
-                            <div class="recipe-card">
-                                {% if recipe.image_url|length == 0 %}
-                                <div class="recipe-card-overlay border-white">
-                                    <img id="logo-view-page"
-                                        src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
-                                        alt="Dark blue Crockpot logo" />
-                                </div>
-                                {% else %}
-                                <div class="recipe-card-overlay border-white">
-                                    <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                                        alt="{{ recipe.recipe_name }}">
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Serving portions slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                    <div class="row m-0">
-                        <div class="col d-sm-none"></div>
-                        <!-- Slider value from app.js -->
-                        <div class="col-11 col-sm-12 text-left">
-                            <h4>Serves: {{ recipe.serves }}</h4>
-                        </div>
-                        <div class="col d-sm-none"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-sm-none"></div>
-                        <div class="col-11 col-sm-12 text-left">
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="8" value="{{ recipe.serves }}" class="slider" disabled>
-                            </div>
-                        </div>
-                        <div class="col d-sm-none"></div>
-                    </div>
-                    <!-- Cooking time slider - component taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                    <div class="row">
-                        <div class="col d-sm-none"></div>
-                        <!-- Slider value from recipe -->
-                        <div class="col-11 col-sm-12 text-left">
-                            <h4>Cook Time: {{ recipe.cooking_time }} mins</h4>
-                        </div>
-                        <div class="col d-sm-none"></div>
-                    </div>
-                    <div class="row m-0 pb-2">
-                        <div class="col d-sm-none"></div>
-                        <div class="col-11 col-sm-12 text-left">
-                            <div class="slidecontainer">
-                                <input type="range" min="5" max="120" value="{{ recipe.cooking_time }}" class="slider"
-                                    disabled>
-                            </div>
-                        </div>
-                        <div class="col d-sm-none"></div>
-                    </div>
-                    <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
-                    <div id="accordion">
-                        <!-- Ingredients dropdown -->
-                        <div class="card">
-                            <div class="card-header" id="accordion-searchrecipe-ingredients">
-                                <button class="btn btn-link collapsed h3" data-toggle="collapse"
-                                    data-target="#collapse-searchrecipe-ingredients" aria-expanded="false"
-                                    aria-controls="collapse-searchrecipe-ingredients">
-                                    Ingredients <i class="fas fa-angle-down"></i>
-                                </button>
-                            </div>
-                            <div id="collapse-searchrecipe-ingredients" class="collapse"
-                                aria-labelledby="accordion-searchrecipe-ingredients" data-parent="#accordion">
-                                <div class="card-body">
-                                    <!-- Insert ingredient name, ingredient quantity and ingredient unit from recipe -->
-                                    <div class="row m-0">
-                                        <div class="col border-white background-white p-0 m-2">
-                                            <!-- Insert instructions from recipe -->
-                                            <ul class="text-left mb-0">
-                                                {% for ingredient in ingredients %}
-                                                <li><span class="capital">{{ingredient[0]}}</span> x
-                                                    {{ingredient[1]}}{{ingredient[2]}}
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Instructions dropdown -->
-                        <div class="card d-md-none">
-                            <div class="card-header" id="accordion-searchrecipe-filters">
-                                <button class="btn btn-link h3" data-toggle="collapse"
-                                    data-target="#collapse-searchrecipe-filters" aria-expanded="true"
-                                    aria-controls="collapse-searchrecipe-filters">
-                                    Instructions <i class="fas fa-angle-down"></i>
-                                </button>
-                            </div>
-                            <div id="collapse-searchrecipe-filters" class="collapse"
-                                aria-labelledby="accordion-searchrecipe-filters" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div class="row m-0">
-                                        <div class="col border-white background-white m-2">
-                                            <!-- Insert instructions from recipe -->
-                                            <ol class="text-left mb-0">
-                                                {% for instruction in recipe.instructions %}
-                                                <li>{{instruction}}</li>
-                                                {% endfor %}
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- If recipe tips are blank, remove tips div -->
-                    {% if recipe.tips == "" %}
-                    <div class="row hidden"></div>
-                    <!-- Else, show tips -->
-                    {% else %}
-                    <div class="row mt-0 pt-2 d-md-none">
-                        <div class="col"></div>
-                        <div class="col-11 p-0 text-left">
-                            <h3 class="pl-1">Top tips</h3>
-                            <div class="border-white background-white p-2">
-                                <h6>{{ recipe.tips }}</h6>
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                    {% endif %}
-                    <!-- If recipe source is blank, remove source div -->
-                    {% if recipe.source == "" %}
-                    <div class="row hidden"></div>
-                    <!-- Else, show source -->
-                    {% else %}
-                    <div class="row mb-0 pb-2 d-md-none">
-                        <div class="col"></div>
-                        <div class="col-11 text-left">
-                            <h3 class="pl-1">Source</h3>
-                            <div class="border-white background-white p-2">
-                                <h6 class="capital">{{ recipe.source }}</h6>
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                    {% endif %}
-                </div>
-                <!-- LARGE VIEW -->
-                <div class="d-none d-md-block col-md-7">
-                    <!-- Recipe image -->
-                    <div class="row m-0">
-                        <div class="col-12">
-                            <div class="recipe-card">
-                                {% if recipe.image_url|length == 0 %}
-                                <div class="recipe-card-overlay border-white">
-                                    <img id="logo-view-page"
-                                        src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
-                                        alt="Dark blue Crockpot logo" />
-                                </div>
-                                {% else %}
-                                <div class="recipe-card-overlay border-white">
-                                    <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                                        alt="{{ recipe.recipe_name }}">
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Ingredients/instructions accordion - component taken from https://getbootstrap.com/docs/4.0/components/collapse/ -->
-                    <div id="accordion-large">
-                        <!-- Instructions dropdown -->
-                        <div class="card">
-                            <div class="card-header" id="accordion-searchrecipe-filters-large">
-                                <button class="btn btn-link h3" data-toggle="collapse"
-                                    data-target="#collapse-searchrecipe-filters-large" aria-expanded="true"
-                                    aria-controls="collapse-searchrecipe-filters-large">
-                                    Instructions <i class="fas fa-angle-down"></i>
-                                </button>
-                            </div>
-                            <div id="collapse-searchrecipe-filters-large" class="collapse"
-                                aria-labelledby="accordion-searchrecipe-filters-large" data-parent="#accordion-large">
-                                <div class="card-body">
-                                    <div class="row m-0">
-                                        <div class="col border-white background-white">
-                                            <!-- Insert instructions from recipe -->
-                                            <ol class="text-left mb-0">
-                                                {% for instruction in recipe.instructions %}
-                                                <li>{{instruction}}</li>
-                                                {% endfor %}
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- If recipe tips are blank, remove tips div -->
-                    {% if recipe.tips == "" %}
-                    <div class="row hidden"></div>
-                    <!-- Else, show tips -->
-                    {% else %}
-                    <div class="row mt-0 pt-2">
-                        <div class="col"></div>
-                        <div class="col-11 text-left">
-                            <h3 class="pl-1">Top tips</h3>
-                            <div class="border-white background-white p-2">
-                                <h6>{{ recipe.tips }}</h6>
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                    {% endif %}
-                    <!-- If recipe source is blank, remove source div -->
-                    {% if recipe.source == "" %}
-                    <div class="row hidden"></div>
-                    <!-- Else, show source -->
-                    {% else %}
-                    <div class="row mb-0 pb-2">
-                        <div class="col"></div>
-                        <div class="col-11 text-left">
-                            <h3 class="pl-1">Source</h3>
-                            <div class="border-white background-white p-2">
-                                <h6 class="capital">{{ recipe.source }}</h6>
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </section>
-    </div>
+         </div>
+      </section>
+   </div>
 </div>
 {% endblock %}
