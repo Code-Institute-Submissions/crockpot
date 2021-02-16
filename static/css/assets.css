@@ -10,21 +10,15 @@ body {
     background-color: #eeeeee;
 }
 
-.container-compress, .container-compress-extra {
+.container-fluid, .container-compress, .container-compress-extra {
     width: 100%;
     margin: 0 auto;
-    /* border: 4px solid black; */
 }
 
 .col, .row, .form-row, .container-fluid, .card-header, .card-body {
     padding: 0;
     margin: 0;
     text-align: center;
-}
-
-.container-fluid {
-    width: 100%;
-    margin: 0 auto;
 }
 
 .row, .form-row {
@@ -92,6 +86,10 @@ body {
     box-shadow: #2C497F 0px 1px;
 }
 
+.middle {
+    vertical-align: middle;
+}
+
 .v-align {
     top: 50%;
     transform: translateY(50%);
@@ -109,14 +107,9 @@ body {
     text-align: right;
 }
 
-.middle {
-    vertical-align: middle;
-}
-
 .small-text {
     font-size: 1em;
 }
-
 
 /* Headings */
 h1, h2, h3, .h3, h4, h5, h6 {
@@ -152,11 +145,6 @@ h5 {
 h6, ul, ol {
     font-weight: 400;
     font-size: 1.2em;
-}
-
-input[type=text], input[type=password] {
-    font-weight: 400;
-    font-size: 1em;
 }
 
 ol {
@@ -445,6 +433,12 @@ hr {
     border-color: #95ebe0;
 }
 
+.icon-dark-blue, .icon-dark-blue:hover {
+    color: #2C497F;
+    background-color: #fff;
+    border-color: #2C497F;
+}
+
 .hidden {
     display: none;
 }
@@ -477,22 +471,6 @@ input:checked + .icon-menu {
     border-color: #95ebe0;
     color: #95ebe0;
     background-color: #fff;
-}
-
-/* User testimonials */
-.testimonial-bubble {
-    width: 250px;
-	height: 250px;
-	border-radius: 50%;
-	border: solid 8px #fff;
-	text-align: center;
-    display: inline-block;
-    
-    overflow: hidden;
-}
-
-.testimonial-image {
-    height: 100%;
 }
 
 /* Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */ 
@@ -658,8 +636,6 @@ ul.ks-cboxtags li input[type="checkbox"] {
   cursor: pointer;
 }
 
-
-
 /* Form */
 label {
     margin: 0;
@@ -667,6 +643,8 @@ label {
 
 .form-control {
     border: #ccc solid 1px;
+    font-weight: 400;
+    font-size: 1em;
 }
 
 .form-control:focus {
@@ -678,7 +656,6 @@ label {
 }
 
 /* Carousel */
-
 .prev-icon .fas,
 .next-icon .fas {
     color: #fff;   
@@ -763,9 +740,6 @@ label {
     justify-content: center;
 }
 
-/* .black-border {
-    border: black 2px solid;
-} */
 
 /* Media queries */
 @media (min-width: 600px) {
@@ -807,10 +781,6 @@ label {
         text-align: right;
     }
 
-    /* .navbar {
-        padding: 5px 10px;
-    } */
-
     #logo-nav {
         height: 70px;
     }
@@ -838,7 +808,6 @@ label {
         width: 300px;
         height: 300px;
     }
-
 }
 
 @media (min-width: 992px) {
@@ -890,9 +859,6 @@ label {
         padding-left: 8px;
         padding-right: 8px;
         padding-top: 3px
-        
-        /* top: 0px;
-        left: 0px; */
     }
 
     .icon {
@@ -919,6 +885,12 @@ label {
 
     .icon-blue-selected {
         border: solid 5px #95ebe0;
+    }
+
+    .icon-dark-blue, .icon-dark-blue:hover {
+        color: #2C497F;
+        background-color: #fff;
+        border-color: #2C497F;
     }
 }
 
