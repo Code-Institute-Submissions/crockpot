@@ -1,11 +1,11 @@
-// Open accordions on larger devices
+// Open accordions automatically on larger devices
 onload = function () {
     if (window.innerWidth >= 768) {
         $(".collapse").addClass("show");
     }
 }
 
-// Modal controls
+// Modal controls - profile.html
 function openModalView() {
     idNumModal = document.getElementById("modal-delete");
     $(idNumModal).removeClass("hidden");
@@ -16,7 +16,6 @@ function closeModalView() {
     $(idNumModal).addClass("hidden");
 }
 
-// Non-profile
 function openModal() {
     var target = event.target || event.srcElement;
     var id = target.id;
@@ -53,7 +52,6 @@ function closeModalMd() {
     $(idNumModal).addClass("hidden");
 }
 
-// Profile
 function openModalMy() {
     var target = event.target || event.srcElement;
     var id = target.id;
