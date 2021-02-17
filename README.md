@@ -2,13 +2,13 @@
 
 ## Code Institute: Milestone Project 3
 
-![Crockpot on multiple devices](#)
+![Crockpot on multiple devices](static/images/readme/crockpot-responsive.png)
 
 _Crockpot_ is a cooking website that allows users to save all of their recipes in one convenient place, upload their old favourites to the community database, search for new inspiration based on what ingredients they have in the cupboard and generate a shopping list from their selected menu. I designed this app primarily for myself - I love cooking but hate the faff of meal planning and making shopping lists, so I wanted to design something that would make this easier for me - but it can also be used by a wider audience of cooking enthusiasts.
 
 This was the third of four Milestone Projects required to pass the Full Stack Web Development Program at _Code Institute_. The main requirements were to build a full-stack site using HTML, CSS, JavaScript, Python, Flask and MongoDB that allows users to manage a common dataset about a particular domain.
 
-Click [here](https://github.com/zoet24/crockpot) to view the Github repository for the project, and click [here](https://crockpot.herokuapp.com/) to view the live website.
+Click **[here](https://github.com/zoet24/crockpot)** to view the Github repository for the project, and click **[here](https://crockpot.herokuapp.com/)** to view the live website.
 
 ## Table of Contents
 
@@ -19,9 +19,10 @@ Click [here](https://github.com/zoet24/crockpot) to view the Github repository f
         - [Structure Plane](#structure-plane)
         - [Skeleton Plane](#skeleton-plane)
         - [Surface Plane](#surface-plane)
-    - [Information Architecture] (#information-architecture)
+    - [Information Architecture](#information-architecture)
     - [Features](#features)
         - [Existing features](#existing-features)
+        - [Defensive design features](#defensive-design-features)
         - [Features left to implement](#features-left-to-implement)
 - [Technologies Used](#technologies-used)
     - [Languages and frameworks](#languages-and-frameworks)
@@ -74,7 +75,6 @@ _**"Must-haves"**_
 7. Users must be able to browse their own recipes and recipes added by other users.
 8. Users must be able to search for specific recipes based on various criteria, including ingredients.
 
-
 _**"Nice-to-haves"**_
 1. The site could generate a shopping list based on what recipes the user has selected.
 2. The site could recommend recipes to the user based on recipes they hadn’t tried before/recipes that were similar to their own/favourite recipes.
@@ -98,30 +98,102 @@ Based on the features outlined in my scope and the end result of the task manage
 At this stage I added a “Shopping List” page to my “nice-to-have” list (which I would later rename “Menu”) - this would be a page which would generate a shopping list based on what recipes the user had added to their “Menu”. It would only be accessible if the user was logged in to the website. It was an unnecessary addition to include in the initial MVP, but I decided to be optimistic and include it in my wireframe mock-ups.
 
 #### Skeleton Plane
-I used Balsamiq to develop wireframes (click [here](README-Wireframes.md) to view them) of what I wanted my website to look like on mobile and desktop. I kept my scope at the forefront of this design process to make sure that there was going to be a place to put all of my key features.
+I used Balsamiq to develop wireframes (click **[here](README-Wireframes.md)** to view all of them) of what I wanted my website to look like on mobile and desktop. I kept my scope at the forefront of this design process to make sure that there was going to be a place to put all of my key features.
+
+![Wireframe - Home](static/images/readme/readme-wireframe1-home.png)
+
+**Note:** I later decided to remove the user testimonial section from the bottom of my Home page as liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
 
 #### Surface Plane
 After finishing my Balsamiq wireframes, I designed the _Crockpot_ logo and favicon using HTML5 and CSS. I chose “Fredoka One” for the logo font as I thought the rounded curves of the typeface matched the round features of the logo. I continued this theme throughout the website, opting for rounded corners and circles on buttons, icons and images. I didn’t want to use "Fredoka One" for the main body of text so used “Poppins” instead as it’s much easier to read.
 
 ![Crockpot Logo](static/images/logo-red.png)
 
-I used coolors.com to select the colour scheme for the website. I wanted something bright and bold for the logo, navbar and footer - I chose the red #e63b2e because it reminded me of tomato sauce which I thought was appropriate for the website! The rest of the colour palette is a bit calmer in comparison so it doesn’t distract the user from the bulk of the information on the page.
+I used coolors.com to select the colour scheme for the website. I wanted something bright and bold for the logo, navbar and footer - I chose the red #e63b2e because it reminded me of tomato sauce which I thought was appropriate for the website! The rest of the colour palette is a bit calmer in comparison so it doesn’t distract the user from the bulk of the information on the page. The light blue (#95EBE0) is used for clickable links throughout the website (apart from the sign up and log in links); the dark blue (#2C497F) is used to convey information as it contrasts better against the pale background.
 
 ![Coolors Colour Palette](static/images/readme/readme-coolors.png)
 
-The images on the website at the point of submission are from unsplash.com and hellofresh.com.
-
 ### Information Architecture
+
+I used Mongo DB to store the data for my site using the schema shown below.
+- The user's "username" is stored in the recipe "created_by" if they are the one who made the record.
+- The user's "username" is pushed/pulled from the "is_menu" and "is_fav" arrays depending on their input into the website, so multiple users can have the same recipe as their favourite or in their menu.
 
 ![Crockpot MongoDB Schema](static/images/readme/readme-schema.png)
 
 ### Features
 #### Existing features
+_**General**_
+- Elements that can be clicked on - underline, grow
+- When the user is logged in, each recipe tile will have a "menu" icon in the top left corner. If the user has made the recipe it will also have an "edit" and "delete" icon in the top right corner. This is so a user can add a recipe to their menu, edit it or delete it without having to go to the main recipe page.
+
+_**Home**_
+- The logo, tag line and links to the Sign Up and Log In pages are superimposed on a colourful image of a table of food to introduce the users to the site.
+- There is a description of the functionality of the website to inform the user what they would be able to do with an account.
+- There is a selection of the most recently added recipes that the user can browse through.
+
+_**Sign Up/Log In**_
+- The background image and layout of these pages is consistent with the Home page.
+- Users can create an account/log in to an existing account using the form.
+- If they enter an incorrect combination of username/password, or if they try to sign up with a username that has already been taken then they are informed via flashed message.
+- If they enter a username or password with an incompatible combination of characters they are informed via pop-up.
+- If they successfully enter the site they are greeted via flashed message on the profile page.
+
+_**Profile**_
+- The user is greeted with their username at the top of the page.
+- If the user has made recipes, they can see all of them at the top of the page (in a carousel for mobile devices, as tiles for larger devices).
+- If the user hasn't made any recipes yet, they see instructions on how to add a recipe. The icons for "edit" and "delete" are used consistently throughout the site.
+- There are links to the Add, Search and Menu pages in the centre of the page.
+- If the user has favourite recipes, they can see all of them at the bottom of the page (in a carousel for mobile devices, as tiles for larger devices).
+- If the user hasn't got any favourite recipes yet, they see instructions on how to view a recipe and how to favourite it.
+
+_**Add Recipe**_
+- The user can save information about their new recipe using the form.
+- The sliders use a JavaScript function to display the slider value.
+- The ingredients and instructions drop down menus using a JavaScript function to add/remove additional form rows.
+- The recipe name and ingredients name are saved without spaces to improve the specificity of the search funciton (ie. "Hot chilli powder" would be saved as "HotChilliPowder").
+- If there are issues with the input the user is informed of the error via pop-up.
+- If the user successfully submits the recipe they are returned to their profile page and told via flashed message.
+
+_**Edit Recipe**_
+- The user can access the edit page from the recipe tile or the recipe page.
+- The layout is the same as the Add page.
+- A JavaScript function fills the ingredients and instructions with the correct number of lines.
+- A Python function adds spaces between capital letters in the ingredients names (ie. HotChilliPowder is rendered as Hot Chilli Powder).
+- If there are issues with the input the user is informed of the error via pop-up.
+- If the user successfully saves their changes they are returned to their profile page and told via flashed message.
+
+_**View Recipe**_
+- The user can view clearly presented information about the recipe.
+- The user can add/remove the recipe from their menu using the "menu" icon. If they created the recipe they will also be able to edit/delete the recipe using the icons too.
+- The user can add/remove the recipe from their favourites using the toggle.
+- If the user added a image URL it will be displayed; if they did not there will be an image of the Crockpot logo as a placeholder.
+- If the user added "top tips" and a "source" for their recipe it will be visible at the bottom of the page; if these sections were left out nothing will be rendered.
+
+_**Search Recipe**_
+- The user can search for a recipe name and/or filter recipes using the ingredients dropdown menu.
+- The ingredients dropdown menu shows all of the unique ingredients from all of the ingredients on the database.
+- A JavaScript function adds all of the values of the checked ingredients boxes to the query text when the user submits their search, and will show any recipes that match any of the query text.
+- If there are no matches with the user's search, they see instructions on how to reset their search and start again.
+
+_**Menu**_
+- The user can add/remove a recipe to their "menu" from the recipe tile or the recipe page. If they have successfully added/removed the recipe they will be told via flashed message.
+- If the user has recipes on their menu, they can see all of them at the top of the page. The dropdown "shopping list" will sum all of the ingredients in the selected recipes and the user can mark what they do/do not have.
+- If the user hasn't made any recipes yet, they see instructions on how to do it. After this they will see a list of recommended recipes.
+
+#### Defensive design features
+- Attributes "min-length", "max-length", "pattern" and "required" controls what data the user can/cannot enter in to the database.
+- Blank form entries (apart from a few specific fields) are blocked.
+- When the input is invalid, user receives feedback through multiple methods - "oninvalid" is used to customise the error message or a relevant flashed message is shown. 
 
 #### Features left to implement
-- Add categories to recipes for extra search functionality (eg. vegetarian, spicy, meaty etc)
-- Quantities as a function of serving portion
-- Make search function more specific
+- Admin functionality
+- Recipe recommendation based on what the user has favourited
+- Allow users to customise their profiles
+- Add categories to recipes for extra search functionality
+- Improve specificity of search function (add more filters, make most relevant searches appear first)
+- Make ingredient quantity a function of serving portion (so you could add a recipe to your menu with a specific serving portion in mind)
+- Implement a rating/user comments section for each recipe
 
 ## Technologies used
 ### Languages and frameworks
@@ -156,13 +228,15 @@ The images on the website at the point of submission are from unsplash.com and h
 - Bug #3: Search specificity, incorrect ingredients/instructions on editRecipe
 
 ## Testing
-Click [here](testing.md) to view the complete testing process.
+Click [here](README-Testing.md) to view the complete testing process.
 
 ## Deployment
 
 ## Credits
 __Images:__
 The background image was taken from...
+
+The images on the website at the point of submission are taken from https://www.hellofresh.co.uk/.
 
 __Audio:__
 All audio files were downloaded from...
@@ -177,3 +251,4 @@ __Acknowledgements:__
 I'd like to acknowledge the following tutorials and websites that I studied to complete my project. These sources have been credited in the code comments and were heavily modified for my own website.
 
 I'd also like to thank my tutor Can Sucullu, the Code Institute community and my friends and family for their guidance and input on this project.
+
