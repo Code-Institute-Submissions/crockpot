@@ -127,6 +127,11 @@ def addRecipe():
         # Add username to "is_fav" if toggle is on
         is_fav = [session["user"]] if request.form.get("is_fav") else []
 
+        # Assign placeholder image to blank urls
+        imageUrl = request.form.get("image_url")
+        if len(imageUrl) == 0:
+            imageUrl = "static/images/logo-darkblue.png"
+
         # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")
         ingredient_names_reformat = []
@@ -139,7 +144,7 @@ def addRecipe():
             "recipe_name": request.form.get("recipe_name").lower(),
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
-            "image_url": request.form.get("image_url"),
+            "image_url": imageUrl,
             "ingredient_name": ingredient_names_reformat,
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),
@@ -186,6 +191,11 @@ def editRecipe(recipe_id):
 @app.route("/editRecipe/<recipe_id>", methods=["GET", "POST"])
 def editRecipeSave(recipe_id):
     if request.method == "POST":
+        # Assign placeholder image to blank urls
+        imageUrl = request.form.get("image_url")
+        if len(imageUrl) == 0:
+            imageUrl = "static/images/logo-darkblue.png"
+
         # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")
         ingredient_names_reformat = []
@@ -198,7 +208,7 @@ def editRecipeSave(recipe_id):
             "recipe_name": request.form.get("recipe_name").lower(),
             "serves": request.form.get("serves"),
             "cooking_time": request.form.get("cooktime"),
-            "image_url": request.form.get("image_url"),
+            "image_url": imageUrl,
             "ingredient_name": ingredient_names_reformat,
             "ingredient_quantity": request.form.getlist("ingredient_quantity"),
             "ingredient_unit": request.form.getlist("ingredient_unit"),

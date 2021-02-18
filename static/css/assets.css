@@ -222,9 +222,7 @@ footer {
 	padding-top: 20%;
 }
 
-.logo-view-thumbnail,
-#logo-view-thumbnail-my,
-#logo-view-thumbnail-fav {
+.logo-view-thumbnail {
 	width: 90%;
 	padding-top: 15%;
 }
