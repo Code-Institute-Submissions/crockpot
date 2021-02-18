@@ -157,7 +157,7 @@ def addRecipe():
         return redirect(url_for(
                         "profile", username=session["user"]))
 
-    return render_template("addRecipe.html")
+    return render_template("add-recipe.html")
 
 
 @app.route("/editRecipe/<recipe_id>")
@@ -178,7 +178,7 @@ def editRecipe(recipe_id):
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
 
-    return render_template("editRecipe.html",
+    return render_template("edit-recipe.html",
                            recipe=recipe,
                            ingredients=ingredients)
 
@@ -311,7 +311,7 @@ def viewRecipe(recipe_id):
                       recipe["ingredient_quantity"],
                       recipe["ingredient_unit"])
 
-    return render_template("viewRecipe.html",
+    return render_template("view-recipe.html",
                            recipe=recipe,
                            ingredients=ingredients)
 
@@ -340,7 +340,7 @@ def searchReset():
 
     search_recipes = recipes.find()
     search_recipes_md = recipes.find()
-    return render_template("searchRecipe.html",
+    return render_template("search-recipe.html",
                            search_recipes=search_recipes,
                            search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
@@ -373,7 +373,7 @@ def search():
     search_recipes = recipes.find({"$text": {"$search": query}})
     # Find recipes with ingredients that match text
     search_recipes_md = recipes.find({"$text": {"$search": query}})
-    return render_template("searchRecipe.html",
+    return render_template("search-recipe.html",
                            search_recipes=search_recipes,
                            search_recipes_md=search_recipes_md,
                            search_ingredients=(sorted(search_ingredients)))
