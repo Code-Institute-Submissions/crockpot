@@ -183,6 +183,7 @@ _**Menu**_
 
 #### Defensive design features
 - Attributes "min-length", "max-length", "pattern" and "required" controls what data the user can/cannot enter in to the database.
+- The "type" attribute for the image url entries is set to "url" to check that the user is inputting a valid link.
 - Blank form entries (apart from a few specific fields) are blocked.
 - When the input is invalid, user receives feedback through multiple methods - "oninvalid" is used to customise the error message or a relevant flashed message is shown. 
 
@@ -194,31 +195,32 @@ _**Menu**_
 - Improve specificity of search function (add more filters, make most relevant searches appear first)
 - Make ingredient quantity a function of serving portion (so you could add a recipe to your menu with a specific serving portion in mind)
 - Implement a rating/user comments section for each recipe
+- Functional social media links in the footer (currently they just redirect to the main social media site as Crockpot isn't a real company!)
 
 ## Technologies used
 ### Languages and frameworks
-<!-- - __HTML5:__ The language used to create the content and structure of my project.
-- __CSS3:__ The language used to style the HTML5 elements to create the aesthetic of my game.
-- __JavaScript and JQuery:__ The language used to program my game and make aspects of the 'Home' and 'Tutorial' pages dynamic.
-- __Bootstrap framework:__ I used the Bootstrap grid system to make my site responsive on different devices. I also used it for the carousel and modal components on the 'Tutorial' and 'Game' pages.
+- __HTML5:__ The language used to create the content and structure of my project.
+- __CSS3:__ The language used to style the HTML5 elements to create the aesthetic of my site.
+- __JavaScript and JQuery:__ One of the languages used to add extra functionality to my site.
+- __Python:__ The language used to write the logic that controls my site.
+- __Bootstrap framework:__ I used the Bootstrap grid system to make my site responsive on different devices. I also used it for the carousel and modal components throughout the site.
+- __Flask framework:__ I used the Flask framework to manage the HTML5 more efficiently.
 - __GitHub:__ I used GitHub to store my source code and repository.
-- __GitHub Pages:__ I used GitHub Pages to deploy my project and make it viewable to others.
-- __Gitpod:__ I used Gitpod's development environment to write the code for my project. -->
+- __Gitpod:__ I used Gitpod's development environment to write the code for my project.
+- __Heroku:__ I used Heroku to deploy my project and make it viewable to others.
+- __MongoDB Atlas:__ I used MongoDB to store the data that is displayed on my site.
 
 ### Additional tools used
-<!-- - __101soundboards:__ I used 101soundboards.com to find all of the sound effects used through the site.
+- __Amiresponsive:__ I used this to produce the main image for my readme file.
 - __Balsamiq:__ I used this to produce wireframe sketches for the site's skeleton plane.
-- __CompressPNG:__ I used this to compress the images on my website to improve its performance.
 - __FontAwesome:__ I used FontAwesome's database for basic icons throughout my site.
 - __FreeFormatter:__ I used Freeformatter.com to format my code properly.
-- __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes, and to produce screenshots of the game for my 'Tutorial' page. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
-- __Google Fonts:__ I used one complementary font from Google Fonts for my project - Bowlby One SC.
-- __Image Online:__ I used this to produce the graphics for my game.
+- __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
+- __Google Fonts:__ I used two complementary fonts from Google Fonts for my project - Fredoka One and Poppins.
 - __JSHint:__ I used this to test to the validity of my JavaScript and JQuery code.
-- __Paint:__ I used this to produce the graphics for my game.
 - __W3C CSS Validation Service:__ I used this to test to the validity of my CSS code.
 - __W3C Markup Validation Service:__ I used this to test the validity of my HTML5 code.
-- __WAVE - Web Accessibility Evaluation Tool:__ I used this to test the accessibility of my website. -->
+- __WAVE - Web Accessibility Evaluation Tool:__ I used this to test the accessibility of my website.
 
 ## Git Commit Messages
 
