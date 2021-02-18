@@ -170,22 +170,28 @@ def editRecipe(recipe_id):
     # Find specific recipe
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
 
-    # Get ingredient names and add spaces after capital letters
-    ingredient_names = recipe["ingredient_name"]
-    ingredient_names_reformat = []
-    for ingredient in ingredient_names:
-        # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
-        ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
-        ingredient_names_reformat.append(ingredient_new)
+    # Check to see if current user created recipe
+    if session["user"] == recipe["created_by"]:
+        # Get ingredient names and add spaces after capital letters
+        ingredient_names = recipe["ingredient_name"]
+        ingredient_names_reformat = []
+        for ingredient in ingredient_names:
+            # https://stackoverflow.com/questions/25674532/pythonic-way-to-add-space-before-capital-letter-if-and-only-if-previous-letter-i/25674575
+            ingredient_new = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', ingredient)
+            ingredient_names_reformat.append(ingredient_new)
 
-    # Zip ingredient names, quantities and units into matrix
-    ingredients = zip(ingredient_names_reformat,
-                      recipe["ingredient_quantity"],
-                      recipe["ingredient_unit"])
+        # Zip ingredient names, quantities and units into matrix
+        ingredients = zip(ingredient_names_reformat,
+                          recipe["ingredient_quantity"],
+                          recipe["ingredient_unit"])
 
-    return render_template("edit-recipe.html",
-                           recipe=recipe,
-                           ingredients=ingredients)
+        return render_template("edit-recipe.html",
+                               recipe=recipe,
+                               ingredients=ingredients)
+
+    else:
+        return redirect(url_for(
+                        "profile", username=session["user"]))
 
 
 @app.route("/editRecipe/<recipe_id>", methods=["GET", "POST"])
@@ -295,14 +301,20 @@ def isFav(recipe_id):
 
 @app.route("/deleteRecipe/<recipe_id>")
 def deleteRecipe(recipe_id):
-    # Remove recipe from db if user deletes it
     recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
-    recipe_name = recipe.get("recipe_name")
-    recipes.remove({"_id": ObjectId(recipe_id)})
-    flash(recipe_name + " successfully deleted")
 
-    return redirect(url_for("profile",
-                            username=session["user"]))
+    # Check to see if current user created recipe
+    if session["user"] == recipe["created_by"]:
+        # Remove recipe from db if user deletes it
+        recipe_name = recipe.get("recipe_name")
+        recipes.remove({"_id": ObjectId(recipe_id)})
+        flash(recipe_name + " successfully deleted")
+
+        return redirect(url_for("profile",
+                                username=session["user"]))
+    else:
+        return redirect(url_for("profile",
+                                username=session["user"]))
 
 
 @app.route("/viewRecipe/<recipe_id>")
