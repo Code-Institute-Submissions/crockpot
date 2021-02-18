@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
    <head>
-      <title>crockpot</title>
       <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon" />
+      <title>crockpot</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.1/css/all.css" type="text/css" />
@@ -36,10 +36,10 @@
                <li class="nav-item {{'active' if active_page == 'profile' }}">
                   <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                </li>
-               <li class="nav-item {{'active' if active_page == 'addRecipe' }}">
+               <li class="nav-item {{'active' if active_page == 'add-recipe' }}">
                   <a class="nav-link" href="{{ url_for('addRecipe') }}">Add</a>
                </li>
-               <li class="nav-item {{'active' if active_page == 'searchRecipe' }}">
+               <li class="nav-item {{'active' if active_page == 'search-recipe' }}">
                   <a class="nav-link" href="{{ url_for('searchReset') }}">Search</a>
                </li>
                <li class="nav-item {{'active' if active_page == 'menu' }}">
@@ -54,7 +54,7 @@
                <li class="nav-item {{'active' if active_page == 'index' }}">
                   <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                </li>
-               <li class="nav-item {{'active' if active_page == 'searchRecipe' }}">
+               <li class="nav-item {{'active' if active_page == 'search-recipe' }}">
                   <a class="nav-link" href="{{ url_for('searchReset') }}">Search</a>
                </li>
                <li class="nav-item {{'active' if active_page == 'login' }}">
@@ -134,7 +134,14 @@
          crossorigin="anonymous"></script>
       <!--Links to custom JS files -->
       <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/addRecipe.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/searchRecipe.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/add-recipe.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/search-recipe.js') }}"></script>
+      <!--Links to sliders.js if on add-recipe or edit-recipe.html -->
+      {% if active_page == 'add-recipe' %}
+      <script src="{{ url_for('static', filename='js/sliders.js') }}"></script>
+      {% endif %}
+      {% if active_page == 'edit-recipe' %}
+      <script src="{{ url_for('static', filename='js/sliders.js') }}"></script>
+      {% endif %}
    </body>
 </html>

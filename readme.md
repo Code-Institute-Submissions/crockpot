@@ -119,6 +119,8 @@ I used Mongo DB to store the data for my site using the schema shown below.
 - The user's "username" is stored in the recipe "created_by" if they are the one who made the record.
 - The user's "username" is pushed/pulled from the "is_menu" and "is_fav" arrays depending on their input into the website, so multiple users can have the same recipe as their favourite or in their menu.
 
+If I was doing this project again, I would have a third collection for ingredients to make the search function less cumbersome.
+
 ![Crockpot MongoDB Schema](static/images/readme/readme-schema.png)
 
 ### Features
@@ -185,7 +187,8 @@ _**Menu**_
 - Attributes "min-length", "max-length", "pattern" and "required" controls what data the user can/cannot enter in to the database.
 - The "type" attribute for the image url entries is set to "url" to check that the user is inputting a valid link.
 - Blank form entries (apart from a few specific fields) are blocked.
-- When the input is invalid, user receives feedback through multiple methods - "oninvalid" is used to customise the error message or a relevant flashed message is shown. 
+- When the input is invalid, user receives feedback through multiple methods - "oninvalid" is used to customise the error message or a relevant flashed message is shown.
+- At the suggestion of my tutor Can Sucullu, I added extra defensive checks to the edit and delete Python functions. If the user did not create the recipe, the HTML will not render the edit and delete buttons on the recipe card. Can suggested that I add an extra line of code at the start of the edit and delete functions to double check if the user created the recipe, to prevent malicious users from manipulating the site.
 
 #### Features left to implement
 - Admin functionality

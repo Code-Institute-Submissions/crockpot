@@ -6,7 +6,6 @@ function searchIngredients() {
 
     for (var i = 0; i < ingredientsCheckbox.length; ++i) {
         ingredientsString = ingredientsCheckbox[i].value.replace(/\s/g, '');
-        console.log(ingredientsString);
 
         if (ingredientsCheckbox[i].checked) {
             ingredientsStringChecked = ingredientsStringChecked.concat(ingredientsString + " ");
