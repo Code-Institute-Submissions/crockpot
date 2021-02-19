@@ -130,7 +130,7 @@ def addRecipe():
         # Assign placeholder image to blank urls
         imageUrl = request.form.get("image_url")
         if len(imageUrl) == 0:
-            imageUrl = "static/images/logo-darkblue.png"
+            imageUrl = "/static/images/logo-darkblue.png"
 
         # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")
@@ -200,7 +200,7 @@ def editRecipeSave(recipe_id):
         # Assign placeholder image to blank urls
         imageUrl = request.form.get("image_url")
         if len(imageUrl) == 0:
-            imageUrl = "static/images/logo-darkblue.png"
+            imageUrl = "/static/images/logo-darkblue.png"
 
         # Capitalise ingredient names and remove spaces
         ingredient_names = request.form.getlist("ingredient_name")

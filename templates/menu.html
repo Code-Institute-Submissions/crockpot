@@ -114,7 +114,7 @@
                {% endif %}
                <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
                     href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                    {% if recipe.image_url == "static/images/logo-darkblue.png" %}
+                    {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                     <img class="logo-view-thumbnail"
                         src="{{ recipe.image_url }}"
                         alt="Dark blue Crockpot logo" />
@@ -232,7 +232,7 @@
                      {% endif %}
                      <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
                         href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                        {% if recipe.image_url == "static/images/logo-darkblue.png" %}
+                        {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
                             src="{{ recipe.image_url }}"
                             alt="Dark blue Crockpot logo" />
@@ -311,7 +311,7 @@
                      {% endif %}
                      <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
                         href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                        {% if recipe.image_url == "static/images/logo-darkblue.png" %}
+                        {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
                             src="{{ recipe.image_url }}"
                             alt="Dark blue Crockpot logo" />
