@@ -62,7 +62,8 @@ body {
 
 .flashed-messages {
 	text-transform: capitalize;
-	text-align: center;
+    text-align: center;
+    display: block;
 }
 
 

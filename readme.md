@@ -102,7 +102,7 @@ I used Balsamiq to develop wireframes (click **[here](README-Wireframes.md)** to
 
 ![Wireframe - Home](static/images/readme/readme-wireframe1-home.png)
 
-**Note:** I later decided to remove the user testimonial section from the bottom of my Home page as liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
+_**Note:**_ I later decided to remove the user testimonial section from the bottom of my Home page as liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
 
 #### Surface Plane
 After finishing my Balsamiq wireframes, I designed the _Crockpot_ logo and favicon using HTML5 and CSS. I chose “Fredoka One” for the logo font as I thought the rounded curves of the typeface matched the round features of the logo. I continued this theme throughout the website, opting for rounded corners and circles on buttons, icons and images. I didn’t want to use "Fredoka One" for the main body of text so used “Poppins” instead as it’s much easier to read.

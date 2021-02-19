@@ -13,6 +13,6 @@ function searchIngredients() {
     }
 
     var query = document.getElementById('query');
-    query.value += " ";
+    query.value += "&";
     query.value += ingredientsStringChecked;
 }
