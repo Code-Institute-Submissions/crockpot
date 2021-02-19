@@ -1,4 +1,4 @@
-# Crockpot
+# TURN DEBUGGER OFF!!!!!
 
 ## Code Institute: Milestone Project 3
 
@@ -176,6 +176,7 @@ _**Search Recipe**_
 - The user can search for a recipe name and/or filter recipes using the ingredients dropdown menu.
 - The ingredients dropdown menu shows all of the unique ingredients from all of the ingredients on the database.
 - A JavaScript function adds all of the values of the checked ingredients boxes to the query text when the user submits their search, and will show any recipes that match any of the query text.
+- The search function acts as an "and" function - it will return any recipes with the recipe name and the ingredients.
 - If there are no matches with the user's search, they see instructions on how to reset their search and start again.
 
 _**Menu**_
@@ -214,46 +215,75 @@ _**Menu**_
 - __MongoDB Atlas:__ I used MongoDB to store the data that is displayed on my site.
 
 ### Additional tools used
-- __Amiresponsive:__ I used this to produce the main image for my readme file.
+- __Amiresponsive:__ I used this to produce the main image for my readme file and to test the responsiveness of my website.
 - __Balsamiq:__ I used this to produce wireframe sketches for the site's skeleton plane.
 - __FontAwesome:__ I used FontAwesome's database for basic icons throughout my site.
 - __FreeFormatter:__ I used Freeformatter.com to format my code properly.
 - __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
 - __Google Fonts:__ I used two complementary fonts from Google Fonts for my project - Fredoka One and Poppins.
 - __JSHint:__ I used this to test to the validity of my JavaScript and JQuery code.
+- __Pep8 Online:__ I used this to test the compliance of my Python code.
 - __W3C CSS Validation Service:__ I used this to test to the validity of my CSS code.
 - __W3C Markup Validation Service:__ I used this to test the validity of my HTML5 code.
-- __WAVE - Web Accessibility Evaluation Tool:__ I used this to test the accessibility of my website.
 
 ## Git Commit Messages
-
-## Bugs
-- Bug #1: getting ingredients to display correctly on viewRecipe.html
-- Bug #2: Slicing error on search page for recipes > 9
-- Bug #3: Search specificity, incorrect ingredients/instructions on editRecipe
+I continued using the git commit format style that I had developed during my MS1 and MS2 projects. I used the imperative tense for all messages; I referred to all pages with their full name (ie. index.html instead of index); I denoted bug fixes by including "Bug" at the start of the message; all messages were under 50 characters. I've included 10 git commit messages below to demonstrate the syntax.
+- **e1c8235** 2021-02-11 - Update addRecipe function to replace spaces with -s in recipe_name
+- **9e2c59b** 2021-02-11 - Add placeholder image for recipes without image_url
+- **a5aaa1e** 2021-02-10 - Start on responsive design on index.html
+- **106b100** 2021-02-09 - Complete first validation of all html
+- **84dcb29** 2021-02-09 - Bug #2 fix: Slicing issue on searchRecipe.html resolved
+- **e4ef097** 2021-02-09 - Update app.js and profile.html to remove duplicate id attributes
+- **1391460** 2021-02-09 - Update addRecipe.js to update ingredients and instrucitons attributes
+- **e7cbabe** 2021-02-09 - Remove carousel control if recipe.count == 1
+- **6cc9bea** 2021-02-09 - Update featured recipes to 3 most recent DB entries
+- **89b7774** 2021-02-09 - Add defensive programming for addRecipe.html form
 
 ## Testing
-Click [here](README-Testing.md) to view the complete testing process.
+Click **[here](readme-testing.md)** to view the complete testing process.
 
 ## Deployment
+To deploy my project I followed the steps outlined in the "Deploying Our Project To Heroku" video in the _Code Institute_ Backend Development module which are as follows:
+1. Go to your Github repository and open it using GitPod index
+2. In the terminal run the command "pip3 freeze --local > requirements.txt" to create a .txt file with all of the dependencies for Heroku
+3. In the terminal run the command "echo web: python run.py > Procfile" to create a Procfile for Heroku
+4. Check the Procfile - if it has a blank line under the first line, delete it
+5. Log in to Heroku and on your dashboard select "Create New App"
+6. Under "Create New App" select the input field "App Name"
+7. Give your app a unique name using dashes instead of spaces
+8. Select the region closest to your location
+9. Click "Create App"
+10. To connect the app to your Github repository, click on the Github icon inside of the "Deployment Method" section
+11. Under "Deployment Method" there will be a new section called "Connect to Github" - make sure that your Github profile is displayed inside it
+12. Insert your repo name inside the "Connect to Github" section next to where your profile is displayed
+13. Click "Search", and once it finds your repo click the "Connect" button
+14. Click on the settings tab at the top of the page, and select "Reveal Config Var"
+15. Do not include quotes for the key or the value
+16. Add variables for IP, PORT, MONGO_URI, MONGODB_NAME and SECRET_KEY
+17. Return to the Gitpod IDE and make sure you have pushed the requirements.txt and Procfile
+18. Return to Heroku and select "Enable Automatic Deployment"
+19. Select your master branch under "Branch Selected"
+20. Click "Deploy Branch" - it will take some time for Heroku to build the app
+21. Once the site is deployed, click "View" to launch the app
+
+To run the code locally:
+1. Go to the Github repository and download a zip file with all of the files required to run the website
+2. Once you have downloaded them, use an IDE like Sublime or VSCode to open them
+3. Run the server locally from your IDE
+4. In order for the app to function you will need to create your own MongoDB collection and insert that "MONGO_URI" in to the config vars
 
 ## Credits
 __Images:__
-The background image was taken from...
-
-The images on the website at the point of submission are taken from https://www.hellofresh.co.uk/.
-
-__Audio:__
-All audio files were downloaded from...
+Most of the images on the website at the point of submission are taken from https://www.hellofresh.co.uk/.
 
 __Code:__
-Toggle switch https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
-Sliders https://www.w3schools.com/howto/howto_js_rangeslider.asp
-User authentication https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DCP101+2017_T3/courseware/9e2f12f5584e48acb3c29e9b0d7cc4fe/96d22c817aff4ce39e336fcb96c30e16/?child=first
-Adding/deleting instructions and ingredients from addRecipe.html https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
+I used the following snippets of code for components on my site (they are also credited in comments with the code too):
+- The toggle switch for favouriting and un-favouriting recipes is from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+- The sliders for choosing the serving portion and cooking time is from https://www.w3schools.com/howto/howto_js_rangeslider.asp
+- The basis for the adding/deleting extra instructions and ingredients on the add-recipe and edit-recipe.html pages is from https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
+
+This project was initially based off of the _Code Institute_ task manager mini project on the Backend Development module, but the end result has been heavily modified.
 
 __Acknowledgements:__
-I'd like to acknowledge the following tutorials and websites that I studied to complete my project. These sources have been credited in the code comments and were heavily modified for my own website.
-
-I'd also like to thank my tutor Can Sucullu, the Code Institute community and my friends and family for their guidance and input on this project.
+I'd like to thank my tutor Can Sucullu, the _Code Institute_ community and my friends and family for their guidance and input on this project.
 

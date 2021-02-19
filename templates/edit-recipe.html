@@ -94,8 +94,13 @@
          <div class="form-row mt-0">
             <div class="col"></div>
             <div class="col-11">
-               <input type="url" class="form-control" name="image_url" id="image_url" value="{{ recipe.image_url }}" placeholder="Image URL" minlength="5" maxlength="150"
+                {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+                <input type="url" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="150"
                     oninvalid="this.setCustomValidity('Please input a valid URL.')">
+                {% else %}
+                <input type="url" class="form-control" name="image_url" id="image_url" value="{{ recipe.image_url }}" placeholder="Image URL" minlength="5" maxlength="150"
+                    oninvalid="this.setCustomValidity('Please input a valid URL.')">
+                {% endif %}
                <label for="image_url" class="sr-only">Image URL</label>
             </div>
             <div class="col"></div>

@@ -400,25 +400,21 @@ def search():
 
     if len(query_recipe) > 0 and len(query_ingreds) > 0:
         search_recipes = recipes.find({"$and": [
-                                        {"$text":
-                                         {"$search": f"\"{query_recipe}\""}},
-                                        {"ingredient_name":
-                                         {"$all": query_ingreds}}]})
+            {"$text": {"$search": f"\"{query_recipe}\""}},
+            {"ingredient_name": {"$all": query_ingreds}}]})
         search_recipes_md = recipes.find({"$and": [
-                                        {"$text":
-                                         {"$search": f"\"{query_recipe}\""}},
-                                        {"ingredient_name":
-                                         {"$all": query_ingreds}}]})
+            {"$text": {"$search": f"\"{query_recipe}\""}},
+            {"ingredient_name": {"$all": query_ingreds}}]})
     elif len(query_recipe) == 0 and len(query_ingreds) > 0:
-        search_recipes = recipes.find({"ingredient_name":
-                                      {"$all": query_ingreds}})
-        search_recipes_md = recipes.find({"ingredient_name":
-                                         {"$all": query_ingreds}})
+        search_recipes = recipes.find(
+            {"ingredient_name": {"$all": query_ingreds}})
+        search_recipes_md = recipes.find(
+            {"ingredient_name": {"$all": query_ingreds}})
     elif len(query_recipe) > 0 and len(query_ingreds) == 0:
-        search_recipes = recipes.find({"$text":
-                                      {"$search": f"\"{query_recipe}\""}})
-        search_recipes_md = recipes.find({"$text":
-                                         {"$search": f"\"{query_recipe}\""}})
+        search_recipes = recipes.find(
+            {"$text": {"$search": f"\"{query_recipe}\""}})
+        search_recipes_md = recipes.find(
+            {"$text": {"$search": f"\"{query_recipe}\""}})
     else:
         search_recipes = recipes.find()
         search_recipes_md = recipes.find()
