@@ -154,7 +154,7 @@
                                  <label for="ingredient_unit{{loop.index}}" class="sr-only">Unit</label>
                                  <select class="form-control" name="ingredient_unit" id="ingredient_unit{{loop.index}}">
                                     <option label="{{ingredient[2]}}" value="{{ingredient[2]}}"></option>
-                                    <option label=" " value=""></option>
+                                    <option label="-" value=""></option>
                                     <option label="g" value="g"></option>
                                     <option label="ml" value="ml"></option>
                                     <option label="tsp" value=" tsp"></option>
@@ -210,13 +210,13 @@
                                     <label for="instructions{{loop.index}}" class="sr-only">Instructions</label>
                                  </li>
                               {% endfor %}
-                              <div class="form-row" id="add-instructions-hr-skinny">
+                              <li class="form-row" id="add-instructions-hr-skinny">
                                  <div class="col"></div>
                                  <div class="col-10">
                                     <hr class="hr-skinny">
                                  </div>
                                  <div class="col"></div>
-                              </div>
+                                </li>
                            </ol>
                         </div>
                      </div>
@@ -293,7 +293,7 @@
          <div class="col-6">
             <label for="ingredient_unit" class="sr-only" id="ingredient_unit_template_label">Unit</label>
             <select class="form-control" name="ingredient_unit" id="ingredient_unit_template">
-               <option label=" " value=""></option>
+               <option label="-" value=""></option>
                <option label="g" value="g"></option>
                <option label="ml" value="ml"></option>
                <option label="tsp" value=" tsp"></option>

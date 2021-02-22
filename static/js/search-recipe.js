@@ -3,6 +3,7 @@ function searchIngredients() {
     var ingredientsList = document.getElementById("ingredients-list");
     var ingredientsCheckbox = ingredientsList.getElementsByTagName("input");
     var ingredientsStringChecked = "";
+    var ingredientsString = "";
 
     for (var i = 0; i < ingredientsCheckbox.length; ++i) {
         ingredientsString = ingredientsCheckbox[i].value.replace(/\s/g, '');

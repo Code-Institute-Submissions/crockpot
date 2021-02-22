@@ -5,7 +5,7 @@ outputServes.innerHTML = sliderServes.value;
 
 sliderServes.oninput = function() {
   outputServes.innerHTML = this.value;
-}
+};
 
 // Show cooking time slider value
 var sliderCookTime = document.getElementById("cooktime");
@@ -14,4 +14,4 @@ outputCookTime.innerHTML = sliderCookTime.value;
 
 sliderCookTime.oninput = function() {
   outputCookTime.innerHTML = this.value;
-}
+};

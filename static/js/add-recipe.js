@@ -1,5 +1,14 @@
 // Credit to https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
 // Add/remove additional ingredients to add recipe form
+
+// Declare add-recipe.js variables
+var ingredientNum = 0;
+var ingredientInputCopy = "";
+var ingredientInputCopyClass = "";
+var instructionNum = 0;
+var instructionInputCopy = "";
+var instructionInputCopyClass = "";
+
 $("document").ready(function(){
     ingredientNum = $('.ingredients-input').length;
 
@@ -26,7 +35,7 @@ $("document").ready(function(){
         ingredientInputCopy.find("#ingredient_unit_template_label").removeAttr('id');
 
         $("#add-ingredients-hr-skinny").before(ingredientInputCopy);
-    })
+    });
 
     $("#delete-ingredient").click(function(){
         ingredientInputCopyClass = ".ingredients-input" + ingredientNum;
@@ -37,8 +46,8 @@ $("document").ready(function(){
         if(ingredientNum == 1){
             $("#delete-ingredient").addClass("hidden");
         }
-    })
-})
+    });
+});
 
 // Add/remove additional instructions to add recipe form
 $("document").ready(function(){
@@ -59,7 +68,7 @@ $("document").ready(function(){
         instructionInputCopy.find("#instructions_template_label").removeAttr('id');
 
         $("#add-instructions-hr-skinny").before(instructionInputCopy);
-    })
+    });
 
     $("#delete-instruction").click(function(){
         instructionInputCopyClass = ".instructions-input" + instructionNum;
@@ -70,5 +79,5 @@ $("document").ready(function(){
         if(instructionNum == 1){
             $("#delete-instruction").addClass("hidden");
         }
-    })
-})
+    });
+});

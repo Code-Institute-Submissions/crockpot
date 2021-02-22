@@ -3,7 +3,9 @@ onload = function () {
     if (window.innerWidth >= 768) {
         $(".collapse").addClass("show");
     }
-}
+};
+
+var idNumModal = 0;
 
 // Modal controls - profile.html
 function openModalView() {
