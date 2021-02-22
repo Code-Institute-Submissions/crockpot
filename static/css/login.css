@@ -16,6 +16,28 @@
 	width: 200px;
 }
 
+@media (max-height: 480px) and (max-width: 320px) {
+    #logo-home,
+    #logo-login,
+    #logo-signup {
+        width: 175px;
+    }
+    
+    .h3 {
+        font-size: 1.5em;
+    }
+
+    h5 {
+        font-size: 1.25em;
+    }
+
+    .nav-btn {
+        font-size: 1.5em;
+        height: 55px;
+        margin: 1px 4px;
+    }
+}
+
 @media (min-width: 600px) {
 	#hero-image-overlay-home,
 	#hero-image-overlay-login,

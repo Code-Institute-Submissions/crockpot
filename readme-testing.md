@@ -33,15 +33,22 @@ W3C Markup Validation Service - following errors:
 - No divs inside of ols - add and edit recipe
 - Missing IDs/fors on add and edit recipe
 - White spaces in ingredients ids on search recipes
+- Sections lacking heading
 
 ### CSS
 W3C CSS Validation Service - following errors:
+/* ul.ks-cboxtags li input[type="checkbox"] {
+	display: absolute;
+} */
 
 ### JavaScript and JQuery
 JSHint - following errors:
+- missing semicolons
+- hadn't declared variables at the beginning of app.js
 
 ### Python
 Pep8 - following errors:
+no issues
 
 ### Responsiveness
 Amiresponsive, google developers, human testing - following errors:
