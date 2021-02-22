@@ -105,6 +105,7 @@
                <div class="row m-0 pb-2 d-md-none">
                   <div class="col">
                      <div class="recipe-card">
+                         <div class="recipe-card-overlay border-white">
                         {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
                             src="{{ recipe.image_url }}"
@@ -113,6 +114,7 @@
                         <img class="recipe-card-image" src="{{ recipe.image_url }}"
                             alt="{{ recipe.recipe_name }}">
                         {% endif %}
+                        </div>
                      </div>
                   </div>
                </div>
@@ -248,18 +250,16 @@
                <div class="row m-0">
                   <div class="col-12">
                      <div class="recipe-card">
-                        {% if recipe.image_url|length == 0 %}
-                        <div class="recipe-card-overlay border-white">
-                           <img id="logo-view-page"
-                              src="{{ url_for('static', filename='images/logo-darkblue.png') }}"
-                              alt="Dark blue Crockpot logo" />
-                        </div>
+                         <div class="recipe-card-overlay border-white">
+                        {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+                        <img class="logo-view-thumbnail"
+                            src="{{ recipe.image_url }}"
+                            alt="Dark blue Crockpot logo" />
                         {% else %}
-                        <div class="recipe-card-overlay border-white">
-                           <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                              alt="{{ recipe.recipe_name }}">
-                        </div>
+                        <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                            alt="{{ recipe.recipe_name }}">
                         {% endif %}
+                        </div>
                      </div>
                   </div>
                </div>
