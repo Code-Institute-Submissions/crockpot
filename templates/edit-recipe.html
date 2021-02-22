@@ -94,13 +94,13 @@
          <div class="form-row mt-0">
             <div class="col"></div>
             <div class="col-11">
-                {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
-                <input type="url" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="150"
-                    oninvalid="this.setCustomValidity('Please input a valid URL.')">
-                {% else %}
-                <input type="url" class="form-control" name="image_url" id="image_url" value="{{ recipe.image_url }}" placeholder="Image URL" minlength="5" maxlength="150"
-                    oninvalid="this.setCustomValidity('Please input a valid URL.')">
-                {% endif %}
+               {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+               <input type="url" class="form-control" name="image_url" id="image_url" placeholder="Image URL" minlength="5" maxlength="150"
+                  oninvalid="this.setCustomValidity('Please input a valid URL.')">
+               {% else %}
+               <input type="url" class="form-control" name="image_url" id="image_url" value="{{ recipe.image_url }}" placeholder="Image URL" minlength="5" maxlength="150"
+                  oninvalid="this.setCustomValidity('Please input a valid URL.')">
+               {% endif %}
                <label for="image_url" class="sr-only">Image URL</label>
             </div>
             <div class="col"></div>
@@ -111,7 +111,7 @@
             <div class="card pb-2">
                <div class="card-header" id="accordion-searchrecipe-ingredients">
                   <button type="button" class="btn btn-link collapsed h3" data-toggle="collapse" data-target="#collapse-searchrecipe-ingredients"
-                    aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
+                     aria-expanded="false" aria-controls="collapse-searchrecipe-ingredients">
                   Ingredients <i class="fas fa-angle-down"></i>
                   </button>
                </div>
@@ -192,7 +192,7 @@
             <div class="card pb-2">
                <div class="card-header" id="accordion-searchrecipe-filters">
                   <button type="button" class="btn btn-link h3" data-toggle="collapse" data-target="#collapse-searchrecipe-filters"
-                    aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
+                     aria-expanded="true" aria-controls="collapse-searchrecipe-filters">
                   Instructions <i class="fas fa-angle-down"></i>
                   </button>
                </div>
@@ -204,11 +204,11 @@
                            <ol class="mb-1 small-text" id="instructions-input">
                               <!-- Populate instruction boxes with correct number of instructions from recipe -->
                               {% for instruction in recipe.instructions %}
-                                 <li class="mb-1 instructions-input instructions-input{{loop.index}}">
-                                    <input type="text" class="form-control" name="instructions" id="instructions{{loop.index}}" value="{{instruction}}"
-                                        placeholder="Instructions" minlength="5" maxlength="150" required>
-                                    <label for="instructions{{loop.index}}" class="sr-only">Instructions</label>
-                                 </li>
+                              <li class="mb-1 instructions-input instructions-input{{loop.index}}">
+                                 <input type="text" class="form-control" name="instructions" id="instructions{{loop.index}}" value="{{instruction}}"
+                                    placeholder="Instructions" minlength="5" maxlength="150" required>
+                                 <label for="instructions{{loop.index}}" class="sr-only">Instructions</label>
+                              </li>
                               {% endfor %}
                               <li class="form-row" id="add-instructions-hr-skinny">
                                  <div class="col"></div>
@@ -216,7 +216,7 @@
                                     <hr class="hr-skinny">
                                  </div>
                                  <div class="col"></div>
-                                </li>
+                              </li>
                            </ol>
                         </div>
                      </div>
@@ -278,8 +278,8 @@
          <div class="col"></div>
          <div class="col-11">
             <input type="text" class="form-control" name="ingredient_name" id="ingredient_name_template" placeholder="Ingredients" minlength="3" maxlength="30" pattern="[a-zA-Z ]{3,30}" required
-                oninvalid="this.setCustomValidity('Ingredient Name should be between 3 and 30 characters long with no special characters.')"
-                oninput="this.setCustomValidity('')">
+               oninvalid="this.setCustomValidity('Ingredient Name should be between 3 and 30 characters long with no special characters.')"
+               oninput="this.setCustomValidity('')">
             <label id="ingredient_name_template_label" for="ingredient_name" class="sr-only">Ingredients</label>
          </div>
          <div class="col"></div>
@@ -307,11 +307,11 @@
 </template>
 <!-- Instructions input template for addRecipe.js  -->
 <template id="instructions-input-template">
-    <li class="mb-1 instructions-input">
-        <input type="text" class="form-control" name="instructions" id="instructions_template" placeholder="Instructions" minlength="5" maxlength="150" required
-        oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')"
-        oninput="this.setCustomValidity('')">
-        <label for="instructions" class="sr-only" id="instructions_template_label">Instructions</label>
-    </li>
+   <li class="mb-1 instructions-input">
+      <input type="text" class="form-control" name="instructions" id="instructions_template" placeholder="Instructions" minlength="5" maxlength="150" required
+         oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')"
+         oninput="this.setCustomValidity('')">
+      <label for="instructions" class="sr-only" id="instructions_template_label">Instructions</label>
+   </li>
 </template>
 {% endblock %}

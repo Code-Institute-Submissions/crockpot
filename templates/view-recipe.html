@@ -40,10 +40,12 @@
                   {% if session.user in recipe.is_menu %}
                   <button type="submit" class="icon icon-blue-selected icon-blue-md shadow-box">
                   <i class="fas fa-utensils"></i>
+                  <span class="sr-only">Add to menu</span>
                   </button>
                   {% else %}
                   <button type="submit" class="icon icon-blue icon-blue-md shadow-box">
                   <i class="fas fa-utensils"></i>
+                  <span class="sr-only">Add to menu</span>
                   </button>
                   {% endif %}
                </form>
@@ -52,11 +54,13 @@
                <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"
                   class="icon icon-blue icon-blue-md shadow-box">
                <i class="fas fa-edit"></i>
+               <span class="sr-only">Edit recipe</span>
                </a>
                <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
                <div class="icon icon-blue icon-blue-md shadow-box" id="delete-recipe-open"
                   onclick="openModalView()">
                   <i class="fas fa-trash-alt" id="delete-recipe-open-icon" onclick="openModalView()"></i>
+                  <span class="sr-only">Delete recipe</span>
                </div>
                <!-- Modal -->
                <div class="modal-delete hidden" id="modal-delete">
@@ -105,15 +109,15 @@
                <div class="row m-0 pb-2 d-md-none">
                   <div class="col">
                      <div class="recipe-card">
-                         <div class="recipe-card-overlay border-white">
-                        {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
-                        <img class="logo-view-thumbnail"
-                            src="{{ recipe.image_url }}"
-                            alt="Dark blue Crockpot logo" />
-                        {% else %}
-                        <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                            alt="{{ recipe.recipe_name }}">
-                        {% endif %}
+                        <div class="recipe-card-overlay border-white">
+                           {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+                           <img class="logo-view-thumbnail"
+                              src="{{ recipe.image_url }}"
+                              alt="Dark blue Crockpot logo" />
+                           {% else %}
+                           <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                              alt="{{ recipe.recipe_name }}">
+                           {% endif %}
                         </div>
                      </div>
                   </div>
@@ -250,15 +254,15 @@
                <div class="row m-0">
                   <div class="col-12">
                      <div class="recipe-card">
-                         <div class="recipe-card-overlay border-white">
-                        {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
-                        <img class="logo-view-thumbnail"
-                            src="{{ recipe.image_url }}"
-                            alt="Dark blue Crockpot logo" />
-                        {% else %}
-                        <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                            alt="{{ recipe.recipe_name }}">
-                        {% endif %}
+                        <div class="recipe-card-overlay border-white">
+                           {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+                           <img class="logo-view-thumbnail"
+                              src="{{ recipe.image_url }}"
+                              alt="Dark blue Crockpot logo" />
+                           {% else %}
+                           <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                              alt="{{ recipe.recipe_name }}">
+                           {% endif %}
                         </div>
                      </div>
                   </div>

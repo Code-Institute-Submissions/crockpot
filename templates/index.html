@@ -34,8 +34,8 @@
             <div class="col">
                <h5 class="heading-light">Have an account?</h5>
                <h5 class="heading-light">Log in 
-                   <a class="heading-light underline" href="{{ url_for('login') }}">here</a>
-                </h5>
+                  <a class="heading-light underline" href="{{ url_for('login') }}">here</a>
+               </h5>
             </div>
          </div>
       </div>
@@ -211,16 +211,16 @@
                         href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                         {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
-                            src="{{ recipe.image_url }}"
-                            alt="Dark blue Crockpot logo" />
+                           src="{{ recipe.image_url }}"
+                           alt="Dark blue Crockpot logo" />
                         {% else %}
                         <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                            alt="{{ recipe.recipe_name }}">
+                           alt="{{ recipe.recipe_name }}">
                         {% endif %}
                         <div class="row recipe-card-title">
-                            <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                           <h3 class="capital">{{ recipe.recipe_name }}</h3>
                         </div>
-                    </a>
+                     </a>
                   </div>
                </div>
                {% endfor %}

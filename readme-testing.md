@@ -14,7 +14,7 @@
     - [Performance](#performance)
 - [Testing User Stories](#testing-user-stories)
 
-Click **[here](readme.md)** to view the complete testing process.
+Click **[here](readme.md)** to return to the main document.
 
 ## Testing During Development
 ### Bug fixes
@@ -22,6 +22,7 @@ Click **[here](readme.md)** to view the complete testing process.
 - Bug #2: Slicing error on search page for recipes > 9
 - Bug #3: Search specificity, incorrect ingredients/instructions on editRecipe
 - Changing search function from or to and
+- Bug #4: images not displaying properly after changing placeholder image
 
 ## Code Validation
 
@@ -51,14 +52,25 @@ Pep8 - following errors:
 no issues
 
 ### Responsiveness
-Amiresponsive, google developers, human testing - following errors:
+Amiresponsive, google developers, human testing
+- spacing error, log in and sign up on really small mobiles - add specific css
 
 ### Accessibility
 Lighthouse
+Base
 - contrast error between red and white - no time to fix, will test at beginning of next project
+
+Profile
+- add sr descriptions to button elements
 
 ### Performance
 Lighthouse
+
+Home
+- compress static images (increase from 69 to 97)
+- suggest lazy loading for future projects
+
+-Eliminate render-blocking resources
 
 ## Testing User Stories
 Screenshots

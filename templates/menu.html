@@ -70,10 +70,12 @@
                      {% if session.user in recipe.is_menu %}
                      <button type="submit" class="icon icon-blue-selected shadow-box">
                      <i class="fas fa-utensils"></i>
+                     <span class="sr-only">Add to menu</span>
                      </button>
                      {% else %}
                      <button type="submit" class="icon icon-blue shadow-box">
                      <i class="fas fa-utensils"></i>
+                     <span class="sr-only">Add to menu</span>
                      </button>
                      {% endif %}
                   </form>
@@ -83,11 +85,13 @@
                      <!-- Edit page -->
                      <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                      <i class="fas fa-edit"></i>
+                     <span class="sr-only">Edit recipe</span>
                      </a>
                      <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
                      <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}" onclick="openModal()">
                         <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}"
                            onclick="openModal()"></i>
+                        <span class="sr-only">Delete recipe</span>
                      </div>
                      <!-- Modal -->
                      <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
@@ -113,19 +117,19 @@
                </div>
                {% endif %}
                <a class="recipe-card-overlay recipe-card-overlay-hover border-white"
-                    href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
-                    {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
-                    <img class="logo-view-thumbnail"
-                        src="{{ recipe.image_url }}"
-                        alt="Dark blue Crockpot logo" />
-                    {% else %}
-                    <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                        alt="{{ recipe.recipe_name }}">
-                    {% endif %}
-                    <div class="row recipe-card-title">
-                        <h3 class="capital">{{ recipe.recipe_name }}</h3>
-                    </div>
-                </a>
+                  href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
+                  {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
+                  <img class="logo-view-thumbnail"
+                     src="{{ recipe.image_url }}"
+                     alt="Dark blue Crockpot logo" />
+                  {% else %}
+                  <img class="recipe-card-image" src="{{ recipe.image_url }}"
+                     alt="{{ recipe.recipe_name }}">
+                  {% endif %}
+                  <div class="row recipe-card-title">
+                     <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                  </div>
+               </a>
             </div>
          </div>
          {% endfor %}
@@ -187,10 +191,12 @@
                            {% if session.user in recipe.is_menu %}
                            <button type="submit" class="icon icon-blue-selected shadow-box btn">
                            <i class="fas fa-utensils"></i>
+                           <span class="sr-only">Add to menu</span>
                            </button>
                            {% else %}
                            <button type="submit" class="icon icon-blue shadow-box btn">
                            <i class="fas fa-utensils"></i>
+                           <span class="sr-only">Add to menu</span>
                            </button>
                            {% endif %}
                         </form>
@@ -200,12 +206,14 @@
                            <!-- Edit page -->
                            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                            <i class="fas fa-edit"></i>
+                           <span class="sr-only">Edit recipe</span>
                            </a>
                            <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
                            <div class="icon icon-blue" id="delete-recipe-open{{loop.index}}"
                               onclick="openModal()">
                               <i class="fas fa-trash-alt" id="delete-recipe-open-icon{{loop.index}}"
                                  onclick="openModal()"></i>
+                              <span class="sr-only">Delete recipe</span>
                            </div>
                            <!-- Modal -->
                            <div class="modal-delete hidden" id="modal-delete{{loop.index}}">
@@ -234,16 +242,16 @@
                         href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                         {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
-                            src="{{ recipe.image_url }}"
-                            alt="Dark blue Crockpot logo" />
+                           src="{{ recipe.image_url }}"
+                           alt="Dark blue Crockpot logo" />
                         {% else %}
                         <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                            alt="{{ recipe.recipe_name }}">
+                           alt="{{ recipe.recipe_name }}">
                         {% endif %}
                         <div class="row recipe-card-title">
-                            <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                           <h3 class="capital">{{ recipe.recipe_name }}</h3>
                         </div>
-                    </a>
+                     </a>
                   </div>
                </div>
                <div class="col"></div>
@@ -266,10 +274,12 @@
                            {% if session.user in recipe.is_menu %}
                            <button type="submit" class="icon icon-blue-selected shadow-box btn">
                            <i class="fas fa-utensils"></i>
+                           <span class="sr-only">Add to menu</span>
                            </button>
                            {% else %}
                            <button type="submit" class="icon icon-blue shadow-box btn">
                            <i class="fas fa-utensils"></i>
+                           <span class="sr-only">Add to menu</span>
                            </button>
                            {% endif %}
                         </form>
@@ -279,12 +289,14 @@
                            <!-- Edit page -->
                            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="icon icon-blue">
                            <i class="fas fa-edit"></i>
+                           <span class="sr-only">Edit recipe</span>
                            </a>
                            <!-- Button trigger modal - triggers modal to check if user definitely wants to delete recipe -->
                            <div class="icon icon-blue" id="delete-recipe-md-open{{loop.index}}"
                               onclick="openModalMd()">
                               <i class="fas fa-trash-alt" id="delete-recipe-md-open-icon{{loop.index}}"
                                  onclick="openModalMd()"></i>
+                              <span class="sr-only">Delete recipe</span>
                            </div>
                            <!-- Modal -->
                            <div class="modal-delete hidden" id="modal-delete-md{{loop.index}}">
@@ -313,16 +325,16 @@
                         href="{{ url_for( 'viewRecipe', recipe_id=recipe._id) }}">
                         {% if recipe.image_url == "/static/images/logo-darkblue.png" %}
                         <img class="logo-view-thumbnail"
-                            src="{{ recipe.image_url }}"
-                            alt="Dark blue Crockpot logo" />
+                           src="{{ recipe.image_url }}"
+                           alt="Dark blue Crockpot logo" />
                         {% else %}
                         <img class="recipe-card-image" src="{{ recipe.image_url }}"
-                            alt="{{ recipe.recipe_name }}">
+                           alt="{{ recipe.recipe_name }}">
                         {% endif %}
                         <div class="row recipe-card-title">
-                            <h3 class="capital">{{ recipe.recipe_name }}</h3>
+                           <h3 class="capital">{{ recipe.recipe_name }}</h3>
                         </div>
-                    </a>
+                     </a>
                   </div>
                </div>
                {% endfor %}
