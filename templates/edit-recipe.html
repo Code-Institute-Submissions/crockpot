@@ -154,7 +154,7 @@
                                  <label for="ingredient_unit{{loop.index}}" class="sr-only">Unit</label>
                                  <select class="form-control" name="ingredient_unit" id="ingredient_unit{{loop.index}}">
                                     <option label="{{ingredient[2]}}" value="{{ingredient[2]}}"></option>
-                                    <option label="" value=""></option>
+                                    <option label=" " value=""></option>
                                     <option label="g" value="g"></option>
                                     <option label="ml" value="ml"></option>
                                     <option label="tsp" value=" tsp"></option>
@@ -204,13 +204,11 @@
                            <ol class="mb-1 small-text" id="instructions-input">
                               <!-- Populate instruction boxes with correct number of instructions from recipe -->
                               {% for instruction in recipe.instructions %}
-                              <div class="instructions-input instructions-input{{loop.index}}">
-                                 <li class="mb-1">
+                                 <li class="mb-1 instructions-input instructions-input{{loop.index}}">
                                     <input type="text" class="form-control" name="instructions" id="instructions{{loop.index}}" value="{{instruction}}"
                                         placeholder="Instructions" minlength="5" maxlength="150" required>
                                     <label for="instructions{{loop.index}}" class="sr-only">Instructions</label>
                                  </li>
-                              </div>
                               {% endfor %}
                               <div class="form-row" id="add-instructions-hr-skinny">
                                  <div class="col"></div>
@@ -295,7 +293,7 @@
          <div class="col-6">
             <label for="ingredient_unit" class="sr-only" id="ingredient_unit_template_label">Unit</label>
             <select class="form-control" name="ingredient_unit" id="ingredient_unit_template">
-               <option label="" value=""></option>
+               <option label=" " value=""></option>
                <option label="g" value="g"></option>
                <option label="ml" value="ml"></option>
                <option label="tsp" value=" tsp"></option>
@@ -309,13 +307,11 @@
 </template>
 <!-- Instructions input template for addRecipe.js  -->
 <template id="instructions-input-template">
-   <div class="instructions-input">
-      <li class="mb-1">
-         <input type="text" class="form-control" name="instructions" id="instructions_template" placeholder="Instructions" minlength="5" maxlength="150" required
-            oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')"
-            oninput="this.setCustomValidity('')">
-         <label for="instructions" class="sr-only" id="instructions_template_label">Instructions</label>
-      </li>
-   </div>
+    <li class="mb-1 instructions-input">
+        <input type="text" class="form-control" name="instructions" id="instructions_template" placeholder="Instructions" minlength="5" maxlength="150" required
+        oninvalid="this.setCustomValidity('Instructions should be between 5 and 150 characters long.')"
+        oninput="this.setCustomValidity('')">
+        <label for="instructions" class="sr-only" id="instructions_template_label">Instructions</label>
+    </li>
 </template>
 {% endblock %}

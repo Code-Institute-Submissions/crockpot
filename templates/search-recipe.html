@@ -69,8 +69,8 @@
                                  <ul class="ks-cboxtags mb-0 pt-2 pb-2">
                                     {% for ingredient in search_ingredients %}
                                     <li>
-                                       <input type="checkbox" id="{{ingredient}}" value="{{ingredient}}">
-                                       <label class="capital" for="{{ingredient}}">{{ingredient}}</label>
+                                       <input type="checkbox" id="ingredient{{loop.index}}" value="{{ingredient}}">
+                                       <label class="capital" for="ingredient{{loop.index}}">{{ingredient}}</label>
                                     </li>
                                     {% endfor %}
                                  </ul>

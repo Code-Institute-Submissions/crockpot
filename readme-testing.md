@@ -28,6 +28,11 @@ Click **[here](readme.md)** to view the complete testing process.
 ### HTML
 W3C Markup Validation Service - following errors:
 - I used HTML of deployed website inside the validator, so that I can bypass the Jinja templating syntax.
+- ID duplicates on profile page
+- Empty labels on add and edit recipe
+- No divs inside of ols - add and edit recipe
+- Missing IDs/fors on add and edit recipe
+- White spaces in ingredients ids on search recipes
 
 ### CSS
 W3C CSS Validation Service - following errors:
