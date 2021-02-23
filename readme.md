@@ -30,7 +30,6 @@ Click **[here](https://github.com/zoet24/crockpot)** to view the Github reposito
 - [Git Commit Messages](#git-commit-messages)
 - [Testing](#testing)
 - [Deployment](#deployment)
-- [Cloning](#cloning)
 - [Credits](#credits)
 
 ## UX Design
@@ -61,8 +60,9 @@ _**Site users**_
 11. As a site user, I want to be able to save my favourite recipes so they are easier to look up when I next want to cook them.
 12. As a site user, I want to be able to search the communal database for recipes based on various criteria if I am looking for a specific recipe.
 13. As a site user, I want to be able to access the website from both mobile and desktop browsers so I can access the website from any of my devices.
-14. As a site user (me), I want to be able to search the communal database for recipes based on what ingredients I have.
-15. As a site user (me), I want to be able to generate a shopping list from the recipes I have selected.
+14. As a site user, I want to be able to log out of the site when I am finished using it.
+15. As a site user (me), I want to be able to search the communal database for recipes based on what ingredients I have.
+16. As a site user (me), I want to be able to generate a shopping list from the recipes I have selected.
 
 #### Scope Plane
 After establishing my main aims, I re-did the _Code Institute_ task manager mini project on the Backend Development module to see what features that would be realistic to implement within the time constraints of this project. I used this along with my user stories to compile a list of “must-have” features and “nice-to-have” features to include on my website. I added my requirement that the site should generate a shopping list to the “nice-to-have” list as I wasn’t sure if I would have enough time to implement it.
@@ -89,25 +89,25 @@ _**"Nice-to-haves"**_
 #### Structure Plane
 Based on the features outlined in my scope and the end result of the task manager mini project, I decided that I wanted to include the following pages on my website:
 - “Home”, “Search”, “Log In” and “Sign Up” when the user isn’t logged in to the site.
-    - The “Home” page welcomes the user to the site and directs them to the “Log In” and “Sign Up” pages.
-    - The “Search” page allows the user to browse through all the recipes on the website or search for specific recipes. Users who aren’t logged in can view recipes but they can’t add their own.
+    - The Home page welcomes the user to the site and directs them to the Log In and Sign Up pages.
+    - The Search page allows the user to browse through all the recipes on the website or search for specific recipes. Users who aren’t logged in can view recipes but they can’t add their own.
     - Individual recipes can be viewed on their own separate page by clicking on the recipe thumbnail.
-    - The “Log In” and “Sign Up” pages allow the user to log in to/create their profile so they can access the full functionality of the website.
+    - The Log In and Sign Up pages allow the user to log in to/create their profile so they can access the full functionality of the website.
 - “Profile”, “Add”, “Search” and a link to log out when the user is logged in to the site.
-    - The “Profile” page shows the user’s own recipes, their favourite recipes and links to the rest of the website.
-    - The “Add” page allows the user to add their own recipes through a form.
+    - The Profile page shows the user’s own recipes, their favourite recipes and links to the rest of the website.
+    - The Add page allows the user to add their own recipes through a form.
 
 At this stage I added a “Shopping List” page to my “nice-to-have” list (which I would later rename “Menu”) - this would be a page which would generate a shopping list based on what recipes the user had added to their “Menu”. It would only be accessible if the user was logged in to the website. It was an unnecessary addition to include in the initial MVP, but I decided to be optimistic and include it in my wireframe mock-ups.
 
 #### Skeleton Plane
-I used Balsamiq to develop wireframes (click **[here](README-Wireframes.md)** to view all of them) of what I wanted my website to look like on mobile and desktop. I kept my scope at the forefront of this design process to make sure that there was going to be a place to put all of my key features.
+I used Balsamiq to develop wireframes (click **[here](readme-wireframes.md)** to view all of them) of what I wanted my website to look like on mobile and desktop. I kept my scope at the forefront of this design process to make sure that there was going to be a place to put all of my key features.
 
 ![Wireframe - Home](static/images/readme/readme-wireframe1-home.png)
 
 _**Note:**_ I later decided to remove the user testimonial section from the bottom of my Home page as I didn't think it added value to the site and I liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
 
 #### Surface Plane
-After finishing my Balsamiq wireframes, I designed the _Crockpot_ logo and favicon using HTML5 and CSS. I chose “Fredoka One” for the logo font as I thought the rounded curves of the typeface matched the round features of the logo. I continued this theme throughout the website, opting for rounded corners and circles on buttons, icons and images. I didn’t want to use "Fredoka One" for the main body of text so used “Poppins” instead as it’s much easier to read.
+After finishing my Balsamiq wireframes, I designed the _Crockpot_ logo and favicon using HTML and CSS. I chose “Fredoka One” for the logo font as I thought the rounded curves of the typeface matched the round features of the logo. I continued this theme throughout the website, opting for rounded corners and circles on buttons, icons and images. I didn’t want to use "Fredoka One" for the main body of text so used “Poppins” instead as it’s much easier to read.
 
 ![Crockpot Logo](static/images/logo-red.png)
 
@@ -128,8 +128,8 @@ If I was doing this project again, I would have a third collection for ingredien
 ### Features
 #### Existing features
 _**General**_
-- Elements that can be clicked on - underline, grow
-- When the user is logged in, each recipe tile will have a "menu" icon in the top left corner. If the user has made the recipe it will also have an "edit" and "delete" icon in the top right corner. This is so a user can add a recipe to their menu, edit it or delete it without having to go to the main recipe page.
+- The site gives the user visual feedback on what are/aren't interactive elements. Non-interactive elements (eg. instructional text) are always in dark blue; interactive elements (eg. the menu, edit and delete icons and the favourite toggle) are always in light blue. Nav links underline when the user hovers over them indicating they can be clicked. The recipe tiles grow when the user hovers over them indicating they can be clicked too.
+- When the user is logged in, each recipe tile will have a "Menu" icon in the top left corner. If the user has made the recipe it will also have an "Edit" and "Delete" icon in the top right corner. This is so a user can add a recipe to their menu, edit it or delete it without having to go to the main recipe page.
 
 _**Home**_
 - The logo, tag line and links to the Sign Up and Log In pages are superimposed on a colourful image of a table of food to introduce the users to the site.
@@ -146,16 +146,16 @@ _**Sign Up/Log In**_
 _**Profile**_
 - The user is greeted with their username at the top of the page.
 - If the user has made recipes, they can see all of them at the top of the page (in a carousel for mobile devices, as tiles for larger devices).
-- If the user hasn't made any recipes yet, they see instructions on how to add a recipe. The icons for "edit" and "delete" are used consistently throughout the site.
+- If the user hasn't made any recipes yet, they see instructions on how to add a recipe. The icons for "Edit" and "Delete" are used consistently throughout the site.
 - There are links to the Add, Search and Menu pages in the centre of the page.
 - If the user has favourite recipes, they can see all of them at the bottom of the page (in a carousel for mobile devices, as tiles for larger devices).
 - If the user hasn't got any favourite recipes yet, they see instructions on how to view a recipe and how to favourite it.
 
 _**Add Recipe**_
 - The user can save information about their new recipe using the form.
-- The user can upload an image for the recipe via a URL; if no image is added then a placeholder of the Crockpot logo is added instead.
+- The user can upload an image for the recipe via a URL; if no image is added then a placeholder of the _Crockpot_ logo is added instead.
 - The sliders use a JavaScript function to display the slider value.
-- The ingredients and instructions drop down menus using a JavaScript function to add/remove additional form rows.
+- The ingredients and instructions dropdown menus using a JavaScript function to add/remove additional form rows.
 - The recipe name and ingredients name are saved without spaces to improve the specificity of the search funciton (ie. "Hot chilli powder" would be saved as "HotChilliPowder").
 - If there are issues with the input the user is informed of the error via pop-up.
 - If the user successfully submits the recipe they are returned to their profile page and told via flashed message.
@@ -170,10 +170,10 @@ _**Edit Recipe**_
 
 _**View Recipe**_
 - The user can view clearly presented information about the recipe.
-- The user can add/remove the recipe from their menu using the "menu" icon. If they created the recipe they will also be able to edit/delete the recipe using the icons too.
+- The user can add/remove the recipe from their menu using the "Menu" icon. If they created the recipe they will also be able to edit/delete the recipe using the icons too.
 - The user can add/remove the recipe from their favourites using the toggle.
-- If the user added a image URL it will be displayed; if they did not there will be an image of the Crockpot logo as a placeholder.
-- If the user added "top tips" and a "source" for their recipe it will be visible at the bottom of the page; if these sections were left out nothing will be rendered.
+- If the user added a image URL it will be displayed; if they did not there will be an image of the _Crockpot_ logo as a placeholder.
+- If the user added "Top Tips" and a "Source" for their recipe it will be visible at the bottom of the page; if these sections were left out nothing will be rendered.
 
 _**Search Recipe**_
 - The user can search for a recipe by entering a recipe name into the search bar, and/or selecting ingredients from the dropdown list at the top of the page.
@@ -186,8 +186,8 @@ _**Search Recipe**_
 - If there are no matches with the user's search, they see instructions on how to reset their search and start again.
 
 _**Menu**_
-- The user can add/remove a recipe to their "menu" from the recipe tile or the recipe page. If they have successfully added/removed the recipe they will be told via flashed message.
-- If the user has recipes on their menu, they can see all of them at the top of the page. The dropdown "shopping list" will sum all of the ingredients in the selected recipes and the user can mark what they do/do not have.
+- The user can add/remove a recipe to their "Menu" from the recipe tile or the recipe page. If they have successfully added/removed the recipe they will be told via flashed message.
+- If the user has recipes on their "Menu", they can see all of them at the top of the page. The dropdown "Shopping List" will sum all of the ingredients in the selected recipes and the user can mark what they do/do not have.
 - If the user hasn't made any recipes yet, they see instructions on how to do it. After this they will see a list of recommended recipes.
 
 #### Defensive design features
@@ -208,7 +208,7 @@ _**Menu**_
 - Make ingredient quantity a function of serving portion (so you could add a recipe to your menu with a specific serving portion in mind)
 - Implement a rating/user comments section for each recipe
 - Functional social media links in the footer (currently they just redirect to the main social media site as Crockpot isn't a real company!)
-- Reminders of log in credentials if user has forgotten them
+- A way to remind users of log in credentials if they have forgotten them
 
 ## Technologies used
 ### Languages and frameworks
@@ -227,6 +227,7 @@ _**Menu**_
 - __Amiresponsive:__ I used this to produce the main image for my readme file and to test the responsiveness of my website.
 - __Balsamiq:__ I used this to produce wireframe sketches for the site's skeleton plane.
 - __CompressPNG:__ I used this to compress the static images to improve performance.
+- __Coolors:__ I used this to select the colour scheme for my site.
 - __FontAwesome:__ I used FontAwesome's database for basic icons throughout my site.
 - __FreeFormatter:__ I used Freeformatter.com to format my code properly.
 - __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
@@ -291,7 +292,7 @@ I used the following snippets of code for components on my site (they are also c
 - The toggle switch for favouriting and un-favouriting recipes is from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 - The sliders for choosing the serving portion and cooking time is from https://www.w3schools.com/howto/howto_js_rangeslider.asp
 - The ingredients checkboxes on the search and menu pages are from https://codepen.io/quinlo/pen/ReMRXz
-- The basis for the adding/deleting extra instructions and ingredients on the add-recipe and edit-recipe.html pages is from https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
+- The basis for the adding/deleting extra instructions and ingredients on the Add Recipe and Edit Recipe pages is from https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
 
 This project was initially based off of the _Code Institute_ task manager mini project on the Backend Development module, but the end result has been heavily modified.
 
