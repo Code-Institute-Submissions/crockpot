@@ -1,4 +1,4 @@
-# TURN DEBUGGER OFF!!!!!
+# Crockpot
 
 ## Code Institute: Milestone Project 3
 
@@ -40,7 +40,7 @@ I started the design process for _Crockpot_ by considering the goals of the deve
 
 _**Developer**_
 1. As the developer, I want to create an online platform where users can add, edit, delete and search for recipes to complete the third _Code Institute_ Milestone Project.
-2. As the developer, I want the website to be aesthetically pleasing to demonstrate my ability to code in HTML and CSS and to create a positive UX experience for the site users.
+2. As the developer, I want the website to be aesthetically pleasing and easy to use to demonstrate my ability to code in HTML and CSS and to create a positive UX experience for the site users.
 3. As the developer, I want the website to function well to demonstrate my ability to code in JavaScript and Python and to create a positive UX experience for the site users.
 
 _**Site owner**_
@@ -48,19 +48,21 @@ _**Site owner**_
 2. As the site owner, I want the site users to have a positive UX experience while adding, editing and deleting recipes to increase the number of communal recipes that are shared with the website.
 
 _**Site users**_
-1. As a site user, I want to be able to add, edit and delete my own recipes so all of my recipes are saved in one place.
-2. As a site user, I want feedback from the website when I add, edit and delete my recipes to show that my input has been successful.
-3. As a site user, I want to be able to browse the recipes I have added when I am deciding what to cook.
-4. As a site user, I want to be able to browse the recipes that other users have added when I am deciding what to cook.
-5. As a site user, I want clear, well-presented information about the recipe including name, cooking time, ingredients and instructions so I know how to cook the recipe.
-6. As a site user, I want to be able to save my favourite recipes so they are easier to look up when I next want to cook them.
-7. As a site user, I want to be able to search the communal database for recipes based on various criteria if I am looking for a specific recipe.
-8. As a site user, I want to be able to access the website from both mobile and desktop browsers so I can access the website from any of my devices.
-9. As a new user, I want to be able to easily create my own profile so I can start using the website quickly.
-10. As a new user, I want clear instructions on how to use the website so I can start using the website quickly.
-11. As a returning user, I want to be able to easily log in to my profile so I can start using the website quickly.
-12. As a site user (me), I want to be able to search the communal database for recipes based on what ingredients I have.
-13. As a site user (me), I want to be able to generate a shopping list from the recipes I have selected.
+1. As a new user, I want to be able to easily create my own profile so I can start using the website quickly.
+2. As a new user, I want clear instructions on how to use the website so I can start using the website quickly.
+3. As a returning user, I want to be able to easily log in to my profile so I can start using the website quickly.
+4. As a site user, I want to be able to add my own recipes so all of my recipes are saved in one place.
+5. As a site user, I want to be able to edit my own recipes if they need updating.
+6. As a site user, I want to be able to delete my own recipes if I don't want to use them anymore.
+7. As a site user, I want feedback from the website when I add, edit and delete my recipes to show that my input has been successful.
+8. As a site user, I want to be able to browse the recipes I have added when I am deciding what to cook.
+9. As a site user, I want to be able to browse the recipes that other users have added when I am deciding what to cook.
+10. As a site user, I want clear, well-presented information about the recipe including name, cooking time, ingredients and instructions so I know how to cook the recipe.
+11. As a site user, I want to be able to save my favourite recipes so they are easier to look up when I next want to cook them.
+12. As a site user, I want to be able to search the communal database for recipes based on various criteria if I am looking for a specific recipe.
+13. As a site user, I want to be able to access the website from both mobile and desktop browsers so I can access the website from any of my devices.
+14. As a site user (me), I want to be able to search the communal database for recipes based on what ingredients I have.
+15. As a site user (me), I want to be able to generate a shopping list from the recipes I have selected.
 
 #### Scope Plane
 After establishing my main aims, I re-did the _Code Institute_ task manager mini project on the Backend Development module to see what features that would be realistic to implement within the time constraints of this project. I used this along with my user stories to compile a list of “must-have” features and “nice-to-have” features to include on my website. I added my requirement that the site should generate a shopping list to the “nice-to-have” list as I wasn’t sure if I would have enough time to implement it.
@@ -102,7 +104,7 @@ I used Balsamiq to develop wireframes (click **[here](README-Wireframes.md)** to
 
 ![Wireframe - Home](static/images/readme/readme-wireframe1-home.png)
 
-_**Note:**_ I later decided to remove the user testimonial section from the bottom of my Home page as liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
+_**Note:**_ I later decided to remove the user testimonial section from the bottom of my Home page as I didn't think it added value to the site and I liked the aesthetic of the page better without it. I also reduced the search criteria to just the recipe name and ingredients.
 
 #### Surface Plane
 After finishing my Balsamiq wireframes, I designed the _Crockpot_ logo and favicon using HTML5 and CSS. I chose “Fredoka One” for the logo font as I thought the rounded curves of the typeface matched the round features of the logo. I continued this theme throughout the website, opting for rounded corners and circles on buttons, icons and images. I didn’t want to use "Fredoka One" for the main body of text so used “Poppins” instead as it’s much easier to read.
@@ -151,6 +153,7 @@ _**Profile**_
 
 _**Add Recipe**_
 - The user can save information about their new recipe using the form.
+- The user can upload an image for the recipe via a URL; if no image is added then a placeholder of the Crockpot logo is added instead.
 - The sliders use a JavaScript function to display the slider value.
 - The ingredients and instructions drop down menus using a JavaScript function to add/remove additional form rows.
 - The recipe name and ingredients name are saved without spaces to improve the specificity of the search funciton (ie. "Hot chilli powder" would be saved as "HotChilliPowder").
@@ -173,10 +176,13 @@ _**View Recipe**_
 - If the user added "top tips" and a "source" for their recipe it will be visible at the bottom of the page; if these sections were left out nothing will be rendered.
 
 _**Search Recipe**_
-- The user can search for a recipe name and/or filter recipes using the ingredients dropdown menu.
+- The user can search for a recipe by entering a recipe name into the search bar, and/or selecting ingredients from the dropdown list at the top of the page.
 - The ingredients dropdown menu shows all of the unique ingredients from all of the ingredients on the database.
-- A JavaScript function adds all of the values of the checked ingredients boxes to the query text when the user submits their search, and will show any recipes that match any of the query text.
-- The search function acts as an "and" function - it will return any recipes with the recipe name and the ingredients.
+- A JavaScript function adds all of the values of the checked ingredients boxes to the query text in the search bar when the user submits their search.
+- A Python function then splits this string into recipe name and ingredients and will query the database in different ways depending on what the user has searched.
+- If the user has searched for a recipe name and ingredients, it will query the database using an "and" function and will return recipes that match the recipe name and have all of the selected ingredients.
+- If the user has searched for just a recipe name, it will return recipes that match the recipe name with any ingredients.
+- If the user has searched for just a selection of ingredients, it will return recipes that have all of the selected ingredients.
 - If there are no matches with the user's search, they see instructions on how to reset their search and start again.
 
 _**Menu**_
@@ -195,11 +201,14 @@ _**Menu**_
 - Admin functionality
 - Recipe recommendation based on what the user has favourited
 - Allow users to customise their profiles
+- Allow users to add additional ingredients to their shopping list outside of what is on their selected recipes
+- Allow users to directly upload images instead of linking them with a URL
 - Add categories to recipes for extra search functionality
 - Improve specificity of search function (add more filters, make most relevant searches appear first)
 - Make ingredient quantity a function of serving portion (so you could add a recipe to your menu with a specific serving portion in mind)
 - Implement a rating/user comments section for each recipe
 - Functional social media links in the footer (currently they just redirect to the main social media site as Crockpot isn't a real company!)
+- Reminders of log in credentials if user has forgotten them
 
 ## Technologies used
 ### Languages and frameworks
@@ -217,12 +226,13 @@ _**Menu**_
 ### Additional tools used
 - __Amiresponsive:__ I used this to produce the main image for my readme file and to test the responsiveness of my website.
 - __Balsamiq:__ I used this to produce wireframe sketches for the site's skeleton plane.
+- __CompressPNG:__ I used this to compress the static images to improve performance.
 - __FontAwesome:__ I used FontAwesome's database for basic icons throughout my site.
 - __FreeFormatter:__ I used Freeformatter.com to format my code properly.
 - __Google Developer Tools:__ I used this to test the responsiveness of my website by viewing my project on devices with different screen sizes. I also used the Console to test different functions in my JavaScript code throughout development, and the Lighthouse package to test the performance of the site.
 - __Google Fonts:__ I used two complementary fonts from Google Fonts for my project - Fredoka One and Poppins.
 - __JSHint:__ I used this to test to the validity of my JavaScript and JQuery code.
-- __Pep8 Online:__ I used this to test the compliance of my Python code.
+- __PEP8Online:__ I used this to test the compliance of my Python code.
 - __W3C CSS Validation Service:__ I used this to test to the validity of my CSS code.
 - __W3C Markup Validation Service:__ I used this to test the validity of my HTML5 code.
 
@@ -280,10 +290,11 @@ __Code:__
 I used the following snippets of code for components on my site (they are also credited in comments with the code too):
 - The toggle switch for favouriting and un-favouriting recipes is from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 - The sliders for choosing the serving portion and cooking time is from https://www.w3schools.com/howto/howto_js_rangeslider.asp
+- The ingredients checkboxes on the search and menu pages are from https://codepen.io/quinlo/pen/ReMRXz
 - The basis for the adding/deleting extra instructions and ingredients on the add-recipe and edit-recipe.html pages is from https://github.com/Manojlovic1998/Milestone_Project_3/blob/master/static/js/addRecipe.js
 
 This project was initially based off of the _Code Institute_ task manager mini project on the Backend Development module, but the end result has been heavily modified.
 
 __Acknowledgements:__
-I'd like to thank my tutor Can Sucullu, the _Code Institute_ community and my friends and family for their guidance and input on this project.
+I'd like to thank my tutor Can Sucullu, the _Code Institute_ community (specifically members Eamonn and Ed B Lead who helped me rewrite my search function) and my friends and family for their guidance and input on this project.
 

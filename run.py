@@ -518,5 +518,5 @@ def menu():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            # Change to false when submitting
-            debug=True)
+            # Change to true when developing; change to false when submitting
+            debug=False)
